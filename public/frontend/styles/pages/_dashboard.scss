@@ -1,0 +1,164 @@
+.page-dashboard {
+    .sidebar-dashboard {
+        background-color: #041B50;
+    }
+
+    #page-content-wrapper {
+        background-color: #F5F5FB;
+        min-width: 100vw;
+    }
+
+    #sidebar-wrapper {
+        margin-top: 60px;
+        min-height: 100vh;
+        max-width: 260px;
+        margin-left: -17rem;
+        transition: margin 0.25s ease-out;
+
+        .sidebar-heading {
+            padding: 0.875rem 1.2rem;
+            font-size: 1.2rem;
+        }
+        .list-group {
+            width: 255px;
+        }
+    }
+
+    #wrapper {
+        &.toggled {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .navbar-conservation-dashboard {
+        // Jika didalam bentuk mobile
+        margin-top: 0;
+        background-color: #F5F5FB;
+        box-shadow: 0px 4px 5px #cacad1;
+
+        // Jika ke ukuran desktop
+        @include media-breakpoint-up(md) {
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+
+    .list-group-item {
+        background-color: #041B50;
+        border: 0;
+        font-size: 16px;
+        color: #fff;
+
+        &.active {
+            background-color: #FF9E53;
+            border-right: 4px solid #fff;
+            font-weight: bold;
+            width: 260px;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        #sidebar-wrapper {
+            margin-left: 0;
+            margin-top: 0px;
+        }
+
+        #page-content-wrapper {
+            min-width: 0;
+            width: 100%;
+        }
+
+        #wrapper {
+            &.togled {
+                #sidebar-wrapper {
+                    margin-left: -15rem;
+                }
+            }
+        }
+    }
+
+    .section-content {
+        margin-top: 100px;
+        margin-left: 20px;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .dashboard-heading {
+            .dashboard-title {
+                font-size: 24px;
+                font-weight: 700;
+            }
+            .dashboard-subtitle {
+                font-size: 16px;
+                font-weight: 300;
+                color: #B1B1B1;
+            }
+            margin-bottom: 24px;
+
+            .dashboard-transaction-title {
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            .breadcrumb {
+                background-color: transparent;
+                padding: 0;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }   
+
+            .breadcrumb-item {
+                color: #B1B1B1;
+                &.active {
+                    font-weight: bold;
+                    color: #041B50;
+                }
+            }
+        }
+
+        .dashboard-content {
+            h5 {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+            }
+
+            .nav-pills {
+                .nav-item {
+                    .nav-link {
+                        font-weight: normal;
+                        font-size: 18px;
+                        color: #041B50;
+                        border-radius: 0;
+
+                        &.active {
+                            font-weight: 500;
+                            font-size: 18px;
+                            color: #041B50;
+                            border-bottom: 2px solid #041B50;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+
+            .card-edit-profile {
+                padding: 10px;
+
+                .btn-save-data {
+                    float: right;
+                    background-color: #FF9E53;
+                    color: #fff;
+                    font-weight: 500;
+                    margin-top: 24px;
+                    border-radius: 8px;
+                }
+            }
+        }
+    }
+}

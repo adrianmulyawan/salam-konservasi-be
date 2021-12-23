@@ -1,0 +1,32 @@
+body {
+    // background-color: #e4e6eb;
+    background-color: #fff;
+    font-family: 'Assistant', sans-serif;
+    color: #051334;
+    // font-family: 'Playfair Display', serif;
+}
+@import "../libraries/bootstrap/scss/bootstrap.scss";
+
+// Dashboard
+@import "pages/dashboard";
+
+@import "pages/home";
+@import "pages/detailConservation";
+@import "pages/checkout";
+// @import "pages/successCheckout";
+@import "pages/conservationArea";
+@import "pages/news";
+@import "pages/detailNews";
+@import "pages/events";
+@import "pages/detailEvent";
+@import "pages/successCheckoutRegister";
+@import "pages/auth";
+@import "pages/checkoutPage";
+
+
+@import "components/navbar";
+@import "components/navDashboard";
+@import "components/headerHome";
+@import "components/footer";
+@import "components/cardDashboard";
+@import "components/cardListDashboard";
