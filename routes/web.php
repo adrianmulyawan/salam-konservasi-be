@@ -32,6 +32,12 @@ Auth::routes();
 Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'successRegister'])->name('successRegister');
 
 // Pemohon
+Route::prefix('applicant')
+        ->namespace('Applicant')
+        ->group(function() {
+            Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])->name('dashboardApplicant');
+        });
+
 // Super Admin
 // Pimpinan
 // Admin Lapangan
