@@ -14,29 +14,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
 
-Route::get('/conservationArea', [App\Http\Controllers\ConservationAreaController::class, 'index'])->name('conservationArea');
-Route::get('/conservationArea/{id}', [App\Http\Controllers\DetailConservationController::class, 'index'])->name('detailConservation');
+Route::get('/conservation-area', [App\Http\Controllers\ConservationAreaController::class, 'index'])
+    ->name('conservationArea');
+Route::get('/conservation-area/{id}', [App\Http\Controllers\DetailConservationController::class, 'index'])
+    ->name('detailConservation');
 
-Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
-Route::get('/news/{id}', [App\Http\Controllers\NewsDetailController::class, 'index'])->name('newsDetail');
+Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])
+    ->name('news');
+Route::get('/news/{id}', [App\Http\Controllers\NewsDetailController::class, 'index'])
+    ->name('newsDetail');
 
-Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])->name('event');
-Route::get('/event/{id}', [App\Http\Controllers\EventDetailController::class, 'index'])->name('eventDetail');
+Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])
+    ->name('event');
+Route::get('/event/{id}', [App\Http\Controllers\EventDetailController::class, 'index'])
+    ->name('eventDetail');
 
-Route::get('/submission', [App\Http\Controllers\SubmissionController::class, 'index'])->name('eventDetail');
-Route::get('/submission/success', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])->name('successSubmission');
+Route::get('/submission', [App\Http\Controllers\SubmissionController::class, 'index'])
+    ->name('eventDetail');
+Route::get('/submission/success', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
+    ->name('successSubmission');
 
 Auth::routes();
-Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'successRegister'])->name('successRegister');
+Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'successRegister'])
+    ->name('successRegister');
 
 // Pemohon
-Route::prefix('applicant')
-        ->namespace('Applicant')
-        ->group(function() {
-            Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])->name('dashboardApplicant');
-        });
+Route::prefix('/dashboard/applicant')
+    ->namespace('Applicant')
+    ->group(function() {
+        Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])
+            ->name('dashboardApplicant');
+        Route::get('/submission', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'index'])
+            ->name('dashboardSubmission');
+    }
+);
 
 // Super Admin
 // Pimpinan
