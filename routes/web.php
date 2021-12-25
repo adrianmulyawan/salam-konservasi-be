@@ -91,5 +91,8 @@ Route::prefix('/dashboard/fieldAdmin')
             ->name('addEntry');
         Route::get('/visit/add-exit/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'addExit'])
             ->name('addExit');
+
+        Route::get('/visitor-checkout', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'index'])
+            ->name('visitorCheckout');
     }
 );

@@ -197,7 +197,7 @@
                         <input type="text" class="form-control datepicker" id="tanggal_keluar" name="tanggal_keluar" required placeholder="Tanggal Keluar Kawasan">
                     </div>
                     <div class="row justify-content-end mr-1 mt-4">
-                        <a href="../admin-lapangan/dashboardKelolaKunjungan.html" class="btn btn-primary py-2 mr-2">Tutup</a>
+                        <a href="{{ route('dashboardFieldAdmin') }}" class="btn btn-primary py-2 mr-2">Tutup</a>
                         <button type="submit" class="btn btn-primary py-2">Simpan Data</button>
                     </div>
                 </div>
