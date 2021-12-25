@@ -13,7 +13,7 @@
         <a href="{{ route('dashboardSubmission') }}" class="list-group-item list-group-item-action">
             Pengajuan Izin Masuk
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('dashboardPayment') }}" class="list-group-item list-group-item-action">
             Pembayaran Retribusi
         </a>
         <a href="#" class="list-group-item list-group-item-action">

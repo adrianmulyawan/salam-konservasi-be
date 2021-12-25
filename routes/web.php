@@ -58,9 +58,19 @@ Route::prefix('/dashboard/applicant')
             ->name('dashboardSubmissionRejected');
         Route::get('/submission/status/failed/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionFailed'])
             ->name('dashboardSubmissionFailed');
+        
+        Route::get('/payment', [\App\Http\Controllers\Applicant\DashboardPaymentController::class, 'index'])
+            ->name('dashboardPayment');
+        Route::get('/payment/payment-process', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentProcess'])
+            ->name('paymentProcess');
+        Route::get('/payment/status/paid/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentPaidOff'])
+            ->name('paymentPaidOff');
+        Route::get('/payment/status/failed/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentFailed'])
+            ->name('paymentPaidOff');
     }
 );
 
 // Super Admin
 // Pimpinan
+
 // Admin Lapangan
