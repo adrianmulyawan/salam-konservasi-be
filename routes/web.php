@@ -33,7 +33,7 @@ Route::get('/event/{id}', [App\Http\Controllers\EventDetailController::class, 'i
     ->name('eventDetail');
 
 Route::get('/submission', [App\Http\Controllers\SubmissionController::class, 'index'])
-    ->name('eventDetail');
+    ->name('submission');
 Route::get('/submission/success', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
     ->name('successSubmission');
 
@@ -47,8 +47,17 @@ Route::prefix('/dashboard/applicant')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])
             ->name('dashboardApplicant');
+
         Route::get('/submission', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'index'])
             ->name('dashboardSubmission');
+        Route::get('/submission/status/pending/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionPending'])
+            ->name('dashboardSubmissionPending');
+        Route::get('/submission/status/approved/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionApproved'])
+            ->name('dashboardSubmissionApproved');
+        Route::get('/submission/status/rejected/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionRejected'])
+            ->name('dashboardSubmissionRejected');
+        Route::get('/submission/status/failed/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionFailed'])
+            ->name('dashboardSubmissionFailed');
     }
 );
 
