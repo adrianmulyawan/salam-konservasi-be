@@ -80,3 +80,10 @@ Route::prefix('/dashboard/applicant')
 // Pimpinan
 
 // Admin Lapangan
+Route::prefix('/dashboard/fieldAdmin')
+    ->namespace('FieldAdmin')
+    ->group(function() {
+        Route::get('/', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'index'])
+            ->name('dashboardFieldAdmin');
+    }
+);
