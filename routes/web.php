@@ -94,5 +94,8 @@ Route::prefix('/dashboard/fieldAdmin')
 
         Route::get('/visitor-checkout', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'index'])
             ->name('visitorCheckout');
+
+        Route::get('/setting-account', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'index'])
+            ->name('settingAccountFieldAdmin');
     }
 );
