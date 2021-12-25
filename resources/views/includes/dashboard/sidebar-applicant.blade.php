@@ -16,7 +16,7 @@
         <a href="{{ route('dashboardPayment') }}" class="list-group-item list-group-item-action">
             Pembayaran Retribusi
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('areaEntryPermit') }}" class="list-group-item list-group-item-action">
             Surat Izin Masuk
         </a>
         <a href="#" class="list-group-item list-group-item-action">
