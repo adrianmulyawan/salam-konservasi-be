@@ -16,4 +16,14 @@ class DashboardController extends Controller
     {
         return view('pages.fieldAdmin.dashboard-visit-details');
     }
+
+    public function addEntry()
+    {
+        return view('pages.fieldAdmin.dashboard-add-entry-area');
+    }
+
+    public function addExit()
+    {
+        return view('pages.fieldAdmin.dashboard-add-exit-area');
+    }
 }
