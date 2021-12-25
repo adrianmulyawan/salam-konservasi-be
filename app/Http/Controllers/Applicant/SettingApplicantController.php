@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class SettingApplicantController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('pages.applicant.dashboard-setting-account');
+    }
 }

@@ -70,6 +70,9 @@ Route::prefix('/dashboard/applicant')
 
         Route::get('/area-entry', [\App\Http\Controllers\Applicant\AreaEntryController::class, 'index'])
             ->name('areaEntryPermit');
+        
+        Route::get('/setting-account', [\App\Http\Controllers\Applicant\SettingApplicantController::class, 'index'])
+            ->name('settingAccountApplicant');
     }
 );
 

@@ -19,7 +19,7 @@
         <a href="{{ route('areaEntryPermit') }}" class="list-group-item list-group-item-action">
             Surat Izin Masuk
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('settingAccountApplicant') }}" class="list-group-item list-group-item-action">
             Pengaturan Akun
         </a>
         <a href="#" class="list-group-item list-group-item-action mt-5">
