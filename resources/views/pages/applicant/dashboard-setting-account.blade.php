@@ -31,11 +31,24 @@
                                         </label>
                                         <input type="email" name="email" class="form-control" id="inputEmail" value="adrianmulyawan666@gmail.com">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword">
-                                            Password
-                                        </label>
-                                        <input type="password" name="email" class="form-control" id="inputPassword" value="kepolu">
+                                    <div class="form-group mt-3">
+                                        <label for="inputPassword">Password</label>
+                                        <div class="input-group">
+                                            <input type="password" name="name" id="inputPassword" class="form-control" value="kepolu">
+                                            <div class="input-group-append">
+                                                <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
+                                                <span id="mybutton" onclick="change()" class="input-group-text">
+                        
+                                                    <!-- icon mata bawaan bootstrap  -->
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">
@@ -59,3 +72,7 @@
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="{{ url('frontend/scripts/main.js') }}"></script>
+@endpush

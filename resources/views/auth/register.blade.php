@@ -162,5 +162,5 @@
 @endsection
 
 @push('addon-script')
-    <script src="{{ url('frontend/images/logo-salam-konservasi.png') }}"></script>
+    <script src="{{ url('frontend/scripts/main.js') }}"></script>
 @endpush
