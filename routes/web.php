@@ -85,5 +85,7 @@ Route::prefix('/dashboard/fieldAdmin')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'index'])
             ->name('dashboardFieldAdmin');
+        Route::get('/visit/detailVisit/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'detailVisit'])
+            ->name('detailVisit');
     }
 );

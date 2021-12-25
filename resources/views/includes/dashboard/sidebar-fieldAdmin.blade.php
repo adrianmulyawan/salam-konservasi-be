@@ -2,13 +2,13 @@
 <div class="border-right sidebar-dashboard" id="sidebar-wrapper">
     <!-- Gambar/Logo Sidebar -->
     <div class="sidebar-heading text-center">
-        <a href="../indexAuthUser.html">
-            <img src="../frontend/images/dashboard/dashboard_ic.svg" alt="" class="my-4">
+        <a href="#">
+            <img src="{{ url('frontend/images/dashboard/dashboard_ic.svg') }}" alt="" class="my-4">
         </a>
     </div>
     <!-- Menu Sidebar -->
     <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action active">
+        <a href="#" class="list-group-item list-group-item-action">
             Kelola Data Pengunjung
         </a>
         <a href="#" class="list-group-item list-group-item-action">

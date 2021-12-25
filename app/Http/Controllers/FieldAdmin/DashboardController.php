@@ -11,4 +11,9 @@ class DashboardController extends Controller
     {
         return view('pages.fieldAdmin.dashboard');
     }
+
+    public function detailVisit()
+    {
+        return view('pages.fieldAdmin.dashboard-visit-details');
+    }
 }
