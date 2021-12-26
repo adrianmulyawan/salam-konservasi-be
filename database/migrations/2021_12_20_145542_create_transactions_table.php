@@ -29,6 +29,7 @@ class CreateTransactionsTable extends Migration
             $table->string('account_owner');
             $table->string('entrance ticket');
             $table->string('educational_research_activity_form');
+            $table->string('name_of_purpose');
             $table->timestamps();
 
             $table->foreign('purpose_id')->references('id')->on('purposes');

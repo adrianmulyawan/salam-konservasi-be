@@ -11302,9 +11302,9 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .section-details-header {
-  min-height: 350px;
+  min-height: 310px;
   background-color: #041B50;
-  margin-top: -80px;
+  margin-top: -76px;
 }
 
 .section-details-content {
@@ -12355,19 +12355,18 @@ div.section-success .btn-dashboard {
 }
 
 body {
-  background-color: #fff;
+  background-color: #F4F4F4;
   font-family: 'Assistant', sans-serif;
 }
 
 .section-transaction-content {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 120px;
+  margin-bottom: 120px;
 }
 
 .section-transaction-content .card {
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid #F4F4F4;
 }
 
 .section-transaction-content .card .section-transaction-header h3 {
@@ -12525,6 +12524,23 @@ button.btn-login:hover {
   background-color: #FF9E53;
   color: #fff;
   margin-left: -11px;
+}
+
+.navbar-conservation-dashboard .navbar-nav .notification-content .dropdown-menu {
+  width: 250px;
+}
+
+.navbar-conservation-dashboard .navbar-nav .notification-content .dropdown-menu p {
+  font-size: 14px;
+}
+
+.navbar-conservation-dashboard .navbar-nav .notification-content .dropdown-menu .card {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.navbar-conservation-dashboard .navbar-nav .notification-content .dropdown-menu .card a {
+  text-decoration: none;
 }
 
 header {
