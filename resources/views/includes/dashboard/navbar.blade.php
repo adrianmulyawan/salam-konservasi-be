@@ -14,7 +14,7 @@
                 <!-- Notif -->
                 <li class="nav-item dropdown notification-content">
                     <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
-                        <img src="../frontend/images/ic_notif.png" alt="" height="24">
+                        <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
                         <div class="notification">4</div>
                     </a>
                     <div class="dropdown-menu text-center p-2">
@@ -47,16 +47,16 @@
                 <!-- Nav User -->
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                        <img src="../frontend/images/ic_profile.png" alt="" class="rounded-circle mr-2 profile-picture">
+                        <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
                         Hi, Karlina Putri
                     </a>
                     <div class="dropdown-menu">
                         <a href="../indexAuthUser.html" class="dropdown-item">
                             Halaman Utama
                         </a>
-                        <a href="dashboardSetting.html" class="dropdown-item">Pengaturan Akun</a>
+                        <a href="#" class="dropdown-item">Pengaturan Akun</a>
                         <div class="dropdown-divider"></div>
-                        <a href="../index.html" class="dropdown-item">Logout</a>
+                        <a href="#" class="dropdown-item">Logout</a>
                     </div>
                 </li>
             </ul>
