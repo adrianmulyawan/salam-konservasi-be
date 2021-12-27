@@ -116,6 +116,9 @@ Route::prefix('/dashboard/leader')
         
         Route::get('/leader-visitor-control', [\App\Http\Controllers\Leader\DashboardVisitorControlController::class, 'index'])
             ->name('leaderVisitorControl');
+
+        Route::get('/leader-setting-account', [\App\Http\Controllers\Leader\DashboardSettingLeaderController::class, 'index'])
+            ->name('settingAccountLeader');
     }
 );
 
@@ -135,7 +138,7 @@ Route::prefix('/dashboard/fieldAdmin')
         Route::get('/visitor-checkout', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'index'])
             ->name('visitorCheckout');
 
-        Route::get('/setting-account', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'index'])
+        Route::get('/field-admin-setting-account', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'index'])
             ->name('settingAccountFieldAdmin');
     }
 );
