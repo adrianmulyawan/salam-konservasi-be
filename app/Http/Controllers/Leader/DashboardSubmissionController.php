@@ -11,4 +11,24 @@ class DashboardSubmissionController extends Controller
     {
         return view('pages.leader.dashboard-submission');
     }
+
+    public function submissionPending()
+    {
+        return view('pages.leader.dashboard-submission-pending');
+    }
+
+    public function submissionApproved()
+    {
+        return view('pages.leader.dashboard-submission-approved');
+    }
+
+    public function submissionRejected()
+    {
+        return view('pages.leader.dashboard-submission-rejected');
+    }
+
+    public function submissionFailed()
+    {
+        return view('pages.leader.dashboard-submission-failed');
+    }
 }

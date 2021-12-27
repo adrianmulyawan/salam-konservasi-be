@@ -86,7 +86,15 @@ Route::prefix('/dashboard/leader')
             ->name('dashboardLeader');
 
         Route::get('/submission', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'index'])
-            ->name('dashboardSubmission');
+            ->name('dashboardLeaderSubmission');
+        Route::get('/submission/status/pending/{id}', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'submissionPending'])
+            ->name('dashboardLeaderSubmissionPending');
+        Route::get('/submission/status/approved/{id}', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'submissionApproved'])
+            ->name('dashboardLeaderSubmissionApproved');
+        Route::get('/submission/status/rejected/{id}', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'submissionRejected'])
+            ->name('dashboardLeaderSubmissionRejected');
+        Route::get('/submission/status/failed/{id}', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'submissionFailed'])
+            ->name('dashboardLeaderSubmissionFailed');
     }
 );
 
