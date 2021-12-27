@@ -110,6 +110,9 @@ Route::prefix('/dashboard/leader')
 
         Route::get('/monthly-submission', [\App\Http\Controllers\Leader\DashboardMonthlySubmissionController::class, 'index'])
             ->name('monthlySubmissionSummary');
+
+        Route::get('/user-aspiration', [\App\Http\Controllers\Leader\DashboardUserAspirationController::class, 'index'])
+            ->name('userAspirationLeader');
     }
 );
 
