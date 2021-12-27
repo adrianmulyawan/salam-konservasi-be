@@ -82,7 +82,8 @@ Route::prefix('/dashboard/applicant')
 Route::prefix('/dashboard/leader')
     ->name('Leader')
     ->group(function() {
-
+        Route::get('/', [\App\Http\Controllers\Leader\DashboardController::class, 'index'])
+            ->name('dashboardLeader');
     }
 );
 

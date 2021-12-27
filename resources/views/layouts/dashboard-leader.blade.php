@@ -13,7 +13,7 @@
     <div class="page-dashboard">
         <div class="d-flex" id="wrapper" data-aos="fade-right">
             {{-- Sidebar --}}
-            @include('includes.dashboard.sidebar-fieldAdmin')
+            @include('includes.dashboard.sidebar-leader')
 
             {{-- Dashboard Page --}}
             <div id="page-content-wrapper">
