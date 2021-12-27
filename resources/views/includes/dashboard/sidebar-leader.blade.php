@@ -8,28 +8,28 @@
     </div>
     <!-- Menu Sidebar -->
     <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeaderdashboardLeader') }}" class="list-group-item list-group-item-action">
             Dashboard
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeaderdashboardLeaderSubmission') }}" class="list-group-item list-group-item-action">
             Pengajuan Izin Masuk
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeaderdashboardLeaderPayment') }}" class="list-group-item list-group-item-action">
             Pembayaran Retribusi
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeaderareaEntryLeader') }}" class="list-group-item list-group-item-action">
             Surat Izin Masuk
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeadermonthlySubmissionSummary') }}" class="list-group-item list-group-item-action">
             Rekapan Pengajuan Bulanan
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeaderuserAspirationLeader') }}" class="list-group-item list-group-item-action">
             Form Kepuasan & Kekurangan
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeaderleaderVisitorControl') }}" class="list-group-item list-group-item-action">
             Data Keluar Masuk Pengunjung
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('LeadersettingAccountLeader') }}" class="list-group-item list-group-item-action">
             Pengaturan Akun
         </a>
         <a href="#" class="list-group-item list-group-item-action mt-5">
