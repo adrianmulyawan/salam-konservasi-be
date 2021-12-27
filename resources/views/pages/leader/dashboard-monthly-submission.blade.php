@@ -34,69 +34,69 @@
                                             <td class="text-center">1</td>
                                             <td>Rekapan Pengajuan Izin Bulan: Januari 2022</td>
                                             <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">2</td>
                                             <td>Rekapan Pengajuan Izin Bulan: Desember 2021</td>
                                             <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">3</td>
                                             <td>Rekapan Pengajuan Izin Bulan: November 2021</td>
                                             <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">4</td>
                                             <td>Rekapan Pengajuan Izin Bulan: Oktober 2021</td>
                                             <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">5</td>
                                             <td>Rekapan Pengajuan Izin Bulan: September 2021</td>
                                             <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                             </td>
                                             <tr>
                                                 <td class="text-center">6</td>
                                                 <td>Rekapan Pengajuan Izin Bulan: Agustus 2021</td>
                                                 <td class="text-center">
-                                                    <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                    <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">7</td>
                                                 <td>Rekapan Pengajuan Izin Bulan: Juli 2021</td>
                                                 <td class="text-center">
-                                                    <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                    <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">8</td>
                                                 <td>Rekapan Pengajuan Izin Bulan: Juni 2021</td>
                                                 <td class="text-center">
-                                                    <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                    <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">9</td>
                                                 <td>Rekapan Pengajuan Izin Bulan: Mei 2021</td>
                                                 <td class="text-center">
-                                                    <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                    <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">10</td>
                                                 <td>Rekapan Pengajuan Izin Bulan: April 2021</td>
                                                 <td class="text-center">
-                                                    <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
+                                                    <a href="#" class="btn btn-sim-kawasan mt-auto px-4 success-download">Unduh</a>
                                                 </td>
                                             </tr>
                                         </tr>
@@ -122,3 +122,12 @@
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $('.success-download').click(function () {    
+            swal("Berhasil!", "Rekapan Izin Masuk Kawasan Berhasil Diunduh", "success");
+        });
+    </script>
+@endpush

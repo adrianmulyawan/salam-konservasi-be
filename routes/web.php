@@ -19,17 +19,17 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
 
 Route::get('/conservation-area', [App\Http\Controllers\ConservationAreaController::class, 'index'])
     ->name('conservationArea');
-Route::get('/conservation-area/{id}', [App\Http\Controllers\DetailConservationController::class, 'index'])
+Route::get('/conservation-area/{slug}', [App\Http\Controllers\DetailConservationController::class, 'index'])
     ->name('detailConservation');
 
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])
     ->name('news');
-Route::get('/news/{id}', [App\Http\Controllers\NewsDetailController::class, 'index'])
+Route::get('/news/{slug}', [App\Http\Controllers\NewsDetailController::class, 'index'])
     ->name('newsDetail');
 
 Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])
     ->name('event');
-Route::get('/event/{id}', [App\Http\Controllers\EventDetailController::class, 'index'])
+Route::get('/event/{slug}', [App\Http\Controllers\EventDetailController::class, 'index'])
     ->name('eventDetail');
 
 Route::get('/submission', [App\Http\Controllers\SubmissionController::class, 'index'])
