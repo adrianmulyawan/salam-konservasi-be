@@ -104,6 +104,9 @@ Route::prefix('/dashboard/leader')
             ->name('dashboardLeaderPaymentPaid');
         Route::get('/payment/status/failed/{id}', [\App\Http\Controllers\Leader\DashboardPaymentController::class, 'paymentFailed'])
             ->name('dashboardLeaderPaymentFailed');
+
+        Route::get('/area-entry', [\App\Http\Controllers\Leader\DashboardAreaEntryController::class, 'index'])
+            ->name('areaEntryLeader');
     }
 );
 
