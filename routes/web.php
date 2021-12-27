@@ -107,6 +107,9 @@ Route::prefix('/dashboard/leader')
 
         Route::get('/area-entry', [\App\Http\Controllers\Leader\DashboardAreaEntryController::class, 'index'])
             ->name('areaEntryLeader');
+
+        Route::get('/monthly-submission', [\App\Http\Controllers\Leader\DashboardMonthlySubmissionController::class, 'index'])
+            ->name('monthlySubmissionSummary');
     }
 );
 
