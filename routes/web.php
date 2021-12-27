@@ -113,6 +113,9 @@ Route::prefix('/dashboard/leader')
 
         Route::get('/user-aspiration', [\App\Http\Controllers\Leader\DashboardUserAspirationController::class, 'index'])
             ->name('userAspirationLeader');
+        
+        Route::get('/leader-visitor-control', [\App\Http\Controllers\Leader\DashboardVisitorControlController::class, 'index'])
+            ->name('leaderVisitorControl');
     }
 );
 
