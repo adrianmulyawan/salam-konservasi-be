@@ -2,10 +2,6 @@
 
 @section('title', 'Dashboard Admin Lapangan')
 
-@push('addon-style')
-    <script src="https://kit.fontawesome.com/0249022da9.js" crossorigin="anonymous"></script>
-@endpush
-
 @section('content')
     <!-- Content -->
     <div class="section-content section-dashboard section-dashboard-home" data-aos="fade-up">
