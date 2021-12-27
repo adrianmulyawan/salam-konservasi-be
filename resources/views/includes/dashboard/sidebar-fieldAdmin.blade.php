@@ -8,13 +8,13 @@
     </div>
     <!-- Menu Sidebar -->
     <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('dashboardFieldAdmin') }}" class="list-group-item list-group-item-action">
             Kelola Data Pengunjung
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('visitorCheckout') }}" class="list-group-item list-group-item-action">
             Data Keluar Masuk Pengunjung
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ route('settingAccountFieldAdmin') }}" class="list-group-item list-group-item-action">
             Pengaturan Akun
         </a>
         <a href="#" class="list-group-item list-group-item-action mt-5">
