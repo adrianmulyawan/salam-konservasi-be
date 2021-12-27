@@ -77,7 +77,14 @@ Route::prefix('/dashboard/applicant')
 );
 
 // Super Admin
+
 // Pimpinan
+Route::prefix('/dashboard/leader')
+    ->name('Leader')
+    ->group(function() {
+
+    }
+);
 
 // Admin Lapangan
 Route::prefix('/dashboard/fieldAdmin')
