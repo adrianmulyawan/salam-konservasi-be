@@ -95,6 +95,15 @@ Route::prefix('/dashboard/leader')
             ->name('dashboardLeaderSubmissionRejected');
         Route::get('/submission/status/failed/{id}', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'submissionFailed'])
             ->name('dashboardLeaderSubmissionFailed');
+
+        Route::get('/payment', [\App\Http\Controllers\Leader\DashboardPaymentController::class, 'index'])
+            ->name('dashboardLeaderPayment');
+        Route::get('/payment/status/pending/{id}', [\App\Http\Controllers\Leader\DashboardPaymentController::class, 'paymentPending'])
+            ->name('dashboardLeaderPaymentPending');
+        Route::get('/payment/status/paid/{id}', [\App\Http\Controllers\Leader\DashboardPaymentController::class, 'paymentPaid'])
+            ->name('dashboardLeaderPaymentPaid');
+        Route::get('/payment/status/failed/{id}', [\App\Http\Controllers\Leader\DashboardPaymentController::class, 'paymentFailed'])
+            ->name('dashboardLeaderPaymentFailed');
     }
 );
 
