@@ -24,7 +24,7 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.superAdmin.dashboard-add-conservation-area-gallery');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.superAdmin.dashboard-edit-conservation-area-gallery');
     }
 
     /**
