@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardConservationAreaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -81,7 +82,9 @@ Route::prefix('/dashboard/admin')
     ->name('Admin')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Admin\DashboardAdminController::class, 'index'])
-            ->name('dashboardAdmin'); 
+            ->name('dashboardAdmin');
+
+        Route::resource('/conservation-area', DashboardConservationAreaController::class);
     }
 );
 
