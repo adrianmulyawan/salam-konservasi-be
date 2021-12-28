@@ -8,7 +8,7 @@
     </div>
     <!-- Menu Sidebar -->
     <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action active">
+        <a href="#" class="list-group-item list-group-item-action">
             Dashboard
         </a>
         <a href="#" class="list-group-item list-group-item-action">
