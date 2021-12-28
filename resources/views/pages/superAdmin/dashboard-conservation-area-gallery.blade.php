@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-superAdmin')
 
-@section('title', 'Dashboard Kelola Kawasan')
+@section('title', 'Dashboard Kelola Galeri Kawasan')
 
 @section('content')
     <!-- Content -->
@@ -8,9 +8,9 @@
         <div class="container-fluid">
             <!-- 1. Heading -->
             <div class="dashboard-heading">
-                <h2 class="dashboard-title">Kelola Kawasan Konservasi</h2>
+                <h2 class="dashboard-title">Kelola Galerry Kawasan Konservasi</h2>
                 <p class="dashboard-subtitle">
-                    Daftar Kawsan Konservasi KKPD Kalimantan Barat
+                    Daftar Foto Kawsan Konservasi KKPD Kalimantan Barat
                 </p>
             </div>
             <div class="dashboard-content">
@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-12">
                             <a href="#" class="btn btn-add-data mt-2 px-3">
-                                + Tambah Data Kawasan
+                                + Tambah Data Galeri Kawasan
                             </a>
                         </div>
                     </div>
@@ -33,8 +33,7 @@
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th class="text-center">Nama Kawasan</th>
-                                            <th class="text-center">Lokasi Kawasan</th>
-                                            <th class="text-center">Status Kawasan</th>
+                                            <th class="text-center">Foto Kawasan</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -42,8 +41,9 @@
                                         <tr>
                                             <td class="text-center">1</td>
                                             <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Kabupaten Bengkayang</td>
-                                            <td class="text-center">Buka</td>
+                                            <td class="text-center">
+                                                <img src="{{ url('frontend/images/user/photo-kawasan.png') }}" alt="foto-kawasan" class="foto-kawasan">
+                                            </td>
                                             <td class="text-center">
                                                 <a href="#" class="btn btn-info mt-auto">
                                                     <i class="fa fa-pencil-alt"></i>
@@ -57,9 +57,10 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">2</td>
-                                            <td class="text-center">KKPD Paloh</td>
-                                            <td class="text-center">Kabupaten Sambas</td>
-                                            <td class="text-center">Buka</td>
+                                            <td class="text-center">KKPD Pulau Randayan</td>
+                                            <td class="text-center">
+                                                <img src="{{ url('frontend/images/user/photo-kawasan.png') }}" alt="foto-kawasan" class="foto-kawasan">
+                                            </td>
                                             <td class="text-center">
                                                 <a href="#" class="btn btn-info mt-auto">
                                                     <i class="fa fa-pencil-alt"></i>
@@ -73,9 +74,10 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">3</td>
-                                            <td class="text-center">KKPD Kayong Utara</td>
-                                            <td class="text-center">Kabupaten Kayong Utara</td>
-                                            <td class="text-center">Buka</td>
+                                            <td class="text-center">KKPD Pulau Randayan</td>
+                                            <td class="text-center">
+                                                <img src="{{ url('frontend/images/user/photo-kawasan.png') }}" alt="foto-kawasan" class="foto-kawasan">
+                                            </td>
                                             <td class="text-center">
                                                 <a href="#" class="btn btn-info mt-auto">
                                                     <i class="fa fa-pencil-alt"></i>
@@ -89,9 +91,10 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">4</td>
-                                            <td class="text-center">KKPD Kendawangan</td>
-                                            <td class="text-center">Kabupaten Ketapang</td>
-                                            <td class="text-center">Tutup</td>
+                                            <td class="text-center">KKPD Pulau Randayan</td>
+                                            <td class="text-center">
+                                                <img src="{{ url('frontend/images/user/photo-kawasan.png') }}" alt="foto-kawasan" class="foto-kawasan">
+                                            </td>
                                             <td class="text-center">
                                                 <a href="#" class="btn btn-info mt-auto">
                                                     <i class="fa fa-pencil-alt"></i>
@@ -105,9 +108,10 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">5</td>
-                                            <td class="text-center">KKPD Kubu Raya</td>
-                                            <td class="text-center">Kabupaten Kubu Raya</td>
-                                            <td class="text-center">Buka</td>
+                                            <td class="text-center">KKPD Pulau Randayan</td>
+                                            <td class="text-center">
+                                                <img src="{{ url('frontend/images/user/photo-kawasan.png') }}" alt="foto-kawasan" class="foto-kawasan">
+                                            </td>
                                             <td class="text-center">
                                                 <a href="#" class="btn btn-info mt-auto">
                                                     <i class="fa fa-pencil-alt"></i>

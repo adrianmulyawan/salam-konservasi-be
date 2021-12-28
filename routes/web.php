@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardConservationAreaController;
+use App\Http\Controllers\Admin\DashboardConservationAreaGalleryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -85,6 +86,8 @@ Route::prefix('/dashboard/admin')
             ->name('dashboardAdmin');
 
         Route::resource('/conservation-area', DashboardConservationAreaController::class);
+
+        Route::resource('/conservation-area-gallery', DashboardConservationAreaGalleryController::class);
     }
 );
 
