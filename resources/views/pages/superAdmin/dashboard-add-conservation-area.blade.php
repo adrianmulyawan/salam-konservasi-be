@@ -86,3 +86,10 @@
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'tentang_kawasan' );
+    </script>
+@endpush
