@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-superAdmin')
 
-@section('title', 'Tambah Galeri Kawasan Konservasi')
+@section('title', 'Tambah Data Galeri Kawasan Konservasi')
 
 @section('content')
     <!-- Content -->
