@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardConservationAreaController;
 use App\Http\Controllers\Admin\DashboardConservationAreaGalleryController;
 use App\Http\Controllers\Admin\DashboardDestinationEntryController;
+use App\Http\Controllers\Admin\DashboardEntranceFeeController;
 use App\Http\Controllers\Admin\DashboardEventController;
 use App\Http\Controllers\Admin\DashboardNewsController;
 use Illuminate\Support\Facades\Auth;
@@ -97,6 +98,8 @@ Route::prefix('/dashboard/admin')
         Route::resource('/manage-event', DashboardEventController::class);
 
         Route::resource('/destination-entry', DashboardDestinationEntryController::class);
+
+        Route::resource('/entrance-fee', DashboardEntranceFeeController::class);
     }
 );
 
