@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardConservationAreaController;
 use App\Http\Controllers\Admin\DashboardConservationAreaGalleryController;
+use App\Http\Controllers\Admin\DashboardEventController;
 use App\Http\Controllers\Admin\DashboardNewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -91,6 +92,8 @@ Route::prefix('/dashboard/admin')
         Route::resource('/manage-conservation-area-gallery', DashboardConservationAreaGalleryController::class);
 
         Route::resource('/manage-news', DashboardNewsController::class);
+
+        Route::resource('/manage-event', DashboardEventController::class);
     }
 );
 
