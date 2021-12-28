@@ -7,8 +7,6 @@
     <title>SALAM Konservasi</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../frontend/libraries/bootstrap/css/bootstrap.css">
-    <!-- gijgo -->
-    <link rel="stylesheet" href="../frontend/libraries/gijgo/css/gijgo.css">
     <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,13 +31,52 @@
                 </div>
                 <!-- Menu Sidebar -->
                 <div class="list-group list-group-flush">
-                    <a href="../admin-lapangan/dashboardKelolaKunjungan.html" class="list-group-item list-group-item-action active">
-                        Kelola Data Pengunjung
+                    <a href="../super-admin/dashboard.html" class="list-group-item list-group-item-action">
+                        Dashboard
                     </a>
-                    <a href="../admin-lapangan/dashboardKeluarMasukPengunjung.html" class="list-group-item list-group-item-action">
+                    <a href="../super-admin/dashboardKelolaKawasan.html" class="list-group-item list-group-item-action">
+                        Kelola Kawasan Konservasi
+                    </a>
+                    <a href="../super-admin/dashboardKelolaGaleri.html" class="list-group-item list-group-item-action">
+                        Kelola Gallery Kawasan
+                    </a>
+                    <a href="../super-admin/dashboardKelolaBerita.html" class="list-group-item list-group-item-action">
+                        Kelola Berita Kawasan
+                    </a>
+                    <a href="../super-admin/dashboardKelolaAcara.html" class="list-group-item list-group-item-action">
+                        Kelola Acara Kawasan
+                    </a>
+                    <a href="../super-admin/dashboardKelolaTujuan.html" class="list-group-item list-group-item-action">
+                        Kelola Tujuan Masuk Kawasan
+                    </a>
+                    <a href="../super-admin/dashboardKelolaTarif.html" class="list-group-item list-group-item-action">
+                        Kelola Tarif Masuk Kawasan
+                    </a>
+                    <a href="../super-admin/dashboardKelolaPeralatan.html" class="list-group-item list-group-item-action">
+                        Kelola Peralatan Pengunjung
+                    </a>
+                    <a href="../super-admin/dashboardKelolaUser.html" class="list-group-item list-group-item-action">
+                        Kelola User
+                    </a>
+                    <a href="../super-admin/dashboardKelolaPengajuan.html" class="list-group-item list-group-item-action">
+                        Pengajuan Izin Masuk
+                    </a>
+                    <a href="../super-admin/dashboardKelolaPembayaran.html" class="list-group-item list-group-item-action active">
+                        Pembayaran Retribusi
+                    </a>
+                    <a href="../super-admin/" class="list-group-item list-group-item-action">
+                        Kelola Surat Izin Masuk
+                    </a>
+                    <a href="../super-admin/" class="list-group-item list-group-item-action">
+                        Surat Izin Masuk
+                    </a>
+                    <a href="../super-admin/" class="list-group-item list-group-item-action">
+                        Form Kepuasan & Kekurangan
+                    </a>
+                    <a href="../super-admin/" class="list-group-item list-group-item-action">
                         Data Keluar Masuk Pengunjung
                     </a>
-                    <a href="../admin-lapangan/dashboardSetting.html" class="list-group-item list-group-item-action">
+                    <a href="../super-admin/" class="list-group-item list-group-item-action">
                         Pengaturan Akun
                     </a>
                     <a href="../index.html" class="list-group-item list-group-item-action mt-5">
@@ -67,7 +104,7 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                                         <img src="../frontend/images/ic_profile.png" alt="" class="rounded-circle mr-2 profile-picture">
-                                        Hi, Erli
+                                        Hi, Adrian
                                     </a>
                                     <div class="dropdown-menu">
                                         <a href="../indexAuthUser.html" class="dropdown-item">
@@ -115,7 +152,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                           Tambah Data Keluar Pengunjung
+                                           Pengajuan Izin Masuk Kawasan Konservasi
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">
                                             Adrian Mulyawan
@@ -165,10 +202,10 @@
                                         </div>
                                         <div class="transaction-date-entry">
                                             <div class="transaction-title">
-                                                Rencanan Masuk Kawasan
+                                                Tanggal Masuk Kawasan
                                             </div>
                                             <div class="transaction-subtitle">
-                                                31 Desember 2021
+                                                12 Januari 2022
                                             </div>
                                         </div>
                                     </div>
@@ -199,10 +236,10 @@
                                         </div>
                                         <div class="transaction-date-out">
                                             <div class="transaction-title">
-                                                Rencana Keluar Kawasan
+                                                Tanggal Keluar Kawasan
                                             </div>
                                             <div class="transaction-subtitle">
-                                                04 Januari 2022
+                                                15 Januari 2022
                                             </div>
                                         </div>
                                     </div>
@@ -287,14 +324,40 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- 2.4 Tanggal Masuk -->
-                                <div class="row form-group data-approval">
-                                    <h5>Tanggal Keluar Kawasan</h5>
-                                    <input type="text" class="form-control datepicker" id="tanggal_keluar" name="tanggal_keluar" required placeholder="Tanggal Keluar Kawasan">
+
+                                <!-- 2.4 Rekening -->
+                                <div class="row form-group data-pemilik-rekening mt-1">
+                                    <h5>Nama Rekening Pembayaran</h5>
+                                    <input class="form-control mt-2" id="disabledInput" type="text" name="nama_pemilik_rekening" value="Adrian Mulyawan" disabled>
                                 </div>
+
+                                <!-- 2.5 Bukti Transfer -->
+                                <div class="row data-bukti-transfer">
+                                    <h5>Surat Pengajuan Untuk Penelitian / Pendidikan</h5>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <!-- 5.1 Recent 1 -->
+                                        <a href="#" class="card card-list d-block">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        DESC_14046.PNG
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- 2.6 Approval -->
+                                <div class="row form-group data-approval mt-4">
+                                    <h5>Status Permohonan Pengajuan Izin Masuk Kawasan</h5>
+                                    <input class="form-control mt-2" id="disabledInput" type="text" name="status_pembayaran" value="Disetujui" disabled>
+                                </div>
+                                
                                 <div class="row justify-content-end mr-1 mt-4">
-                                    <a href="../admin-lapangan/dashboardKelolaKunjungan.html" class="btn btn-primary py-2 mr-2">Tutup</a>
-                                    <button type="submit" class="btn btn-primary py-2">Simpan Data</button>
+                                    <a href="../super-admin/dashboardKelolaPembayaran.html" class="btn btn-primary py-2 mr-2">Tutup</a>
                                 </div>
                             </div>
                         </div>
@@ -310,18 +373,6 @@
     <script>
       AOS.init();
     </script>  
-    <script src="../frontend/libraries/gijgo/js/gijgo.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Gijgo
-            $('.datepicker').datepicker({
-                uiLibrary: 'bootstrap4',
-                icons: {
-                    rightIcon: '<img src="../frontend/images/calendar_icon.png" height="19">'
-                }
-            });
-        });
-    </script>
     <script src="../frontend/libraries/retina/retina.min.js"></script>
     <script src="../frontend/scripts/hideSidebar.js"></script>
 </body>
