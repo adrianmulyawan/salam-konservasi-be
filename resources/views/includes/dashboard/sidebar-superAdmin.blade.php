@@ -2,8 +2,8 @@
 <div class="border-right sidebar-dashboard" id="sidebar-wrapper">
     <!-- Gambar/Logo Sidebar -->
     <div class="sidebar-heading text-center">
-        <a href="../indexAuthUser.html">
-            <img src="../frontend/images/dashboard/dashboard_ic.svg" alt="" class="my-4">
+        <a href="#">
+            <img src="{{ url('frontend/images/dashboard/dashboard_ic.svg') }}" alt="" class="my-4">
         </a>
     </div>
     <!-- Menu Sidebar -->

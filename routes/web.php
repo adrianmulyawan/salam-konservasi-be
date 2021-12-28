@@ -77,6 +77,13 @@ Route::prefix('/dashboard/applicant')
 );
 
 // Super Admin
+Route::prefix('/dashboard/admin')
+    ->name('Admin')
+    ->group(function() {
+        Route::get('/', [\App\Http\Controllers\Admin\DashboardAdminController::class, 'index'])
+            ->name('dashboardAdmin'); 
+    }
+);
 
 // Pimpinan
 Route::prefix('/dashboard/leader')
