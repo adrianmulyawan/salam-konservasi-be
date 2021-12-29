@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardVisitorEquipmentController extends Controller
+class DashboardUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-visitor-equipment');
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-visitor-equipment');
+        //
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-visitor-equipment');
+        //
     }
 
     /**
