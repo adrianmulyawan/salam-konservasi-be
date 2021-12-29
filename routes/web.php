@@ -5,7 +5,9 @@ use App\Http\Controllers\Admin\DashboardConservationAreaGalleryController;
 use App\Http\Controllers\Admin\DashboardDestinationEntryController;
 use App\Http\Controllers\Admin\DashboardEntranceFeeController;
 use App\Http\Controllers\Admin\DashboardEventController;
+use App\Http\Controllers\Admin\DashboardManageUserController;
 use App\Http\Controllers\Admin\DashboardNewsController;
+use App\Http\Controllers\Admin\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardVisitorEquipmentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -103,6 +105,8 @@ Route::prefix('/dashboard/admin')
         Route::resource('/entrance-fee', DashboardEntranceFeeController::class);
 
         Route::resource('/visitor-equipment', DashboardVisitorEquipmentController::class);
+
+        Route::resource('/manage-user', DashboardManageUserController::class);
     }
 );
 

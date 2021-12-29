@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardUserController extends Controller
+class DashboardManageUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.superAdmin.dashboard-manage-user');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.superAdmin.dashboard-add-user');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.superAdmin.dashboard-edit-user');
     }
 
     /**
