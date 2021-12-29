@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-superAdmin')
 
-@section('title', 'Tambah Data Tarif Masuk Kawasan')
+@section('title', 'Ubah Data Tarif Masuk Kawasan')
 
 @section('content')
     <!-- Content -->
