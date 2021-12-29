@@ -107,6 +107,17 @@ Route::prefix('/dashboard/admin')
         Route::resource('/visitor-equipment', DashboardVisitorEquipmentController::class);
 
         Route::resource('/manage-user', DashboardManageUserController::class);
+
+        Route::get('/manage-submission', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'index'])
+            ->name('manageSubmission');
+        Route::get('/manage-submission/{id}/change-status', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'changeSubmissionStatus'])
+            ->name('changeSubmissionStatus');
+        Route::get('/manage-submission/status/approved/{id}', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'submissionStatusApproved'])
+            ->name('submissionStatusApproved');
+        Route::get('/manage-submission/status/rejected/{id}', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'submissionStatusRejected'])
+            ->name('submissionStatusRejected');
+        Route::get('/manage-submission/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'submissionStatusFailed'])
+            ->name('submissionStatusFailed');
     }
 );
 
