@@ -118,6 +118,15 @@ Route::prefix('/dashboard/admin')
             ->name('submissionStatusRejected');
         Route::get('/manage-submission/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'submissionStatusFailed'])
             ->name('submissionStatusFailed');
+        
+        Route::get('/manage-transaction', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'index'])
+            ->name('manageTransaction');
+        Route::get('/manage-transaction/{id}/change-status', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'changeTransactionStatus'])
+            ->name('changeTransactionStatus');
+        Route::get('/manage-transaction/status/paid-off/{id}', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'transactionStatusPaidOff'])
+            ->name('transactionStatusPaidOff');
+        Route::get('/manage-transaction/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'transactionStatusFailed'])
+            ->name('transactionStatusFailed');
     }
 );
 
