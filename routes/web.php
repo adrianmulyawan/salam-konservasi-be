@@ -145,6 +145,9 @@ Route::prefix('/dashboard/admin')
 
         Route::get('/visitor-control', [\App\Http\Controllers\Admin\DashboardVisitorControlController::class, 'index'])
             ->name('visitorControlAdmin');
+
+        Route::get('/admin-setting-account', [\App\Http\Controllers\Admin\DashboardSettingAdminController::class, 'index'])
+            ->name('settingAccountAdmin');
     }
 );
 
