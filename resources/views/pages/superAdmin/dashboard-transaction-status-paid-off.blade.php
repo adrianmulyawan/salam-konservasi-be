@@ -213,7 +213,7 @@
                     </div>
 
                     <!-- 2.6 Approval -->
-                    <div class="row form-group data-approval mt-4">
+                    <div class="row form-group data-approval mt-2">
                         <h5>Status Permohonan Pengajuan Izin Masuk Kawasan</h5>
                         <input class="form-control mt-2" id="disabledInput" type="text" name="status_pembayaran" value="Disetujui" disabled>
                     </div>

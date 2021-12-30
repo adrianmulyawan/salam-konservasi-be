@@ -188,13 +188,13 @@
                     </div>
 
                     <!-- 2.6 Approval -->
-                    <div class="row form-group data-approval mt-4">
+                    <div class="row form-group data-approval">
                         <h5>Status Permohonan Pengajuan Izin Masuk Kawasan</h5>
                         <input class="form-control mt-2" id="disabledInput" type="text" name="status_pembayaran" value="Gagal" disabled>
                     </div>
                     
                     <div class="row justify-content-end mr-1 mt-4">
-                        <a href="../super-admin/dashboardKelolaPembayaran.html" class="btn btn-primary py-2 mr-2">Tutup</a>
+                        <a href="{{ route('AdminmanageTransaction') }}" class="btn btn-primary py-2 mr-2">Tutup</a>
                     </div>
                 </div>
             </div>
