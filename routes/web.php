@@ -128,14 +128,14 @@ Route::prefix('/dashboard/admin')
         Route::get('/manage-transaction/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'transactionStatusFailed'])
             ->name('transactionStatusFailed');
         
-        Route::get('/manage-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermit::class, 'index'])
+        Route::get('/manage-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'index'])
             ->name('manageEntryPermit');
-        Route::get('/manage-entry-permit/{id}/upload-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermit::class, 'uploadEntryPermit'])
+        Route::get('/manage-entry-permit/{id}/upload-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'uploadEntryPermit'])
             ->name('uploadEntryPermit');
-        Route::get('/manage-entry-permit/{id}/detail-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermit::class, 'detailEntryPermit'])
+        Route::get('/manage-entry-permit/{id}/detail-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'detailEntryPermit'])
             ->name('detailEntryPermit');
         
-        Route::get('/entry-permit', [\App\Http\Controllers\Admin\DashboardEntryPermit::class, 'index'])
+        Route::get('/entry-permit', [\App\Http\Controllers\Admin\DashboardEntryPermitController::class, 'index'])
             ->name('entryPermit');
         
         Route::get('/user-aspiration', [\App\Http\Controllers\Admin\DashboardUserAspirationController::class, 'index'])
