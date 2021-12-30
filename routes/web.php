@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\DashboardEntranceFeeController;
 use App\Http\Controllers\Admin\DashboardEventController;
 use App\Http\Controllers\Admin\DashboardManageUserController;
 use App\Http\Controllers\Admin\DashboardNewsController;
-use App\Http\Controllers\Admin\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardVisitorEquipmentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
