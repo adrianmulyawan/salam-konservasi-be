@@ -137,6 +137,14 @@ Route::prefix('/dashboard/admin')
         
         Route::get('/entry-permit', [\App\Http\Controllers\Admin\DashboardEntryPermit::class, 'index'])
             ->name('entryPermit');
+        
+        Route::get('/user-aspiration', [\App\Http\Controllers\Admin\DashboardUserAspirationController::class, 'index'])
+            ->name('userAspirationAdmin');
+        Route::get('/user-aspiration/{id}/detail', [\App\Http\Controllers\Admin\DashboardUserAspirationController::class, 'detail'])
+            ->name('userAspirationDetailAdmin');
+
+        Route::get('/visitor-control', [\App\Http\Controllers\Admin\DashboardVisitorControlController::class, 'index'])
+            ->name('visitorControlAdmin');
     }
 );
 
