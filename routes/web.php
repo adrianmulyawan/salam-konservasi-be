@@ -134,6 +134,9 @@ Route::prefix('/dashboard/admin')
             ->name('uploadEntryPermit');
         Route::get('/manage-entry-permit/{id}/detail-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermit::class, 'detailEntryPermit'])
             ->name('detailEntryPermit');
+        
+        Route::get('/entry-permit', [\App\Http\Controllers\Admin\DashboardEntryPermit::class, 'index'])
+            ->name('entryPermit');
     }
 );
 
