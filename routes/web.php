@@ -127,6 +127,13 @@ Route::prefix('/dashboard/admin')
             ->name('transactionStatusPaidOff');
         Route::get('/manage-transaction/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'transactionStatusFailed'])
             ->name('transactionStatusFailed');
+        
+        Route::get('/manage-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermit::class, 'index'])
+            ->name('manageEntryPermit');
+        Route::get('/manage-entry-permit/{id}/upload-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermit::class, 'uploadEntryPermit'])
+            ->name('uploadEntryPermit');
+        Route::get('/manage-entry-permit/{id}/detail-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermit::class, 'detailEntryPermit'])
+            ->name('detailEntryPermit');
     }
 );
 
