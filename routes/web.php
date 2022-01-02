@@ -50,7 +50,7 @@ Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::c
     ->name('successRegister');
 
 // Pemohon
-Route::prefix('/dashboard/applicant')
+Route::prefix('dashboard/applicant')
     ->namespace('Applicant')
     //->middleware('checkRole:applicant')
     ->group(function() {
@@ -86,7 +86,7 @@ Route::prefix('/dashboard/applicant')
 );
 
 // Super Admin
-Route::prefix('/dashboard/admin')
+Route::prefix('dashboard/admin')
     ->name('Admin')
     //->middleware('checkRole:superadmin')
     ->group(function() {
@@ -94,7 +94,7 @@ Route::prefix('/dashboard/admin')
             ->name('dashboardAdmin');
 
         Route::resource('/manage-conservation-area', DashboardConservationAreaController::class);
-        
+
         Route::resource('/manage-conservation-area-gallery', DashboardConservationAreaGalleryController::class);
 
         Route::resource('/manage-news', DashboardNewsController::class);
@@ -153,7 +153,7 @@ Route::prefix('/dashboard/admin')
 );
 
 // Pimpinan
-Route::prefix('/dashboard/leader')
+Route::prefix('dashboard/leader')
     ->name('Leader')
     //->middleware('checkRole:leader')
     ->group(function() {
@@ -198,7 +198,7 @@ Route::prefix('/dashboard/leader')
 );
 
 // Admin Lapangan
-Route::prefix('/dashboard/fieldAdmin')
+Route::prefix('dashboard/fieldAdmin')
     ->namespace('FieldAdmin')
     //->middleware('checkRole:fieldadmin')
     ->group(function() {

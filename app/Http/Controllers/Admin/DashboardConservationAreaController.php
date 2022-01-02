@@ -14,7 +14,7 @@ class DashboardConservationAreaController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-conservation-area');
+        return view('pages.superAdmin.conservationArea.dashboard-conservation-area');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardConservationAreaController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-conservation-area');
+        return view('pages.superAdmin.conservationArea.dashboard-add-conservation-area');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardConservationAreaController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-conservation-area');
+        return view('pages.superAdmin.conservationArea.dashboard-edit-conservation-area');
     }
 
     /**

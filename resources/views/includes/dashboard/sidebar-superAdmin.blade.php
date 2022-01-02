@@ -8,10 +8,10 @@
     </div>
     <!-- Menu Sidebar -->
     <div class="list-group list-group-flush">
-        <a href="{{ route('AdmindashboardAdmin') }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('AdmindashboardAdmin') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/admin') ? 'active' : '' }}">
             Dashboard
         </a>
-        <a href="{{ route('Adminmanage-conservation-area.index') }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('Adminmanage-conservation-area.index') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/admin/manage-conservation-area*') ? 'active' : '' }}">
             Kelola Kawasan Konservasi
         </a>
         <a href="{{ route('Adminmanage-conservation-area-gallery.index') }}" class="list-group-item list-group-item-action">

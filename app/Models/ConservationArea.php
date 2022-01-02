@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ConservationArea extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id', 'master_price_id',
+        'name', 'slug', 'location', 'description',
+        'is_open', 'map', 'is_homestay', 'is_resto'
+    ];
+
+    protected $hidden = [
+
+    ];
 }
