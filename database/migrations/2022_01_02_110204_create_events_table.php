@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConservationNewsTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,19 @@ class CreateConservationNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('conservation_news', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('conservation_area_id');
             $table->string('title');
             $table->string('slug');
+            $table->date('event_date');
             $table->string('photo');
-            $table->text('news_content');
+            $table->text('event_content');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('conservation_area_id')->references('id')->on('conservation_areas');
         });
     }
 
@@ -33,6 +36,6 @@ class CreateConservationNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conservation_news');
+        Schema::dropIfExists('events');
     }
 }
