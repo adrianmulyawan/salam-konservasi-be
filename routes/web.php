@@ -88,7 +88,7 @@ Route::prefix('dashboard/applicant')
 // Super Admin
 Route::prefix('dashboard/admin')
     ->name('Admin')
-    //->middleware('checkRole:superadmin')
+    //->middleware(['auth', 'checkRole:superadmin'])
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Admin\DashboardAdminController::class, 'index'])
             ->name('dashboardAdmin');
@@ -200,7 +200,7 @@ Route::prefix('dashboard/leader')
 // Admin Lapangan
 Route::prefix('dashboard/fieldAdmin')
     ->namespace('FieldAdmin')
-    //->middleware('checkRole:fieldadmin')
+    //->middleware(['auth', 'checkRole:fieldadmin'])->middleware(['auth', 'checkRole:fieldadmin'])
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'index'])
             ->name('dashboardFieldAdmin');

@@ -19,13 +19,13 @@
                     <!-- 2.1 Add Data Kawasan -->
                     <div class="row">
                         <div class="col-12">
-                            <a href="#" class="btn btn-add-data mt-2 px-3">
+                            <a href="{{ route('Adminmanage-conservation-area.create') }}" class="btn btn-add-data mt-2 px-3">
                                 + Tambah Data Kawasan
                             </a>
                         </div>
                     </div>
                     <!-- 2.2 Tabel Daftar Kawasan -->
-                    <div class="row mt-3">
+                    <div class="row mt-2">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
@@ -39,86 +39,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Kabupaten Bengkayang</td>
-                                            <td class="text-center">Buka</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">KKPD Paloh</td>
-                                            <td class="text-center">Kabupaten Sambas</td>
-                                            <td class="text-center">Buka</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">KKPD Kayong Utara</td>
-                                            <td class="text-center">Kabupaten Kayong Utara</td>
-                                            <td class="text-center">Buka</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">4</td>
-                                            <td class="text-center">KKPD Kendawangan</td>
-                                            <td class="text-center">Kabupaten Ketapang</td>
-                                            <td class="text-center">Tutup</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">5</td>
-                                            <td class="text-center">KKPD Kubu Raya</td>
-                                            <td class="text-center">Kabupaten Kubu Raya</td>
-                                            <td class="text-center">Buka</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @forelse ($items as $item)
+                                            <tr>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">{{ $item->name }}</td>
+                                                    <td class="text-center">{{ $item->location }}</td>
+                                                    <td class="text-center">{{ $item->is_open }}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{ route('Adminmanage-conservation-area.edit', $item->id) }}" class="btn btn-info mt-auto">
+                                                            <i class="fa fa-pencil-alt"></i>
+                                                        </a>
+                                                        <form action="{{ route('Adminmanage-conservation-area.destroy', $item->id) }}" method="post" class="d-inline confirm-delete">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="5">Belum Ada Data Apapun</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

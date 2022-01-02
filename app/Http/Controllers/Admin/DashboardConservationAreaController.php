@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ConservationArea;
 use Illuminate\Http\Request;
 
 class DashboardConservationAreaController extends Controller
@@ -14,7 +15,8 @@ class DashboardConservationAreaController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.conservationArea.dashboard-conservation-area');
+        $items = ConservationArea::all();
+        return view('pages.superAdmin.conservationArea.dashboard-conservation-area', compact('items'));
     }
 
     /**
