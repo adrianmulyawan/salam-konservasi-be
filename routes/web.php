@@ -52,7 +52,7 @@ Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::c
 // Pemohon
 Route::prefix('/dashboard/applicant')
     ->namespace('Applicant')
-    ->middleware('checkRole:applicant')
+    //->middleware('checkRole:applicant')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])
             ->name('dashboardApplicant');
@@ -88,7 +88,7 @@ Route::prefix('/dashboard/applicant')
 // Super Admin
 Route::prefix('/dashboard/admin')
     ->name('Admin')
-    ->middleware('checkRole:superadmin')
+    //->middleware('checkRole:superadmin')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Admin\DashboardAdminController::class, 'index'])
             ->name('dashboardAdmin');
@@ -155,7 +155,7 @@ Route::prefix('/dashboard/admin')
 // Pimpinan
 Route::prefix('/dashboard/leader')
     ->name('Leader')
-    ->middleware('checkRole:leader')
+    //->middleware('checkRole:leader')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Leader\DashboardController::class, 'index'])
             ->name('dashboardLeader');
@@ -200,7 +200,7 @@ Route::prefix('/dashboard/leader')
 // Admin Lapangan
 Route::prefix('/dashboard/fieldAdmin')
     ->namespace('FieldAdmin')
-    ->middleware('checkRole:fieldadmin')
+    //->middleware('checkRole:fieldadmin')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'index'])
             ->name('dashboardFieldAdmin');
