@@ -16,118 +16,157 @@
             <div class="dashboard-content">
                 <!-- 2. Card Pengajuan Izin Masuk Kawasan -->
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
                                     Jumlah Kawasan Konservasi
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    5
+                                    {{ $conservationArea }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
                                     Jumlah User
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    20
+                                    {{ $user }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
                                     Jumlah Pengajaun Izin Masuk
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    20
+                                    {{ $submission }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Jumlah Pembayaran Retribusi
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $retributionPayment }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
                                     Pengajuan: Belum Diproses
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    10
+                                    {{ $submissionPending }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
                                     Pengajuan: Disetujui
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    7
+                                    {{ $submissionAllowed }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
                                     Pengajuan: Ditolak
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    3
+                                    {{ $submissionRejected }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Pengajuan: Pariwisata
+                                    Pengajuan: Gagal
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    1
+                                    {{ $submissionFailed }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Pengajuan: Penelitian
+                                    Pembayaran: Belum Dibayar
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    2
+                                    {{ $retributionUnpaid }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Pengajuan: Pendidikan
+                                    Pembayaran: Pending
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    4
+                                    {{ $retributionPending }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pembayaran: Terbayar
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $retributionPaidOff }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pembayaran: Gagal
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $retributionFailed }}
                                 </div>
                             </div>
                         </div>

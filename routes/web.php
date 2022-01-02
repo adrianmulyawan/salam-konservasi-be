@@ -94,7 +94,7 @@ Route::prefix('/dashboard/admin')
             ->name('dashboardAdmin');
 
         Route::resource('/manage-conservation-area', DashboardConservationAreaController::class);
-
+        
         Route::resource('/manage-conservation-area-gallery', DashboardConservationAreaGalleryController::class);
 
         Route::resource('/manage-news', DashboardNewsController::class);
