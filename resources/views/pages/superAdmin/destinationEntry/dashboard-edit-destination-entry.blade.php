@@ -16,14 +16,26 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('Admindestination-entry.update', $data->id) }}" method="post">
+                            @csrf
+                            @method('PUT')
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputTujuan">
                                             Tujuan Masuk Kawasan
                                         </label>
-                                        <input type="text" name="tujuan_masuk_kawasan" class="form-control" id="inputTujuan" value="Pariwisata" autofocus>
+                                        <input type="text" name="purpose_name" class="form-control" id="inputTujuan" value="{{ $data->purpose_name }}" autofocus>
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>

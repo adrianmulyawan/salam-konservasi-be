@@ -17,7 +17,7 @@ class DashboardDestinationEntryController extends Controller
      */
     public function index()
     {
-        $items = Purpose::all();
+        $items = Purpose::paginate(5);
         return view('pages.superAdmin.destinationEntry.dashboard-destination-entry', compact('items'));
     }
 
@@ -44,10 +44,10 @@ class DashboardDestinationEntryController extends Controller
         Purpose::create($data);
 
         if ($data) {
-            session()->flash('success', 'Tujuan Masuk Kawasan Berhasil Ditambahkan');
+            session()->flash('success', 'Data Tujuan Masuk Kawasan Berhasil Ditambahkan');
             return redirect()->route('Admindestination-entry.index');
         } else {
-            session()->flash('failed', 'Tujuan Masuk Kawasan Berhasil Ditambahkan');
+            session()->flash('failed', 'Data Tujuan Masuk Kawasan Gagal Ditambahkan');
             return redirect()->route('Admindestination-entry.index');
         }
     }
@@ -71,7 +71,8 @@ class DashboardDestinationEntryController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.destinationEntry.dashboard-edit-destination-entry');
+        $data = Purpose::findOrFail($id);
+        return view('pages.superAdmin.destinationEntry.dashboard-edit-destination-entry', compact('data'));
     }
 
     /**
@@ -81,9 +82,19 @@ class DashboardDestinationEntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PurposeRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->purpose_name);
+
+        $item = Purpose::findOrFail($id)->update($data);
+        if ($item) {
+            session()->flash('success', 'Data Tujuan Masuk Kawasan Berhasil Diubah');
+            return redirect()->route('Admindestination-entry.index');
+        } else {
+            session()->flash('failed', 'Data Tujuan Masuk Kawasan Gagal Diubah');
+            return redirect()->route('Admindestination-entry.index');
+        }
     }
 
     /**
@@ -94,6 +105,15 @@ class DashboardDestinationEntryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Purpose::findOrFail($id);
+        $data->delete();
+
+        if ($data) {
+            session()->flash('success', 'Data Tujuan Masuk Kawasan Berhasil Dihapus');
+            return redirect()->route('Admindestination-entry.index');
+        } else {
+            session()->flash('failed', 'Data Tujuan Masuk Kawasan Gagal Dihapus');
+            return redirect()->route('Admindestination-entry.index');
+        }
     }
 }

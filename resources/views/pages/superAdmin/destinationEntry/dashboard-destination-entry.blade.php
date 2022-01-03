@@ -12,9 +12,11 @@
                 <p class="dashboard-subtitle">
                     Daftar Tujuan Masuk Kawasan Konservasi 
                 </p>
-                <p data-aos="fade-up" class="dashboard-title">
-                    @include('includes.flash-message')
-                </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <!-- 2. Table Data Kawasan -->
@@ -40,9 +42,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no = 0; ?>
                                         @forelse ($items as $item)
+                                            <?php $no++; ?>
                                             <tr>
-                                                <td class="text-center">1</td>
+                                                <td class="text-center">{{ $no }}</td>
                                                 <td class="text-center">{{ $item->purpose_name }}</td>
                                                 <td class="text-center">
                                                     <a href="{{ route('Admindestination-entry.edit', $item->id) }}" class="btn btn-info mt-auto">
@@ -69,15 +73,7 @@
                     </div>
                     <!-- Pagination -->
                     <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        {{ $items->links() }}
                     </div>
                 </div>
             </div>
