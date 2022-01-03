@@ -12,6 +12,11 @@
                 <p class="dashboard-subtitle">
                     Daftar Peralatan Bawaan Pengunjung Masuk Kawasan Konservasi
                 </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <!-- 2. Table Data Kawasan -->
@@ -19,7 +24,7 @@
                     <!-- 2.1 Add Data Kawasan -->
                     <div class="row">
                         <div class="col-12">
-                            <a href="../super-admin/dashboardTambahPeralatan.html" class="btn btn-add-data mt-2 px-3">
+                            <a href="{{ route('Adminvisitor-equipment.create') }}" class="btn btn-add-data mt-2 px-3">
                                 + Tambah Data Peralatan
                             </a>
                         </div>
@@ -38,81 +43,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">Alat Selam</td>
-                                            <td class="text-center">Rp 20.000,00</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">Alat Pancing</td>
-                                            <td class="text-center">Rp 20.000,00</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">Kamera Bawah Air</td>
-                                            <td class="text-center">Rp 20.000,00</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">4</td>
-                                            <td class="text-center">Alat Surfing</td>
-                                            <td class="text-center">Rp 20.000,00</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">5</td>
-                                            <td class="text-center">Kapal, Yacht, dan Kano</td>
-                                            <td class="text-center">Rp 20.000,00</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        <?php $no = 0; ?>
+                                        @forelse ($items as $item)
+                                            <?php $no++; ?>
+                                            <tr>
+                                                <td class="text-center">{{ $no }}</td>
+                                                <td class="text-center">{{ $item->equipment_name }}</td>
+                                                <td class="text-center">{{ $item->equipment_price }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('Adminvisitor-equipment.edit', $item->id) }}" class="btn btn-info mt-auto">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <form action="{{ route('Adminvisitor-equipment.destroy', $item->id) }}" method="post" class="d-inline confirm-delete">
+                                                        <button class="btn btn-danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="4">Belum Ada Data Apapun</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -120,15 +73,7 @@
                     </div>
                     <!-- Pagination -->
                     <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        {{ $items-links() }}
                     </div>
                 </div>
             </div>

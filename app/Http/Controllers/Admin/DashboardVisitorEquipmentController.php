@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
 
 class DashboardVisitorEquipmentController extends Controller
@@ -14,8 +15,8 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function index()
     {
-        
-        return view('pages.superAdmin.equipment.dashboard-visitor-equipment');
+        $items = Equipment::paginate(5);
+        return view('pages.superAdmin.equipment.dashboard-visitor-equipment', compact('items'));
     }
 
     /**
