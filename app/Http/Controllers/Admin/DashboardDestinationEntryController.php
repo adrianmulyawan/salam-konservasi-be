@@ -43,7 +43,13 @@ class DashboardDestinationEntryController extends Controller
         $data['slug'] = Str::slug($request->purpose_name);
         Purpose::create($data);
 
-        return redirect()->route('Admindestination-entry.index');
+        if ($data) {
+            session()->flash('success', 'Tujuan Masuk Kawasan Berhasil Ditambahkan');
+            return redirect()->route('Admindestination-entry.index');
+        } else {
+            session()->flash('failed', 'Tujuan Masuk Kawasan Berhasil Ditambahkan');
+            return redirect()->route('Admindestination-entry.index');
+        }
     }
 
     /**

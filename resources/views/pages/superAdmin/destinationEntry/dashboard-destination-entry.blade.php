@@ -12,6 +12,9 @@
                 <p class="dashboard-subtitle">
                     Daftar Tujuan Masuk Kawasan Konservasi 
                 </p>
+                <p data-aos="fade-up" class="dashboard-title">
+                    @include('includes.flash-message')
+                </p>
             </div>
             <div class="dashboard-content">
                 <!-- 2. Table Data Kawasan -->
