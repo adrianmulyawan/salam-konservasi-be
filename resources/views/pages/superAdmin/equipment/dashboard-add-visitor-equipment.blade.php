@@ -24,13 +24,13 @@
                                         <label for="inputPeralatan">
                                             Nama Peralatan
                                         </label>
-                                        <input type="text" name="equipment_name" class="form-control" id="inputPeralatan" placeholder="Masukan Nama Peralatan Bawaan" autofocus>
+                                        <input type="text" name="equipment_name" value="{{ old('equipment_name') }}" class="form-control" id="inputPeralatan" placeholder="Masukan Nama Peralatan Bawaan" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputHargaPeralatan">
                                             Harga Peralatan
                                         </label>
-                                        <input type="text" name="equipment_price" class="form-control" id="inputHargaPeralatan" placeholder="Masukan Harga Peralatan Bawaan">
+                                        <input type="text" name="equipment_price" value="{{ equipment_price }}" class="form-control" id="inputHargaPeralatan" placeholder="Masukan Harga Peralatan Bawaan">
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>
