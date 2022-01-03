@@ -19,13 +19,13 @@
                     <!-- 2.1 Add Data Kawasan -->
                     <div class="row">
                         <div class="col-12">
-                            <a href="#" class="btn btn-add-data mt-2 px-3">
+                            <a href="{{ route('Admindestination-entry.create') }}" class="btn btn-add-data mt-2 px-3">
                                 + Tambah Data Tujuan Masuk Kawasan
                             </a>
                         </div>
                     </div>
                     <!-- 2.2 Tabel Daftar Kawasan -->
-                    <div class="row mt-3">
+                    <div class="row mt-2">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
@@ -37,48 +37,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">Penelitian</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">Pariwisata</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">Pendidikan</td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-info mt-auto">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="#" method="post" class="d-inline confirm-delete">
-                                                    <button class="btn btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @forelse ($items as $item)
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">{{ $item->purpose_name }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('Admindestination-entry.edit', $item->id) }}" class="btn btn-info mt-auto">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <form action="{{ route('Admindestination-entry.destroy', $item->id) }}" method="post" class="d-inline confirm-delete">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="3">Belum Ada Data Apapun</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

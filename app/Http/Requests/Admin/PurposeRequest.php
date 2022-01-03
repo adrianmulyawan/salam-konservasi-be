@@ -24,7 +24,8 @@ class PurposeRequest extends FormRequest
     public function rules()
     {
         return [
-            'purpose_name' => 'required|string|max:255'
+            'purpose_name' => 'required|string|max:255',
+            'slug'         => 'max:255'
         ];
     }
 }

@@ -9,8 +9,10 @@ class Purpose extends Model
 {
     use HasFactory;
 
+    protected $table = 'purposes';
+
     protected $fillable = [
-        'purpose_name'
+        'purpose_name', 'slug'
     ];
 
     protected $hidden = [

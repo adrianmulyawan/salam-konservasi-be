@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PurposeRequest;
+use App\Models\Purpose;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DashboardDestinationEntryController extends Controller
 {
@@ -14,7 +17,8 @@ class DashboardDestinationEntryController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.destinationEntry.dashboard-destination-entry');
+        $items = Purpose::all();
+        return view('pages.superAdmin.destinationEntry.dashboard-destination-entry', compact('items'));
     }
 
     /**
@@ -33,9 +37,13 @@ class DashboardDestinationEntryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PurposeRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->purpose_name);
+        Purpose::create($data);
+
+        return redirect()->route('Admindestination-entry.index');
     }
 
     /**
