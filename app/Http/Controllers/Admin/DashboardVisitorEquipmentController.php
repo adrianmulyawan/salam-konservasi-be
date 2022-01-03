@@ -15,7 +15,7 @@ class DashboardVisitorEquipmentController extends Controller
     public function index()
     {
         
-        return view('pages.superAdmin.dashboard-visitor-equipment');
+        return view('pages.superAdmin.equipment.dashboard-visitor-equipment');
     }
 
     /**
@@ -25,7 +25,7 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-visitor-equipment');
+        return view('pages.superAdmin.equipment.dashboard-add-visitor-equipment');
     }
 
     /**

@@ -10,4 +10,10 @@ class Equipment extends Model
     use HasFactory;
 
     protected $table = 'equipments';
+
+    protected $fillable = [
+        'equipment_name', 'slug', 'equipment_price'
+    ];
+
+    protected $hidden = [];
 }

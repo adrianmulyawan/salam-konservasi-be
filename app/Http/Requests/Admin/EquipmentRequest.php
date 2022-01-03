@@ -24,7 +24,9 @@ class EquipmentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'equipment_name'  => 'required|max:255',
+            'slug'            => 'max:255',
+            'equipment_price' => 'required'
         ];
     }
 }
