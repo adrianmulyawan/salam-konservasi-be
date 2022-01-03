@@ -34,7 +34,7 @@
                                         <label for="inputTujuan">
                                             Tujuan Masuk Kawasan
                                         </label>
-                                        <input type="text" name="purpose_name" class="form-control" id="inputTujuan" placeholder="Masukan Tujuan Masuk Kawasan" autofocus>
+                                        <input type="text" name="purpose_name" value="{{ old('purpose_name') }}" class="form-control" id="inputTujuan" placeholder="Masukan Tujuan Masuk Kawasan" autofocus>
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>
