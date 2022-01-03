@@ -16,20 +16,21 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        <form action="{{ route('Adminvisitor-equipment.store') }}" method="post">
+                            @csrf
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputPeralatan">
                                             Nama Peralatan
                                         </label>
-                                        <input type="text" name="nama_peralatan" class="form-control" id="inputPeralatan" placeholder="Masukan Nama Peralatan Bawaan" autofocus>
+                                        <input type="text" name="equipment_name" class="form-control" id="inputPeralatan" placeholder="Masukan Nama Peralatan Bawaan" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputHargaPeralatan">
                                             Harga Peralatan
                                         </label>
-                                        <input type="text" name="harga_peralatan" class="form-control" id="inputHargaPeralatan" placeholder="Masukan Harga Peralatan Bawaan">
+                                        <input type="text" name="equipment_price" class="form-control" id="inputHargaPeralatan" placeholder="Masukan Harga Peralatan Bawaan">
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>

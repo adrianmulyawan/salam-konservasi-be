@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EquipmentRequest;
 use App\Models\Equipment;
+use App\Models\Purpose;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DashboardVisitorEquipmentController extends Controller
 {
@@ -35,9 +38,20 @@ class DashboardVisitorEquipmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EquipmentRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->equipment_name);
+
+        Equipment::create($data);
+
+        if ($data) {
+            session()->flash('success', 'Data Peralatan Berhasil Ditambahkan');
+            return redirect()->route('Adminvisitor-equipment.index');
+        } else {
+            session()->flash('failed', 'Data Peralatan Gagal Ditambahkan');
+            return redirect()->route('Adminvisitor-equipment.index');
+        }
     }
 
     /**
@@ -59,7 +73,7 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-visitor-equipment');
+        return view('pages.superAdmin.equipment.dashboard-edit-visitor-equipment');
     }
 
     /**

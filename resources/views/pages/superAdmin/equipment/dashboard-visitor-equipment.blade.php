@@ -73,7 +73,7 @@
                     </div>
                     <!-- Pagination -->
                     <div class="row justify-content-end mr-2">
-                        {{ $items-links() }}
+                        {{ $items->links() }}
                     </div>
                 </div>
             </div>
