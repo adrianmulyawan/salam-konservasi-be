@@ -39,11 +39,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{ $no = 1 }}
                                         @forelse ($items as $item)
                                             <tr>
                                                 <tr>
-                                                    <td class="text-center">{{ $no++ }}</td>
+                                                    <td class="text-center">1</td>
                                                     <td class="text-center">{{ $item->name }}</td>
                                                     <td class="text-center">{{ $item->location }}</td>
                                                     <td class="text-center">{{ $item->is_open }}</td>
