@@ -14,7 +14,7 @@ class DashboardEntranceFeeController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-entrance-fee');
+        return view('pages.superAdmin.entranceFee.dashboard-entrance-fee');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardEntranceFeeController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-entrance-fee');
+        return view('pages.superAdmin.entranceFee.dashboard-add-entrance-fee');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardEntranceFeeController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-entrance-fee');
+        return view('pages.superAdmin.entranceFee.dashboard-edit-entrance-fee');
     }
 
     /**
