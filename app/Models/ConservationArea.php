@@ -9,6 +9,8 @@ class ConservationArea extends Model
 {
     use HasFactory;
 
+    protected $table = 'conservation_areas';
+
     protected $fillable = [
         'user_id', 'master_price_id',
         'name', 'slug', 'location', 'description',

@@ -14,7 +14,7 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function index()
     {
-        $
+        
         return view('pages.superAdmin.dashboard-visitor-equipment');
     }
 
