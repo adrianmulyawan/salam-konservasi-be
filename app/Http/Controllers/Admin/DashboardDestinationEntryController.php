@@ -14,7 +14,7 @@ class DashboardDestinationEntryController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-destination-entry');
+        return view('pages.superAdmin.destinationEntry.dashboard-destination-entry');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardDestinationEntryController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-destination-entry');
+        return view('pages.superAdmin.destinationEntry.dashboard-add-destination-entry');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardDestinationEntryController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-destination-entry');
+        return view('pages.superAdmin.destinationEntry.dashboard-edit-destination-entry');
     }
 
     /**
