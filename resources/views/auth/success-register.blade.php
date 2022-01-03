@@ -16,7 +16,7 @@
                     Kamu Sudah Berhasil Terdaftar di Sistem Kami <br>
                     Selamat Menggunakan Layanan Dari Kami
                 </p>
-                <a href="#" class="btn btn-dashboard mt-3 px-5">Dashboard</a><br>
+                <a href="{{ route('dashboardApplicant') }}" class="btn btn-dashboard mt-3 px-5">Dashboard</a><br>
                 <a href="{{ route('home') }}" class="btn btn-home-page mt-3 px-5">Halaman Utama</a> 
             </div>
         </div>

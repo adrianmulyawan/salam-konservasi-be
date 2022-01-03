@@ -19,11 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('citizen', ['wni', 'wna'])->nullable();
+            $table->enum('citizen', ['wni', 'wna'])->default('wni');
             $table->string('phone_number');
             $table->string('address');
             $table->string('identity_image')->nullable();
-            $table->enum('role', ['applicant', 'superadmin', 'leader', 'fieldadmin'])->nullable()->default('applicant');
+            $table->enum('role', ['applicant', 'superadmin', 'leader', 'fieldadmin'])->default('applicant');
             $table->rememberToken();
             $table->timestamps();
         });

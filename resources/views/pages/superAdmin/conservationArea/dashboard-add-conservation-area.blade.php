@@ -16,64 +16,75 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('Adminmanage-conservation-area.store') }}" method="post">
+                            @csrf
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputName">
                                             Nama Kawasan
                                         </label>
-                                        <input type="text" name="nama_kawasan" class="form-control" id="inputName" placeholder="Masukan Nama Kawasan" autofocus>
+                                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputName" placeholder="Masukan Nama Kawasan" autofocus required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputLokasi">
                                             Lokasi Kawasan
                                         </label>
-                                        <input type="text" name="lokasi_kawasan" class="form-control" id="inputLokasi" placeholder="Masukan Lokasi Kawasan">
+                                        <input type="text" name="location" value="{{ old('location') }}" class="form-control" id="inputLokasi" placeholder="Masukan Lokasi Kawasan" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputTentang">
                                             Tentang Kawasan
                                         </label>
-                                        <textarea class="form-control" name="tentang_kawasan" id="inputTentang" rows="3" placeholder="Masukan Tentang Kawasan"></textarea>
+                                        <input type="text" name="description" value="{{ old('description') }}" class="form-control" id="inputTentang" placeholder="Masukan Tentang Kawasan" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputLuas">
                                             Luas Kawasan
                                         </label>
-                                        <input type="text" name="luas_kawasan" class="form-control" id="inputLuas" placeholder="Masukan Lokasi Kawasan">
+                                        <input type="text" name="area" value="{{ old('area') }}" class="form-control" id="inputLuas" placeholder="Masukan Lokasi Kawasan" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPeta">
                                             Peta Kawasan
                                         </label>
                                         <div class="custom-file">
-                                            <input type="file" name="peta_kawaan" class="custom-file-input" id="inputPeta" required>
+                                            <input type="file" name="map" value="{{ old('map') }}" class="custom-file-input" id="inputPeta" required>
                                             <label class="custom-file-label" for="inputPeta">Masukan Peta Kawasan</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPenginapan">Tempat Penginapan</label>
-                                        <select class="form-control" id="inputPenginapan" name="tempat_penginapan">
+                                        <select class="form-control" id="inputPenginapan" name="is_homestay" required>
                                           <option selected disabled>Pilih Tempat Penginapan (Tersedia/Tidak)</option>
-                                          <option>Tersedia</option>
-                                          <option>Tidak</option>
+                                          <option value="1">Tersedia</option>
+                                          <option value="0">Tidak</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputResto">Tempat Makan</label>
-                                        <select class="form-control" id="inputResto" name="tempat_makan">
+                                        <select class="form-control" id="inputResto" name="is_resto" required>
                                           <option selected disabled>Pilih Tempat Makan (Tersedia/Tidak)</option>
-                                          <option>Tersedia</option>
-                                          <option>Tidak</option>
+                                          <option value="1">Tersedia</option>
+                                          <option value="0">Tidak</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputStatus">Status Kawasan</label>
-                                        <select class="form-control" id="inputStatus" name="status_kawasan">
+                                        <select class="form-control" id="inputStatus" name="is_open" required>
                                           <option selected disabled>Pilih Status Kawasan (Buka/Tutup)</option>
-                                          <option>Buka</option>
-                                          <option>Tutup</option>
+                                          <option value="1">Buka</option>
+                                          <option value="0">Tutup</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
@@ -90,6 +101,6 @@
 @push('addon-script')
     <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'tentang_kawasan' );
+        CKEDITOR.replace( 'description' );
     </script>
 @endpush

@@ -29,7 +29,7 @@ class ConservationAreaRequest extends FormRequest
             'location' => 'required|max:255',
             'description' => 'required',
             'is_open' => 'required|boolean',
-            'map' => 'required|image|mimes:png,jpg,jpeg,webp',
+            'map' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
             'is_homestay' => 'required|boolean',
             'is_resto' => 'required|boolean'
         ];

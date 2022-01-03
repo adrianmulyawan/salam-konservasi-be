@@ -4,11 +4,11 @@
 
 @section('content')
      <!-- Konten Utama -->
-     <main> 
+    <main> 
         <div class="page-content page-auth">
             <div class="section-conservation-auth" data-aos="fade-up">
                 <div class="container">
-                    <div class="row align-items-center row-login">
+                    <div class="row align-items-center row-login mt-5">
                         <!-- Untuk Gambar -->
                         <div class="col-lg-6 text-center image-login mt-3">
                             <img src="{{ url('frontend/images/login-image.png') }}" alt="login-image" class="w-50 mb-4 mb-lg-none">
@@ -20,15 +20,27 @@
                                 Administrasi Layanan Masuk <br>
                                 Kawasan Konservasi
                             </h2>
-                            <form action="#" method="post">
+                            <form method="POST" action="{{ route('login') }}" class="mt-3">
+                                @csrf
                                 <div class="form-group mt-3">
-                                    <label for="inputEmail">Email address</label>
-                                    <input type="email" class="form-control w-75" id="inputEmail" placeholder="Masukan Email Anda" required>
+                                    <label for="email">Email address</label>
+                                    <input id="email" type="email" class="form-control w-75 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Masukan Email Anda" autofocus>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group mt-2">
                                     <label for="inputPassword">Password</label>
                                     <div class="input-group w-75">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Masukan Password Anda" required>
+                                        <input type="password" name="password" id="inputPassword" class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password Anda" required autocomplete="current-password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <div class="input-group-append">
                                             <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
                                             <span id="mybutton" onclick="change()" class="input-group-text">
@@ -44,102 +56,35 @@
                                         </div>
                                     </div>
                                     <small id="passwordHelp" class="form-text text-muted forgot-password">
-                                        <a href="#">Lupa Password ?</a>
+                                        @if (Route::has('password.request'))
+                                        <a href="{{ route('password.request') }}">
+                                            Lupa Password
+                                        </a>
+                                        @endif
                                     </small>
                                 </div>
                                 <div class="form-check mt-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      Ingat Saya
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="remember">
+                                        Ingat Saya
                                     </label>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block btn-login w-75 mt-4">
                                     Masuk
                                 </button>
+                                {{-- Button Register --}}
+                                <div class="btn-register w-75 mt-2">
+                                    <a href="{{ route('register') }}" class="btn btn-success btn-block mt-2">
+                                        Daftar Pengguna Baru
+                                    </a>
+                                </div>
                             </form>
-                            {{-- Button Register --}}
-                            <div class="btn-register w-75 mt-2">
-                                <a href="{{ route('register') }}" class="btn btn-success btn-block mt-2">
-                                    Daftar Pengguna Baru
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
-
-    <div class="container" style="display: none">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @push('addon-script')

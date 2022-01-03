@@ -52,7 +52,7 @@ Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::c
 // Pemohon
 Route::prefix('dashboard/applicant')
     ->namespace('Applicant')
-    //->middleware('checkRole:applicant')
+    ->middleware(['auth', 'checkRole:applicant'])
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])
             ->name('dashboardApplicant');
@@ -88,7 +88,7 @@ Route::prefix('dashboard/applicant')
 // Super Admin
 Route::prefix('dashboard/admin')
     ->name('Admin')
-    //->middleware(['auth', 'checkRole:superadmin'])
+    ->middleware(['auth', 'checkRole:superadmin'])
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Admin\DashboardAdminController::class, 'index'])
             ->name('dashboardAdmin');
