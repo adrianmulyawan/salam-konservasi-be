@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <!-- 2.2 Tabel Daftar Kawasan -->
-                    <div class="row mt-3">
+                    <div class="row mt-2">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
@@ -55,6 +55,8 @@
                                                         <i class="fa fa-pencil-alt"></i>
                                                     </a>
                                                     <form action="{{ route('Adminvisitor-equipment.destroy', $item->id) }}" method="post" class="d-inline confirm-delete">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <button class="btn btn-danger">
                                                             <i class="fa fa-trash"></i>
                                                         </button>

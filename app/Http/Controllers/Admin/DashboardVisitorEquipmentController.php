@@ -73,7 +73,8 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.equipment.dashboard-edit-visitor-equipment');
+        $data = Equipment::findOrFail($id);
+        return view('pages.superAdmin.equipment.dashboard-edit-visitor-equipment', compact('data'));
     }
 
     /**
@@ -83,9 +84,20 @@ class DashboardVisitorEquipmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EquipmentRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->equipment_name);
+
+        $item = Equipment::findOrFail($id)->update($data);
+
+        if ($item) {
+            session()->flash('success', 'Data Peralatan Berhasil Diubah');
+            return redirect()->route('Adminvisitor-equipment.index');
+        } else {
+            session()->flash('failed', 'Data Peralatan Gagal Diubah');
+            return redirect()->route('Adminvisitor-equipment.index');
+        }
     }
 
     /**
@@ -96,6 +108,14 @@ class DashboardVisitorEquipmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Equipment::findOrFail($id)->delete();
+
+        if ($data) {
+            session()->flash('success', 'Data Peralatan Berhasil Dihapus');
+            return redirect()->route('Adminvisitor-equipment.index');
+        } else {
+            session()->flash('failed', 'Data Peralatan Gagal Dihapus');
+            return redirect()->route('Adminvisitor-equipment.index');
+        }
     }
 }

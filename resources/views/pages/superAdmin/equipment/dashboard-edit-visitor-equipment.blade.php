@@ -16,20 +16,22 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        <form action="{{ route('Adminvisitor-equipment.update', $data->id) }}" method="post">
+                            @csrf
+                            @method('PUT')
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputPeralatan">
                                             Nama Peralatan Bawaan
                                         </label>
-                                        <input type="text" name="nama_peralatan" class="form-control" id="inputPeralatan" value="Alat Selam" autofocus>
+                                        <input type="text" name="equipment_name" value="{{ $data->equipment_name }}" class="form-control" id="inputPeralatan" value="Alat Selam" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputHargaPeralatan">
                                             Harga Peralatan Bawaan
                                         </label>
-                                        <input type="text" name="harga_peralatan" class="form-control" id="inputHargaPeralatan" value="20000">
+                                        <input type="text" name="equipment_price" value="{{ $data->equipment_price }}" class="form-control" id="inputHargaPeralatan" value="20000">
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>
