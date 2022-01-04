@@ -57,7 +57,7 @@
                                         @enderror
                                         <div class="input-group-append">
                                             <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
-                                            <span id="mybutton" onclick="change()" class="input-group-text">
+                                            <span id="mybutton" onclick="password()" class="input-group-text">
                     
                                                 <!-- icon mata bawaan bootstrap  -->
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"
@@ -81,7 +81,7 @@
                                         @enderror
                                         <div class="input-group-append">
                                             <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
-                                            <span id="mybuttonConfirm" onclick="change()" class="input-group-text">
+                                            <span id="mybuttonConfirm" onclick="rePassword()" class="input-group-text">
                     
                                                 <!-- icon mata bawaan bootstrap  -->
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"

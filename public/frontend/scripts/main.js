@@ -28,6 +28,7 @@ function password() {
 function rePassword() {
     // Cari element dengan id = "password_confirmation" kemudian simpan didalam var showPassword
     let showPasswordConfirmation = document.getElementById('password_confirmation').type;
+    console.log(showPasswordConfirmation);
 
     // Buat kondisi. jika var "showPasswordConfirmation" memiliki type = password makan jalankan perintah didalamnya
     if (showPasswordConfirmation == 'password') {
