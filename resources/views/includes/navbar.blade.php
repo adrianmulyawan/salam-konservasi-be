@@ -62,7 +62,7 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                             <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
-                            Hi, {{ Auth::user()->name }}
+                            Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                         </a>
                         <div class="dropdown-menu">
                             <a href="pemohon/dashboard.html" class="dropdown-item">Dashboard</a>

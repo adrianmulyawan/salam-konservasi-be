@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -56,7 +57,7 @@ class RegisterController extends Controller
             'citizen' => ['nullable'],
             'phone_number' => ['required', 'string', 'min:12'],
             'address' => ['required', 'string', 'min:8'],
-            'identity_image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+            // 'identity_image' => ['required','image', 'max:2048'],
         ]);
     }
 
@@ -75,12 +76,19 @@ class RegisterController extends Controller
             'citizen' => isset($data['citizen']) ? $data['citizen'] : '',
             'phone_number' => $data['phone_number'],
             'address' => $data['address'],
-            'identity_image' => isset($data['identity_image']) ? $data['identity_image'] : '',
         ]);
     }
 
-    public function successRegister()
+    protected function registered(Request $request, $user)
     {
-        return view('auth.success-register');
+        //uploa
+        // dd($request->all(),$request->hasFile('identity_image'),$user);
+        User::where('id', $user->id)->update(['identity_image' => $request->file('identity_image')->store('assets/identity_image', 'public')]);
+        return redirect()->route('successRegister');
     }
+
+    // public function successRegister()
+    // {
+    //     return view('auth.success-register');
+    // }
 }

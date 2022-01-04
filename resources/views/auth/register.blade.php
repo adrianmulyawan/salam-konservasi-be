@@ -16,6 +16,16 @@
                                 Administrasi Layanan Masuk <br>
                                 Kawasan Konservasi
                             </h2>
+                            {{-- Tambahkan Error Handling --}}
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mt-3">
@@ -105,7 +115,7 @@
                                 <div class="form-group mt-3">
                                     <label>Unggah Kartu Pelajar/KTP/KK/Passport</label>
                                     <div class="custom-file">
-                                        <input type="file" name="identity-image" class="custom-file-input" id="validatedCustomFile" required>
+                                        <input type="file" name="identity_image" class="custom-file-input" id="validatedCustomFile" required>
                                         <label class="custom-file-label" for="validatedCustomFile">Kartu Pelajar/KTP/KK/Passport</label>
                                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                                     </div>
