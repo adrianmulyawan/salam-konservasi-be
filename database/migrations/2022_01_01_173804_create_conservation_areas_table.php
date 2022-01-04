@@ -16,7 +16,6 @@ class CreateConservationAreasTable extends Migration
         Schema::create('conservation_areas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('master_price_id');
             $table->string('name');
             $table->string('slug');
             $table->string('location');
@@ -28,7 +27,6 @@ class CreateConservationAreasTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('master_price_id')->references('id')->on('master_prices');
         });
     }
 

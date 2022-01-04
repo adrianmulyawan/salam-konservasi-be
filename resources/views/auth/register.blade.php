@@ -16,7 +16,7 @@
                                 Administrasi Layanan Masuk <br>
                                 Kawasan Konservasi
                             </h2>
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mt-3">
                                     <label for="name">Nama Lengkap</label>

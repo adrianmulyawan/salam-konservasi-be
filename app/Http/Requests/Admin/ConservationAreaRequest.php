@@ -24,6 +24,7 @@ class ConservationAreaRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => 'required|numeric|exists:users,id',
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
             'location' => 'required|max:255',

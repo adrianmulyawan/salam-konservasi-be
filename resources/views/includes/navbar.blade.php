@@ -61,7 +61,7 @@
                 <ul class="navbar-nav d-none d-lg-flex">
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                            <img src="frontend/images/ic_profile.png" alt="" class="rounded-circle mr-2 profile-picture">
+                            <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
                             Hi, {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu">
@@ -79,7 +79,7 @@
                     <!-- Notif -->
                     <li class="nav-item">
                         <a href="#" class="nav-lin d-inline-block mt-3">
-                            <img src="frontend/images/ic_notif.png" alt="" height="24">
+                            <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
                             <div class="notification">4</div>
                         </a>
                     </li>

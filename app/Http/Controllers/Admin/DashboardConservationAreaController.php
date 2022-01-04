@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ConservationAreaRequest;
 use App\Models\ConservationArea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class DashboardConservationAreaController extends Controller
@@ -17,7 +18,7 @@ class DashboardConservationAreaController extends Controller
      */
     public function index()
     {
-        $items = ConservationArea::all();
+        $items = ConservationArea::paginate(5);
         return view('pages.superAdmin.conservationArea.dashboard-conservation-area', compact('items'));
     }
 
@@ -41,10 +42,18 @@ class DashboardConservationAreaController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
+        $data['map'] = $request->file('map')->store('assets/map', 'public');
+        $data['user_id'] = Auth::user();
 
         ConservationArea::create($data);
 
-        return redirect()->route('Adminmanage-conservation-area-gallery.index');
+        if ($data) {
+            session()->flash('success', 'Data Kawasan Konservasi Berhasil Ditambahkan');
+            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+        } else {
+            session()->flash('failed', 'Data Kawasan Konservasi Gagal Ditambahkan');
+            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+        }
     }
 
     /**
@@ -66,7 +75,8 @@ class DashboardConservationAreaController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.conservationArea.dashboard-edit-conservation-area');
+        $data = ConservationArea::findOrFail($id);
+        return view('pages.superAdmin.conservationArea.dashboard-edit-conservation-area', compact('data'));
     }
 
     /**
@@ -76,9 +86,22 @@ class DashboardConservationAreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ConservationAreaRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+        $data['map'] = $request->file('map')->store('assets/map', 'public');
+        $data['user_id'] = Auth::user();
+
+        $item = ConservationArea::findOrFail($id)->update($data);
+
+        if ($item) {
+            session()->flash('success', 'Data Kawasan Konservasi Berhasil Diubah');
+            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+        } else {
+            session()->flash('failed', 'Data Kawasan Konservasi Gagal Diubah');
+            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+        }
     }
 
     /**

@@ -26,7 +26,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('Adminmanage-conservation-area.store') }}" method="post">
+                        <form action="{{ route('Adminmanage-conservation-area.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card card-edit-profile">
                                 <div class="card-body">
