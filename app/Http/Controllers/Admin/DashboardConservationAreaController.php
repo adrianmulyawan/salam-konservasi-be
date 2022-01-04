@@ -41,18 +41,18 @@ class DashboardConservationAreaController extends Controller
     public function store(ConservationAreaRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
+        $data['slug'] = Str::slug($request->name);
         $data['map'] = $request->file('map')->store('assets/map', 'public');
-        $data['user_id'] = Auth::user();
+        $data['user_id'] = Auth::user()->id;
 
         ConservationArea::create($data);
 
         if ($data) {
             session()->flash('success', 'Data Kawasan Konservasi Berhasil Ditambahkan');
-            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+            return redirect()->route('Adminmanage-conservation-area.index');
         } else {
             session()->flash('failed', 'Data Kawasan Konservasi Gagal Ditambahkan');
-            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+            return redirect()->route('Adminmanage-conservation-area.index');
         }
     }
 

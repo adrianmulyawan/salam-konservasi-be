@@ -46,7 +46,7 @@
                                         <label for="inputTentang">
                                             Tentang Kawasan
                                         </label>
-                                        <input type="text" name="description" value="{{ old('description') }}" class="form-control" id="inputTentang" placeholder="Masukan Tentang Kawasan" required>
+                                        <textarea type="text" name="description" value="{{ old('description') }}" class="form-control" id="inputTentang" placeholder="Masukan Tentang Kawasan" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputLuas">

@@ -13,7 +13,7 @@ class ConservationArea extends Model
 
     protected $fillable = [
         'user_id', 'master_price_id',
-        'name', 'slug', 'location', 'description',
+        'name', 'slug', 'location', 'description', 'area',
         'is_open', 'map', 'is_homestay', 'is_resto'
     ];
 

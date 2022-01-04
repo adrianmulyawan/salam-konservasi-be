@@ -53,7 +53,13 @@
                                                     <td class="text-center">{{ $no }}</td>
                                                     <td class="text-center">{{ $item->name }}</td>
                                                     <td class="text-center">{{ $item->location }}</td>
-                                                    <td class="text-center">{{ $item->is_open }}</td>
+                                                    <td class="text-center">
+                                                        @if ( $item->is_open == 1 )
+                                                            Buka
+                                                        @else
+                                                            Tutup
+                                                        @endif
+                                                    </td>
                                                     <td class="text-center">{{ $item->user->name }}</td>
                                                     <td class="text-center">
                                                         <a href="{{ route('Adminmanage-conservation-area.edit', $item->id) }}" class="btn btn-info mt-auto">

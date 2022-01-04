@@ -24,15 +24,15 @@ class ConservationAreaRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|numeric|exists:users,id',
             'name' => 'required|max:255',
-            'slug' => 'required|max:255',
+            'slug' => 'max:255',
             'location' => 'required|max:255',
             'description' => 'required',
-            'is_open' => 'required|boolean',
+            'area' => 'required|max:255',
+            'is_open' => 'required',
             'map' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
-            'is_homestay' => 'required|boolean',
-            'is_resto' => 'required|boolean'
+            'is_homestay' => 'required',
+            'is_resto' => 'required'
         ];
     }
 }
