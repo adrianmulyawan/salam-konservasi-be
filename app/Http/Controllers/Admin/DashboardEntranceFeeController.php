@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EntranceFeeRequest;
+use App\Models\MasterPrice;
+use App\Models\Purpose;
 use Illuminate\Http\Request;
 
 class DashboardEntranceFeeController extends Controller
@@ -14,7 +17,8 @@ class DashboardEntranceFeeController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.entranceFee.dashboard-entrance-fee');
+        $items = MasterPrice::with(['purpose'])->get();
+        return view('pages.superAdmin.entranceFee.dashboard-entrance-fee', compact('items'));
     }
 
     /**
@@ -24,7 +28,8 @@ class DashboardEntranceFeeController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.entranceFee.dashboard-add-entrance-fee');
+        $purposes = Purpose::all();
+        return view('pages.superAdmin.entranceFee.dashboard-add-entrance-fee', compact('purposes'));
     }
 
     /**
@@ -33,9 +38,18 @@ class DashboardEntranceFeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EntranceFeeRequest $request)
     {
-        //
+        $data = $request->all();
+        MasterPrice::create($data);
+
+        if ($data) {
+            session()->flash('success', 'Data Tarif Masuk Kawasan Berhasil Ditambahkan');
+            return redirect()->route('Adminentrance-fee.index');
+        } else {
+            session()->flash('failed', 'Data Tarif Masuk Kawasan Gagal Ditambahkan');
+            return redirect()->route('Adminentrance-fee.index');
+        }
     }
 
     /**
@@ -57,7 +71,9 @@ class DashboardEntranceFeeController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.entranceFee.dashboard-edit-entrance-fee');
+        $data = MasterPrice::findOrFail($id);
+        $purposes = Purpose::all();
+        return view('pages.superAdmin.entranceFee.dashboard-edit-entrance-fee', compact('data', 'purposes'));
     }
 
     /**
@@ -67,9 +83,18 @@ class DashboardEntranceFeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EntranceFeeRequest $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $item = MasterPrice::findOrFail($id)->update($data);
+        if ($item) {
+            session()->flash('success', 'Data Tarif Masuk Kawasan Berhasil Diubah');
+            return redirect()->route('Adminentrance-fee.index');
+        } else {
+            session()->flash('failed', 'Data Tarif Masuk Kawasan Gagal Diubah');
+            return redirect()->route('Adminentrance-fee.index');
+        }
     }
 
     /**
@@ -80,6 +105,14 @@ class DashboardEntranceFeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = MasterPrice::findOrFail($id)->delete();
+
+        if ($item) {
+            session()->flash('success', 'Data Tarif Masuk Kawasan Berhasil Dihapus');
+            return redirect()->route('Adminentrance-fee.index');
+        } else {
+            session()->flash('failed', 'Data Tarif Masuk Kawasan Gagal Dihapus');
+            return redirect()->route('Adminentrance-fee.index');
+        }
     }
 }

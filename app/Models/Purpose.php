@@ -18,4 +18,10 @@ class Purpose extends Model
     protected $hidden = [
 
     ];
+
+    // Relasi ke tabel master_prices
+    public function master_prices()
+    {
+        return $this->hasMany(MasterPrice::class, 'purposes_id', 'id');
+    }
 }

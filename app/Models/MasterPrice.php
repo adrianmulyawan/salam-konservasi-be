@@ -12,8 +12,14 @@ class MasterPrice extends Model
     protected $table = 'master_prices';
 
     protected $fillable = [
-
+        'purpose_id', 'citizen', 'price'
     ];
 
     protected $hidden = [];
+
+    // Relasi ke table purposes
+    public function purpose()
+    {
+        return $this->belongsTo(Purpose::class, 'purpose_id', 'id');
+    }
 }

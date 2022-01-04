@@ -16,27 +16,41 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('Adminentrance-fee.update', $data->id) }}" method="post">
+                            @csrf
+                            @method('PUT')
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputTujuan">Tujuan Masuk Kawasan Konservasi</label>
-                                        <select class="form-control" id="inputTujuan" name="tujuan_masuk_kawasan">
-                                          <option selected>Pariwisata</option>
-                                          <option>Penelitian</option>
-                                          <option>Pendidikan</option>
+                                        <select class="form-control" id="inputTujuan" name="purpose_id">
+                                          <option selected disabled value="{{ $data->purpose_id }}">Jangan Diubah (Bila Tidak Ingin Edit Data)</option>
+                                          @foreach ($purposes as $purpose)
+                                              <option value="{{ $purpose->id }}">{{ $purpose->purpose_name }}</option>
+                                          @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputKebangsaan">Kebangsaan</label>
-                                        <select class="form-control" id="inputKebangsaan" name="kebangsaan">
-                                          <option selected>WNI</option>
-                                          <option>WNA</option>
+                                        <select class="form-control" id="inputKebangsaan" name="citizen" {{ old('citizen') }}>
+                                          <option selected disabled value="{{ $data->citizen }}">Jangan Diubah (Bila Tidak Ingin Edit Data)</option>
+                                          <option value="WNI">WNI</option>
+                                          <option value="WNA">WNA</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="price">Tarif Masuk Kawasan/Hari</label>
-                                        <input type="text" class="form-control" id="price" name="price" value="10.000,00">
+                                        <input type="text" class="form-control" id="price" name="price" value="{{ $data->price }}" placeholder="Masukan Harga Tarif Masuk Kawasan">
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>

@@ -16,29 +16,40 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('Adminentrance-fee.store') }}" method="post">
+                            @csrf
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputTujuan">Tujuan Masuk Kawasan Konservasi</label>
-                                        <select class="form-control" id="inputTujuan" name="tujuan_masuk_kawasan">
+                                        <select class="form-control" id="inputTujuan" name="purpose_id">
                                           <option selected disabled>Silahkan Pilih Tujuan</option>
-                                          <option>Pariwisata</option>
-                                          <option>Penelitian</option>
-                                          <option>Pendidikan</option>
+                                          @foreach ($purposes as $purpose)
+                                              <option value="{{ $purpose->id }}">{{ $purpose->purpose_name }}</option>
+                                          @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputKebangsaan">Kebangsaan</label>
-                                        <select class="form-control" id="inputKebangsaan" name="kebangsaan">
+                                        <select class="form-control" id="inputKebangsaan" name="citizen" {{ old('citizen') }}>
                                           <option selected disabled>Silahkan Pilih Kebangsaan</option>
-                                          <option>WNI</option>
-                                          <option>WNA</option>
+                                          <option value="WNI">WNI</option>
+                                          <option value="WNA">WNA</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="price">Tarif Masuk Kawasan/Hari</label>
-                                        <input type="text" class="form-control" id="price" name="price" placeholder="Masukan Harga Tarif Masuk Kawasan">
+                                        <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="Masukan Harga Tarif Masuk Kawasan">
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>

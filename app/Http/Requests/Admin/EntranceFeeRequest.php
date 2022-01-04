@@ -13,7 +13,7 @@ class EntranceFeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class EntranceFeeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'purpose_id' => 'required|integer|exists:purposes,id',
+            'citizen'    => 'required',
+            'price'      => 'required|numeric'
         ];
     }
 }
