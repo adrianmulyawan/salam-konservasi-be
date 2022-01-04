@@ -30,7 +30,7 @@
                                         <label for="inputHargaPeralatan">
                                             Harga Peralatan
                                         </label>
-                                        <input type="text" name="equipment_price" value="{{ equipment_price }}" class="form-control" id="inputHargaPeralatan" placeholder="Masukan Harga Peralatan Bawaan">
+                                        <input type="text" name="equipment_price" value="{{ old('equipment_price') }}" class="form-control" id="inputHargaPeralatan" placeholder="Masukan Harga Peralatan Bawaan">
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>
