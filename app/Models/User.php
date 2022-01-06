@@ -43,6 +43,11 @@ class User extends Authenticatable
 
     public function conservation_areas()
     {
-        return $this->HasMany(ConservationArea::class, 'conservation_areas_id', 'id');
+        return $this->HasMany(ConservationArea::class, 'users_id', 'id');
+    }
+
+    public function news()
+    {
+        return $this->hasMany(News::class, 'users_id', 'id');
     }
 }
