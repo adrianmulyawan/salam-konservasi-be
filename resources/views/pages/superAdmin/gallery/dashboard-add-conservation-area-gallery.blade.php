@@ -16,18 +16,17 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        <form action="{{ route('Adminmanage-gallery.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputKawasan">Nama Kawasan</label>
-                                        <select class="form-control" id="inputKawasan" name="kawasan_konservasi">
+                                        <select class="form-control" id="inputKawasan" name="conservation_area_id" required>
                                           <option selected disabled>Silahkan Pilih Kawasan</option>
-                                          <option>KKPD Pulau Randayan</option>
-                                          <option>KKPD Paloh</option>
-                                          <option>KKPD Kubu Raya</option>
-                                          <option>KKPD Kendawangan</option>
-                                          <option>KKPD Kayong Utara</option>
+                                          @foreach ($conservation_areas as $conservation)
+                                            <option value="{{ $conservation->id }}">{{ $conservation->name }}</option>
+                                          @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -35,7 +34,7 @@
                                             Foto Kawasan
                                         </label>
                                         <div class="custom-file">
-                                            <input type="file" name="peta_kawaan" class="custom-file-input" id="inputPeta" required>
+                                            <input type="file" name="photo" class="custom-file-input" id="inputPeta" required>
                                             <label class="custom-file-label" for="inputPeta">Masukan Foto Kawasan</label>
                                         </div>
                                     </div>

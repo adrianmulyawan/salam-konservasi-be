@@ -13,7 +13,7 @@ class ConservationAreaGalleryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class ConservationAreaGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'conservation_area_id' => 'exists:conservation_areas,id|integer',
+            'photo'                => 'image|mimes:png,jpg,webp,jpeg'
         ];
     }
 }

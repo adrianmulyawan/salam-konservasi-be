@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ConservationAreaGalleryRequest;
+use App\Models\ConservationArea;
+use App\Models\ConservationAreaGallery;
 use Illuminate\Http\Request;
 
 class DashboardConservationAreaGalleryController extends Controller
@@ -14,7 +17,8 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.gallery.dashboard-conservation-area-gallery');
+        $items = ConservationAreaGallery::with(['conservation_area'])->paginate(5);
+        return view('pages.superAdmin.gallery.dashboard-conservation-area-gallery', compact('items'));
     }
 
     /**
@@ -24,7 +28,8 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.gallery.dashboard-add-conservation-area-gallery');
+        $conservation_areas = ConservationArea::all();
+        return view('pages.superAdmin.gallery.dashboard-add-conservation-area-gallery', compact('conservation_areas'));
     }
 
     /**
@@ -33,9 +38,19 @@ class DashboardConservationAreaGalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ConservationAreaGalleryRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['photo'] = $request->file('photo')->store('assets/conservation_gallery', 'public');
+        ConservationAreaGallery::create($data);
+
+        if ($data) {
+            session()->flash('success', 'Data Galeri Kawasan Konservasi Berhasil Ditambahkan');
+            return redirect()->route('Adminmanage-gallery.index');
+        } else {
+            session()->flash('failed', 'Data Galeri Kawasan Konservasi Gagal Ditambahkan');
+            return redirect()->route('Adminmanage-gallery.index');
+        }
     }
 
     /**
