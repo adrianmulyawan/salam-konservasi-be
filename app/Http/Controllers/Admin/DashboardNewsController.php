@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class DashboardNewsController extends Controller
@@ -14,7 +15,8 @@ class DashboardNewsController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.news.dashboard-news');
+        $items = News::paginate(5);
+        return view('pages.superAdmin.news.dashboard-news', compact('items'));
     }
 
     /**
