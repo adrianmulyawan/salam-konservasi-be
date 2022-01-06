@@ -72,7 +72,9 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.gallery.dashboard-edit-conservation-area-gallery');
+        $data = ConservationAreaGallery::findOrFail($id);
+        $conservation_areas = ConservationArea::all();
+        return view('pages.superAdmin.gallery.dashboard-edit-conservation-area-gallery', compact('data', 'conservation_areas'));
     }
 
     /**
@@ -82,9 +84,19 @@ class DashboardConservationAreaGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ConservationAreaGalleryRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['photo'] = $request->file('photo')->store('assets/conservation_gallery', 'public');
+        $item = ConservationAreaGallery::findOrFail($id)->update($data);
+
+        if ($item) {
+            session()->flash('success', 'Data Galeri Kawasan Konservasi Berhasil Diubah');
+            return redirect()->route('Adminmanage-gallery.index');
+        } else {
+            session()->flash('failed', 'Data Galeri Kawasan Konservasi Gagal Diubah');
+            return redirect()->route('Adminmanage-gallery.index');
+        }
     }
 
     /**
@@ -95,6 +107,14 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ConservationAreaGallery::findOrFail($id)->delete();
+
+        if ($data) {
+            session()->flash('success', 'Data Galeri Kawasan Konservasi Berhasil Dihapus');
+            return redirect()->route('Adminmanage-gallery.index');
+        } else {
+            session()->flash('failed', 'Data Galeri Kawasan Konservasi Gagal Dihapus');
+            return redirect()->route('Adminmanage-gallery.index');
+        }
     }
 }

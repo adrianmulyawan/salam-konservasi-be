@@ -16,17 +16,28 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('Adminmanage-gallery.update', $data->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputKawasan">Nama Kawasan</label>
-                                        <select class="form-control" id="inputKawasan" name="kawasan_konservasi">
-                                          <option selected>KKPD Pulau Randayan</option>
-                                          <option>KKPD Paloh</option>
-                                          <option>KKPD Kubu Raya</option>
-                                          <option>KKPD Kendawangan</option>
-                                          <option>KKPD Kayong Utara</option>
+                                        <select class="form-control" id="inputKawasan" name="conservation_area_id">
+                                          <option value="{{ $data->conservation_area_id }}" selected disabled>Jangan Diubah (Bila Tidak Ingin Edit Data)</option>
+                                          @foreach ($conservation_areas as $conservation)
+                                            <option value="{{ $conservation->id }}">{{ $conservation->name }}</option>
+                                          @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -34,8 +45,8 @@
                                             Foto Kawasan
                                         </label>
                                         <div class="custom-file">
-                                            <input type="file" name="peta_kawaan" class="custom-file-input" id="inputPeta" required>
-                                            <label class="custom-file-label" for="inputPeta">Masukan Foto Kawasan</label>
+                                            <input type="file" name="photo" class="custom-file-input" id="inputPeta">
+                                            <label class="custom-file-label" for="inputPeta">{{ $data->photo }}</label>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>

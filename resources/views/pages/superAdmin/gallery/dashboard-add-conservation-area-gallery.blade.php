@@ -16,6 +16,16 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ route('Adminmanage-gallery.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card card-edit-profile">

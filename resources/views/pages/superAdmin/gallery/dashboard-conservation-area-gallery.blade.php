@@ -12,6 +12,11 @@
                 <p class="dashboard-subtitle">
                     Daftar Foto Kawsan Konservasi KKPD Kalimantan Barat
                 </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <!-- 2. Table Data Kawasan -->
