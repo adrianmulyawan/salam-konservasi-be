@@ -89,18 +89,18 @@ class DashboardConservationAreaController extends Controller
     public function update(ConservationAreaRequest $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
+        $data['slug'] = Str::slug($request->name);
         $data['map'] = $request->file('map')->store('assets/map', 'public');
-        $data['user_id'] = Auth::user();
+        // $data['user_id'] = Auth::user();
 
         $item = ConservationArea::findOrFail($id)->update($data);
 
         if ($item) {
             session()->flash('success', 'Data Kawasan Konservasi Berhasil Diubah');
-            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+            return redirect()->route('Adminmanage-conservation-area.index');
         } else {
             session()->flash('failed', 'Data Kawasan Konservasi Gagal Diubah');
-            return redirect()->route('Adminmanage-conservation-area-gallery.index');
+            return redirect()->route('Adminmanage-conservation-area.index');
         }
     }
 
@@ -112,6 +112,14 @@ class DashboardConservationAreaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ConservationArea::findOrFail($id)->delete();
+
+        if ($data) {
+            session()->flash('success', 'Data Kawasan Konservasi Berhasil Dihapus');
+            return redirect()->route('Adminmanage-conservation-area.index');
+        } else {
+            session()->flash('failed', 'Data Kawasan Konservasi Gagal Dihapus');
+            return redirect()->route('Adminmanage-conservation-area.index');
+        }
     }
 }
