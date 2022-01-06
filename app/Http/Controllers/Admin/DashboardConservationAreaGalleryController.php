@@ -14,7 +14,7 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-conservation-area-gallery');
+        return view('pages.superAdmin.gallery.dashboard-conservation-area-gallery');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-conservation-area-gallery');
+        return view('pages.superAdmin.gallery.dashboard-add-conservation-area-gallery');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardConservationAreaGalleryController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-conservation-area-gallery');
+        return view('pages.superAdmin.gallery.dashboard-edit-conservation-area-gallery');
     }
 
     /**
