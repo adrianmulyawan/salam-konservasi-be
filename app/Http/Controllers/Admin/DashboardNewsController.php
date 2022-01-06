@@ -14,7 +14,7 @@ class DashboardNewsController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-news');
+        return view('pages.superAdmin.news.dashboard-news');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardNewsController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-news');
+        return view('pages.superAdmin.news.dashboard-add-news');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardNewsController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-news');
+        return view('pages.superAdmin.news.dashboard-edit-news');
     }
 
     /**
