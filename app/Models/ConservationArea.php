@@ -25,4 +25,9 @@ class ConservationArea extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function conservation_area_galleries()
+    {
+        return $this->hasMany(ConservationAreaGallery::class, 'conservation_areas_id', 'id');
+    }
 }
