@@ -52,7 +52,7 @@
                                             <tr>
                                                 <td class="text-center">{{ $no }}</td>
                                                 <td class="text-center">{{ $item->title }}</td>
-                                                <td class="text-center">{{ $item->event_date }}</td>
+                                                <td class="text-center">{{  \Carbon\Carbon::parse($item->event_date)->format('d M Y') }}</td>
                                                 <td class="text-center">{{ $item->conservation_area->name }}</td>
                                                 <td class="text-center">
                                                     <img src="{{ Storage::url($item->photo) }}" alt="foto-kawasan" class="foto-kawasan img-thumbnail">
@@ -62,7 +62,7 @@
                                                     <a href="{{ route('Adminmanage-event.edit', $item->id) }}" class="btn btn-info mt-auto">
                                                         <i class="fa fa-pencil-alt"></i>
                                                     </a>
-                                                    <form action="{{ route('Adminmanage-event.destroy') }}" method="post" class="d-inline confirm-delete">
+                                                    <form action="{{ route('Adminmanage-event.destroy', $item->id) }}" method="post" class="d-inline confirm-delete">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger">
@@ -83,15 +83,7 @@
                     </div>
                     <!-- Pagination -->
                     <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                       {{ $items->links() }}
                     </div>
                 </div>
             </div>

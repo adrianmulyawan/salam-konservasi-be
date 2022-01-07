@@ -309,7 +309,7 @@
 
 @push('addon-script')
     {{-- Gijgo Script --}}
-    <script src="frontend/libraries/gijgo/js/gijgo.js"></script>
+    <script src="{{ url('frontend/libraries/gijgo/js/gijgo.js') }}"></script>
     <script>
         $(document).ready(function() {
             // Gijgo

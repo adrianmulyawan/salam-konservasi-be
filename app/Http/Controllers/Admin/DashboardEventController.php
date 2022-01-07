@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EventRequest;
+use App\Models\ConservationArea;
 use App\Models\Event;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class DashboardEventController extends Controller
 {
@@ -27,7 +31,8 @@ class DashboardEventController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.event.dashboard-add-event');
+        $conservation_areas = ConservationArea::all();
+        return view('pages.superAdmin.event.dashboard-add-event', compact('conservation_areas'));
     }
 
     /**
@@ -36,9 +41,22 @@ class DashboardEventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+        $data['photo'] = $request->file('photo')->store('assets/event', 'public');
+        $data['user_id'] = Auth::user()->id;
+
+        Event::create($data);
+
+        if ($data) {
+            session()->flash('success', 'Data Acara Kawasan Konservasi Berhasil Ditambahkan');
+            return redirect()->route('Adminmanage-event.index');
+        } else {
+            session()->flash('failed', 'Data Acara Kawasan Konservasi Gagal Ditambahkan');
+            return redirect()->route('Adminmanage-event.index');
+        }
     }
 
     /**
