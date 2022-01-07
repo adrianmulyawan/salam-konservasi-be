@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class DashboardEventController extends Controller
@@ -14,7 +16,8 @@ class DashboardEventController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.event.dashboard-event');
+        $items = Event::with(['conservation_area'])->paginate(5);
+        return view('pages.superAdmin.event.dashboard-event', compact('items'));
     }
 
     /**

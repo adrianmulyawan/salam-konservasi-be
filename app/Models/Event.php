@@ -12,7 +12,8 @@ class Event extends Model
     protected $table = 'events';
 
     protected $fillable = [
-
+        'user_id', 'conservation_area_id', 'title', 'slug',
+        'event_date', 'photo', 'event_content'
     ];
 
     protected $hidden = [];
@@ -22,7 +23,7 @@ class Event extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function coneservation_area()
+    public function conservation_area()
     {
         return $this->belongsTo(ConservationArea::class, 'conservation_area_id', 'id');
     }

@@ -28,7 +28,8 @@ class EventRequest extends FormRequest
             'title'                => 'string|max:255',
             'slug'                 => 'string|max:255',
             'photo'                => 'image|mimes:png,jpg,webp,jpeg|max:2048',
-            'event_content'        => 'string'
+            'event_content'        => 'string',
+            'event_date'           => 'date'
         ];
     }
 }
