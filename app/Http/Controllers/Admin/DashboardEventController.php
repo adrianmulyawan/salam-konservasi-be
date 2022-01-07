@@ -98,6 +98,7 @@ class DashboardEventController extends Controller
         // $data['user_id'] = Auth::user()->id;
 
        $item = Event::findOrFail($id)->update($data);
+
         if ($item) {
             session()->flash('success', 'Data Acara Kawasan Konservasi Berhasil Diubah');
             return redirect()->route('Adminmanage-event.index');
@@ -115,6 +116,14 @@ class DashboardEventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Event::findOrFail($id)->delete();
+
+        if ($data) {
+            session()->flash('success', 'Data Acara Kawasan Konservasi Berhasil Dihapus');
+            return redirect()->route('Adminmanage-event.index');
+        } else {
+            session()->flash('failed', 'Data Acara Kawasan Konservasi Gagal Dihapus');
+            return redirect()->route('Adminmanage-event.index');
+        }
     }
 }

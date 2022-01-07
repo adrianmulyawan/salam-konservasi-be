@@ -40,7 +40,6 @@
                                             <th class="text-center">Judul Acara</th>
                                             <th class="text-center">Tanggal Acara</th>
                                             <th class="text-center">Lokasi Acara</th>
-                                            <th class="text-center">Foto Acara</th>
                                             <th class="text-center">Author</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
@@ -54,9 +53,6 @@
                                                 <td class="text-center">{{ $item->title }}</td>
                                                 <td class="text-center">{{  \Carbon\Carbon::parse($item->event_date)->format('d M Y') }}</td>
                                                 <td class="text-center">{{ $item->conservation_area->name }}</td>
-                                                <td class="text-center">
-                                                    <img src="{{ Storage::url($item->photo) }}" alt="foto-kawasan" class="foto-kawasan img-thumbnail">
-                                                </td>
                                                 <td class="text-center">{{ $item->user->name }}</td>
                                                 <td class="text-center">
                                                     <a href="{{ route('Adminmanage-event.edit', $item->id) }}" class="btn btn-info mt-auto">
