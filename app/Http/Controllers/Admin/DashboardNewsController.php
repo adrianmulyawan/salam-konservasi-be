@@ -41,7 +41,7 @@ class DashboardNewsController extends Controller
     public function store(NewsRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
+        $data['slug'] = Str::slug($request->slug);
         $data['photo'] = $request->file('photo')->store('assets/news', 'public');
         $data['user_id'] = Auth::user()->id;
 
@@ -75,7 +75,8 @@ class DashboardNewsController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.news.dashboard-edit-news');
+        $data = News::findOrFail($id);
+        return view('pages.superAdmin.news.dashboard-edit-news', compact('data'));
     }
 
     /**
@@ -85,9 +86,22 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NewsRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->slug);
+        $data['photo'] = $request->file('photo')->store('assets/news', 'public');
+        // $data['user_id'] = Auth::user()->id;
+
+        $item = News::findOrFail($id)->update($data);
+
+        if ($item) {
+            session()->flash('success', 'Data Berita Kawasan Konservasi Berhasil Diubah');
+            return redirect()->route('Adminmanage-news.index');
+        } else {
+            session()->flash('failed', 'Data Berita Kawasan Konservasi Gagal Diubah');
+            return redirect()->route('Adminmanage-news.index');
+        }
     }
 
     /**
@@ -98,6 +112,13 @@ class DashboardNewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = News::findOrFail($id)->delete();
+        if ($data) {
+            session()->flash('success', 'Data Berita Kawasan Konservasi Berhasil Dihapus');
+            return redirect()->route('Adminmanage-news.index');
+        } else {
+            session()->flash('failed', 'Data Berita Kawasan Konservasi Gagal Dihapus');
+            return redirect()->route('Adminmanage-news.index');
+        }
     }
 }

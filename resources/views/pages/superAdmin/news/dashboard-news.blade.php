@@ -51,7 +51,7 @@
                                                 <td class="text-center">{{ $no }}</td>
                                                 <td class="text-center">{{ $item->title }}</td>
                                                 <td class="text-center">
-                                                    <img src="{{ Storage::url($item->photo) }}" alt="foto-kawasan" class="foto-kawasan">
+                                                    <img src="{{ Storage::url($item->photo) }}" alt="foto-kawasan" class="foto-kawasan img-thumbnail">
                                                 </td>
                                                 <td class="text-center">{{ $item->user->name }}</td>
                                                 <td class="text-center">
@@ -59,6 +59,8 @@
                                                         <i class="fa fa-pencil-alt"></i>
                                                     </a>
                                                     <form action="{{ route('Adminmanage-news.destroy', $item->id) }}" method="post" class="d-inline confirm-delete">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <button class="btn btn-danger">
                                                             <i class="fa fa-trash"></i>
                                                         </button>
