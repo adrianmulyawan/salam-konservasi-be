@@ -78,7 +78,9 @@ class DashboardEventController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.event.dashboard-edit-event');
+        $data = Event::findOrFail($id);
+        $conservation_areas = ConservationArea::all();
+        return view('pages.superAdmin.event.dashboard-edit-event', compact('data', 'conservation_areas'));
     }
 
     /**
@@ -88,9 +90,21 @@ class DashboardEventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EventRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+        $data['photo'] = $request->file('photo')->store('assets/event', 'public');
+        // $data['user_id'] = Auth::user()->id;
+
+       $item = Event::findOrFail($id)->update($data);
+        if ($item) {
+            session()->flash('success', 'Data Acara Kawasan Konservasi Berhasil Diubah');
+            return redirect()->route('Adminmanage-event.index');
+        } else {
+            session()->flash('failed', 'Data Acara Kawasan Konservasi Gagal Diubah');
+            return redirect()->route('Adminmanage-event.index');
+        }
     }
 
     /**

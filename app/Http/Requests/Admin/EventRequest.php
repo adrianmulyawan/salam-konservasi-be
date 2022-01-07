@@ -27,7 +27,7 @@ class EventRequest extends FormRequest
             'conservation_area_id' => 'integer|exists:conservation_areas,id',
             'title'                => 'string|max:255',
             'slug'                 => 'string|max:255',
-            'photo'                => 'image|mimes:png,jpg,webp,jpeg|max:2048',
+            'photo'                => 'image|mimes:png,jpg,jpeg,webp|max:2048',
             'event_content'        => 'string',
             'event_date'           => 'string'
         ];
