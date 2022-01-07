@@ -12,9 +12,8 @@ class ConservationArea extends Model
     protected $table = 'conservation_areas';
 
     protected $fillable = [
-        'user_id', 'master_price_id',
-        'name', 'slug', 'location', 'description', 'area',
-        'is_open', 'map', 'is_homestay', 'is_resto'
+        'user_id', 'name', 'slug', 'location', 'description', 
+        'area', 'is_open', 'map', 'is_homestay', 'is_resto'
     ];
 
     protected $hidden = [

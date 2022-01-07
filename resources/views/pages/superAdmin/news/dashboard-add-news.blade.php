@@ -16,7 +16,18 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('Adminmanage-news.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
@@ -24,17 +35,19 @@
                                             Foto Berita
                                         </label>
                                         <div class="custom-file">
-                                            <input type="file" name="foto_berita" class="custom-file-input" id="inputFoto" required>
+                                            <input type="file" name="photo" class="custom-file-input" value="{{ old('photo') }}" id="inputFoto" required>
                                             <label class="custom-file-label" for="inputFoto">Masukan Foto Berita</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputJudulBerita">Judul Berita</label>
-                                        <input type="text" name="judul_berita" class="form-control" id="inputJudulBerita" placeholder="Masukan Judul Berita">
+                                        <input type="text" name="title" value="{{ old('title') }}" class="form-control" id="inputJudulBerita" placeholder="Masukan Judul Berita">
                                     </div>
                                     <div class="form-group">
                                         <label for="isi_berita">Masukan Isi Berita</label>
-                                        <textarea class="form-control" name="isi_berita" id="isi_berita" rows="3" placeholder="Masukan Isi Berita"></textarea>
+                                        <textarea class="form-control" name="news_content" id="isi_berita" rows="3" placeholder="Masukan Isi Berita">
+                                            {{ old('news_content') }}
+                                        </textarea>
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>

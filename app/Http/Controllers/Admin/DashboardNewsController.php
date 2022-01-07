@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\NewsRequest;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class DashboardNewsController extends Controller
 {
@@ -35,9 +38,22 @@ class DashboardNewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+        $data['photo'] = $request->file('photo')->store('assets/news', 'public');
+        $data['user_id'] = Auth::user()->id;
+
+        News::create($data);
+
+        if ($data) {
+            session()->flash('success', 'Data Berita Kawasan Konservasi Berhasil Ditambahkan');
+            return redirect()->route('Adminmanage-news.index');
+        } else {
+            session()->flash('failed', 'Data Berita Kawasan Konservasi Gagal Ditambahkan');
+            return redirect()->route('Adminmanage-news.index');
+        }
     }
 
     /**
