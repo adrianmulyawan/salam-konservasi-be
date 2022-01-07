@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class, 'users_id', 'id');
     }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'users_id', 'id');
+    }
 }

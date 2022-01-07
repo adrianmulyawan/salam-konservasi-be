@@ -14,7 +14,7 @@ class DashboardEventController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-event');
+        return view('pages.superAdmin.event.dashboard-event');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardEventController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-event');
+        return view('pages.superAdmin.event.dashboard-add-event');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardEventController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-event');
+        return view('pages.superAdmin.event.dashboard-edit-event');
     }
 
     /**

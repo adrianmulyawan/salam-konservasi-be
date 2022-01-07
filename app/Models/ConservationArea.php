@@ -29,4 +29,9 @@ class ConservationArea extends Model
     {
         return $this->hasMany(ConservationAreaGallery::class, 'conservation_areas_id', 'id');
     }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'conservation_areas_id', 'id');
+    }
 }
