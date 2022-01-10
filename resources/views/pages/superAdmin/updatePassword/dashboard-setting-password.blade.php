@@ -26,10 +26,10 @@
                             @method('PUT')
                             <div class="card card-edit-profile">
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="current_password">Masukan Password Lama</label>
+                                    <div class="form-group mt-3">
+                                        <label for="current_password">Masukan Password Baru</label>
                                         <div class="input-group">
-                                            <input type="password" name="current_password" id="current_password" class="form-control @error('current_password') is-invalid @enderror" placeholder="Masukan Password Anda">
+                                            <input type="password" name="current_password" id="current_password" class="form-control @error('current_password') is-invalid @enderror" placeholder="Masukan Password Lama Anda">
                                             @error('current_password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                             @enderror
                                             <div class="input-group-append">
                                                 <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
-                                                <span id="buttonOldPassword" onclick="oldPass()" class="input-group-text">
+                                                <span id="mybuttonOld" onclick="currentPassword()" class="input-group-text">
                         
                                                     <!-- icon mata bawaan bootstrap  -->
                                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"
