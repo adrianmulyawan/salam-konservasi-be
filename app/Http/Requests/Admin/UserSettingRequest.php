@@ -25,7 +25,7 @@ class UserSettingRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
             'password' => 'required|min:8',
             'phone_number' => 'required|min:12',
             'address' => 'required|string|min:8'

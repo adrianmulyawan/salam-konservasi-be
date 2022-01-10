@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
             'password' => 'required|min:8',
             'role' => 'nullable|string|in:applicant,superadmin,leader,fieldadmin',
             'phone_number' => 'required|min:12',
