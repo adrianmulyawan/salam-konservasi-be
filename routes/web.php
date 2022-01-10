@@ -151,6 +151,11 @@ Route::prefix('dashboard/admin')
             ->name('settingAccountAdmin');
         Route::put('/profile/update', [\App\Http\Controllers\Admin\DashboardSettingAdminController::class, 'update'])
             ->name('updateAccountAdmin');
+
+        Route::get('/change-password', [\App\Http\Controllers\Admin\DashboardEditPasswordController::class, 'edit'])
+            ->name('settingPasswordAdmin');
+        Route::put('/change-password/update', [\App\Http\Controllers\Admin\DashboardEditPasswordController::class, 'update'])
+            ->name('updatePasswordAdmin');
     }
 );
 

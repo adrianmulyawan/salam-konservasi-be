@@ -46,18 +46,23 @@
                 </li>
                 <!-- Nav User -->
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                        <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
-                        Hi, Karlina Putri
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="../indexAuthUser.html" class="dropdown-item">
-                            Halaman Utama
+                    @if (Auth::user()->role == 'superadmin')
+                        <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
+                            {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                         </a>
-                        <a href="#" class="dropdown-item">Pengaturan Akun</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Logout</a>
-                    </div>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('home') }}" class="dropdown-item">
+                                Halaman Utama
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('AdminsettingAccountAdmin') }}" class="dropdown-item">Pengaturan Akun</a>
+                            <a href="{{ route('AdminsettingPasswordAdmin') }}" class="dropdown-item">Ubah Password</a>
+                        </div>
+                    @elseif (Auth::user()->role == 'leader')
+                    @elseif (Auth::user()->role == 'fieldadmin')
+                    @elseif (Auth::user()->role == 'applicant')
+                    @endif
                 </li>
             </ul>
 
