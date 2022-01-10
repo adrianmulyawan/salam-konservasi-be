@@ -16,8 +16,10 @@ class DashboardSettingAdminController extends Controller
     {
         $data = $request->all();
         
-        if (!empty($request->password)) {
+        if ($request->password) {
             $data['password'] = bcrypt($request->password);
+        } else {
+            unset($data['password']);
         }
         
         $updateData = auth()->user()->update($data);
