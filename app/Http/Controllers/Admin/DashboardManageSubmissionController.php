@@ -9,25 +9,25 @@ class DashboardManageSubmissionController extends Controller
 {
     public function index()
     {
-        return view('pages.superAdmin.dashboard-manage-submission');
+        return view('pages.superAdmin.submission.dashboard-manage-submission');
     }
 
-    public function changeSubmissionStatus()
+    public function changeSubmissionStatus($id)
     {
-        return view('pages.superAdmin.dashboard-change-submission-status');
+        return view('pages.superAdmin.submission.dashboard-change-submission-status');
     }
 
-    public function submissionStatusApproved()
+    public function submissionStatusApproved($id)
     {
-        return view('pages.superAdmin.dashboard-submission-status-approved');
+        return view('pages.superAdmin.submission.dashboard-submission-status-approved');
     }
 
-    public function submissionStatusRejected()
+    public function submissionStatusRejected($id)
     {
-        return view('pages.superAdmin.dashboard-submission-status-rejected');
+        return view('pages.superAdmin.submission.dashboard-submission-status-rejected');
     }
 
-    public function submissionStatusFailed()
+    public function submissionStatusFailed($id)
     {
         return view('pages.superAdmin.dashboard-submission-status-failed');
     }
