@@ -16,28 +16,39 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        {{-- Tambahkan Error Handling --}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="{{ route('Adminmanage-user.store') }}" method="post">
+                            @csrf
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputName">
                                             Nama
                                         </label>
-                                        <input type="text" name="name" class="form-control" id="inputName" placeholder="Masukan Nama User" autofocus>
+                                        <input type="text" name="name" class="form-control" id="inputName" placeholder="Masukan Nama User" autofocus required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail">
                                             Email
                                         </label>
-                                        <input type="text" name="email" class="form-control" id="inputEmail" placeholder="Masukan Email User">
+                                        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Masukan Email User" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword">Password</label>
                                         <div class="input-group">
-                                            <input type="password" name="name" id="inputPassword" class="form-control" placeholder="Masukan Password Anda">
+                                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Masukan Password Anda" required>
                                             <div class="input-group-append">
                                                 <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
-                                                <span id="mybutton" onclick="change()" class="input-group-text">
+                                                <span id="mybutton" onclick="password()" class="input-group-text">
                         
                                                     <!-- icon mata bawaan bootstrap  -->
                                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"
@@ -51,13 +62,25 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="inputPhoneNumber">
+                                            No Telpon
+                                        </label>
+                                        <input type="text" name="phone_number" class="form-control" id="inputPhoneNumber" placeholder="Masukan Nomor Handphone User" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAlamat">
+                                            Alamat
+                                        </label>
+                                        <input type="text" name="address" class="form-control" id="inputAlamat" placeholder="Masukan Nomor Handphone User" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="inputRole">Pilih Role</label>
-                                        <select class="form-control" id="inputRole" name="role_user">
+                                        <select class="form-control" id="inputRole" name="role">
                                           <option selected disabled>Pilih Role User</option>
-                                          <option>SUPER ADMIN</option>
-                                          <option>PIMPINAN</option>
-                                          <option>ADMIN LAPANGAN</option>
-                                          <option>PEMOHON</option>
+                                          <option value="superadmin">SUPER ADMIN</option>
+                                          <option value="leader">PIMPINAN</option>
+                                          <option value="fieldadmin">ADMIN LAPANGAN</option>
+                                          <option value="applicant">PEMOHON</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>

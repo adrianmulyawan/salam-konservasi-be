@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardManageUserController extends Controller
@@ -14,7 +16,8 @@ class DashboardManageUserController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.manageUser.dashboard-manage-user');
+        $items = User::orderBy('created_at', 'desc')->paginate(10);
+        return view('pages.superAdmin.manageUser.dashboard-manage-user', compact('items'));
     }
 
     /**
@@ -33,9 +36,19 @@ class DashboardManageUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        User::create($data);
+
+        if ($data) {
+            session()->flash('success', 'Data User Berhasil Ditambahkan');
+            return redirect()->route('Adminmanage-user.index');
+        } else {
+            session()->flash('failed', 'Data User Gagal Ditambahkan');
+            return redirect()->route('Adminmanage-user.index');
+        }
     }
 
     /**
@@ -57,7 +70,8 @@ class DashboardManageUserController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.manageUser.dashboard-edit-user');
+        $data = User::findOrFail($id);
+        return view('pages.superAdmin.manageUser.dashboard-edit-user', compact('data'));
     }
 
     /**
@@ -67,9 +81,24 @@ class DashboardManageUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        } else {
+            unset($data['password']);
+        }
+        
+        $item = User::findOrFail($id)->update($data);
+
+        if ($item) {
+            session()->flash('success', 'Data User Berhasil Diubah');
+            return redirect()->route('Adminmanage-user.index');
+        } else {
+            session()->flash('failed', 'Data User Gagal Diubah');
+            return redirect()->route('Adminmanage-user.index');
+        }
     }
 
     /**
@@ -80,6 +109,13 @@ class DashboardManageUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = User::findOrFail($id)->delete();
+        if ($data) {
+            session()->flash('success', 'Data User Berhasil Dihapus');
+            return redirect()->route('Adminmanage-user.index');
+        } else {
+            session()->flash('failed', 'Data User Gagal Dihapus');
+            return redirect()->route('Adminmanage-user.index');
+        }
     }
 }
