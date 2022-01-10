@@ -9,6 +9,6 @@ class DashboardVisitorControlController extends Controller
 {
     public function index()
     {
-        return view('pages.superAdmin.dashboard-visitor-control');
+        return view('pages.superAdmin.visitorControl.dashboard-visitor-control');
     }
 }
