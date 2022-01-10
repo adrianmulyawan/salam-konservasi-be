@@ -3,12 +3,31 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\UserSettingRequest;
 
 class DashboardSettingAdminController extends Controller
 {
-    public function index()
+    public function edit()
     {
         return view('pages.superAdmin.settingsAccount.dashboard-setting-account');
+    }
+
+    public function update(UserSettingRequest $request)
+    {
+        $data = $request->all();
+        
+        if (!empty($request->password)) {
+            $data['password'] = bcrypt($request->password);
+        }
+        
+        $updateData = auth()->user()->update($data);
+
+        if ($updateData) {
+            session()->flash('success', 'Data User Berhasil Diubah');
+            return redirect()->route('AdminsettingAccountAdmin');
+        } else {
+            session()->flash('failed', 'Data User Gagal Diubah');
+            return redirect()->route('AdminsettingAccountAdmin');
+        }
     }
 }
