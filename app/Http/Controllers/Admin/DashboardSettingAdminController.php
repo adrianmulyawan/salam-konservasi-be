@@ -9,6 +9,6 @@ class DashboardSettingAdminController extends Controller
 {
     public function index()
     {
-        return view('pages.superAdmin.dashboard-setting-account');
+        return view('pages.superAdmin.settingsAccount.dashboard-setting-account');
     }
 }
