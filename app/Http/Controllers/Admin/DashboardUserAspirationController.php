@@ -9,11 +9,11 @@ class DashboardUserAspirationController extends Controller
 {
     public function index()
     {
-        return view('pages.superAdmin.dashboard-user-aspiration');
+        return view('pages.superAdmin.userAspiration.dashboard-user-aspiration');
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('pages.superAdmin.dashboard-user-aspiration-detail');
+        return view('pages.superAdmin.userAspiration.dashboard-user-aspiration-detail');
     }
 }
