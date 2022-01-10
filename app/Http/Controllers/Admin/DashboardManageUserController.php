@@ -14,7 +14,7 @@ class DashboardManageUserController extends Controller
      */
     public function index()
     {
-        return view('pages.superAdmin.dashboard-manage-user');
+        return view('pages.superAdmin.manageUser.dashboard-manage-user');
     }
 
     /**
@@ -24,7 +24,7 @@ class DashboardManageUserController extends Controller
      */
     public function create()
     {
-        return view('pages.superAdmin.dashboard-add-user');
+        return view('pages.superAdmin.manageUser.dashboard-add-user');
     }
 
     /**
@@ -57,7 +57,7 @@ class DashboardManageUserController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.superAdmin.dashboard-edit-user');
+        return view('pages.superAdmin.manageUser.dashboard-edit-user');
     }
 
     /**
