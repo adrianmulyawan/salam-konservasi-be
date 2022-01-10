@@ -147,9 +147,9 @@ Route::prefix('dashboard/admin')
         Route::get('/visitor-control', [\App\Http\Controllers\Admin\DashboardVisitorControlController::class, 'index'])
             ->name('visitorControlAdmin');
 
-        Route::get('/admin-setting-account', [\App\Http\Controllers\Admin\DashboardSettingAdminController::class, 'edit'])
+        Route::get('/profile', [\App\Http\Controllers\Admin\DashboardSettingAdminController::class, 'edit'])
             ->name('settingAccountAdmin');
-        Route::put('/admin-setting-account/update', [\App\Http\Controllers\Admin\DashboardSettingAdminController::class, 'update'])
+        Route::put('/profile/update', [\App\Http\Controllers\Admin\DashboardSettingAdminController::class, 'update'])
             ->name('updateAccountAdmin');
     }
 );

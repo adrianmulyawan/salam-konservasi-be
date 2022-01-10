@@ -15,11 +15,9 @@ class DashboardSettingAdminController extends Controller
     public function update(UserSettingRequest $request)
     {
         $data = $request->all();
-        
-        if ($request->password) {
-            $data['password'] = bcrypt($request->password);
-        } else {
-            unset($data['password']);
+
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
         }
         
         $updateData = auth()->user()->update($data);
