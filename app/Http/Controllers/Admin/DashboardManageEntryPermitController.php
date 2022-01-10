@@ -9,16 +9,16 @@ class DashboardManageEntryPermitController extends Controller
 {
     public function index()
     {
-        return view('pages.superAdmin.dashboard-manage-entry-permit');
+        return view('pages.superAdmin.manageEntryPermit.dashboard-manage-entry-permit');
     }
 
-    public function uploadEntryPermit()
+    public function uploadEntryPermit($id)
     {
-        return view('pages.superAdmin.dashboard-upload-entry-permit');
+        return view('pages.superAdmin.manageEntryPermit.dashboard-upload-entry-permit');
     }
 
     public function detailEntryPermit()
     {
-        return view('pages.superAdmin.dashboard-detail-entry-permit');
+        return view('pages.superAdmin.manageEntryPermit.dashboard-detail-entry-permit');
     }
 }
