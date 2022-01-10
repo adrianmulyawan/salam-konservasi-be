@@ -12,17 +12,17 @@ class DashboardManageTransactionController extends Controller
         return view('pages.superAdmin.transaction.dashboard-manage-transaction');
     }
 
-    public function changeTransactionStatus()
+    public function changeTransactionStatus($id)
     {
         return view('pages.superAdmin.transaction.dashboard-change-transaction-status');
     }
 
-    public function transactionStatusPaidOff()
+    public function transactionStatusPaidOff($id)
     {
         return view('pages.superAdmin.transaction.dashboard-transaction-status-paid-off');
     }
 
-    public function transactionStatusFailed()
+    public function transactionStatusFailed($id)
     {
         return view('pages.superAdmin.transaction.dashboard-transaction-status-failed');
     }
