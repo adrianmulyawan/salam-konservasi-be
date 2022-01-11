@@ -57,46 +57,275 @@
                 </form>
             @endguest
             @auth
-                {{-- Profile Pictur & Notif: Desktop --}}
-                <ul class="navbar-nav d-none d-lg-flex">
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                            <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
-                            Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="pemohon/dashboard.html" class="dropdown-item">Dashboard</a>
-                            <a href="#" class="dropdown-item">Pengaturan Akun</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
+                @if (Auth::user()->role == 'applicant')
+                    {{-- Profile Pictur & Notif: Desktop --}}
+                    <ul class="navbar-nav d-none d-lg-flex">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    <!-- Notif -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-lin d-inline-block mt-3">
-                            <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                            <div class="notification">4</div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Profile Picture & Notif: Mobile Menu -->
-                <ul class="navbar-nav d-block d-lg-none">
-                    <li class="nav-item">
-                        <a href="pemohon/dashboard.html" class="nav-link">
-                            Hi, {{ Auth::user()->name }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link d-inline-block">
-                            Notifikasi
-                        </a>
-                    </li>
-                </ul>
+                            <div class="dropdown-menu">
+                                <a href="{{ route('dashboardApplicant') }}" class="dropdown-item">Dashboard</a>
+                                <a href="{{ route('settingAccountApplicant') }}" class="dropdown-item">Pengaturan Akun</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        <!-- Notif -->
+                        <li class="nav-item dropdown notification-content">
+                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
+                                <div class="notification">4</div>
+                            </a>
+                            <div class="dropdown-menu text-center p-2">
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-danger">
+                                        <i class="fas fa-times my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Profile Picture & Notif: Mobile Menu -->
+                    <ul class="navbar-nav d-block d-lg-none">
+                        <li class="nav-item">
+                            <a href="{{ route('dashboardApplicant') }}" class="nav-link">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link d-inline-block">
+                                Notifikasi
+                            </a>
+                        </li>
+                    </ul>
+                @elseif (Auth::user()->role == 'superadmin')
+                    {{-- Profile Pictur & Notif: Desktop --}}
+                    <ul class="navbar-nav d-none d-lg-flex">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="{{ route('AdmindashboardAdmin') }}" class="dropdown-item">Dashboard</a>
+                                <a href="{{ route('AdminsettingAccountAdmin') }}" class="dropdown-item">Pengaturan Akun</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        <!-- Notif -->
+                        <li class="nav-item dropdown notification-content-home">
+                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
+                                <div class="notification">4</div>
+                            </a>
+                            <div class="dropdown-menu text-center p-2">
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-danger">
+                                        <i class="fas fa-times my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Profile Picture & Notif: Mobile Menu -->
+                    <ul class="navbar-nav d-block d-lg-none">
+                        <li class="nav-item">
+                            <a href="{{ route('AdmindashboardAdmin') }}" class="nav-link">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link d-inline-block">
+                                Notifikasi
+                            </a>
+                        </li>
+                    </ul>
+                @elseif (Auth::user()->role == 'leader')
+                    {{-- Profile Pictur & Notif: Desktop --}}
+                    <ul class="navbar-nav d-none d-lg-flex">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="{{ route('LeaderdashboardLeader') }}" class="dropdown-item">Dashboard</a>
+                                <a href="{{ route('LeadersettingAccountLeader') }}" class="dropdown-item">Pengaturan Akun</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        <!-- Notif -->
+                        <li class="nav-item dropdown notification-content-home">
+                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
+                                <div class="notification">4</div>
+                            </a>
+                            <div class="dropdown-menu text-center p-2">
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-danger">
+                                        <i class="fas fa-times my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Profile Picture & Notif: Mobile Menu -->
+                    <ul class="navbar-nav d-block d-lg-none">
+                        <li class="nav-item">
+                            <a href="{{ route('LeaderdashboardLeader') }}" class="nav-link">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link d-inline-block">
+                                Notifikasi
+                            </a>
+                        </li>
+                    </ul>
+                @elseif (Auth::user()->role == 'fieldadmin')
+                    {{-- Profile Pictur & Notif: Desktop --}}
+                    <ul class="navbar-nav d-none d-lg-flex">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="{{ route('dashboardFieldAdmin') }}" class="dropdown-item">Dashboard</a>
+                                <a href="{{ route('settingAccountFieldAdmin') }}" class="dropdown-item">Pengaturan Akun</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        <!-- Notif -->
+                        <li class="nav-item dropdown notification-content-home">
+                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
+                                <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
+                                <div class="notification">4</div>
+                            </a>
+                            <div class="dropdown-menu text-center p-2">
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-danger">
+                                        <i class="fas fa-times my-auto mr-2"></i>
+                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
+                                    </a>
+                                </div>
+                                <div class="card p-2">
+                                    <a href="#" class="d-flex text-primary">
+                                        <i class="fas fa-check my-auto mr-2"></i>
+                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Profile Picture & Notif: Mobile Menu -->
+                    <ul class="navbar-nav d-block d-lg-none">
+                        <li class="nav-item">
+                            <a href="{{ route('dashboardFieldAdmin') }}" class="nav-link">
+                                Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link d-inline-block">
+                                Notifikasi
+                            </a>
+                        </li>
+                    </ul>
+                @endif
             @endauth
         </div>
     </nav>

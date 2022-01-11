@@ -12470,6 +12470,23 @@ body {
   margin-left: -11px;
 }
 
+.navbar-conservation .notification-content-home .dropdown-menu {
+  width: 250px;
+}
+
+.navbar-conservation .notification-content-home .dropdown-menu p {
+  font-size: 14px;
+}
+
+.navbar-conservation .notification-content-home .dropdown-menu .card {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.navbar-conservation .notification-content-home .dropdown-menu .card a {
+  text-decoration: none;
+}
+
 button.btn-login {
   background-color: #051334;
   color: #fff;
@@ -12526,6 +12543,7 @@ button.btn-login:hover {
 }
 
 .navbar-conservation-dashboard .navbar-nav .notification-content .dropdown-menu {
+  margin-right: 120px;
   width: 250px;
 }
 

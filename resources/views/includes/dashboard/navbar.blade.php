@@ -49,7 +49,7 @@
                     @if (Auth::user()->role == 'superadmin')
                         <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                             <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
-                            {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                         </a>
                         <div class="dropdown-menu">
                             <a href="{{ route('home') }}" class="dropdown-item">
