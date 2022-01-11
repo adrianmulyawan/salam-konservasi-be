@@ -27,7 +27,7 @@
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group mt-3">
-                                        <label for="current_password">Masukan Password Baru</label>
+                                        <label for="current_password">Masukan Password Lama</label>
                                         <div class="input-group">
                                             <input type="password" name="current_password" id="current_password" class="form-control @error('current_password') is-invalid @enderror" placeholder="Masukan Password Lama Anda">
                                             @error('current_password')
