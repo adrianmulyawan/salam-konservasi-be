@@ -62,9 +62,9 @@
                             @endif
                             {{-- Tentang Kawasan --}}
                             <h2 class="about-conservation-text">Tentang Kawasan</h2>
-                            <p class="about-conservation">
+                            <div class="about-conservation">
                                 {!! $item->description !!}
-                            </p>
+                            </div>
                             {{-- Features --}}
                             <div class="row features">
                                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
