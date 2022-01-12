@@ -20,8 +20,11 @@
             border-radius: 10px;
 
             .header-image {
-                max-width: 508px;
-                border-radius: 10px;
+                // max-width: 508px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                max-height: fit-content;
+                background-size: cover;
             }
 
             .card-body {
@@ -36,8 +39,8 @@
                     font-size: 18px;
                     color: #B1B1B1;
                 }
-                .card-text-news {
-                    font-size: 16px;
+                p {
+                    font-size: 20px;
                     color: #B1B1B1;
                 }
             }
@@ -51,6 +54,8 @@
             .card-img-top {
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
+                background-size: cover;
+                // max-height: 200px;
             }
             .card-title {
                 font-size: 20px;
@@ -62,12 +67,12 @@
             .card-post {
                 margin-top: 6px;
                 margin-bottom: 10px;
-                font-size: 14px;
+                font-size: 16px;
                 color: #B1B1B1;
                 font-weight: normal;
             }
-            .card-text {
-                font-size: 14px;
+            p {
+                font-size: 18px;
                 color: #B1B1B1;
                 font-weight: normal;
             }
