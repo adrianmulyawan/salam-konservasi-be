@@ -15,6 +15,11 @@
 
 .section-conservation-area-list {
     .section-conservation-area {
+        img {
+            max-height: 220px;
+            background-size: cover;
+        }
+
         .card {
             border-radius: 10px;
 
@@ -33,7 +38,7 @@
                 color: #B1B1B1;
                 font-weight: normal;
             }
-            .card-text {
+            p {
                 font-size: 18px;
                 color: #B1B1B1;
                 font-weight: normal;

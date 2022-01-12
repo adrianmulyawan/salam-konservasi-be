@@ -11353,7 +11353,7 @@ a.text-dark:hover, a.text-dark:focus {
   font-weight: bold;
 }
 
-.section-details-content .card-details p.about-conservation {
+.section-details-content .card-details p {
   font-size: 20px;
   font-weight: lighter;
 }
@@ -11783,6 +11783,11 @@ a.text-dark:hover, a.text-dark:focus {
   font-weight: 300;
 }
 
+.section-conservation-area-list .section-conservation-area img {
+  max-height: 220px;
+  background-size: cover;
+}
+
 .section-conservation-area-list .section-conservation-area .card {
   border-radius: 10px;
 }
@@ -11805,7 +11810,7 @@ a.text-dark:hover, a.text-dark:focus {
   font-weight: normal;
 }
 
-.section-conservation-area-list .section-conservation-area .card .card-text {
+.section-conservation-area-list .section-conservation-area .card p {
   font-size: 18px;
   color: #B1B1B1;
   font-weight: normal;

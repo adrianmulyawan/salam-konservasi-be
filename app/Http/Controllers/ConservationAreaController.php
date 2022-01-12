@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConservationArea;
 use Illuminate\Http\Request;
 
 class ConservationAreaController extends Controller
@@ -13,6 +14,7 @@ class ConservationAreaController extends Controller
      */
     public function index()
     {
-        return view('pages.conservation-area');
+        $items = ConservationArea::with(['galleries'])->paginate(5);
+        return view('pages.conservation-area', compact('items'));
     }
 }
