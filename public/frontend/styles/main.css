@@ -11209,6 +11209,10 @@ a.text-dark:hover, a.text-dark:focus {
   margin-bottom: 30px;
 }
 
+.section-news-content .section-conservation-news .card-news img {
+  max-height: 180px;
+}
+
 .section-news-content .section-conservation-news .card-news .card-body .news-name {
   font-size: 20px;
   font-weight: bold;
@@ -11221,6 +11225,12 @@ a.text-dark:hover, a.text-dark:focus {
 .section-news-content .section-conservation-news .card-news .card-body .news-content {
   font-size: 12px;
   font-weight: normal;
+}
+
+.section-news-content .section-conservation-news p {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .section-news-content .section-conservation-news .all-news {

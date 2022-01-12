@@ -218,6 +218,10 @@
             // background-size: cover;
             margin-bottom: 30px;
 
+            img {
+                max-height: 180px;
+            }
+
             .card-body {
                 .news-name {
                     font-size: 20px;
@@ -231,9 +235,17 @@
                 .news-content {
                     font-size: 12px;
                     font-weight: normal;
+                    // color: #fff;
                 }
             }
         }
+
+        p {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
         .all-news {
             min-height: 380px;
             color: #fff;

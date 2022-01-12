@@ -41,7 +41,7 @@ class DashboardNewsController extends Controller
     public function store(NewsRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->slug);
+        $data['slug'] = Str::slug($request->title);
         $data['photo'] = $request->file('photo')->store('assets/news', 'public');
         $data['user_id'] = Auth::user()->id;
 
@@ -89,7 +89,7 @@ class DashboardNewsController extends Controller
     public function update(NewsRequest $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->slug);
+        $data['slug'] = Str::slug($request->title);
         $data['photo'] = $request->file('photo')->store('assets/news', 'public');
         // $data['user_id'] = Auth::user()->id;
 

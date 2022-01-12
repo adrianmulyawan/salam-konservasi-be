@@ -65,8 +65,9 @@
         <section class="section-conservation-content" id="conservationContent">
             <div class="container">
                 <div class="section-conservation-area row justify-content-center">
+                    <?php $increment = 0; ?>
                     @foreach ($items as $item)
-                        <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $increment += 100; }}">
                             <div class="card-conservation text-center d-flex flex-column" style="background-image: url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->photo) : '' }}');">
                                 <div class="conservation-location">{{ $item->location }}</div>
                                 <div class="conservation-name">
@@ -115,8 +116,9 @@
         <section class="section-events-content" id="eventsContent">
             <div class="container">
                 <div class="section-conservation-events row justify-content-center">
+                    <?php $increment = 0; ?>
                     @foreach ($recent_event as $event)
-                        <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $increment += 100; }}">
                             <div class="card-events text-center d-flex flex-column" style="background-image: url('{{ Storage::url($event->photo) }}');">
                                 <div class="events-name">{{ Str::limit($event->title, 15, '...') }}</div>
                                 <div class="events-location">
@@ -168,59 +170,32 @@
         <section class="section-news-content" id="newsContent">
             <div class="container">
                 <div class="section-conservation-news row justify-content-center">
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card card-news text-left d-flex flex-column">
-                            <img class="news-background" src="{{ url('frontend/images/berita1.png') }}" alt="">
-                            <div class="card-body">
-                                <div class="news-name card-title">
-                                    <a href="#" class="news-link">
-                                        Bantuan Alat Selam
-                                    </a>
-                                </div>
-                                <div class="news-content card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card card-news text-left d-flex flex-column">
-                            <img class="news-background" src="{{ url('frontend/images/berita2.png') }}" alt="">
-                            <div class="card-body">
-                                <div class="news-name card-title">
-                                    <a href="#" class="news-link">
-                                        Bantuan Alat Selam
-                                    </a>
-                                </div>
-                                <div class="news-content card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget 
+                    <?php $increment = 0; ?>
+                    @foreach ($recent_news as $news)
+                        <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $increment += 100 }}">
+                            <div class="card card-news text-left d-flex flex-column">
+                                <img class="news-background" src="{{ Storage::url($news->photo) }}" alt="">
+                                <div class="card-body">
+                                    <div class="news-name card-title">
+                                        <a href="{{ route('newsDetail', $news->slug) }}" class="news-link">
+                                            {{ Str::limit($news->title, 20, '...') }}
+                                        </a>
+                                    </div>
+                                    <div class="news-content card-text">
+                                        <p>
+                                            {!! Str::limit($news->news_content, 120, '...') !!}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card card-news text-left d-flex flex-column">
-                            <img class="news-background" src="{{ url('frontend/images/berita3.png') }}" alt="">
-                            <div class="card-body">
-                                <div class="news-name card-title">
-                                    <a href="#" class="news-link">
-                                        Bantuan Alat Selam
-                                    </a>
-                                </div>
-                                <div class="news-content card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                     <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                         <div class="all-news text-center" style="background-image: url('frontend/images/berita4.png');">
                             <div class="events-button mt-auto">
                                 <div class="events-all">
-                                    <a href="#">
+                                    <a href="{{ route('news') }}ute}}">
                                         Lihat Berita Lainnya
                                     </a>
                                 </div>
@@ -277,29 +252,59 @@
         <!-- Field Pesan, Saran, dan Pengaduan -->
         <div class="section-report-content" id="reportContent">
             <div class="container">
+                <div class="row justify-content-start">
+                    <div class="col-sm-6 col-md-6 col-lg-6 ml-0">
+                        <p data-aos="fade-up" class="dashboard-title">
+                            @include('includes.flash-message')
+                        </p>
+                    </div>
+                </div>
                 <div class="row section-report-system  justify-content-center">
                     <div class="col-sm-12 col-md-12 col-lg-12" data-aos="fade-up">
-                        <form action="#">
+                        <form action="{{ route('storeUserAspiration') }}" method="POST">
+                            @csrf
                             <div class="card-report border border rounded">
                                 <div class="form-group">
                                     <label for="name" class="report">Nama</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Masukan Nama Anda">
+                                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Anda" value="{{ old('name') }}" required>
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="report">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Masukan Email Anda">
+                                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukan Email Anda" value="{{ old('email') }}" required>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="noTelepon" class="report">No Telepon</label>
-                                    <input type="text" class="form-control" id="noTelpon" placeholder="Masukan Nomor Telepon/Handhphone Anda">
+                                    <label for="phone_number" class="report">No Telepon</label>
+                                    <input type="text" name="phone_number" id="phone_number" class="form-control @error('phone_number') is-invalid @enderror" placeholder="Masukan Nomor Telepon/Handhphone Anda" value="{{ old('phone_number') }}" required>
+                                    @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span> 
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="judulPesan" class="report">Judul Pesan</label>
-                                    <input type="text" class="form-control" id="judulPesan" placeholder="Tambahkan Judul Pesan">
+                                    <label for="form_title" class="report">Judul Pesan</label>
+                                    <input type="text" id="form_title" name="form_title" class="form-control @error('form_title') is-invalid @enderror" placeholder="Tambahkan Judul Pesan" value="{{ old('form_title') }}" required>
+                                    @error('form_title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span> 
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="isiPesan" class="report">Isi Pesan</label>
-                                    <textarea class="form-control" id="isiPesan" cols="30" rows="10"></textarea>
+                                    <label for="form_content" class="report">Isi Pesan</label>
+                                    <textarea name="form_content" id="form_content" class="form-control @error('form_content') is-invalid @enderror" cols="30" rows="10" required>
+                                        {{ old('form_content') }}
+                                    </textarea>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-send-report px-4 py-2">
@@ -314,3 +319,17 @@
         </div>
     </main>
 @endsection
+
+@push('addon-script')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $('.btn-send-report').click(function () {    
+            swal({
+                title: "Berhasil",
+                text: "Pengaduan Berhasil Disimpan!",
+                icon: "success",
+                button: "Aww yiss!",
+            });
+        });
+    </script>
+@endpush

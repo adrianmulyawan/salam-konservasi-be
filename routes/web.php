@@ -40,6 +40,9 @@ Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])
 Route::get('/event/{slug}', [App\Http\Controllers\EventDetailController::class, 'index'])
     ->name('eventDetail');
 
+Route::post('/store-aspiration', [App\Http\Controllers\HomeController::class, 'storeUserAspiration'])
+    ->name('storeUserAspiration');
+
 Route::get('/submission', [App\Http\Controllers\SubmissionController::class, 'index'])
     ->name('submission');
 Route::get('/submission/success', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
