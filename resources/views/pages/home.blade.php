@@ -115,62 +115,30 @@
         <section class="section-events-content" id="eventsContent">
             <div class="container">
                 <div class="section-conservation-events row justify-content-center">
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-events text-center d-flex flex-column" style="background-image: url('frontend/images/event1.png');">
-                            <div class="events-name">Menanam Mangrove</div>
-                            <div class="events-location">
-                                KKPD Kubu Raya
-                            </div>
-                            <div class="events-date">
-                                12 Januari 2021
-                            </div>
-                            <div class="events-button mt-auto">
-                                <a href="#" class="btn btn-events-details px-4 text-center">
-                                    Lihat Detail
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-events text-center d-flex flex-column" style="background-image: url('frontend/images/event2.png');">
-                            <div class="events-name">Menyelam Bersama</div>
-                            <div class="events-location">
-                                KKPD Randayan
-                            </div>
-                            <div class="events-date">
-                                12 Januari 2021
-                            </div>
-                            <div class="events-button mt-auto">
-                                <a href="#" class="btn btn-events-details px-4 text-center">
-                                    Lihat Detail
-                                </a>
+                    @foreach ($recent_event as $event)
+                        <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-events text-center d-flex flex-column" style="background-image: url('{{ Storage::url($event->photo) }}');">
+                                <div class="events-name">{{ Str::limit($event->title, 15, '...') }}</div>
+                                <div class="events-location">
+                                    {{ $event->conservation_area->name }}
+                                </div>
+                                <div class="events-date">
+                                    {{ \Carbon\Carbon::create($event->event_date)->format('n F, Y') }}
+                                </div>
+                                <div class="events-button mt-auto">
+                                    <a href="{{ route('eventDetail', $event->slug) }}" class="btn btn-events-details px-4 text-center">
+                                        Lihat Detail
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-events text-center d-flex flex-column" style="background-image: url('frontend/images/event3.png');">
-                            <div class="events-name">Pesta Laut</div>
-                            <div class="events-location">
-                                KKPD Randayan
-                            </div>
-                            <div class="events-date">
-                                12 Januari 2021
-                            </div>
-                            <div class="events-button mt-auto">
-                                <a href="#" class="btn btn-events-details px-4 text-center">
-                                    Lihat Detail
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                     <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                         <div class="all-events text-center" style="background-image: url('frontend/images/event4.png');">
                             <div class="events-button mt-auto">
                                 <div class="events-all">
-                                    <a href="#">
+                                    <a href="{{ route('news') }}">
                                         Lihat Acara Lainnya
                                     </a>
                                 </div>
