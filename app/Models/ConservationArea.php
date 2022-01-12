@@ -22,16 +22,16 @@ class ConservationArea extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
-    public function conservation_area_galleries()
+    public function galleries()
     {
-        return $this->hasMany(ConservationAreaGallery::class, 'conservation_areas_id', 'id');
+        return $this->hasMany(ConservationAreaGallery::class);
     }
 
     public function events()
     {
-        return $this->hasMany(Event::class, 'conservation_areas_id', 'id');
+        return $this->hasMany(Event::class);
     }
 }

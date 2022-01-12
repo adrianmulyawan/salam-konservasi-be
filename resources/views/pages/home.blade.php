@@ -15,7 +15,7 @@
             Daerah Kalimantan Barat
         </p>
 
-        <a href="#" class="btn btn-get-started px-4 py-2">
+        <a href="#conservation" class="btn btn-get-started px-4 py-2">
             Mulai Sekarang
         </a>
     </header>
@@ -26,22 +26,22 @@
         <div class="container">
             <section class="section-stats row justify-content-center" id="stats" data-aos="fade-up">
                 <div class="col-3 col-md-2 stats-detail">
-                    <h2>5</h2>
+                    <h2>{{ $conservation_area }}</h2>
                     <p>Kawasan</p>
                 </div>
 
                 <div class="col-3 col-md-2 stats-detail">
-                    <h2>300</h2>
+                    <h2>{{ $transaction_tourism }}</h2>
                     <p>Pariwisata</p>
                 </div>
 
                 <div class="col-3 col-md-2 stats-detail">
-                    <h2>50</h2>
+                    <h2>{{ $transaction_research }}</h2>
                     <p>Penelitian</p>
                 </div>
 
                 <div class="col-3 col-md-2 stats-detail">
-                    <h2>69</h2>
+                    <h2>{{ $transaction_education }}</h2>
                     <p>Pendidikan</p>
                 </div>
             </section>
@@ -65,53 +65,27 @@
         <section class="section-conservation-content" id="conservationContent">
             <div class="container">
                 <div class="section-conservation-area row justify-content-center">
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-conservation text-center d-flex flex-column" style="background-image: url('frontend/images/kawasan1.png');">
-                            <div class="conservation-location">Bengkayang</div>
-                            <div class="conservation-name">
-                                KKPD Randayan
-                            </div>
-                            <div class="conservation-button mt-auto">
-                                <a href="detailsConservation.html" class="btn btn-conservation-details px-4">
-                                    Lihat Detail
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-conservation text-center d-flex flex-column" style="background-image: url('frontend/images/kawasan2.png');">
-                            <div class="conservation-location">Sambas</div>
-                            <div class="conservation-name">
-                                KKPD Paloh
-                            </div>
-                            <div class="conservation-button mt-auto">
-                                <a href="detailsConservation.html" class="btn btn-conservation-details px-4">
-                                    Lihat Detail
-                                </a>
+                    @foreach ($items as $item)
+                        <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-conservation text-center d-flex flex-column" style="background-image: url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->photo) : '' }}');">
+                                <div class="conservation-location">{{ $item->location }}</div>
+                                <div class="conservation-name">
+                                    {{ $item->name }}
+                                </div>
+                                <div class="conservation-button mt-auto">
+                                    <a href="{{ route('detailConservation', $item->slug) }}" class="btn btn-conservation-details px-4">
+                                        Lihat Detail
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-conservation text-center d-flex flex-column" style="background-image: url('frontend/images/kawasan3.png');">
-                            <div class="conservation-location">Kayong Utara</div>
-                            <div class="conservation-name">
-                                KKPD Kayong Utara
-                            </div>
-                            <div class="conservation-button mt-auto">
-                                <a href="detailsConservation.html" class="btn btn-conservation-details px-4">
-                                    Lihat Detail
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                     <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                         <div class="all-conservation text-center" style="background-image: url('frontend/images/kawasan4.png');">
                             <div class="conservation-button mt-auto">
                                 <div class="conservation-all">
-                                    <a href="#">
+                                    <a href="{{ route('conservationArea') }}">
                                         Lihat Kawasan Lainnya
                                     </a>
                                 </div>

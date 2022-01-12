@@ -11408,7 +11408,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .section-details-content .card-right h2 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -11461,6 +11461,12 @@ a.text-dark:hover, a.text-dark:focus {
 .section-events .section-event-conservation .card-conservation-event {
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+.section-events .section-event-conservation .card-conservation-event .conservation-event-background {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-height: 150px;
 }
 
 .section-events .section-event-conservation .card-conservation-event .conservation-event-title h5 {

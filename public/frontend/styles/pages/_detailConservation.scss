@@ -101,7 +101,7 @@
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         h2 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
         }
         .conservation-checkout {
@@ -150,6 +150,11 @@
         .card-conservation-event {
             border-radius: 10px;
             margin-bottom: 10px;
+            .conservation-event-background {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                max-height: 150px;
+            }
             .conservation-event-title {
                 h5 {
                     font-size: 16px;

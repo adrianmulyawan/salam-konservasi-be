@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConservationArea;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,6 +15,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $conservation_area = ConservationArea::count();
+        $transaction_tourism = Transaction::where('purpose_id', '1')->count();
+        $transaction_research = Transaction::where('purpose_id', '2')->count();
+        $transaction_education = Transaction::where('purpose_id', '3')->count();
+        $items = ConservationArea::with(['galleries'])->limit(3)->get();
+        return view('pages.home', compact([
+            'conservation_area', 'items', 'transaction_tourism', 'transaction_research', 'transaction_education'
+        ]));
     }
 }

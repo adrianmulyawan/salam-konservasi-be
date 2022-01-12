@@ -19,18 +19,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mr-3">
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">
+                    <a href="{{ route('home') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">
                         Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('conservationArea') }}" class="nav-link">Kawasan Konservasi</a>
+                    <a href="{{ route('conservationArea') }}" class="nav-link {{ request()->is('conservation-area*') ? 'active' : '' }}">
+                        Kawasan Konservasi
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('news') }}" class="nav-link">Berita</a>
+                    <a href="{{ route('news') }}" class="nav-link {{ request()->is('news*') ? 'active' : '' }}">
+                        Berita
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('event') }}" class="nav-link">Acara</a>
+                    <a href="{{ route('event') }}" class="nav-link {{ request()->is('event*') ? 'active' : '' }}">
+                        Acara
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">SOP</a>
