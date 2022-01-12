@@ -44,9 +44,11 @@
             font-size: 16px;
             font-weight: normal;
         }
-        p.about-news {
-            font-size: 20px;
-            font-weight: lighter;
+        .about-news {
+            p {
+                font-size: 20px;
+                font-weight: lighter;
+            }
         }
     }
 
