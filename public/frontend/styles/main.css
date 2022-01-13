@@ -12069,9 +12069,13 @@ a.text-dark:hover, a.text-dark:focus {
   border-radius: 10px;
 }
 
-.section-conservation-events-list .section-conservation-area-events-new .card .header-image {
-  max-width: 508px;
-  border-radius: 10px;
+.section-conservation-events-list .section-conservation-area-events-new .card .event-header-image {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  background-size: cover;
 }
 
 .section-conservation-events-list .section-conservation-area-events-new .card .card-body h5.card-title {
@@ -12084,20 +12088,20 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .section-conservation-events-list .section-conservation-area-events-new .card .card-body .card-date {
-  font-size: 18px;
+  font-size: 20px;
   color: #B1B1B1;
   margin: 0;
 }
 
 .section-conservation-events-list .section-conservation-area-events-new .card .card-body .card-location-events {
-  font-size: 18px;
+  font-size: 20px;
   color: #B1B1B1;
   margin: 0;
   margin-bottom: 16px;
 }
 
-.section-conservation-events-list .section-conservation-area-events-new .card .card-body .card-text-events {
-  font-size: 16px;
+.section-conservation-events-list .section-conservation-area-events-new .card .card-body .card-text-events p {
+  font-size: 20px;
   color: #B1B1B1;
 }
 
@@ -12107,9 +12111,10 @@ a.text-dark:hover, a.text-dark:focus {
   border-bottom-right-radius: 0px;
 }
 
-.section-conservation-events-list .section-conservation-area-events .card .card-img-top {
+.section-conservation-events-list .section-conservation-area-events .card img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  max-height: 200px;
 }
 
 .section-conservation-events-list .section-conservation-area-events .card .card-body .card-title {

@@ -19,9 +19,11 @@
             padding: 0px;
             border-radius: 10px;
 
-            .header-image {
-                max-width: 508px;
-                border-radius: 10px;
+            .event-header-image {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                max-height: fit-content;
+                background-size: cover;
             }
 
             .card-body {
@@ -33,19 +35,21 @@
                     }
                 }
                 .card-date {
-                    font-size: 18px;
+                    font-size: 20px;
                     color: #B1B1B1;
                     margin: 0;
                 }
                 .card-location-events {
-                    font-size: 18px;
+                    font-size: 20px;
                     color: #B1B1B1;
                     margin: 0;
                     margin-bottom: 16px;
                 }
                 .card-text-events {
-                    font-size: 16px;
-                    color: #B1B1B1;
+                    p {
+                        font-size: 20px;
+                        color: #B1B1B1;
+                    }
                 }
             }
         }
@@ -57,9 +61,10 @@
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
 
-            .card-img-top {
+            img {
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
+                max-height: 200px;
             }
             .card-body {
                 .card-title {

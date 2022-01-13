@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -13,6 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('pages.event');
+        $items = Event::with(['conservation_area'])->latest()->paginate(10);
+        return view('pages.event', compact('items'));
     }
 }
