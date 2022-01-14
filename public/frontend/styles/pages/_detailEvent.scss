@@ -62,10 +62,12 @@
             }
         }
 
-        p.about-events {
-            margin-top: 16px;
-            font-size: 20px;
-            font-weight: lighter;
+        .about-events {
+            p {
+                margin-top: 16px;
+                font-size: 20px;
+                font-weight: lighter;
+            }
         }
     }
 
