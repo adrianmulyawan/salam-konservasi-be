@@ -48,7 +48,7 @@ Route::get('/submission', [App\Http\Controllers\SubmissionController::class, 'in
 Route::get('/submission/success', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
     ->name('successSubmission');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'successRegister'])
     ->name('successRegister');
 
