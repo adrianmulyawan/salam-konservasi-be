@@ -22,7 +22,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#">Kawasan Konservasi</a>
+                                    <a href="{{ route('home') }}">Kawasan Konservasi</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Details 
@@ -42,184 +42,188 @@
                 <div class="row">
                     <!-- Tambah Data -->
                     <div class="col-lg-8 pl-lg-0" data-aos="fade-up">
-                        <div class="card card-details">
-                            <h1>Pengajuan Surat Izin Masuk Kawasan Konservasi</h1>
-                            <p>KKPD Pulau Randayan</p>
-                            <div class="date">
-                                <form action="#" method="post">
+                        <form action="" method="post" id="submit-submission">
+                            @csrf
+                            <input type="hidden" name="purpose" value="{{ $purpose }}">
+                            <div class="card card-details">
+                                <h1>Pengajuan Surat Izin Masuk Kawasan Konservasi</h1>
+                                <p>KKPD Pulau Randayan</p>
+
+                                {{-- Tanggal Masuk Kawasan --}}
+                                <div class="date">
                                     <h2 class="inputDate">Tambahkan Tanggal Masuk dan Keluar Kawasan</h2>
                                     <div class="form-inline">
                                         <label for="tanggal_masuk" class="sr-only">
                                             Tanggal Masuk
                                         </label>
                                         <div class="input-group mb-2 mr-sm-2">
-                                            <input type="text" class="form-control datepicker" id="tanggal_masuk" name="tanggal_masuk" required placeholder="Tanggal Masuk Kawasan">
+                                            <input type="text" class="form-control datepicker" id="tanggal_masuk" name="date_of_entry" required placeholder="Tanggal Masuk Kawasan" onchange="changeDate()">
                                         </div>
 
                                         <label for="tanggal_keluar" class="sr-only">
                                             Tanggal Keluar
                                         </label>
                                         <div class="input-group mb-2 mr-sm-2">
-                                            <input type="text" class="form-control datepicker1" id="tanggal_keluar" name="tanggal_keluar" required placeholder="Tanggal Keluar Kawasan">
+                                            <input type="text" class="form-control datepicker1" id="tanggal_keluar" name="out_date" required placeholder="Tanggal Keluar Kawasan" onchange="changeDate()">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                {{-- Tambah Data Pengunjung --}}
+                                <div class="attendee">
+                                    <h2>Data Pengunjung</h2>
+                                    <table class="table table-responsive-sm text-center">
+                                        <thead>
+                                            <tr>
+                                                <td>Nama</td>
+                                                <td>Kenegaraan</td>
+                                                <td>No Telp</td>
+                                                <td>Alamat</td>
+                                                <td>Foto Identitas</td>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list-visitor">
+                                            <tr class="row-visitor">
+                                                <td class="align-middle">{{ auth()->user()->name }}
+                                                </td>
+                                                <td class="align-middle">{{ Str::upper(auth()->user()->citizen) }}</td>
+                                                <td class="align-middle">
+                                                    {{ auth()->user()->phone_number }}
+                                                </td>
+                                                <td class="align-middle">
+                                                    {{ auth()->user()->address }}
+                                                </td>
+                                                <td>
+                                                    <img src="{{ Storage::url(auth()->user()->identity_image) }}" height="70">
+                                                </td>
+                                                <input type="hidden" name="price" class="visitor-price" value="{{ $myPrice->price }}"/>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="member mt-3">
+                                    <h2>Tambah Data Anggota Pengunjung</h2>
+                                    <div class="form-inline">
+                                        <label for="inputName" class="sr-only">Name</label>
+                                        <input type="text" class="form-control mb-2 mr-sm-2 input-name" id="inputName" required placeholder="Nama">
+
+                                        <label for="inputNationality" class="sr-only">Nationality</label>
+                                        <select class="custom-select mb-2 mr-sm-2 input-nationality" id="inputCitizen" name="citizen" required>
+                                            <option selected disabled value="">Kebangsaan</option>
+                                            <option value="WNI">WNI</option>
+                                            <option value="WNA">WNA</option>
+                                        </select>
+
+                                        <label for="inputAddress" class="sr-only">Alamat</label>
+                                        <input type="text" class="form-control mb-2 mr-sm-2 input-alamat" id="inputAddress" required placeholder="Alamat">
+
+                                        <label for="inputTelpon" class="sr-only">Alamat</label>
+                                        <input type="text" class="form-control mb-2 mr-sm-2 input-telpon" id="inputPhoneNumber" required placeholder="No Telpon">
+
+                                        <div class="custom-file mb-2">
+                                            <label class="custom-file-label" for="inputIdentityImage">KTP/KK/Passport</label>
+                                            <input type="file" class="custom-file-input mb-2 mr-sm-2 input-identity" id="inputIdentity" required>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary btn-submits mt-0 py-2 mb-2">Tambah</button>
+                                        <button type="button" role="button" class="btn btn-add-member mb-2 px-4" onclick="addVisitor()">
+                                            Tambah
+                                        </button>
                                     </div>
-                                </form>
-                            </div>
-                            <hr>
-                            <div class="attendee">
-                                <h2>Data Pengunjung</h2>
-                                <table class="table table-responsive-sm text-center">
-                                    <thead>
-                                        <tr>
-                                            <td>Nama</td>
-                                            <td>Kenegaraan</td>
-                                            <td>No Telp</td>
-                                            <td>Alamat</td>
-                                            <td>Foto Identitas</td>
-                                            <td></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="align-middle">Anastasya Kosasih</td>
-                                            <td class="align-middle">WNI</td>
-                                            <td class="align-middle">
-                                                082154590559
-                                            </td>
-                                            <td class="align-middle">Jl Sawo no 69</td>
-                                            <td>
-                                                <img src="{{ url('frontend/images/KTP.png') }}" height="70">
-                                            </td>
-                                            <td class="align-middle">
-                                                <a href="#">
-                                                    <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-middle">Adrian Mulyawan</td>
-                                            <td class="align-middle">WNI</td>
-                                            <td class="align-middle">
-                                                089640001855
-                                            </td>
-                                            <td class="align-middle">Jl Sawo no 69</td>
-                                            <td>
-                                                <img src="{{ url('frontend/images/KTP.png') }}" height="70">
-                                            </td>
-                                            <td class="align-middle">
-                                                <a href="#">
-                                                    <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="member mt-3">
-                                <h2>Tambah Data Anggota Pengunjung</h2>
-                                <form action="" class="form-inline">
-                                    <label for="inputName" class="sr-only">Name</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-name" id="inputName" name="inputName" required placeholder="Nama">
+                                </div>
+                                <hr>
+                                <div class="tools">
+                                    <h2>Peralatan Bawaan Pengunjung (Perbuah)</h2>
+                                    <table class="table table-responsive-sm text-center">
+                                        <thead>
+                                            <tr>
+                                                <td>SCUBA Set</td>
+                                                <td>Peralatan Selancar</td>
+                                                <td>Kamera Bawah Air</td>
+                                                <td>Video Bawah Air</td>
+                                                <td>Kapal Pesiar</td>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle" id="value-scuba">
+                                                    0
+                                                </td>
+                                                <input type="hidden" name="scuba">
+                                                <td class="align-middle" id="value-peralatan-seluncur">
+                                                    0
+                                                </td>
+                                                <input type="hidden" name="peralatan_seluncur">
+                                                <td class="align-middle" id="value-kamera">
+                                                    0
+                                                </td>
+                                                <input type="hidden" name="kamera">
+                                                <td class="align-middle" id="value-video">
+                                                    0
+                                                </td>
+                                                <input type="hidden" name="video">
+                                                <td class="align-middle" id="value-kapal">
+                                                    0
+                                                </td>
+                                                <input type="hidden" name="kapal">
+                                                <td class="align-middle">
+                                                    <button type="button" role="button" onclick="resetEquipment()" style="background-color:transparent; border-color: transparent;
+                                                    ">
+                                                        <img src="{{ url('frontend/images/reload.png') }}" width="16">
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="add-tools">
+                                    <h2>Tambah Data Peralatan Bawaan Pengunjung</h2>
+                                    <div class="form-inline">
+                                        <label for="scubaSet" class="sr-only">SCUBA SET</label>
+                                        <input type="number" name="" class="form-control mb-2 mr-sm-2 input-scuba-set" id="scubaSet" required placeholder="SCUBA Set (Buah )">
 
-                                    <label for="inputNationality" class="sr-only">Nationality</label>
-                                    <select class="custom-select mb-2 mr-sm-2 input-nationality" id="inputNationality" name="inputNationality" required>
-                                        <option selected disabled>Kebangsaan</option>
-                                        <option value="wni">WNI</option>
-                                        <option value="wna">WNA</option>
-                                    </select>
+                                        <label for="peralatanSeluncur" class="sr-only">Peralatan Seluncur</label>
+                                        <input type="number" name="" class="form-control mb-2 mr-sm-2 input-alat-seluncur" id="peralatanSeluncur" required placeholder="Alat Seluncur (Buah)">
 
-                                    <label for="inputAddress" class="sr-only">Alamat</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-alamat" id="inputAddress" required placeholder="Alamat">
+                                        <label for="kamera" class="sr-only">Kamera Bawah Air</label>
+                                        <input type="number" name="" class="form-control mb-2 mr-sm-2 input-kamera" id="kamera" required placeholder="Kamera (Buah)">
 
-                                    <label for="inputTelpon" class="sr-only">Alamat</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-telpon" id="inputTelpon" required placeholder="No Telpon">
+                                        <label for="video" class="sr-only">Video Bawah Air</label>
+                                        <input type="number" name="" class="form-control mb-2 mr-sm-2 input-jetski" id="video" required placeholder="Video (Buah)">
 
+                                        <label for="kapal" class="sr-only">Kapal Pesiar</label>
+                                        <input type="number" name="" class="form-control mb-2 mr-sm-2 input-kapal" id="kapal" required placeholder="Kapal (Buah)">
+
+                                        <button type="button" role="button" class="btn btn-add-tools mb-2 px-4" onclick="addEquipment()">
+                                            Set Peralatan
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="note-tools mt-2 mb-0">
+                                    <h3>Catatan</h3>
+                                    <p>
+                                        Jika Tidak Membawa Peralatan Cukup Kosongkan Saja
+                                    </p>
+                                </div>
+                                <hr>
+                                <div class="upload-research-education">
+                                    <h2>Upload Form Pengajuan Untuk Penelitian dan Pendidikan</h2>
                                     <div class="custom-file mb-2">
-                                        <label class="custom-file-label" for="inputIdentity">KTP/KK/Passport</label>
-                                        <input type="file" class="custom-file-input mb-2 mr-sm-2 input-identity" id="inputIdentity" required>
+                                        <label class="custom-file-label" for="inputFormulir">Upload Formulir Kegiatan Penelitian / Pendidikan</label>
+                                        <input type="file" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="inputFormulir" required>
                                     </div>
-
-                                    <button type="submit" class="btn btn-add-member mb-2 px-4">
-                                        Tambah
-                                    </button>
-                                </form>
-                            </div>
-                            <hr>
-                            <div class="tools">
-                                <h2>Peralatan Bawaan Pengunjung (Perbuah)</h2>
-                                <table class="table table-responsive-sm text-center">
-                                    <thead>
-                                        <tr>
-                                            <td>Alat Selam</td>
-                                            <td>Alat Seluncur</td>
-                                            <td>Kamera (Kamera Bawah Air / Kamera)</td>
-                                            <td>Jetski</td>
-                                            <td>Kapal</td>
-                                            <td></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="align-middle">0</td>
-                                            <td class="align-middle">0</td>
-                                            <td class="align-middle">0</td>
-                                            <td class="align-middle">0</td>
-                                            <td class="align-middle">0</td>
-                                            <td class="align-middle">
-                                                <a href="#">
-                                                    <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="add-tools">
-                                <h2>Tambah Data Peralatan Bawaan Pengunjung</h2>
-                                <form action="" class="form-inline">
-                                    <label for="alatSelam" class="sr-only">Alat Selam</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-alat-selam" id="alatSelam" name="alatSelam" required placeholder="Alat Selam (Buah)">
-
-                                    <label for="alatSeluncur" class="sr-only">Alat Selam</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-alat-seluncur" id="alatSeluncur" name="alatSeluncur" required placeholder="Alat Seluncur (Buah)">
-
-                                    <label for="kamera" class="sr-only">Alat Selam</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-kamera" id="kamera" name="kamera" required placeholder="Kamera (Buah)">
-
-                                    <label for="jetski" class="sr-only">Alat Selam</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-jetski" id="jetski" name="jetski" required placeholder="Jetski (Buah)">
-
-                                    <label for="kapal" class="sr-only">Alat Selam</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2 input-kapal" id="kapal" name="kapal" required placeholder="Kapal (Buah)">
-
-                                    <button type="submit" class="btn btn-add-tools mb-2 px-4">
-                                        Tambah
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="note-tools mt-2 mb-0">
-                                <h3>Catatan</h3>
-                                <p>
-                                    Jika Tidak Membawa Peralatan Cukup Kosongkan Saja
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="upload-research-education">
-                                <h2>Upload Form Pengajuan Untuk Penelitian dan Pendidikan</h2>
-                                <div class="custom-file mb-2">
-                                    <label class="custom-file-label" for="inputFormulir">Upload Formulir Kegiatan Penelitian / Pendidikan</label>
-                                    <input type="file" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="inputFormulir" required>
+                                </div>
+                                <div class="note-research mt-2 mb-0">
+                                    <h3>Catatan</h3>
+                                    <p>
+                                        Upload Form Hanya Untuk Pengaju yang Melakukan Kunjungan Penelitian / Pendidikan
+                                    </p>
                                 </div>
                             </div>
-                            <div class="note-research mt-2 mb-0">
-                                <h3>Catatan</h3>
-                                <p>
-                                    Upload Form Hanya Untuk Pengaju yang Melakukan Kunjungan Penelitian / Pendidikan
-                                </p>
-                            </div>
-                        </div>
+                        </form>
                     </div>
 
                     <!-- Detail Tentang Kawasan -->
@@ -238,32 +242,32 @@
                                 </tr>
                                 <tr class="mb-2">
                                     <th width="50%">Jumlah Hari</th>
-                                    <td width="50%" class="text-right">
-                                        2 Hari
+                                    <td width="50%" class="text-right" id="total-hari">
+                                        0 Hari
                                     </td>
                                 </tr>
                                 <tr class="mb-2">
                                     <th width="50%">Jumlah Pengunjung</th>
-                                    <td width="50%" class="text-right">
-                                        2 Orang
+                                    <td width="50%" class="text-right" id="total-visitor">
+                                        1 Orang
                                     </td>
                                 </tr>
                                 <tr class="mb-2">
                                     <th width="50%">Biaya Pengajuan Izin</th>
-                                    <td width="50%" class="text-right">
-                                        Rp 60.000,00
+                                    <td width="50%" class="text-right" id="total-visitor-price">
+                                        Rp {{ $myPrice->price }}
                                     </td>
                                 </tr>
                                 <tr class="mb-2">
                                     <th width="50%">Biaya Bawaan Pengunjung</th>
-                                    <td width="50%" class="text-right">
-                                        Rp 120.000,00
+                                    <td width="50%" class="text-right" id="total-equipment-price">
+                                        Rp 0
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="50%">Total Biaya Pengajuan</th>
-                                    <td width="50%" class="text-right total-price">
-                                        Rp 180.000,00
+                                    <td width="50%" class="text-right total-price" id="submission-total">
+                                        Rp {{ $myPrice->price }}
                                     </td>
                                 </tr>
                             </table>
@@ -292,9 +296,9 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                        <a href="successCheckout.html" class="btn btn-primary">
+                                        <button type="button" role="button" onclick="submitSubmission()" class="btn btn-primary">
                                             Lanjutkan
-                                        </a>
+                                        </button>
                                       </div>
                                     </div>
                                 </div>
@@ -310,6 +314,7 @@
 @push('addon-script')
     {{-- Gijgo Script --}}
     <script src="{{ url('frontend/libraries/gijgo/js/gijgo.js') }}"></script>
+    <script src="{{ url('frontend/libraries/momentJs/moment.js') }}"></script>
     <script>
         $(document).ready(function() {
             // Gijgo
@@ -326,5 +331,242 @@
                 }
             });
         });
+
+        function changeDate()
+        {
+            const tanggal_masuk = $('#tanggal_masuk').val();
+            const tanggal_keluar = $('#tanggal_keluar').val();
+            if (tanggal_masuk != '' && tanggal_keluar != '') {
+                // Moment Js
+                var start = moment(tanggal_masuk, "MM/DD/YYYY");
+                var end = moment(tanggal_keluar, "MM/DD/YYYY");
+
+                //Difference in number of days
+                const diff = moment.duration(end.diff(start)).asDays();
+
+                $('#total-hari').text(`${diff} Hari`)
+            }
+        }
+
+        function addVisitor()
+        {
+            const name = $('#inputName').val();
+            const citizen = $('#inputCitizen').val();
+            const address = $('#inputAddress').val();
+            const phoneNumber = $('#inputPhoneNumber').val();
+            const identityImage = $('#inputIdentity').val();
+
+            if (validationVisitor()) {
+                const num = $('.row-visitor').length + 1;
+                const idx = $('.row-visitor').length - 1;
+                const price = getVisitorPrice();
+                $('#list-visitor').append(`
+                    <tr class="row-visitor">
+                        <td class="align-middle">
+                            ${name}
+                            <input type="hidden" name="visitor[${idx}][name]" value="${name}"/>
+                        </td>
+                        <td class="align-middle">
+                            ${citizen}
+                            <input type="hidden" name="visitor[${idx}][citizen]" value="${citizen}"/>
+                        </td>
+                        <td class="align-middle">
+                            ${phoneNumber}
+                            <input type="hidden" name="visitor[${idx}][phone_number]" value="${phoneNumber}"/>
+                        </td>
+                        <td class="align-middle">
+                            ${address}
+                            <input type="hidden" name="visitor[${idx}][address]" value="${address}"/>
+                        </td>
+                        <td>
+                            <img height="70" id="preview-identity-${num}">
+                        </td>
+                        <td class="align-middle">
+                            <a href="#" onclick="removeVisitor(this)">
+                                <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
+                            </a>
+                        </td>
+                        <input type="hidden" name="price" class="visitor-price" value="${price}"/>
+                    </tr>
+                `);
+                previewFile('#inputIdentity', `#preview-identity-${num}`)
+                updateTotalVisitor()
+                updateVisitorPrice()
+                resetAddVisitor()
+                submissionTotal()
+            }
+        }
+
+        function validationVisitor()
+        {
+            const name = $('#inputName').val();
+            const citizen = $('#inputCitizen').val();
+            const address = $('#inputAddress').val();
+            const phoneNumber = $('#inputPhoneNumber').val();
+            const identityImage = $('#inputIdentity')[0].files.length
+
+            if (name == '' || name == null) {
+                alert('Nama Belum Diisi');
+                return false;
+            } else if (citizen == '' || citizen == null) {
+                alert('Kebangasaan Belum Diisi');
+                return false;
+            } else if (address == '' || address == null) {
+                alert('Alamat Belum Diisi');
+                return false;
+            } else if (phoneNumber == '' || phoneNumber == null) {
+                alert('Nama Belum Diisi');
+                return false;
+            } else if (identityImage == 0) {
+                alert('Gambar Belum Diisi');
+                return false;
+            }
+
+            return true;
+        }
+
+        function updateTotalVisitor()
+        {
+            const totalVisitor = $('.row-visitor').length;
+            $('#total-visitor').text(`${totalVisitor} Orang`);
+        }
+
+        function removeVisitor(e)
+        {
+            const confirms = confirm('Apakah Anda Yakin Menghapus Data Ini?');
+            if (confirms) {
+                $(e).parents('tr').remove();
+                updateTotalVisitor()
+                updateVisitorPrice()
+                submissionTotal()
+            }
+
+        }
+
+        function getVisitorPrice()
+        {
+            const mstPrices = {!! $price !!}
+            const citizen = $('#inputCitizen option:selected').val();
+            const price = mstPrices.find(x => x.citizen == citizen).price;
+            return price;
+        }
+
+        function updateVisitorPrice()
+        {
+            let totalVisitorPrice = 0;
+            $('.visitor-price').each(function(i, obj) {
+                totalVisitorPrice += parseFloat($(this).val());
+            });
+            $('#total-visitor-price').text(`Rp ${totalVisitorPrice}`)
+        }
+
+        function resetAddVisitor()
+        {
+            $('#inputName').val('');
+            $('#inputCitizen').val('');
+            $('#inputAddress').val('');
+            $('#inputPhoneNumber').val('');
+            $('#inputIdentity').val(null);
+        }
+
+        function previewFile(input, preview){
+            var file = $(input).get(0).files[0];
+    
+            if(file){
+                var reader = new FileReader();
+    
+                reader.onload = function(){
+                    $(preview).attr("src", reader.result);
+                }
+    
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addEquipment()
+        {
+            const equipment = {!! $equipment !!};
+            const scubaSet = $('#scubaSet').val() || 0;
+            const peralatanSeluncur = $('#peralatanSeluncur').val() || 0;
+            const kamera = $('#kamera').val() || 0;
+            const video = $('#video').val() || 0;
+            const kapal = $('#kapal').val() || 0;
+
+            // Masukan Value
+            $('#value-scuba').text(scubaSet)
+            $('#value-peralatan-seluncur').text(peralatanSeluncur)
+            $('#value-kamera').text(kamera)
+            $('#value-video').text(video)
+            $('#value-kapal').text(kapal)
+
+            // Store Ke DB
+            $('[name="scuba"]').val(scubaSet)
+            $('[name="peralatan_seluncur"]').val(peralatanSeluncur)
+            $('[name="kamera"]').val(kamera)
+            $('[name="video"]').val(video)
+            $('[name="kapal"]').val(kapal)
+
+            // Hitung Harga
+            const priceScubaSet = equipment.find(x => x.slug == 'scuba-set').equipment_price * scubaSet;
+            const priceSeluncur = equipment.find(x => x.slug == 'peralatan-selancar').equipment_price * peralatanSeluncur;
+            const priceKamera = equipment.find(x => x.slug == 'kamera-bawah-air').equipment_price * kamera;
+            const priceVideo = equipment.find(x => x.slug == 'video-bawah-air').equipment_price * video;
+            const priceKapal = equipment.find(x => x.slug == 'kapal-pesiar').equipment_price * kapal;
+
+            const total = priceScubaSet + priceSeluncur + priceKamera + priceVideo + priceKapal;
+
+            $('#total-equipment-price').text(`Rp ${total}`)
+
+            // Reset Peralatan
+            resetFormEquipment()
+            submissionTotal()
+        }
+
+        function resetFormEquipment()
+        {
+            $('#scubaSet').val('');
+            $('#peralatanSeluncur').val('');
+            $('#kamera').val('');
+            $('#video').val('');
+            $('#kapal').val('');
+        }
+
+        function resetEquipment()
+        {
+            $('#value-scuba').text('0')
+            $('#value-peralatan-seluncur').text('0')
+            $('#value-kamera').text('0')
+            $('#value-video').text('0')
+            $('#value-kapal').text('0')
+
+            // Reset Harga
+            $('#total-equipment-price').text(`Rp 0`)
+            submissionTotal()
+        }
+
+        function submissionTotal()
+        {
+            const totalVisitorPrice = $('#total-visitor-price').text().replace("Rp ", '')
+            const totalEquipmentPrice = $('#total-equipment-price').text().replace("Rp ", '')
+
+            const submissionTotal = parseFloat(totalVisitorPrice) + parseFloat(totalEquipmentPrice);
+
+            $('#submission-total').text(`Rp ${submissionTotal}`)
+        }
+
+        function submitSubmission()
+        {
+            const data = new FormData($('#submit-submission')[0]);
+            $.ajax({
+                url: '{{ route('submission-store', $slug) }}',
+                data: data,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
+                    window.location.href = '{{ route('successSubmission') }}';
+                }
+            });
+        }
     </script>
 @endpush

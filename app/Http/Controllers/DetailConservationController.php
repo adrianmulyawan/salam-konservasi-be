@@ -25,7 +25,7 @@ class DetailConservationController extends Controller
         $event_conservations = Event::with(['conservation_area'])->limit(4)->orderBy('created_at', 'DESC')->get();
 
         return view('pages.conservation-area-detail', compact([
-            'item', 'equipments', 'tourism_prices', 'research_prices', 'education_prices', 'event_conservations'
+            'item', 'equipments', 'tourism_prices', 'research_prices', 'education_prices', 'event_conservations', 'slug'
         ]));
     }
 }

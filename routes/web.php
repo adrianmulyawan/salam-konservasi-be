@@ -43,8 +43,10 @@ Route::get('/event/{slug}', [App\Http\Controllers\EventDetailController::class, 
 Route::post('/store-aspiration', [App\Http\Controllers\HomeController::class, 'storeUserAspiration'])
     ->name('storeUserAspiration');
 
-Route::get('/submission', [App\Http\Controllers\SubmissionController::class, 'index'])
+Route::get('/submission/{slug}', [App\Http\Controllers\SubmissionController::class, 'index'])
     ->name('submission');
+Route::post('/submission/{slug}/store', [App\Http\Controllers\SubmissionController::class, 'store'])
+    ->name('submission-store');
 Route::get('/submission/success', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
     ->name('successSubmission');
 

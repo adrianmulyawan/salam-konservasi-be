@@ -106,129 +106,128 @@
 
                     <!-- Detail Tentang Kawasan -->
                     <div class="col-lg-4">
-                        <div class="card card-details card-right" data-aos="fade-up">
-                            <h2>Detail Kawasan Konservasi</h2>
+                        <form action="{{ route('submission', $slug) }}" method="GET">
+                            <div class="card card-details card-right" data-aos="fade-up">
+                                <h2>Detail Kawasan Konservasi</h2>
 
-                            <hr>
+                                <hr>
+                                <table class="conservation-information">
+                                    <tr>
+                                        <th width="50%">Lokasi Kawasan</th>
+                                        <td width="50%" class="text-right">
+                                            {{ $item->location }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="50%">Luas Kawasan</th>
+                                        <td width="50%" class="text-right">
+                                            {{ $item->area }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="50%">Status Kawasan</th>
+                                        <td width="50%" class="text-right">
+                                            @if ($item->is_open == 1)
+                                                Buka
+                                            @else
+                                                Tutup
+                                            @endif
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="purposes">
+                                        <div class="form-group mt-3">
+                                            <h2>Tujuan Masuk Kawasan</h2>
+                                            <select class="custom-select" name="destination-area" required>
+                                                <option selected disabled>
+                                                    Tujuan Pengajuan Masuk Kawasan
+                                                </option>
+                                                <option value="1">Wisata</option>
+                                                <option value="2">Penelitian</option>
+                                                <option value="3">Pendidikan</option>
+                                            </select>
+                                        </div>
+                                </div>
 
-                            <table class="conservation-information">
-                                <tr>
-                                    <th width="50%">Lokasi Kawasan</th>
-                                    <td width="50%" class="text-right">
-                                        {{ $item->location }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th width="50%">Luas Kawasan</th>
-                                    <td width="50%" class="text-right">
-                                        {{ $item->area }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th width="50%">Status Kawasan</th>
-                                    <td width="50%" class="text-right">
-                                        @if ($item->is_open == 1)
-                                            Buka
-                                        @else
-                                            Tutup
-                                        @endif
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="purposes">
-                                <form action="">
-                                    <div class="form-group mt-3">
-                                        <h2>Tujuan Masuk Kawasan</h2>
-                                        <select class="custom-select" required>
-                                            <option selected disabled>
-                                                Tujuan Pengajuan Masuk Kawasan
-                                            </option>
-                                            <option value="1">Wisata</option>
-                                            <option value="2">Penelitian</option>
-                                            <option value="3">Pendidikan</option>
-                                        </select>
+                                <div class="entrance-fee">
+                                    <h2>Harga Tarif Masuk Kawasan</h2>
+                                    <div class="tourism">
+                                        <h3>Pariwista</h3>
+                                        <table class="tourism-price">
+                                            @foreach ($tourism_prices as $tourism)
+                                                <tr>
+                                                    <th width="50%">{{ $tourism->citizen }}</th>
+                                                    <td width="50%" class="text-right">
+                                                        Rp {{ number_format($tourism->price,2,',','.') }}/Orang
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="research mt-2">
+                                        <h3>Penelitian</h3>
+                                        <table class="research-price">
+                                            @foreach ($research_prices as $research)
+                                                <tr>
+                                                    <th width="50%">{{ $research->citizen }}</th>
+                                                    <td width="50%" class="text-right">
+                                                        Rp {{ number_format($research->price,2,',','.') }}/Orang
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                    <div class="education mt-2">
+                                        <h3>Pendidikan</h3>
+                                        <table class="education-price">
+                                            @foreach ($education_prices as $education)
+                                                <tr>
+                                                    <th width="50%">{{ $education->citizen }}</th>
+                                                    <td width="50%" class="text-right">
+                                                        Rp {{ number_format($education->price,2,',','.') }}/Orang
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                </div>
 
-                            <div class="entrance-fee">
-                                <h2>Harga Tarif Masuk Kawasan</h2>
-                                <div class="tourism">
-                                    <h3>Pariwista</h3>
-                                    <table class="tourism-price">
-                                        @foreach ($tourism_prices as $tourism)
-                                            <tr>
-                                                <th width="50%">{{ $tourism->citizen }}</th>
-                                                <td width="50%" class="text-right">
-                                                    Rp {{ number_format($tourism->price,2,',','.') }}/Orang
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                </div>
-                                <div class="research mt-2">
-                                    <h3>Penelitian</h3>
-                                    <table class="research-price">
-                                        @foreach ($research_prices as $research)
-                                            <tr>
-                                                <th width="50%">{{ $research->citizen }}</th>
-                                                <td width="50%" class="text-right">
-                                                    Rp {{ number_format($research->price,2,',','.') }}/Orang
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                </div>
-                                <div class="education mt-2">
-                                    <h3>Pendidikan</h3>
-                                    <table class="education-price">
-                                        @foreach ($education_prices as $education)
-                                            <tr>
-                                                <th width="50%">{{ $education->citizen }}</th>
-                                                <td width="50%" class="text-right">
-                                                    Rp {{ number_format($education->price,2,',','.') }}/Orang
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
+                                <div class="tools">
+                                    <h2 class="mt-3">Biaya Peralatan Bawaan Pengunjung</h2>
+                                    <div class="tools-list">
+                                        <table class="tools-price">
+                                            @foreach ($equipments as $equipment)
+                                                <tr>
+                                                    <th width="50%">{{ $equipment->equipment_name }}</th>
+                                                    <td width="50%" class="text-right">
+                                                        Rp {{ number_format($equipment->equipment_price,2,',','.') }}/Item
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="tools">
-                                <h2 class="mt-3">Biaya Peralatan Bawaan Pengunjung</h2>
-                                <div class="tools-list">
-                                    <table class="tools-price">
-                                        @foreach ($equipments as $equipment)
-                                            <tr>
-                                                <th width="50%">{{ $equipment->equipment_name }}</th>
-                                                <td width="50%" class="text-right">
-                                                    Rp {{ number_format($equipment->equipment_price,2,',','.') }}/Item
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Button Daftar -->
-                        <div class="join-container" data-aos="fade-up">
-                            @guest
-                                <a href="{{ route('login') }}" class="btn btn-block btn-join-now mt-3 py-2">
-                                    Login atau Register Terlebih Dahulu
-                                </a>
-                            @endguest
-                            @auth
-                                @if ($item->is_open == 1)
-                                    <button type="submit" class="btn btn-block btn-join-now mt-3 py-2">
-                                        Lanjutkan Pengajuan Izin
-                                    </button>
-                                @else
-                                    <a class="btn btn-block btn-join-now mt-3 py-2 disabled">
-                                        Maaf, Kawasan Sedang Tutup
+                            <!-- Button Daftar -->
+                            <div class="join-container" data-aos="fade-up">
+                                @guest
+                                    <a href="{{ route('login') }}" class="btn btn-block btn-join-now mt-3 py-2">
+                                        Login atau Register Terlebih Dahulu
                                     </a>
-                                @endif
-                            @endauth
-                        </div>
+                                @endguest
+                                @auth
+                                    @if ($item->is_open == 1)
+                                        <button type="submit" class="btn btn-block btn-join-now mt-3 py-2">
+                                            Lanjutkan Pengajuan Izin
+                                        </button>
+                                    @else
+                                        <a class="btn btn-block btn-join-now mt-3 py-2 disabled">
+                                            Maaf, Kawasan Sedang Tutup
+                                        </a>
+                                    @endif
+                                @endauth
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

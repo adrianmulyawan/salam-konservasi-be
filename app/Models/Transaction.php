@@ -10,4 +10,9 @@ class Transaction extends Model
     use HasFactory;
 
     protected $table = 'transactions';
+
+    protected $fillable = [
+        'transaction_code',
+        'total_transaction'
+    ];
 }
