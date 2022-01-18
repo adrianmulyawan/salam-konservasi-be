@@ -14,8 +14,9 @@ class DashboardUserAspirationController extends Controller
         return view('pages.superAdmin.userAspiration.dashboard-user-aspiration', compact('forms'));
     }
 
-    public function detail($id)
+    public function detail(Request $request, $id)
     {
-        return view('pages.superAdmin.userAspiration.dashboard-user-aspiration-detail');
+        $item = UserAspiration::where('id', $id)->firstOrFail();
+        return view('pages.superAdmin.userAspiration.dashboard-user-aspiration-detail', compact('item'));
     }
 }
