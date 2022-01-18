@@ -15,4 +15,24 @@ class Transaction extends Model
         'transaction_code',
         'total_transaction'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function conservation_area()
+    {
+        return $this->belongsTo(ConservationArea::class);
+    }
+
+    public function purpose()
+    {
+        return $this->belongsTo(Purpose::class);
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(ConservationAreaGallery::class);
+    }
 }

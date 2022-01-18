@@ -9,6 +9,6 @@ class DashboardEntryPermitController extends Controller
 {
     public function index()
     {
-        return view('pages.superAdmin.dashboard-entry-permit');
+        return view('pages.superAdmin.entryPermit.dashboard-entry-permit');
     }
 }

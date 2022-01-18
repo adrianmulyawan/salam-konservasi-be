@@ -20,7 +20,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Jumlah Kawasan Konservasi
+                                    Jumlah Kawasan
                                 </div>
                                 <div class="dashboard-card-subtitle">
                                     {{ $conservationArea }}
@@ -46,7 +46,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Jumlah Pengajaun Izin Masuk
+                                    Jumlah Pengajaun Izin 
                                 </div>
                                 <div class="dashboard-card-subtitle">
                                     {{ $submission }}
@@ -59,7 +59,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Jumlah Pembayaran Retribusi
+                                    Jumlah Pembayaran
                                 </div>
                                 <div class="dashboard-card-subtitle">
                                     {{ $retributionPayment }}
@@ -198,66 +198,22 @@
                             <div class="card-col-4-subtitle">
                                 Pengguna Baru SALAM Konservasi
                             </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/user1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Tiara Andini
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/user2.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Mandalika Ayusti Nawangsari
+                            @forelse ($recentUsers as $user)
+                                <div class="card card-list d-block">
+                                    <div class="card-body-user">
+                                        <div class="row">
+                                            <div class="col-md-2 card-photo-user">
+                                                <img src="{{ url('frontend/images/ic_profile.png') }}">
+                                            </div>
+                                            <div class="col-md-10">
+                                                {{ $user->name }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/user3.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Muhammad Adrian Mulyawan
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/user4.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Putri Puspitasari
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/user5.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Mega Astuti
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-muted">Belum Ada User Didalam Sistem</p>
+                            @endforelse
                         </div>
                     </div>
                     <!-- 4.2 Berita Baru -->
@@ -269,66 +225,22 @@
                             <div class="card-col-4-subtitle">
                                 Data Berita Yang Baru Ditambahkan
                             </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/berita1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Penyerahan Bibit Ikan Kepada...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/berita1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Penanaman 300 Bibit Bakau...
+                            @forelse ($recentNews as $news)
+                                <div class="card card-list d-block">
+                                    <div class="card-body-user">
+                                        <div class="row">
+                                            <div class="col-md-2 card-photo-user">
+                                                <img src="{{ Storage::url($news->photo) }}">
+                                            </div>
+                                            <div class="col-md-10">
+                                                {{ Str::limit($news->title, 25, '...') }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/berita1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Pulau Randayan di Tutup Sementara...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/berita1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Abrasi di Pantai Jawai Semakin...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/berita1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Pelepasan 3000 Bayi Penyu...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-muted">Belum Ada Berita Apapun</p>
+                            @endforelse
                         </div>
                     </div>
                     <!-- 4.3 Acara Baru -->
@@ -340,224 +252,105 @@
                             <div class="card-col-4-subtitle">
                                 Data Acara Yang Baru Ditambahkan
                             </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/acara1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Pesta Adat Pantai Paloh
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/acara1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Festival Bersih Pantai
+                            @forelse ($recentEvents as $event)
+                                <div class="card card-list d-block">
+                                    <div class="card-body-user">
+                                        <div class="row">
+                                            <div class="col-md-2 card-photo-user">
+                                                <img src="{{ Storage::url($event->photo) }}">
+                                            </div>
+                                            <div class="col-md-10">
+                                                {{ Str::limit($event->title, 25, '...') }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/acara1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Peingatan Sumpah Pemuda di Paloh...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/acara1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            17 Agustus di Pulau Randayan...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-list d-block">
-                                <div class="card-body-user">
-                                    <div class="row">
-                                        <div class="col-md-2 card-photo-user">
-                                            <img src="{{ url('frontend/images/user/acara1.png') }}">
-                                        </div>
-                                        <div class="col-md-10">
-                                            Penyuluhan Manfaat Rumput Laut...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-muted">Belum Ada Acara Apapun</p>
+                            @endforelse
                         </div>
                     </div>
                 </div>
+
                 <!-- 5. Recent Pengajuan Izin Masuk Kawasan -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
                         <h5 class="mb-3">
                             Pengajuan Izin Masuk Kawasan
                         </h5>
-                        <!-- 5.1 Recent 1 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-3">
-                                        KKPD Pulau Randayan
-                                    </div>
-                                    <div class="col-md-2">
-                                        12 Januari, 2020
-                                    </div>
-                                    <div class="col-md-2">
-                                        Pariwisata
-                                    </div>
-                                    <div class="col-md-3">
-                                        Adrian Mulyawan
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- 5.1 Recent 2 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-3">
-                                        KKPD Paloh
-                                    </div>
-                                    <div class="col-md-2">
-                                        06 Januari, 2020
-                                    </div>
-                                    <div class="col-md-2">
-                                        Penelitian
-                                    </div>
-                                    <div class="col-md-3">
-                                        Kevin Jordan
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                        @forelse ($recentSubmission as $submission)
+                            <!-- 5.1 Recent 1 -->
+                            <a href="{{ route('AdminchangeSubmissionStatus', $submission->id) }}" class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="{{ Storage::url($submission->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                        </div>
+                                        <div class="col-md-3">
+                                            {{ $submission->conservation_area->name }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{ \Carbon\Carbon::create($submission->created_at)->format('F n, Y') }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{ $submission->purpose->purpose_name }}
+                                        </div>
+                                        <div class="col-md-3">
+                                            {{ $submission->user->name }}
+                                        </div>
+                                        <div class="col-md-1 d-none d-md-block">
+                                            <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                        <!-- 5.1 Recent 3 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-3">
-                                        KKPD Kendawangan
-                                    </div>
-                                    <div class="col-md-2">
-                                        01 Januari, 2020
-                                    </div>
-                                    <div class="col-md-2">
-                                        Pendidikan
-                                    </div>
-                                    <div class="col-md-3">
-                                        Muh Hakaman Athhar
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
+                            </a>
+                        @empty
+                            <div class="card card-list d-block">
+                                <div class="row justify-content-center">
+                                    <p class="text-muted">Belum Ada Pengajuan Izin Masuk Apapun</p>
                                 </div>
                             </div>
-                        </a>
+                        @endforelse
                     </div>
                 </div>
+
                 <!-- 6. Recent Pembayaran Retribusi -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
                         <h5 class="mb-3">
                             Pembayaran Retribusi Izin Masuk Kawasan Konservasi
                         </h5>
-                        <!-- 6.1 Recent 1 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                        @forelse ($recentTransaction as $transaction)
+                            <a href="{{ route('AdminchangeTransactionStatus', $transaction->id) }}" class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="{{ Storage::url($transaction->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                        </div>
+                                        <div class="col-md-4">
+                                            KKPD Pulau Randayan
+                                        </div>
+                                        <div class="col-md-3">
+                                            Muhammad Adrian Mulyawan
+                                        </div>
+                                        <div class="col-md-3">
+                                            Rp 150.000,00
+                                        </div>
+                                        <div class="col-md-1 d-none d-md-block">
+                                            <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        KKPD Pulau Randayan
-                                    </div>
-                                    <div class="col-md-3">
-                                        Muhammad Adrian Mulyawan
-                                    </div>
-                                    <div class="col-md-3">
-                                        Rp 150.000,00
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                </div>
+                            </a>
+                        @empty
+                            <div class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <p class="text-muted">Belum Ada Pembayaran Izin Masuk Apapun</p>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        <!-- 6.1 Recent 2 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Paloh
-                                    </div>
-                                    <div class="col-md-3">
-                                        Anita Rahayu
-                                    </div>
-                                    <div class="col-md-3">
-                                        Rp 250.000,00
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- 3.1 Recent 3 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Kubu Raya
-                                    </div>
-                                    <div class="col-md-3">
-                                        Anastasya Kosasih
-                                    </div>
-                                    <div class="col-md-3">
-                                        Rp 100.000,00
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        @endforelse
                     </div>
                 </div>
             </div>

@@ -24,4 +24,9 @@ class Purpose extends Model
     {
         return $this->hasMany(MasterPrice::class, 'purposes_id', 'id');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
