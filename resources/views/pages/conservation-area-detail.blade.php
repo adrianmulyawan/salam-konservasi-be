@@ -252,7 +252,7 @@
                                         </h5>
                                     </div>
                                     <div class="conservation-event-date">
-                                        Tanggal Acara: {{ \Carbon\Carbon::create($event->event_date)->format('n F, Y') }}
+                                        Tanggal Acara: {{ \Carbon\Carbon::create($event->event_date)->format('d F, Y') }}
                                     </div>
                                     <div class="conservation-event-location">
                                         Lokasi Acara: {{ $event->conservation_area->name }}

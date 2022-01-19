@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'transactions';
 
@@ -34,5 +36,15 @@ class Transaction extends Model
     public function galleries()
     {
         return $this->hasMany(ConservationAreaGallery::class);
+    }
+
+    public function transaction_details()
+    {
+        return $this->hasMany(TransactionDetail::class);
+    }
+
+    public function transaction_equipment_details()
+    {
+        return $this->hasMany(TransactionEquipmentDetail::class);
     }
 }

@@ -114,17 +114,23 @@ Route::prefix('dashboard/admin')
 
         Route::resource('/manage-user', DashboardManageUserController::class);
 
+        // Pengajuan Izin Masuk Kawasan
         Route::get('/manage-submission', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'index'])
             ->name('manageSubmission');
         Route::get('/manage-submission/{id}/change-status', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'changeSubmissionStatus'])
             ->name('changeSubmissionStatus');
+        Route::put('/manage-submission/{id}/update-status', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'updateSubmissionStatus'])
+            ->name('updateSubmissionStatus');
         Route::get('/manage-submission/status/approved/{id}', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'submissionStatusApproved'])
             ->name('submissionStatusApproved');
         Route::get('/manage-submission/status/rejected/{id}', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'submissionStatusRejected'])
             ->name('submissionStatusRejected');
         Route::get('/manage-submission/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'submissionStatusFailed'])
             ->name('submissionStatusFailed');
+        Route::delete('/manage-submission/{id}/delete-submission', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'deleteSubmission'])
+            ->name('deleteSubmission');
         
+        // Pembayaran Retribusi
         Route::get('/manage-transaction', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'index'])
             ->name('manageTransaction');
         Route::get('/manage-transaction/{id}/change-status', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'changeTransactionStatus'])

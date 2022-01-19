@@ -68,7 +68,7 @@
                                                         <form action="{{ route('Adminmanage-conservation-area.destroy', $item->id) }}" method="post" class="d-inline confirm-delete">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn btn-danger">
+                                                            <button class="btn btn-danger" type="submit">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
                                                         </form>
