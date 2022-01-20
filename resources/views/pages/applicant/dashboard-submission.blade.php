@@ -20,333 +20,181 @@
                         <!-- Tabs: Belum Diproses, Disetujui, Ditolak, Gagal -->
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <a class="nav-link active" id="pills-pending-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Belum Diproses</a>
+                              <a class="nav-link active" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="true">Belum Diproses</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <a class="nav-link" id="pills-disetujui-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Disetujui</a>
+                              <a class="nav-link" id="pills-disetujui-tab" data-toggle="pill" href="#pills-allowed" role="tab" aria-controls="pills-allowed" aria-selected="false">Disetujui</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <a class="nav-link" id="pills-ditolak-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Ditolak</a>
+                              <a class="nav-link" id="pills-ditolak-tab" data-toggle="pill" href="#pills-rejected" role="tab" aria-controls="pills-rejected" aria-selected="false">Ditolak</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="pills-gagal-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Gagal</a>
+                                <a class="nav-link" id="pills-gagal-tab" data-toggle="pill" href="#pills-failed" role="tab" aria-controls="pills-failed" aria-selected="false">Gagal</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <!-- PENDING -->
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-pending-tab">
-                                <!-- 2.1 Recent 1 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                            <div class="tab-pane fade show active" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
+                                @forelse ($submissionPending as $pending)
+                                    <a href="{{ route('dashboardSubmissionPending', $pending->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($pending->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $pending->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $pending->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ \Carbon\Carbon::create($pending->created_at)->format('d F, Y') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                KKPD Pulau Randayan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                12 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <!-- 2.1 Recent 2 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Paloh
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                09 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 3 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kendawangan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                01 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 4 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kubu Raya
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pendidikan
-                                            </div>
-                                            <div class="col-md-3">
-                                                17 Desember, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 5 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kayong Utara
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                30 November, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $submissionPending->links() }}
+                                </div>
                             </div>
+
                             <!-- DISETUJUI -->
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-disetujui-tab">
-                                <!-- 2.1 Recent 1 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                            <div class="tab-pane fade" id="pills-allowed" role="tabpanel" aria-labelledby="pills-disetujui-tab">
+                                @forelse ($submissionAllowed as $allowed)
+                                    <a href="{{ route('dashboardSubmissionApproved', $allowed->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($allowed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $allowed->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $allowed->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ \Carbon\Carbon::create($allowed->created_at)->format('d F, Y') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                KKPD Pulau Randayan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                12 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <!-- 2.1 Recent 2 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Paloh
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                09 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 3 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kendawangan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                01 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 4 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kubu Raya
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pendidikan
-                                            </div>
-                                            <div class="col-md-3">
-                                                17 Desember, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 5 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kayong Utara
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                30 November, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $submissionAllowed->links() }}
+                                </div>
                             </div>
+
                             <!-- DITOLAK -->
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-ditolak-tab">
-                                <!-- 2.1 Recent 1 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                            <div class="tab-pane fade" id="pills-rejected" role="tabpanel" aria-labelledby="pills-ditolak-tab">
+                                @forelse ($submissionRejected as $rejected)
+                                    <a href="{{ route('dashboardSubmissionRejected', $rejected->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($rejected->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $rejected->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $rejected->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ \Carbon\Carbon::create($rejected->created_at)->format('d F, Y') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                KKPD Pulau Randayan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                12 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <!-- 2.1 Recent 2 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Paloh
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                09 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $submissionRejected->links() }}
+                                </div>
                             </div>
+
                             <!-- GAGAL -->
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-gagal-tab">
-                                <!-- 2.1 Recent 1 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                            <div class="tab-pane fade" id="pills-failed" role="tabpanel" aria-labelledby="pills-gagal-tab">
+                                @forelse ($submissionFailed as $failed)
+                                    <a href="{{ route('dashboardSubmissionFailed', $failed->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($failed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $failed->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $failed->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ \Carbon\Carbon::create($failed->created_at)->format('d F, Y') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                KKPD Pulau Randayan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                12 Januari, 2020
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $submissionFailed->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pagination -->
-                <div class="row justify-content-end mr-1">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <!--  -->
             </div>
         </div>
     </div>
