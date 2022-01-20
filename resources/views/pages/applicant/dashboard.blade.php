@@ -23,7 +23,7 @@
                                     Jumlah Pengajaun Izin
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    15
+                                    {{ $totalSubmission }}
                                 </div>
                             </div>
                         </div>
