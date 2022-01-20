@@ -37,7 +37,7 @@ class DashboardAdminController extends Controller
         $recentSubmission = Transaction::with(['user', 'conservation_area', 'purpose'])->orderBy('created_at', 'DESC')->where('submission_status', 'PENDING')->limit(3)->get();
 
         // Pembayaran Terakhir Dilakukan
-        $recentTransaction = Transaction::with(['user', 'conservation_area'])->orderBy('created_at', 'DESC')->where('payment_status', 'pending')->limit(3)->get();
+        $recentTransaction = Transaction::with(['user', 'conservation_area'])->orderBy('created_at', 'DESC')->where('payment_status', 'PENDING')->limit(3)->get();
 
         return view('pages.superAdmin.dashboard', [
             'user' => $user,

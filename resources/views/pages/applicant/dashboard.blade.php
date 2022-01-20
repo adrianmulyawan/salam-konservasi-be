@@ -13,10 +13,11 @@
                     Selamat Datang di Halaman Dashboard
                 </p>
             </div>
+
             <div class="dashboard-content">
                 <!-- 2. Card Pengajuan Izin Masuk Kawasan -->
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
@@ -29,187 +30,212 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Jumlah Pengajaun Izin: Diterima
+                                    Jumlah Pembayaran
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    10
+                                    {{ $totalPayment }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">
-                                    Jumlah Pengajaun Izin: Ditolak
+                                    Pengajaun Izin: Belum Diproses
                                 </div>
                                 <div class="dashboard-card-subtitle">
-                                    5
+                                    {{ $submissionPending }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pengajaun Izin: Diterima
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $submissionApproved }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pengajaun Izin: Ditolak
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $submissionRejected }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pengajaun Izin: Gagal
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $submissionFailed }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pembayaran: Belum Dibayar
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $paymentUnpaid }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pembayaran: Pending
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $paymentPending }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pembayaran: Terbayar
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $paymentPaid }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="dashboard-card-title">
+                                    Pembayaran: Gagal
+                                </div>
+                                <div class="dashboard-card-subtitle">
+                                    {{ $paymentFailed }}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- 3. Recent Pengajuan Izin Masuk Kawasan -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
                         <h5 class="mb-3">
                             Pengajuan Izin Masuk Kawasan
                         </h5>
-                        <!-- 3.1 Recent 1 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                        @forelse ($recentSubmission as $submission)
+                            <a href="#" class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="{{ Storage::url($submission->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ $submission->conservation_area->name }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{ $submission->purpose->purpose_name }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{ \Carbon\Carbon::create($submission->date_of_entry)->format('d F, Y') }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            @if ($submission->submission_status == 'PENDING')
+                                                BELUM DIPROSES
+                                            @elseif ($submission->submission_status == 'ALLOWED')
+                                                DIIZINKAN
+                                            @elseif ($submission->submission_status == 'REJECTED')
+                                                DITOLAK
+                                            @elseif ($submission->submission_status == 'FAILED')
+                                                GAGAL
+                                            @endif
+                                        </div>
+                                        <div class="col-md-1 d-none d-md-block">
+                                            <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        KKPD Pulau Randayan
-                                    </div>
-                                    <div class="col-md-2">
-                                        Pariwisata
-                                    </div>
-                                    <div class="col-md-2">
-                                        12 Januari, 2020
-                                    </div>
-                                    <div class="col-md-2">
-                                        BELUM DIPROSES
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                </div>
+                            </a>
+                        @empty
+                            <div class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row justify-content-center mt-auto">
+                                        <p class="text-muted">Belum Ada Pengajuan Izin Masuk Apapun</p>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        <!-- 3.1 Recent 2 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Paloh
-                                    </div>
-                                    <div class="col-md-2">
-                                        Penelitian
-                                    </div>
-                                    <div class="col-md-2">
-                                        06 Januari, 2020
-                                    </div>
-                                    <div class="col-md-2">
-                                        DIIZINKAN
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- 3.1 Recent 3 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Kendawangan
-                                    </div>
-                                    <div class="col-md-2">
-                                        Pendidikan
-                                    </div>
-                                    <div class="col-md-2">
-                                        25 Desember, 2020
-                                    </div>
-                                    <div class="col-md-2">
-                                        DITOLAK
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        @endforelse
                     </div>
                 </div>
+
                 <!-- 4. Recent Pembayaran Retribusi -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
                         <h5 class="mb-3">
                             Pembayaran Retribusi Izin Masuk Kawasan Konservasi
                         </h5>
-                        <!-- 3.1 Recent 1 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                        @forelse ($recentTransaction as $transaction)
+                            <a href="#" class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="{{ Storage::url($transaction->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ $transaction->conservation_area->name }}
+                                        </div>
+                                        <div class="col-md-3">
+                                            {{ $transaction->purpose->purpose_name }}
+                                        </div>
+                                        <div class="col-md-3">
+                                            Rp {{ number_format($transaction->total_transaction,2,',','.') }}
+                                        </div>
+                                        <div class="col-md-1 d-none d-md-block">
+                                            <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        KKPD Pulau Randayan
-                                    </div>
-                                    <div class="col-md-3">
-                                        Pariwisata
-                                    </div>
-                                    <div class="col-md-3">
-                                        Rp 150.000,00
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                </div>
+                            </a>
+                        @empty
+                            <div class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row justify-content-center mt-auto">
+                                        <p class="text-muted">Belum Ada Pembayaran Apapun</p>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        <!-- 3.1 Recent 2 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Paloh
-                                    </div>
-                                    <div class="col-md-3">
-                                        Penelitian
-                                    </div>
-                                    <div class="col-md-3">
-                                        Rp 250.000,00
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- 3.1 Recent 3 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun3.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Kubu Raya
-                                    </div>
-                                    <div class="col-md-3">
-                                        Pendidikan
-                                    </div>
-                                    <div class="col-md-3">
-                                        Rp 350.000,00
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        @endforelse
                     </div>
                 </div>
             </div>

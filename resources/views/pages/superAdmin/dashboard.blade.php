@@ -290,7 +290,7 @@
                                             {{ $submission->conservation_area->name }}
                                         </div>
                                         <div class="col-md-2">
-                                            {{ \Carbon\Carbon::create($submission->created_at)->format('F n, Y') }}
+                                            {{ \Carbon\Carbon::create($submission->created_at)->format('d F, Y') }}
                                         </div>
                                         <div class="col-md-2">
                                             {{ $submission->purpose->purpose_name }}
