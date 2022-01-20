@@ -61,8 +61,8 @@
             @endguest
             @auth
                 @if (Auth::user()->role == 'applicant')
-                    {{-- Profile Pictur & Notif: Desktop --}}
-                    <ul class="navbar-nav d-none d-lg-flex">
+                     {{-- Profile Pictur & Notif: Desktop --}}
+                     <ul class="navbar-nav d-none d-lg-flex">
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                                 <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
@@ -81,7 +81,7 @@
                             </div>
                         </li>
                         <!-- Notif -->
-                        <li class="nav-item dropdown notification-content">
+                        <li class="nav-item dropdown notification-content-home">
                             <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
                                 <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
                                 <div class="notification">4</div>
