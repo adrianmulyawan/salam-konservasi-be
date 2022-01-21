@@ -37,230 +37,130 @@
                                 </a>
                             </li>
                         </ul>
+
                         <div class="tab-content" id="pills-tabContent">
                             <!-- Belum Dibayar -->
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-pending-transaction-tab">
-                                <!-- 2.1 Recent 1 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                                @forelse ($paymentUnpaid as $unpaid)
+                                    <a href="{{ route('paymentProcess', $unpaid->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($unpaid->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $unpaid->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $unpaid->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    Rp {{ number_format($unpaid->total_transaction,2,',','.') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                KKPD Pulau Randayan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 150.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <!-- 2.1 Recent 2 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Paloh
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 250.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 3 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kendawangan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 100.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 4 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kubu Raya
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pendidikan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 350.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 5 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kayong Utara
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 100.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $paymentUnpaid->links() }}
+                                </div>
                             </div>
+
                             <!-- Terbayar -->
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-paid-tab">
-                                <!-- 2.1 Recent 1 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                                @forelse ($paymentPaidOff as $paidOff)
+                                    <a href="{{ route('paymentProcess', $paidOff->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($paidOff->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $paidOff->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $paidOff->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    Rp {{ number_format($paidOff->total_transaction,2,',','.') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                KKPD Pulau Randayan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 150.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <!-- 2.1 Recent 2 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Paloh
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 250.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- 2.1 Recent 3 -->
-                                <a href="#" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
-                                            </div>
-                                            <div class="col-md-4">
-                                                KKPD Kendawangan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Penelitian
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 100.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $paymentPaidOff->links() }}
+                                </div>
                             </div>
+
                             <!-- Gagal -->
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-failed-tab">
-                                <!-- 2.1 Recent 1 -->
-                                <a href="" class="card card-list d-block">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                                @forelse ($paymentFailed as $failed)
+                                    <a href="{{ route('paymentProcess', $failed->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($failed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    {{ $failed->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $failed->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    Rp {{ number_format($failed->total_transaction,2,',','.') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                KKPD Pulau Randayan
-                                            </div>
-                                            <div class="col-md-3">
-                                                Pariwisata
-                                            </div>
-                                            <div class="col-md-3">
-                                                Rp 150.000,00
-                                            </div>
-                                            <div class="col-md-1 d-none d-md-block">
-                                                <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $paymentFailed->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pagination -->
-                <div class="row justify-content-end mr-1">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <!--  -->
             </div>
         </div>
     </div>

@@ -62,6 +62,7 @@ Route::prefix('dashboard/applicant')
         Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])
             ->name('dashboardApplicant');
 
+        // Pengajuan Izin Masuk Kawasan
         Route::get('/submission', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'index'])
             ->name('dashboardSubmission');
         Route::get('/submission/status/pending/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionPending'])
@@ -73,6 +74,7 @@ Route::prefix('dashboard/applicant')
         Route::get('/submission/status/failed/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionFailed'])
             ->name('dashboardSubmissionFailed');
         
+        // Pembayaran Retribusi
         Route::get('/payment', [\App\Http\Controllers\Applicant\DashboardPaymentController::class, 'index'])
             ->name('dashboardPayment');
         Route::get('/payment/payment-process/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentProcess'])
@@ -142,6 +144,7 @@ Route::prefix('dashboard/admin')
         Route::get('/manage-transaction/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'transactionStatusFailed'])
             ->name('transactionStatusFailed');
         
+        // Kelola Surat Izin Masuk
         Route::get('/manage-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'index'])
             ->name('manageEntryPermit');
         Route::get('/manage-entry-permit/{id}/upload-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'uploadEntryPermit'])
@@ -149,6 +152,7 @@ Route::prefix('dashboard/admin')
         Route::get('/manage-entry-permit/{id}/detail-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'detailEntryPermit'])
             ->name('detailEntryPermit');
         
+        // Surat Izin Masuk
         Route::get('/entry-permit', [\App\Http\Controllers\Admin\DashboardEntryPermitController::class, 'index'])
             ->name('entryPermit');
         

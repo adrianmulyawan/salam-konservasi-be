@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Applicant;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardPaymentController extends Controller
 {
     public function index ()
     {
-        return view('pages.applicant.dashboard-payment');
+        $paymentUnpaid = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'UNPAID')->latest()->paginate(5);
+        $paymentPaidOff = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'PENDING')->where('payment_status', 'PAIDOFF')->latest()->paginate(5);
+        $paymentFailed = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'FAILED')->where('payment_status', 'FAILED')->latest()->paginate(5);
+
+        return view('pages.applicant.dashboard-payment', compact([
+            'paymentUnpaid', 'paymentPaidOff', 'paymentFailed'
+        ]));
     }
 
     public function paymentProcess()
