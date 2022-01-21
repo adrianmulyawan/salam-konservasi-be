@@ -21,7 +21,7 @@
                             <div class="section-transaction-total text-center">
                                 <h3>Total Pembayaran Retribusi</h3>
                                 <p>
-                                    Rp 250.000,00
+                                    Rp {{ number_format($data->total_transaction,2,',','.') }}
                                 </p>
                             </div>
 
@@ -56,16 +56,28 @@
                             </div>
 
                             <div class="row section-transaction-upload justify-content-center">
-                                <form action="#" method="post">
+                                <form action="{{ route('paymentProcessCheckout', $data->id) }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label class="label-header" for="inputNamaPemilikRekening">Nama Pemilik Rekening</label>
-                                        <input type="text" name="account_owner" class="form-control" id="inputNamaPemilikRekening" placeholder="Nama Pemilik Rekening" required>
+                                        <input type="text" name="account_owner" value="{{ old('account_owner') }}" class="form-control @error('account_owner') is-invalid @enderror" id="inputNamaPemilikRekening" placeholder="Nama Pemilik Rekening" required>
+                                        @error('account_owner')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label class="label-header" for="uploadBuktiTransfer">Unggah Bukti Transfer</label>
                                         <div class="custom-file mb-2">
                                             <label class="custom-file-label" for="uploadBuktiTransfer">Unggah Bukti Transfer</label>
-                                            <input type="file" name="evidence_of_transfer" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="uploadBuktiTransfer" required>
+                                            <input type="file" name="evidence_of_transfer" class="custom-file-input mb-2 mr-sm-2 input-formulir @error('evidence_of_transfer') is-invalid @enderror" id="uploadBuktiTransfer" required>
+                                            @error('evidence_of_transfer')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-block btn-accept success">Saya Sudah Membayar</button>

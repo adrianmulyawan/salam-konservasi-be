@@ -14,6 +14,11 @@
                 <p class="dashboard-subtitle">
                     Seluruh Daftar Pembayaran Retribusi Izin Masuk Kawasan Konservasi
                 </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <!-- 2. Pengajuan Izin Masuk Kawasan -->
@@ -82,7 +87,7 @@
                             <!-- Terbayar -->
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-paid-tab">
                                 @forelse ($paymentPaidOff as $paidOff)
-                                    <a href="{{ route('paymentProcess', $paidOff->id) }}" class="card card-list d-block">
+                                    <a href="{{ route('paymentPaidOff', $paidOff->id) }}" class="card card-list d-block">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-1">
@@ -122,7 +127,7 @@
                             <!-- Gagal -->
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-failed-tab">
                                 @forelse ($paymentFailed as $failed)
-                                    <a href="{{ route('paymentProcess', $failed->id) }}" class="card card-list d-block">
+                                    <a href="{{ route('paymentFailed', $failed->id) }}" class="card card-list d-block">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-1">

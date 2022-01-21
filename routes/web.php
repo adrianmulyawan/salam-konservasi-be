@@ -84,7 +84,7 @@ Route::prefix('dashboard/applicant')
         Route::get('/payment/status/paid/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentPaidOff'])
             ->name('paymentPaidOff');
         Route::get('/payment/status/failed/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentFailed'])
-            ->name('paymentPaidOff');
+            ->name('paymentFailed');
 
         Route::get('/area-entry', [\App\Http\Controllers\Applicant\AreaEntryController::class, 'index'])
             ->name('areaEntryPermit');
