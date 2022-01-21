@@ -93,6 +93,11 @@ Route::prefix('dashboard/applicant')
             ->name('settingAccountApplicant');
         Route::put('/profile/update', [\App\Http\Controllers\Applicant\SettingApplicantController::class, 'update'])
             ->name('updateAccountApplicant');
+
+        Route::get('/change-password', [\App\Http\Controllers\Applicant\DashboardEditPasswordController::class, 'edit'])
+            ->name('settingPasswordApplicant');
+        Route::put('/change-password/update', [\App\Http\Controllers\Applicant\DashboardEditPasswordController::class, 'update'])
+            ->name('updatePasswordApplicant');
     }
 );
 
