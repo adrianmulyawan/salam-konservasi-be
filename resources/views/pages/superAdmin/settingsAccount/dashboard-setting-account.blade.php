@@ -40,25 +40,45 @@
                                         <label for="inputName">
                                             Nama
                                         </label>
-                                        <input type="text" name="name" class="form-control" id="inputName" value="{{ old('name', Auth::user()->name) }}" autofocus>
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputName" value="{{ Auth::user()->name }}" autofocus>
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail">
                                             Email
                                         </label>
-                                        <input type="email" name="email" class="form-control" id="inputEmail" value="{{ old('email', Auth::user()->email) }}">
+                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail" value="{{ Auth::user()->email }}">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">
                                             Alamat
                                         </label>
-                                        <input type="text" name="address" class="form-control" id="inputAddress" value="{{ old('address', Auth::user()->address) }}">
+                                        <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" id="inputAddress" value="{{ Auth::user()->address }}">
+                                        @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPhone">
                                             No Telpon
                                         </label>
-                                        <input type="text" name="phone_number" class="form-control" id="inputPhone" value="{{ old('phone_number', Auth::user()->phone_number) }}">
+                                        <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" id="inputPhone" value="{{ Auth::user()->phone_number }}">
+                                        @error('phone_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>

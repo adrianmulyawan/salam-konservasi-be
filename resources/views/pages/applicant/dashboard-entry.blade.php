@@ -19,64 +19,39 @@
                 <!-- 3.Surat Izin Izin Masuk Kawasan -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
-                        <!-- 3.1 Recent 1 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun1.png') }}" class="img-card-conservation">
+                        @forelse ($areaEntryPermits as $entryPermit)
+                            <a href="#" class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="{{ Storage::url($entryPermit->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ $entryPermit->conservation_area->name }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ $entryPermit->purpose->purpose_name }}
+                                        </div>
+                                        <div class="col-md-2 d-none d-md-block">
+                                            <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        KKPD Pulau Randayan
-                                    </div>
-                                    <div class="col-md-4">
-                                        Pariwisata
-                                    </div>
-                                    <div class="col-md-2 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                </div>
+                            </a>
+                        @empty
+                            <div class="card card-list d-block">
+                                <div class="card-body">
+                                    <div class="row justify-content-center mt-auto">
+                                        <p class="text-muted">Data Surat Izin Masuk Kosong!</p>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        <!-- 3.1 Recent 2 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun2.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Paloh
-                                    </div>
-                                    <div class="col-md-4">
-                                        Penelitian
-                                    </div>
-                                    <div class="col-md-2 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- 3.1 Recent 3 -->
-                        <a href="#" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="{{ url('frontend/images/dashboard/image-pengajaun3.png') }}" class="img-card-conservation">
-                                    </div>
-                                    <div class="col-md-4">
-                                        KKPD Paloh
-                                    </div>
-                                    <div class="col-md-4">
-                                        Pariwisata
-                                    </div>
-                                    <div class="col-md-2 d-none d-md-block">
-                                        <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        @endforelse
                     </div>
+                </div>
+                <!-- Pagination -->
+                <div class="row justify-content-end mr-1 mt-4">
+                    {{ $areaEntryPermits->links() }}
                 </div>
             </div>
         </div>

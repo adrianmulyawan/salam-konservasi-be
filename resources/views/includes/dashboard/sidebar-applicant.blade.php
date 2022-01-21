@@ -19,7 +19,7 @@
         <a href="{{ route('areaEntryPermit') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/applicant/area-entry*') ? 'active' : '' }}">
             Surat Izin Masuk
         </a>
-        <a href="{{ route('settingAccountApplicant') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/applicant/setting-account*') ? 'active' : '' }}">
+        <a href="{{ route('settingAccountApplicant') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/applicant/profile*') ? 'active' : '' }}">
             Pengaturan Akun
         </a>
         <a href="{{ route('logout') }}" class="list-group-item list-group-item-action mt-5" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -89,8 +89,10 @@ Route::prefix('dashboard/applicant')
         Route::get('/area-entry', [\App\Http\Controllers\Applicant\AreaEntryController::class, 'index'])
             ->name('areaEntryPermit');
         
-        Route::get('/setting-account', [\App\Http\Controllers\Applicant\SettingApplicantController::class, 'index'])
+        Route::get('/profile', [\App\Http\Controllers\Applicant\SettingApplicantController::class, 'edit'])
             ->name('settingAccountApplicant');
+        Route::put('/profile/update', [\App\Http\Controllers\Applicant\SettingApplicantController::class, 'update'])
+            ->name('updateAccountApplicant');
     }
 );
 
