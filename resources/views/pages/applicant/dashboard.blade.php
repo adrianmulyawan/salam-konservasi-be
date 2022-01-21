@@ -174,7 +174,7 @@
                                             @if ($submission->submission_status == 'PENDING')
                                                 BELUM DIPROSES
                                             @elseif ($submission->submission_status == 'ALLOWED')
-                                                DIIZINKAN
+                                                DISETUJUI
                                             @elseif ($submission->submission_status == 'REJECTED')
                                                 DITOLAK
                                             @elseif ($submission->submission_status == 'FAILED')

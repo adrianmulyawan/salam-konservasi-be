@@ -115,21 +115,21 @@
 
                             <!-- DITOLAK -->
                             <div class="tab-pane fade" id="pills-rejected" role="tabpanel" aria-labelledby="pills-ditolak-tab">
-                                @forelse ($submissionRejected as $rejected)
-                                    <a href="{{ route('dashboardSubmissionRejected', $rejected->id) }}" class="card card-list d-block">
+                                @forelse ($submissionRejecteds as $reject)
+                                    <a href="{{ route('dashboardSubmissionRejected', $reject->id) }}" class="card card-list d-block">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-1">
-                                                    <img src="{{ Storage::url($rejected->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                    <img src="{{ Storage::url($reject->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    {{ $rejected->conservation_area->name }}
+                                                    {{ $reject->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
-                                                    {{ $rejected->purpose->purpose_name }}
+                                                    {{ $reject->purpose->purpose_name }}
                                                 </div>
                                                 <div class="col-md-3">
-                                                    {{ \Carbon\Carbon::create($rejected->created_at)->format('d F, Y') }}
+                                                    {{ \Carbon\Carbon::create($reject->created_at)->format('d F, Y') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
                                                     <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
@@ -149,7 +149,7 @@
 
                                 <!-- Pagination -->
                                 <div class="row justify-content-end mr-1 mt-4">
-                                    {{ $submissionRejected->links() }}
+                                    {{ $submissionRejecteds->links() }}
                                 </div>
                             </div>
 

@@ -16,11 +16,11 @@ class DashboardSubmissionController extends Controller
     {
         $submissionPending = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'PENDING')->latest()->paginate(5);
         $submissionAllowed = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->latest()->paginate(5);
-        $submissionRejected = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'REJECTED')->latest()->paginate(5);
+        $submissionRejecteds = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'REJECTED')->latest()->paginate(5);
         $submissionFailed = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'FAILED')->latest()->paginate(5);
         
         return view('pages.applicant.dashboard-submission', compact([
-            'submissionPending', 'submissionAllowed', 'submissionRejected', 'submissionFailed'
+            'submissionPending', 'submissionAllowed', 'submissionRejecteds', 'submissionFailed'
         ]));
     }
 
@@ -38,18 +38,33 @@ class DashboardSubmissionController extends Controller
     // Detail Pengajuan Disetujui
     public function submissionApproved($id) 
     {
-        return view('pages.applicant.dashboard-submission-approved');
+        $item = Transaction::with(['user', 'conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->findOrFail($id);
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+        return view('pages.applicant.dashboard-submission-approved', compact([
+            'item', 'details', 'equipments'
+        ]));
     }
 
     // Detail Pengajuan Ditolak
     public function submissionRejected($id)
     {
-        return view('pages.applicant.dashboard-submission-rejected');
+        $item = Transaction::with(['user', 'conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->findOrFail($id);
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+        return view('pages.applicant.dashboard-submission-rejected', compact([
+            'item', 'details', 'equipments'
+        ]));
     }
 
     // Detail Pengajuan Gagal
     public function submissionFailed($id)
     {
-        return view('pages.applicant.dashboard-submission-failed');
+        $item = Transaction::with(['user', 'conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->findOrFail($id);
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+        return view('pages.applicant.dashboard-submission-failed', compact([
+            'item', 'details', 'equipments'
+        ]));
     }
 }
