@@ -12,6 +12,11 @@
                 <p class="dashboard-subtitle">
                     Seluruh Daftar Pembayaran Retribusi Izin Masuk Kawasan Konservasi
                 </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <!-- 2. Table Data Kawasan -->
@@ -47,182 +52,43 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89109</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89108</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89107</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89106</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">6</td>
-                                                    <td class="text-center">SALAM-89105</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">7</td>
-                                                    <td class="text-center">SALAM-89104</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">8</td>
-                                                    <td class="text-center">SALAM-89103</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">9</td>
-                                                    <td class="text-center">SALAM-89102</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">10</td>
-                                                    <td class="text-center">SALAM-89101</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-edit"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($transactionPending as $pending)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $pending->transaction_code }}</td>
+                                                        <td class="text-center">{{ $pending->user->name }}</td>
+                                                        <td class="text-center">Rp {{ number_format($pending->total_transaction,2,',','.') }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::create($pending->date_of_entry)->format('d F Y') }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('AdminchangeTransactionStatus', $pending->id) }}" class="btn btn-info mt-auto">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
+                                                            <form action="{{ route('AdmindeleteTransaction', $pending->id) }}" method="post" class="d-inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="row justify-content-end mr-0">
+                                        {{ $transactionPending->links() }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Disetujui -->
                         <div class="tab-pane fade" id="pills-terbayar" role="tabpanel" aria-labelledby="pills-terbayar-tab">
                             <!-- 2.2 Tabel Pengajuan -->
@@ -241,97 +107,43 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 150.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-eye"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89109</td>
-                                                    <td class="text-center">Mandalika Ayusti Nawangsari</td>
-                                                    <td class="text-center">Rp 110.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-eye"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89108</td>
-                                                    <td class="text-center">Dhafia Raisha Kamila</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-eye"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89107</td>
-                                                    <td class="text-center">Yogi Saghara Purba</td>
-                                                    <td class="text-center">Rp 400.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-eye"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89106</td>
-                                                    <td class="text-center">Melia Putri</td>
-                                                    <td class="text-center">Rp 100.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-eye"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($transactionPaidOff as $paidOff)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $paidOff->transaction_code }}</td>
+                                                        <td class="text-center">{{ $paidOff->user->name }}</td>
+                                                        <td class="text-center">Rp {{ number_format($paidOff->total_transaction,2,',','.') }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::create($paidOff->date_of_entry)->format('d F Y') }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('AdmintransactionStatusPaidOff', $paidOff->id) }}" class="btn btn-info mt-auto">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                            <form action="{{ route('AdmindeleteTransaction', $paidOff->id) }}" method="post" class="d-inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="row justify-content-end mr-0">
+                                        {{ $transactionPaidOff->links() }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Gagal -->
                         <div class="tab-pane fade" id="pills-gagal" role="tabpanel" aria-labelledby="pills-gagal-tab">
                             <!-- 2.2 Tabel Pengajuan -->
@@ -350,41 +162,42 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Kevin Jordan</td>
-                                                    <td class="text-center">Rp 120.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-info mt-auto">
-                                                            <i class="far fa-eye"></i>
-                                                        </a>
-                                                        <form action="#" method="post" class="d-inline">
-                                                            <button class="btn btn-danger">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($transactionFailed as $failed)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $failed->transaction_code }}</td>
+                                                        <td class="text-center">{{ $failed->user->name }}</td>
+                                                        <td class="text-center">Rp {{ number_format($failed->total_transaction,2,',','.') }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::create($failed->date_of_entry)->format('d F Y') }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('AdminchangeTransactionStatus', $failed->id) }}" class="btn btn-info mt-auto">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                            <form action="{{ route('AdmindeleteTransaction', $failed->id) }}" method="post" class="d-inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="row justify-content-end mr-0">
+                                        {{ $transactionFailed->links() }}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Pagination -->
-                    <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>

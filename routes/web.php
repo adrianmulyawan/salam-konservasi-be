@@ -146,10 +146,14 @@ Route::prefix('dashboard/admin')
             ->name('manageTransaction');
         Route::get('/manage-transaction/{id}/change-status', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'changeTransactionStatus'])
             ->name('changeTransactionStatus');
+        Route::put('/manage-transaction/{id}/update-status', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'updateTransactionStatus'])
+            ->name('updateTransactionStatus');
         Route::get('/manage-transaction/status/paid-off/{id}', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'transactionStatusPaidOff'])
             ->name('transactionStatusPaidOff');
         Route::get('/manage-transaction/status/failed/{id}', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'transactionStatusFailed'])
             ->name('transactionStatusFailed');
+        Route::delete('/manage-transaction/{id}/delete-transaction', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'deleteTransaction'])
+            ->name('deleteTransaction');
         
         // Kelola Surat Izin Masuk
         Route::get('/manage-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'index'])
