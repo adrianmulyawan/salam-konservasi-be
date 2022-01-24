@@ -17,12 +17,16 @@ class DashboardAdminController extends Controller
         // Card Dashboard Admin
         $user = User::count();
         $conservationArea = ConservationArea::count();
-        $submission = Transaction::sum('submission_status');
+
+        // Pengajuan Izin Masuk Kawasan
+        $submission = Transaction::where('submission_status', 'PENDING')->orWhere('submission_status', 'ALLOWED')->orWhere('submission_status', 'REJECTED')->orWhere('submission_status', 'FAILED')->count();
         $submissionPending = Transaction::where('submission_status', 'PENDING')->count();
         $submissionAllowed = Transaction::where('submission_status', 'ALLOWED')->count();
         $submissionRejected = Transaction::where('submission_status', 'REJECTED')->count();
         $submissionFailed = Transaction::where('submission_status', 'FAILED')->count();
-        $retributionPayment = Transaction::sum('payment_status');
+
+        // Pembayaran Retribusi
+        $retributionPayment = Transaction::where('payment_status', 'UNPAID')->orWhere('payment_status', 'PENDING')->orWhere('payment_status', 'PAIDOFF')->orWhere('payment_status', 'FAILED')->count();
         $retributionUnpaid = Transaction::where('payment_status', 'UNPAID')->count();
         $retributionPending = Transaction::where('payment_status', 'PENDING')->count();
         $retributionPaidOff = Transaction::where('payment_status', 'PAIDOFF')->count();

@@ -328,13 +328,13 @@
                                             <img src="{{ Storage::url($transaction->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                         </div>
                                         <div class="col-md-4">
-                                            KKPD Pulau Randayan
+                                            {{ $transaction->conservation_area->name }}
                                         </div>
                                         <div class="col-md-3">
-                                            Muhammad Adrian Mulyawan
+                                            {{ $transaction->user->name }}
                                         </div>
                                         <div class="col-md-3">
-                                            Rp 150.000,00
+                                            Rp {{ number_format($transaction->total_transaction,2,',','.') }}
                                         </div>
                                         <div class="col-md-1 d-none d-md-block">
                                             <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
