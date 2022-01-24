@@ -62,7 +62,13 @@ class DashboardManageTransactionController extends Controller
 
     public function transactionStatusFailed($id)
     {
-        return view('pages.superAdmin.transaction.dashboard-transaction-status-failed');
+        $item = Transaction::with(['conservation_area', 'purpose', 'user'])->findOrFail($id);
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+        $totalUser = TransactionDetail::where('transaction_id', $id)->count();
+        return view('pages.superAdmin.transaction.dashboard-transaction-status-failed', compact([
+            'item', 'details', 'equipments', 'totalUser'
+        ]));
     }
 
 

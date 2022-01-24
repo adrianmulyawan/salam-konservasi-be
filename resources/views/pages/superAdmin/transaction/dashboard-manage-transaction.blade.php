@@ -171,7 +171,7 @@
                                                         <td class="text-center">Rp {{ number_format($failed->total_transaction,2,',','.') }}</td>
                                                         <td class="text-center">{{ \Carbon\Carbon::create($failed->date_of_entry)->format('d F Y') }}</td>
                                                         <td class="text-center">
-                                                            <a href="{{ route('AdminchangeTransactionStatus', $failed->id) }}" class="btn btn-info mt-auto">
+                                                            <a href="{{ route('AdmintransactionStatusFailed', $failed->id) }}" class="btn btn-info mt-auto">
                                                                 <i class="far fa-eye"></i>
                                                             </a>
                                                             <form action="{{ route('AdmindeleteTransaction', $failed->id) }}" method="post" class="d-inline">
