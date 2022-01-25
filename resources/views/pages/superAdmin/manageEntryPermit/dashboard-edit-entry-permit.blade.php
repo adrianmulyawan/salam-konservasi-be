@@ -171,7 +171,7 @@
                                             </tr>
                                     @empty
                                         <tr>
-                                                <td class="text-center" colspan="3">Tidak Membawa Peralatan</td>
+                                            <td class="text-center" colspan="3">Tidak Membawa Peralatan</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
