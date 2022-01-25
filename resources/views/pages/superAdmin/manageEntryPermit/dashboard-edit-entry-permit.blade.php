@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-superAdmin')
 
-@section('title', 'Detail Unggah Surat Izin Masuk Kawasan')
+@section('title', 'Edit Surat Izin Masuk Kawasan')
 
 @section('content')
     <!-- Content -->
@@ -10,11 +10,11 @@
             <div class="dashboard-heading">
                 <h2 class="dashboard-transaction-title">#{{ $data->transaction_code }}</h2>
                 <!-- Breadcrumb -->
-                <div class="breadcrumb-transaction>
+                <div class="breadcrumb-transaction">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                               Detail Unggah Surat Izin Masuk Kawasan
+                                Unggah Surat Izin Masuk Kawasan Konservasi
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 {{ $data->user->name }}
@@ -25,6 +25,7 @@
                             <li class="breadcrumb-item active" aria-current="page">
                                 {{ $data->conservation_area->name }}
                             </li>
+                        </ol>
                     </nav>
                 </div>
             </div>
@@ -178,29 +179,28 @@
                         </div>
                     </div>
 
-                    <!-- 2.4 Surat Pengajuan Kegiatan Penelitian/Pendidikan -->
-                    <div class="data-surat-penelitian-pendidikan">
-                        <h5>Surat Pengajuan Untuk Penelitian / Pendidikan</h5>
-                    </div>
-                    <div class="mt-2">
-                        <div class="col-12">
-                            <!-- 5.1 Recent 1 -->
-                            <a href="{{ Storage::url($data->entrance_ticket) }}" class="card card-list d-block" target="__blank">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            Surat Izin Masuk Kawasan
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                    <form action="{{ route('AdminuploadEditPermit', $data->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <!-- 2.4 Surat Izin Masuk-->
+                        <div class="form-group data-approval mt-2">
+                            <h5>Unggah Surat Izin Masuk Kawasan Konservasi</h5>
+                            <div class="custom-file mt-2 mb-3">
+                                <input type="file" name="entrance_ticket" class="custom-file-input @error('entrance_ticket') is-invalid @enderror" id="unggahSuratIzinMasuk" required>
+                                <label class="custom-file-label" for="unggahSuratIzinMasuk">{{ $data->entrance_ticket }}</label>
+                                @error('entrance_ticket')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row justify-content-end mr-2 mt-3">
-                        <a href="{{ route('AdminmanageEntryPermit') }}" class="btn btn-primary py-2 mr-2">Tutup</a>
-                        <a href="{{ route('AdmineditEntryPermit', $data->id) }}" class="btn btn-primary py-2 mr-2">Edit Surat Izin Masuk</a>
-                    </div>
+                        <div class="row justify-content-end mr-3">
+                            <a href="{{ route('AdminmanageEntryPermit') }}" class="btn btn-primary py-2 mr-2">Tutup</a>
+                            <button type="submit" class="btn btn-primary py-2">Edit Surat Izin Masuk</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -12,6 +12,11 @@
                 <p class="dashboard-subtitle">
                     Seluruh Daftar Kelola Surat Izin Masuk Kawasan Konservasi
                 </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <!-- 2. Table Data Kawasan -->
@@ -43,57 +48,33 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Kirim Surat Izin</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89109</td>
-                                                    <td class="text-center">Dhafia Raisha Kamila</td>
-                                                    <td class="text-center">KKPD Paloh</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Kirim Surat Izin</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89108</td>
-                                                    <td class="text-center">Wawan</td>
-                                                    <td class="text-center">KKPD Kubu Raya</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Kirim Surat Izin</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89107</td>
-                                                    <td class="text-center">Gusti</td>
-                                                    <td class="text-center">KKPD Kendawangan</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Kirim Surat Izin</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89106</td>
-                                                    <td class="text-center">Chiko Jeriko</td>
-                                                    <td class="text-center">KKPD Kayong Utara</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Kirim Surat Izin</a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($entryPermitPending as $pending)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $pending->transaction_code }}</td>
+                                                        <td class="text-center">{{ $pending->user->name }}</td>
+                                                        <td class="text-center">{{ $pending->conservation_area->name }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('AdminuploadEntryPermit', $pending->id) }}" class="btn btn-sim-kawasan mt-auto px-4">Kirim Surat Izin</a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="5">Belum Ada Surat Izin Yang Perlu Diunggah</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="row justify-content-end mr-0">
+                                        {{ $entryPermitPending->links() }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Terunggah -->
                         <div class="tab-pane fade" id="pills-terunggah" role="tabpanel" aria-labelledby="pills-terunggah-tab">
                             <!-- 2.2 Tabel Pengajuan -->
@@ -111,69 +92,32 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89120</td>
-                                                    <td class="text-center">Rachel Venya</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Lihat Detail</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89119</td>
-                                                    <td class="text-center">Muhammad Hakaman Athhar</td>
-                                                    <td class="text-center">KKPD Paloh</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Lihat Detail</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89118</td>
-                                                    <td class="text-center">Revianto</td>
-                                                    <td class="text-center">KKPD Kubu Raya</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Lihat Detail</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89117</td>
-                                                    <td class="text-center">Badrul</td>
-                                                    <td class="text-center">KKPD Kubu Raya</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Lihat Detail</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89116</td>
-                                                    <td class="text-center">Maman Abdurahman</td>
-                                                    <td class="text-center">KKPD Kendawangan</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">Lihat Detail</a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($entryPermitUpload as $upload)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $upload->transaction_code }}</td>
+                                                        <td class="text-center">{{ $upload->user->name }}</td>
+                                                        <td class="text-center">{{ $upload->conservation_area->name }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('AdmindetailEntryPermit', $upload->id) }}" class="btn btn-sim-kawasan mt-auto px-4">Lihat Detail</a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="5">Belum Ada Surat Izin Yang Diunggah</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
+                                        <!-- Pagination -->
+                                        <div class="row justify-content-end mr-0">
+                                            {{ $entryPermitUpload->links() }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Pagination -->
-                    <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>

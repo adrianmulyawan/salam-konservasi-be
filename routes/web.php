@@ -160,8 +160,14 @@ Route::prefix('dashboard/admin')
             ->name('manageEntryPermit');
         Route::get('/manage-entry-permit/{id}/upload-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'uploadEntryPermit'])
             ->name('uploadEntryPermit');
+        Route::put('/manage-entry-permit/{id}/store-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'storeEntryPermit'])
+            ->name('storeEntryPermit');
         Route::get('/manage-entry-permit/{id}/detail-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'detailEntryPermit'])
             ->name('detailEntryPermit');
+        Route::get('/manage-entry-permit/{id}/edit-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'editEntryPermit'])
+            ->name('editEntryPermit');
+        Route::put('/manage-entry-permit/{id}/upload-edit-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'uploadEditPermit'])
+            ->name('uploadEditPermit');
         
         // Surat Izin Masuk
         Route::get('/entry-permit', [\App\Http\Controllers\Admin\DashboardEntryPermitController::class, 'index'])
