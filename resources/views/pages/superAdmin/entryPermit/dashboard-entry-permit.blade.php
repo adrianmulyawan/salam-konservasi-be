@@ -29,86 +29,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">SALAM-89120</td>
-                                            <td class="text-center">Rachel Venya</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">SALAM-89119</td>
-                                            <td class="text-center">Muhammad Hakaman Athhar</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">SALAM-89118</td>
-                                            <td class="text-center">Revianto</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">4</td>
-                                            <td class="text-center">SALAM-89117</td>
-                                            <td class="text-center">Badrul</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">5</td>
-                                            <td class="text-center">SALAM-89116</td>
-                                            <td class="text-center">Maman Abdurahman</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardDetailUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">6</td>
-                                            <td class="text-center">SALAM-89110</td>
-                                            <td class="text-center">Adrian Mulyawan</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">7</td>
-                                            <td class="text-center">SALAM-89109</td>
-                                            <td class="text-center">Dhafia Raisha Kamila</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">8</td>
-                                            <td class="text-center">SALAM-89108</td>
-                                            <td class="text-center">Wawan</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">9</td>
-                                            <td class="text-center">SALAM-89107</td>
-                                            <td class="text-center">Gusti</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">10</td>
-                                            <td class="text-center">SALAM-89106</td>
-                                            <td class="text-center">Chiko Jeriko</td>
-                                            <td class="text-center">
-                                                <a href="../super-admin/dashboardUnggahSurat.html" class="btn btn-sim-kawasan mt-auto px-4">Unduh</a>
-                                            </td>
-                                        </tr>
+                                        <?php $counter = 0; ?>
+                                        @forelse ($dataEntries as $entry)
+                                            <tr>
+                                                <td class="text-center">{{ $counter += 1 }}</td>
+                                                <td class="text-center">{{ $entry->transaction_code }}</td>
+                                                <td class="text-center">{{ $entry->user->name }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ Storage::url($entry->entrance_ticket) }}" class="btn btn-sim-kawasan mt-auto px-4" target="__blank">Unduh</a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="4">Belum Ada Surat Izin Masuk Kawasan Yang Diunggah</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -116,15 +51,7 @@
                     </div>
                     <!-- Pagination -->
                     <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        {{ $dataEntries->links() }}
                     </div>
                 </div>
             </div>
