@@ -162,14 +162,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $counter = 0 ?>
-                                    @foreach ($equipments as $equipment)
+                                    <?php $counter = 0; ?>
+                                    @forelse ($equipments as $equipment)
+                                            <tr>
+                                                <td class="text-center">{{ $counter += 1 }}</td>
+                                                <td class="text-center">{{ $equipment->equipment_name }}</td>
+                                                <td class="text-center">{{ $equipment->equipment_total }} Buah</td>
+                                            </tr>
+                                    @empty
                                         <tr>
-                                            <td class="text-center">{{ $counter += 1 }}</td>
-                                            <td class="text-center">{{ $equipment->equipment_name }}</td>
-                                            <td class="text-center">{{ $equipment->equipment_total }} Buah</td>
+                                            <td class="text-center" colspan="3">Tidak Membawa Peralatan</td>
                                         </tr>
-                                    @endforeach
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
