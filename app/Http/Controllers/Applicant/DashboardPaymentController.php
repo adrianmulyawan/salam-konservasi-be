@@ -14,7 +14,7 @@ class DashboardPaymentController extends Controller
     public function index ()
     {
         $paymentUnpaid = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'UNPAID')->latest()->paginate(5);
-        $paymentPaidOff = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'PENDING')->orWhere('payment_status', 'PAIDOFF')->latest()->paginate(5);
+        $paymentPaidOff = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->orWhere('payment_status', 'PENDING')->where('payment_status', 'PAIDOFF')->latest()->paginate(5);
         $paymentFailed = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('payment_status', 'FAILED')->latest()->paginate(5);
 
         return view('pages.applicant.dashboard-payment', compact([

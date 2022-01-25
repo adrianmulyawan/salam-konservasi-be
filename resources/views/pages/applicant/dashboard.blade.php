@@ -155,7 +155,7 @@
                             Pengajuan Izin Masuk Kawasan
                         </h5>
                         @forelse ($recentSubmission as $submission)
-                            <a href="#" class="card card-list d-block">
+                            <a href="{{ route('dashboardSubmission') }}" class="card card-list d-block">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-1">
@@ -206,7 +206,7 @@
                             Pembayaran Retribusi Izin Masuk Kawasan Konservasi
                         </h5>
                         @forelse ($recentTransaction as $transaction)
-                            <a href="#" class="card card-list d-block">
+                            <a href="{{ route('paymentProcess', $transaction->id) }}" class="card card-list d-block">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-1">
