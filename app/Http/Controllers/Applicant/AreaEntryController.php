@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AreaEntryController extends Controller
 {
-    public function index (Request $request)
+    public function index ()
     {   
-        $areaEntryPermits = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('entrance_ticket', $request->entrance_ticket != null)->latest()->paginate(5);
+        $areaEntryPermits = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->whereNotNull('entrance_ticket')->latest()->paginate(10);
         return view('pages.applicant.dashboard-entry', compact('areaEntryPermits'));
     }
 }

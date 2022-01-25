@@ -20,7 +20,7 @@
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
                         @forelse ($areaEntryPermits as $entryPermit)
-                            <a href="#" class="card card-list d-block">
+                            <a href="{{ Storage::url($entryPermit->entrance_ticket, $entryPermit->id) }}" class="card card-list d-block" target="__blank">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-2">
