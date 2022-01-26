@@ -33,19 +33,40 @@ class DashboardSubmissionController extends Controller
         ]));
     }
 
-    public function submissionApproved()
+    public function submissionApproved($id)
     {
-        return view('pages.leader.dashboard-submission-approved');
+        $data = Transaction::with(['conservation_area', 'purpose', 'user'])->findOrFail($id);
+        $userCount = TransactionDetail::where('transaction_id', $id)->count();
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+
+        return view('pages.leader.dashboard-submission-approved', compact([
+            'data', 'userCount', 'details', 'equipments'
+        ]));
     }
 
-    public function submissionRejected()
+    public function submissionRejected($id)
     {
-        return view('pages.leader.dashboard-submission-rejected');
+        $data = Transaction::with(['conservation_area', 'purpose', 'user'])->findOrFail($id);
+        $userCount = TransactionDetail::where('transaction_id', $id)->count();
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+
+        return view('pages.leader.dashboard-submission-rejected', compact([
+            'data', 'userCount', 'details', 'equipments'
+        ]));
     }
 
-    public function submissionFailed()
+    public function submissionFailed($id)
     {
-        return view('pages.leader.dashboard-submission-failed');
+        $data = Transaction::with(['conservation_area', 'purpose', 'user'])->findOrFail($id);
+        $userCount = TransactionDetail::where('transaction_id', $id)->count();
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+
+        return view('pages.leader.dashboard-submission-failed', compact([
+            'data', 'userCount', 'details', 'equipments'
+        ]));
     }
 
     public function exportSubmission($id)

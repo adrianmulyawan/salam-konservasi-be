@@ -197,15 +197,15 @@
                                             </thead>
                                             <tbody>
                                                 <?php $counter = 0; ?>
-                                                @forelse ($submissionFailed as $failed)
+                                                @forelse ($submissionFailed as $fail)
                                                     <tr>
                                                         <td class="text-center">{{ $counter += 1 }}</td>
-                                                        <td class="text-center">{{ $failed->transaction_code }}</td>
-                                                        <td class="text-center">{{ $failed->user->name }}</td>
-                                                        <td class="text-center">{{ $failed->conservation_area->name }}</td>
-                                                        <td class="text-center">{{ $failed->purpose->purpose_name }}</td>
+                                                        <td class="text-center">{{ $fail->transaction_code }}</td>
+                                                        <td class="text-center">{{ $fail->user->name }}</td>
+                                                        <td class="text-center">{{ $fail->conservation_area->name }}</td>
+                                                        <td class="text-center">{{ $fail->purpose->purpose_name }}</td>
                                                         <td class="text-center">
-                                                            <a href="{{ route('LeaderdashboardLeaderSubmissionApproved', $failed->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                            <a href="{{ route('LeaderdashboardLeaderSubmissionFailed', $fail->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
                                                                 Detail
                                                             </a>
                                                         </td>
