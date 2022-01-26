@@ -52,132 +52,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pariwisata</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89109</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pariwisata</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89108</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Penelitian</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89107</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Penelitian</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89106</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pariwisata</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">6</td>
-                                                    <td class="text-center">SALAM-89105</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pendidikan</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">7</td>
-                                                    <td class="text-center">SALAM-89104</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Penelitian</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">8</td>
-                                                    <td class="text-center">SALAM-89103</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pariwisata</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">9</td>
-                                                    <td class="text-center">SALAM-89102</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Penelitian</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">10</td>
-                                                    <td class="text-center">SALAM-89101</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pendidikan</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanPending.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($submissionPending as $pending)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $pending->transaction_code }}</td>
+                                                        <td class="text-center">{{ $pending->user->name }}</td>
+                                                        <td class="text-center">{{ $pending->conservation_area->name }}</td>
+                                                        <td class="text-center">{{ $pending->purpose->purpose_name }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('LeaderdashboardLeaderSubmissionPending', $pending->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                                Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $submissionPending->links() }}
+                            </div>
                         </div>
+
                         <!-- Disetujui -->
                         <div class="tab-pane fade" id="pills-disetujui" role="tabpanel" aria-labelledby="pills-disetujui-tab">
                             <!-- 2.2 Tabel Pengajuan -->
@@ -196,154 +100,84 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89130</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pariwisata</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanDisetujui.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89129</td>
-                                                    <td class="text-center">Abdul Ghofar Hilman</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Penelitian</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanDisetujui.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89125</td>
-                                                    <td class="text-center">Anastasya Kosasih</td>
-                                                    <td class="text-center">KKPD Paloh</td>
-                                                    <td class="text-center">Pariwisata</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanDisetujui.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89123</td>
-                                                    <td class="text-center">Mandalika Ayusti Nawangsari</td>
-                                                    <td class="text-center">KKPD Kendawangan</td>
-                                                    <td class="text-center">Peneltian</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanDisetujui.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89106</td>
-                                                    <td class="text-center">Ridwan Hanif</td>
-                                                    <td class="text-center">KKPD Kubu Raya</td>
-                                                    <td class="text-center">Pendidikan</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanDisetujui.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($submissionApproved as $approved)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $approved->transaction_code }}</td>
+                                                        <td class="text-center">{{ $approved->user->name }}</td>
+                                                        <td class="text-center">{{ $approved->conservation_area->name }}</td>
+                                                        <td class="text-center">{{ $approved->purpose->purpose_name }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('LeaderdashboardLeaderSubmissionApproved', $approved->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                                Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $submissionApproved->links() }}
+                            </div>
                         </div>
+
                         <!-- Ditolak -->
                         <div class="tab-pane fade" id="pills-ditolak" role="tabpanel" aria-labelledby="pills-ditolak-tab">
                             <!-- 2.2 Tabel Pengajuan -->
                             <div class="row">
                                 <div class="card-body">
-                                    <table class="table table-bordered" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">No</th>
-                                                <th class="text-center">Kode Transaksi</th>
-                                                <th class="text-center">Nama Pemohon</th>
-                                                <th class="text-center">Lokasi Tujuan</th>
-                                                <th class="text-center">Tujuan</th>
-                                                <th class="text-center">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SALAM-89130</td>
-                                                <td class="text-center">Adrian Mulyawan</td>
-                                                <td class="text-center">KKPD Pulau Randayan</td>
-                                                <td class="text-center">Pariwisata</td>
-                                                <td class="text-center">
-                                                    <a href="../pimpinan/dashboardPengajuanDitolak.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                        Detail
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">2</td>
-                                                <td class="text-center">SALAM-89129</td>
-                                                <td class="text-center">Abdul Ghofar Hilman</td>
-                                                <td class="text-center">KKPD Pulau Randayan</td>
-                                                <td class="text-center">Penelitian</td>
-                                                <td class="text-center">
-                                                    <a href="../pimpinan/dashboardPengajuanDitolak.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                        Detail
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">3</td>
-                                                <td class="text-center">SALAM-89125</td>
-                                                <td class="text-center">Anastasya Kosasih</td>
-                                                <td class="text-center">KKPD Paloh</td>
-                                                <td class="text-center">Pariwisata</td>
-                                                <td class="text-center">
-                                                    <a href="../pimpinan/dashboardPengajuanDitolak.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                        Detail
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">4</td>
-                                                <td class="text-center">SALAM-89123</td>
-                                                <td class="text-center">Mandalika Ayusti Nawangsari</td>
-                                                <td class="text-center">KKPD Kendawangan</td>
-                                                <td class="text-center">Peneltian</td>
-                                                <td class="text-center">
-                                                    <a href="../pimpinan/dashboardPengajuanDitolak.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                        Detail
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">5</td>
-                                                <td class="text-center">SALAM-89106</td>
-                                                <td class="text-center">Ridwan Hanif</td>
-                                                <td class="text-center">KKPD Kubu Raya</td>
-                                                <td class="text-center">Pendidikan</td>
-                                                <td class="text-center">
-                                                    <a href="../pimpinan/dashboardPengajuanDitolak.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                        Detail
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">No</th>
+                                                    <th class="text-center">Kode Transaksi</th>
+                                                    <th class="text-center">Nama Pemohon</th>
+                                                    <th class="text-center">Lokasi Tujuan</th>
+                                                    <th class="text-center">Tujuan</th>
+                                                    <th class="text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($submissionRejected as $reject)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $reject->transaction_code }}</td>
+                                                        <td class="text-center">{{ $reject->user->name }}</td>
+                                                        <td class="text-center">{{ $reject->conservation_area->name }}</td>
+                                                        <td class="text-center">{{ $reject->purpose->purpose_name }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('LeaderdashboardLeaderSubmissionRejected', $reject->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                                Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                                    </tr>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $submissionRejected->links() }}
+                            </div>
                         </div>
+
                         <!-- Gagal -->
                         <div class="tab-pane fade" id="pills-gagal" role="tabpanel" aria-labelledby="pills-gagal-tab">
                             <!-- 2.2 Tabel Pengajuan -->
@@ -362,36 +196,35 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89131</td>
-                                                    <td class="text-center">Gaga Muhammad</td>
-                                                    <td class="text-center">KKPD Pulau Randayan</td>
-                                                    <td class="text-center">Pariwisata</td>
-                                                    <td class="text-center">
-                                                        <a href="../pimpinan/dashboardPengajuanGagal.html" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($submissionFailed as $failed)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $failed->transaction_code }}</td>
+                                                        <td class="text-center">{{ $failed->user->name }}</td>
+                                                        <td class="text-center">{{ $failed->conservation_area->name }}</td>
+                                                        <td class="text-center">{{ $failed->purpose->purpose_name }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('LeaderdashboardLeaderSubmissionApproved', $failed->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                                Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $submissionFailed->links() }}
+                            </div>
                         </div>
-                    </div>
-                    <!-- Pagination -->
-                    <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
