@@ -152,6 +152,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $submissionApproved->links() }}
+                            </div>
                         </div>
 
                         <!-- Ditolak -->
@@ -205,6 +209,10 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- Pagination --}}
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $submissionRejected->links() }}
+                            </div>
                         </div>
 
                         <!-- Gagal -->
@@ -257,6 +265,10 @@
                                         </table>
                                     </div>
                                 </div>
+                            </div>
+                            {{-- Pagination --}}
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $submissionFailed->links() }}
                             </div>
                         </div>
                     </div>
