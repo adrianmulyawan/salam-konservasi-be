@@ -47,132 +47,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89109</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89108</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89107</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89106</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">6</td>
-                                                    <td class="text-center">SALAM-89105</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">7</td>
-                                                    <td class="text-center">SALAM-89104</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">8</td>
-                                                    <td class="text-center">SALAM-89103</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">9</td>
-                                                    <td class="text-center">SALAM-89102</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">10</td>
-                                                    <td class="text-center">SALAM-89101</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($paymentPending as $pending)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $pending->transaction_code }}</td>
+                                                        <td class="text-center">{{ $pending->user->name }}</td>
+                                                        <td class="text-center">Rp {{ number_format($pending->total_transaction,2,',','.') }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::create($pending->date_of_entry)->format('d F, Y') }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('LeaderdashboardLeaderPaymentPending', $pending->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                                Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $paymentPending->links() }}
+                            </div>
                         </div>
+
                         <!-- Terbayar -->
                         <div class="tab-pane fade" id="pills-terbayar" role="tabpanel" aria-labelledby="pills-terbayar-tab">
                             <!-- 2.2 Tabel Pengajuan -->
@@ -191,72 +95,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Adrian Mulyawan</td>
-                                                    <td class="text-center">Rp 150.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">SALAM-89109</td>
-                                                    <td class="text-center">Mandalika Ayusti Nawangsari</td>
-                                                    <td class="text-center">Rp 110.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td class="text-center">SALAM-89108</td>
-                                                    <td class="text-center">Dhafia Raisha Kamila</td>
-                                                    <td class="text-center">Rp 250.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td class="text-center">SALAM-89107</td>
-                                                    <td class="text-center">Yogi Saghara Purba</td>
-                                                    <td class="text-center">Rp 400.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">5</td>
-                                                    <td class="text-center">SALAM-89106</td>
-                                                    <td class="text-center">Melia Putri</td>
-                                                    <td class="text-center">Rp 100.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($paymentPaid as $paid)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $paid->transaction_code }}</td>
+                                                        <td class="text-center">{{ $paid->user->name }}</td>
+                                                        <td class="text-center">Rp {{ number_format($paid->total_transaction,2,',','.') }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::create($paid->date_of_entry)->format('d F, Y') }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('LeaderdashboardLeaderPaymentPaid', $paid->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                                Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $paymentPaid->links() }}
+                            </div>
                         </div>
+
                         <!-- Gagal -->
                         <div class="tab-pane fade" id="pills-gagal" role="tabpanel" aria-labelledby="pills-gagal-tab">
                             <!-- 2.2 Tabel Pengajuan -->
@@ -275,36 +143,35 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">SALAM-89110</td>
-                                                    <td class="text-center">Kevin Jordan</td>
-                                                    <td class="text-center">Rp 120.000,00</td>
-                                                    <td class="text-center">13 Januari, 2022</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sim-kawasan mt-auto px-4">
-                                                            Detail
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <?php $counter = 0; ?>
+                                                @forelse ($paymentFailed as $failed)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $failed->transaction_code }}</td>
+                                                        <td class="text-center">{{ $failed->user->name }}</td>
+                                                        <td class="text-center">Rp {{ number_format($failed->total_transaction,2,',','.') }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::create($failed->date_of_entry)->format('d F, Y') }}</td>
+                                                        <td class="text-center">
+                                                            <a href="{{ route('LeaderdashboardLeaderPaymentFailed', $failed->id) }}" class="btn btn-sim-kawasan mt-auto px-4">
+                                                                Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                                    </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pagination -->
+                            <div class="row justify-content-end mr-1 mt-0">
+                                {{ $paymentFailed->links() }}
+                            </div>
                         </div>
-                    </div>
-                    <!-- Pagination -->
-                    <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
