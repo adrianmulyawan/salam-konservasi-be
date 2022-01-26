@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Leader;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
-use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
+use App\Models\TransactionEquipmentDetail;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class DashboardSubmissionController extends Controller
 {
@@ -19,9 +21,16 @@ class DashboardSubmissionController extends Controller
         ]));
     }
 
-    public function submissionPending()
+    public function submissionPending($id)
     {
-        return view('pages.leader.dashboard-submission-pending');
+        $data = Transaction::with(['conservation_area', 'purpose', 'user'])->findOrFail($id);
+        $userCount = TransactionDetail::where('transaction_id', $id)->count();
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+
+        return view('pages.leader.dashboard-submission-pending', compact([
+            'data', 'userCount', 'details', 'equipments'
+        ]));
     }
 
     public function submissionApproved()
@@ -37,5 +46,20 @@ class DashboardSubmissionController extends Controller
     public function submissionFailed()
     {
         return view('pages.leader.dashboard-submission-failed');
+    }
+
+    public function exportSubmission($id)
+    {
+        $data = Transaction::with(['conservation_area', 'purpose', 'user'])->findOrFail($id);
+        $userCount = TransactionDetail::where('transaction_id', $id)->count();
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+        $name = $data->user->name;
+        view()->share('data', $data);
+        view()->share('userCount', $userCount);
+        view()->share('details', $details);
+        view()->share('equipments', $equipments);
+        $pdf = PDF::loadview('pages.leader.data-submission-pdf')->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('Data Submission ' . $name . '.pdf');
     }
 }

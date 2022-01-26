@@ -211,6 +211,8 @@ Route::prefix('dashboard/leader')
             ->name('dashboardLeaderSubmissionRejected');
         Route::get('/submission/status/failed/{id}', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'submissionFailed'])
             ->name('dashboardLeaderSubmissionFailed');
+        Route::get('/submission/export/{id}', [\App\Http\Controllers\Leader\DashboardSubmissionController::class, 'exportSubmission'])
+            ->name('exportSubmission');
 
         Route::get('/payment', [\App\Http\Controllers\Leader\DashboardPaymentController::class, 'index'])
             ->name('dashboardLeaderPayment');
