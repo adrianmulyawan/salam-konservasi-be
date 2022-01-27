@@ -47,4 +47,9 @@ class Transaction extends Model
     {
         return $this->hasMany(TransactionEquipmentDetail::class);
     }
+
+    public function visitor_controls()
+    {
+        return $this->hasMany(VisitorControl::class);
+    }
 }
