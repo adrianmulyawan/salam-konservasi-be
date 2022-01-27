@@ -256,7 +256,7 @@ Route::prefix('dashboard/fieldAdmin')
     ->namespace('FieldAdmin')
     ->middleware(['auth', 'checkRole:fieldadmin'])
     ->group(function() {
-        Route::get('/', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'index'])
+        Route::get('/visit', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'index'])
             ->name('dashboardFieldAdmin');
         Route::get('/visit/detail-visit/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'detailVisit'])
             ->name('detailVisit');
@@ -265,10 +265,10 @@ Route::prefix('dashboard/fieldAdmin')
         Route::get('/visit/add-exit/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'addExit'])
             ->name('addExit');
 
-        Route::get('/visitor-checkout', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'index'])
+        Route::get('/data-visitor-checkout', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'index'])
             ->name('visitorCheckout');
 
-        Route::get('/field-admin-setting-account', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'index'])
+        Route::get('/profile', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'index'])
             ->name('settingAccountFieldAdmin');
     }
 );

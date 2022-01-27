@@ -8,17 +8,20 @@
     </div>
     <!-- Menu Sidebar -->
     <div class="list-group list-group-flush">
-        <a href="{{ route('dashboardFieldAdmin') }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('dashboardFieldAdmin') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/fieldAdmin/visit*') ? 'active' : '' }}">
             Kelola Data Pengunjung
         </a>
-        <a href="{{ route('visitorCheckout') }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('visitorCheckout') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/fieldAdmin/data-visitor-checkout*') ? 'active' : '' }}">
             Data Keluar Masuk Pengunjung
         </a>
-        <a href="{{ route('settingAccountFieldAdmin') }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('settingAccountFieldAdmin') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/fieldAdmin/profile*') ? 'active' : '' }}">
             Pengaturan Akun
         </a>
-        <a href="#" class="list-group-item list-group-item-action mt-5">
+        <a href="{{ route('logout') }}" class="list-group-item list-group-item-action mt-5" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Keluar
         </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
     </div>
 </div>
