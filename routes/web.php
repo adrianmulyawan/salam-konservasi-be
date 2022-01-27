@@ -244,8 +244,10 @@ Route::prefix('dashboard/leader')
         Route::put('/profile/update', [\App\Http\Controllers\Leader\DashboardSettingLeaderController::class, 'update'])
             ->name('updateAccountLeader');
         
-        Route::get('/change-password', [\App\Http\Controllers\Admin\DashboardEditPasswordController::class, 'edit'])
-            ->name('settingPasswordAdmin');
+        Route::get('/change-password', [\App\Http\Controllers\Leader\DashboardEditPasswordController::class, 'edit'])
+            ->name('settingPasswordLeader');
+        Route::put('/change-password/update', [\App\Http\Controllers\Leader\DashboardEditPasswordController::class, 'update'])
+            ->name('updatePasswordLeader');
     }
 );
 

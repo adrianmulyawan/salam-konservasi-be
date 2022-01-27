@@ -122,7 +122,7 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('LeadersettingAccountLeader') }}" class="dropdown-item">Pengaturan Akun</a>
-                            <a href="{{ route('settingPasswordApplicant') }}" class="dropdown-item">Ubah Password</a>
+                            <a href="{{ route('LeadersettingPasswordLeader') }}" class="dropdown-item">Ubah Password</a>
                         </div>
                     </li>
                 </ul>
