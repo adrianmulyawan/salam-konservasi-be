@@ -48,8 +48,8 @@ class Transaction extends Model
         return $this->hasMany(TransactionEquipmentDetail::class);
     }
 
-    public function visitor_controls()
+    public function visitor_control()
     {
-        return $this->hasMany(VisitorControl::class);
+        return $this->hasOne(VisitorControl::class);
     }
 }

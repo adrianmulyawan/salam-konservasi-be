@@ -12,6 +12,11 @@
                 <p class="dashboard-subtitle">
                     Daftar Kelola Data Masuk & Data Keluar Pengunjung
                 </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <div class="card card-conservation">
@@ -39,261 +44,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">SALAM-89110</td>
-                                            <td class="text-center">Adrian Mulyawan</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Pariwisata</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">SALAM-89109</td>
-                                            <td class="text-center">Alfan Suri</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Pariwisata</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">SALAM-89108</td>
-                                            <td class="text-center">Stefani Putri</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Penelitian</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">4</td>
-                                            <td class="text-center">SALAM-89107</td>
-                                            <td class="text-center">Alexander Teorison</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Penelitian</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">5</td>
-                                            <td class="text-center">SALAM-89106</td>
-                                            <td class="text-center">Mahmudin</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Pariwisata</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">6</td>
-                                            <td class="text-center">SALAM-89105</td>
-                                            <td class="text-center">Adilla Putri</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Pendidikan</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">7</td>
-                                            <td class="text-center">SALAM-89104</td>
-                                            <td class="text-center">David Nurmangedov</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Penelitian</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">8</td>
-                                            <td class="text-center">SALAM-89103</td>
-                                            <td class="text-center">Sukron Purnomo</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Pariwisata</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">9</td>
-                                            <td class="text-center">SALAM-89102</td>
-                                            <td class="text-center">Ilyas Putra</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Penelitian</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">10</td>
-                                            <td class="text-center">SALAM-89101</td>
-                                            <td class="text-center">Ahmad Nurbaiti</td>
-                                            <td class="text-center">KKPD Pulau Randayan</td>
-                                            <td class="text-center">Pendidikan</td>
-                                            <td class="text-center">
-                                                <abbr title="Detail Data Keluar Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Masuk Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-in-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                                <abbr title="Tambah Data Keluar Pengunjung">
-                                                    <a href="#" class="btn btn-primary mt-auto">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                    </a>
-                                                </abbr>
-                                            </td>
-                                        </tr>
+                                        <?php $counter = 0; ?>
+                                        @forelse ($visitorDatas as $data)
+                                            <tr>
+                                                <td class="text-center">{{ $counter += 1 }}</td>
+                                                <td class="text-center">{{ $data->transaction_code }}</td>
+                                                <td class="text-center">{{ $data->user->name }}</td>
+                                                <td class="text-center">{{ $data->conservation_area->name }}</td>
+                                                <td class="text-center">{{ $data->purpose->purpose_name }}</td>
+                                                <td class="text-center">
+                                                    <abbr title="Detail Data Keluar Masuk Pengunjung">
+                                                        <a href="{{ route('detailVisit', $data->id) }}" class="btn btn-primary mt-auto">
+                                                            <i class="far fa-eye"></i>
+                                                        </a>
+                                                    </abbr>
+                                                    <abbr title="Tambah Data Masuk Pengunjung">
+                                                        <a href="{{ route('addEntry', $data->id) }}" class="btn btn-primary mt-auto">
+                                                            <i class="fas fa-sign-in-alt"></i>
+                                                        </a>
+                                                    </abbr>
+                                                    <abbr title="Tambah Data Keluar Pengunjung">
+                                                        <a href="{{ route('addExit', $data->id) }}" class="btn btn-primary mt-auto">
+                                                            <i class="fas fa-sign-out-alt"></i>
+                                                        </a>
+                                                    </abbr>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="6">Belum Ada Data Apapun!</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        {{ $visitorDatas->links() }}
                     </div>
                 </div>
             </div>
