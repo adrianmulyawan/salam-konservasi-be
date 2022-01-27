@@ -29,7 +29,7 @@
         <a href="{{ route('LeaderleaderVisitorControl') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/leader/leader-visitor-control*') ? 'active' : '' }}">
             Data Keluar Masuk Pengunjung
         </a>
-        <a href="{{ route('LeadersettingAccountLeader') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/leader/leader-setting-account*') ? 'active' : '' }}">
+        <a href="{{ route('LeadersettingAccountLeader') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/leader/profile*') ? 'active' : '' }}">
             Pengaturan Akun
         </a>
         <a href="#" class="list-group-item list-group-item-action mt-5">

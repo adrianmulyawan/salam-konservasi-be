@@ -239,8 +239,13 @@ Route::prefix('dashboard/leader')
         Route::get('/leader-visitor-control', [\App\Http\Controllers\Leader\DashboardVisitorControlController::class, 'index'])
             ->name('leaderVisitorControl');
 
-        Route::get('/leader-setting-account', [\App\Http\Controllers\Leader\DashboardSettingLeaderController::class, 'index'])
+        Route::get('/profile', [\App\Http\Controllers\Leader\DashboardSettingLeaderController::class, 'edit'])
             ->name('settingAccountLeader');
+        Route::put('/profile/update', [\App\Http\Controllers\Leader\DashboardSettingLeaderController::class, 'update'])
+            ->name('updateAccountLeader');
+        
+        Route::get('/change-password', [\App\Http\Controllers\Admin\DashboardEditPasswordController::class, 'edit'])
+            ->name('settingPasswordAdmin');
     }
 );
 
