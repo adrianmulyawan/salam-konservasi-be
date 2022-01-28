@@ -261,12 +261,10 @@ Route::prefix('dashboard/fieldAdmin')
 
         Route::get('/visit/detail-visit/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'detailVisit'])
             ->name('detailVisit');
-
         Route::get('/visit/add-entry/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'addEntry'])
             ->name('addEntry');
         Route::put('/visit/store-entry/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'storeEntry'])
             ->name('storeEntry');
-
         Route::get('/visit/add-exit/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'addExit'])
             ->name('addExit');
         Route::put('/visit/store-exit/{id}', [\App\Http\Controllers\FieldAdmin\DashboardController::class, 'storeExit'])
@@ -275,7 +273,9 @@ Route::prefix('dashboard/fieldAdmin')
         Route::get('/data-visitor-checkout', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'index'])
             ->name('visitorCheckout');
 
-        Route::get('/profile', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'index'])
+        Route::get('/profile', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'edit'])
             ->name('settingAccountFieldAdmin');
+        Route::put('/profile/update', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'update'])
+            ->name('updateAccountFieldAdmin');
     }
 );

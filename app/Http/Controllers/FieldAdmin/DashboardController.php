@@ -75,8 +75,6 @@ class DashboardController extends Controller
 
     public function storeExit(Request $request, $id)
     {
-        $transaction = Transaction::findOrFail($id);
-
         $data = VisitorControl::where('transaction_id', $id)->update([
             'user_id'       => Auth::user()->id,
             'name'          => Auth::user()->name,

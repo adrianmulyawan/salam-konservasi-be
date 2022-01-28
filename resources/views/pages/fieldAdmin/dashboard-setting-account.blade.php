@@ -12,55 +12,63 @@
                 <p class="dashboard-subtitle">
                     Perbarui Profile Anda Saat Ini
                 </p>
+                <div class="col-6 ml-0">
+                    <p data-aos="fade-up" class="dashboard-title">
+                        @include('includes.flash-message')
+                    </p>
+                </div>
             </div>
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" method="post">
+                        <form action="{{ route('updateAccountFieldAdmin') }}" method="post">
+                            @csrf
+                            @method('PUT')
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputName">
                                             Nama
                                         </label>
-                                        <input type="text" name="nama_lengkap" class="form-control" id="inputName" value="Ahmad Yahya" autofocus>
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputName" value="{{ Auth::user()->name }}" autofocus>
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail">
                                             Email
                                         </label>
-                                        <input type="email" name="email" class="form-control" id="inputEmail" value="ahmadyahya@dislautkan.com">
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <label for="inputPassword">Password</label>
-                                        <div class="input-group">
-                                            <input type="password" name="name" id="inputPassword" class="form-control" value="kepolu">
-                                            <div class="input-group-append">
-                                                <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
-                                                <span id="mybutton" onclick="change()" class="input-group-text">
-                        
-                                                    <!-- icon mata bawaan bootstrap  -->
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="inputEmail" value="{{ Auth::user()->email }}">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">
                                             Alamat
                                         </label>
-                                        <input type="text" name="address" class="form-control" id="inputAddress" value="Jl Tani Makmur Gg Beringin No 2">
+                                        <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" id="inputAddress" value="{{ Auth::user()->address }}">
+                                        @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPhone">
                                             No Telpon
                                         </label>
-                                        <input type="text" name="address" class="form-control" id="inputPhone" value="082156590990">
+                                        <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" id="inputPhone" value="{{ Auth::user()->phone_number }}">
+                                        @error('phone_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>
