@@ -238,6 +238,8 @@ Route::prefix('dashboard/leader')
         
         Route::get('/leader-visitor-control', [\App\Http\Controllers\Leader\DashboardVisitorControlController::class, 'index'])
             ->name('leaderVisitorControl');
+        Route::get('/leader-visitor-control/{id}/detail', [\App\Http\Controllers\Leader\DashboardVisitorControlController::class, 'show'])
+            ->name('leaderDetailVisitorControl');
 
         Route::get('/profile', [\App\Http\Controllers\Leader\DashboardSettingLeaderController::class, 'edit'])
             ->name('settingAccountLeader');
