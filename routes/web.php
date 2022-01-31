@@ -277,5 +277,10 @@ Route::prefix('dashboard/fieldAdmin')
             ->name('settingAccountFieldAdmin');
         Route::put('/profile/update', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'update'])
             ->name('updateAccountFieldAdmin');
+
+        Route::get('/change-password', [\App\Http\Controllers\FieldAdmin\DashboardEditPasswordController::class, 'edit'])
+            ->name('settingPasswordFieldAdmin');
+        Route::put('/change-password/update', [\App\Http\Controllers\FieldAdmin\DashboardEditPasswordController::class, 'update'])
+            ->name('updatePasswordFieldAdmin');
     }
 );
