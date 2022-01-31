@@ -1,6 +1,6 @@
-@extends('layouts.dashboard-leader')
+@extends('layouts.dashboard-superAdmin')
 
-@section('title', 'Detail Data Keluar Masuk Pengunjung')
+@section('title', 'Detail Keluar Masuk Pengunjung')
 
 @section('content')
     <!-- Content -->
@@ -72,7 +72,7 @@
                                     </label>
                                     <input type="text" name="name" class="form-control" value="{{ \Carbon\Carbon::create($item->out_date_area)->format('d F Y') }}" disabled>
                                 </div>
-                                <a href="{{ route('LeaderleaderVisitorControl') }}" class="btn btn-save-data px-5 mt-3">Kembali</a>
+                                <a href="{{ route('AdminvisitorControlAdmin') }}" class="btn btn-save-data px-5 mt-3">Kembali</a>
                             </div>
                         </div>
                     </div>

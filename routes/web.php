@@ -180,6 +180,8 @@ Route::prefix('dashboard/admin')
 
         Route::get('/visitor-control', [\App\Http\Controllers\Admin\DashboardVisitorControlController::class, 'index'])
             ->name('visitorControlAdmin');
+        Route::get('/visitor-control/{id}/detail', [\App\Http\Controllers\Admin\DashboardVisitorControlController::class, 'show'])
+            ->name('detailVisitorControlAdmin');
 
         Route::get('/profile', [\App\Http\Controllers\Admin\DashboardSettingAdminController::class, 'edit'])
             ->name('settingAccountAdmin');
