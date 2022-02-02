@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TransactionEquipmentDetail;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ApplicantPayment;
 use Illuminate\Http\Request;
 
 class DashboardPaymentController extends Controller
@@ -39,6 +42,17 @@ class DashboardPaymentController extends Controller
         $item->account_owner = $request->account_owner;
         $item->evidence_of_transfer = $request->file('evidence_of_transfer')->store('assets/evidence_of_transfer', 'public');
         $item->payment_status = "PENDING";
+
+        $users = User::where('role', 'superadmin')->get();
+        foreach ($users as $user) {
+            $email = $user->email;
+            $data = [
+                'name' => $user->name,
+                'url' => 'http://salam-konservasi.test/dashboard/admin/manage-transaction'
+            ];
+            Mail::to($email)->send(new ApplicantPayment($data));
+        }
+
         $item->save();
 
         if ($item) {

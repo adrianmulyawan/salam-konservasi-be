@@ -31,7 +31,7 @@ class SubmissionApproved extends Mailable
      */
     public function build()
     {
-        return $this->from('salamkonservasidilautkan@gmail.coom')
+        return $this->from('salamkonservasidilautkan@gmail.com')
                     ->markdown('email/email-submission-approved')
                     ->with('data', [$this->data])
                     ->subject('Pengajuan Izin Masuk Disetujui!');

@@ -6,8 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 
-class SubmissionRejected extends Mailable
+class ApplicantPayment extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,9 +31,9 @@ class SubmissionRejected extends Mailable
      */
     public function build()
     {
-        return $this->from('salamkonservasidilautkan@gmail.com')
-                    ->markdown('email/email-submission-rejected')
+        return $this->from(Auth::user()->email)
+                    ->markdown('email/email-notfication-payment-applicant')
                     ->with('data', [$this->data])
-                    ->subject('Pengajuan Izin Masuk Ditolak!');
+                    ->subject('Ada Pembayaran Baru!');
     }
 }
