@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\TransactionPaidOff;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TransactionEquipmentDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardManageTransactionController extends Controller
 {
@@ -38,7 +40,16 @@ class DashboardManageTransactionController extends Controller
 
         $item = Transaction::findOrFail($id);
         $item->payment_status = $request->payment_status;
-        $item->save();
+
+        if ($item->payment_status == "PAIDOFF") {
+            $email = $item->user->email;
+            $data = [
+                'name' => $item->user->name,
+                'url' => 'http://salam-konservasi.test/dashboard/applicant/payment'
+            ];
+            Mail::to($email)->send(new TransactionPaidOff($data));
+            $item->save();
+        }
 
         if ($item) {
             session()->flash('success', 'Data Pembayaran Retribusi Berhasil Diubah');
