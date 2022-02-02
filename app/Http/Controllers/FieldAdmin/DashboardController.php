@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $visitorDatas = Transaction::with(['user', 'conservation_area', 'purpose'])->where('submission_status', 'ALLOWED')->where('payment_status', 'PAIDOFF')->whereNotNull('entrance_ticket')->latest()->paginate(10);
+        // Buat Pengkondisian Pencarian data transaction (berdasarkan transaction_code)
+        if ($request->has('search')) {
+            $visitorDatas = Transaction::with(['user', 'conservation_area', 'purpose'])->where('submission_status', 'ALLOWED')->where('payment_status', 'PAIDOFF')->whereNotNull('entrance_ticket')->where('transaction_code', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
+            $visitorDatas = Transaction::with(['user', 'conservation_area', 'purpose'])->where('submission_status', 'ALLOWED')->where('payment_status', 'PAIDOFF')->whereNotNull('entrance_ticket')->latest()->paginate(10);
+        }
+ 
         return view('pages.fieldAdmin.dashboard', compact('visitorDatas'));
     }
 

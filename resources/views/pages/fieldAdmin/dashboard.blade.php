@@ -22,11 +22,11 @@
                 <div class="card card-conservation">
                     <div class="row">
                         <div class="card-body">
-                            <form action="#" method="post" >
+                            <form action="{{ route('dashboardFieldAdmin') }}" method="GET" >
                                 <div class="input-group input-transaction-code">
-                                    <input type="text" class="form-control" placeholder="Cari Data Izin Masuk Pengunjung Kawasan Konservasi" aria-describedby="button-addon2">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Data Izin Masuk Pengunjung Kawasan Konservasi" aria-describedby="button-addon2">
                                     <div class="input-group-append">
-                                      <button class="btn btn-search" type="button" id="button-addon2">Cari Data</button>
+                                      <button class="btn btn-search" type="submit" id="button-addon2">Cari Data</button>
                                     </div>
                                 </div>
                             </form>
