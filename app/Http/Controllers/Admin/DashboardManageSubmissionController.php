@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TransactionEquipmentDetail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SubmissionApproved;
+use App\Mail\SubmissionRejected;
 use Illuminate\Http\Request;
 
 class DashboardManageSubmissionController extends Controller
@@ -40,9 +43,27 @@ class DashboardManageSubmissionController extends Controller
         ]);
 
         $item = Transaction::findOrFail($id);
+        // dd($item->user->email);
         $item->submission_status = $request->submission_status;
         $item->rejected_reason = $request->rejected_reason;
-        $item->save();
+
+        if ($item->submission_status == "ALLOWED") {
+            $email = $item->user->email;
+            $data = [
+                'name' => $item->user->name,
+                'url' => 'http://salam-konservasi.test/dashboard/applicant/submission'
+            ];
+            Mail::to($email)->send(new SubmissionApproved($data));
+            $item->save();
+        } elseif ($item->submission_status == "REJECTED") {
+            $email = $item->user->email;
+            $data = [
+                'name' => $item->user->name,
+                'url' => 'http://salam-konservasi.test/dashboard/applicant/submission'
+            ];
+            Mail::to($email)->send(new SubmissionRejected($data));
+            $item->save();
+        }
 
         if ($item) {
             session()->flash('success', 'Data Pengajuan Izin Masuk Kawasan Berhasil Diubah');
