@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TransactionEquipmentDetail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EntryPermit;
 use Illuminate\Http\Request;
 
 class DashboardManageEntryPermitController extends Controller
@@ -37,6 +39,14 @@ class DashboardManageEntryPermitController extends Controller
 
         $item = Transaction::findOrFail($id);
         $item->entrance_ticket = $request->file('entrance_ticket')->store('assets/entrance_ticket', 'public');
+
+        $email = $item->user->email;
+        $data = [
+            'name' => $item->user->name,
+            'url' => 'http://salam-konservasi.test/dashboard/applicant/area-entry'
+        ];
+        Mail::to($email)->send(new EntryPermit($data));
+
         $item->save();
 
         if ($item) {
