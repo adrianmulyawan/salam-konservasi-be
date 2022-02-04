@@ -172,6 +172,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- 3. Card Chart Pengajuan Izin Masuk -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
@@ -182,6 +183,7 @@
                         <canvas id="submissionChart"></canvas>
                     </div>
                 </div>
+                
                 <!-- 4. Card Data Baru Ditambahkan -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
