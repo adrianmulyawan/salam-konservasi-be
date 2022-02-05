@@ -197,7 +197,7 @@
                     </div>
 
                     <div class="row justify-content-end mr-2 mt-3">
-                        <a href="#" class="btn btn-primary py-2 mr-2 px-3">Lakukan Pengajuan Ulang</a>
+                        <a href="{{ route('editSubmission', $item->id) }}" class="btn btn-primary py-2 mr-2 px-3">Lakukan Pengajuan Ulang</a>
                         <a href="{{ route('dashboardSubmission') }}" class="btn btn-primary py-2 mr-2 px-3">Tutup</a>
                     </div>
                 </div>

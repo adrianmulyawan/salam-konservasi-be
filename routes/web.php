@@ -47,7 +47,9 @@ Route::get('/submission/{slug}', [App\Http\Controllers\SubmissionController::cla
     ->name('submission');
 Route::post('/submission/{slug}/store', [App\Http\Controllers\SubmissionController::class, 'store'])
     ->name('submission-store');
-Route::get('/submission/success', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
+Route::get('/edit-submission/edit/{id}', [App\Http\Controllers\SubmissionController::class, 'editSubmission'])
+    ->name('editSubmission');
+Route::get('/success-submission', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
     ->name('successSubmission');
 
 Auth::routes(['verify' => true]);

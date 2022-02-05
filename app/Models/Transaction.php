@@ -14,6 +14,8 @@ class Transaction extends Model
     protected $table = 'transactions';
 
     protected $fillable = [
+        'permit_application_fee',
+        'visitor_charges',
         'transaction_code',
         'total_transaction'
     ];

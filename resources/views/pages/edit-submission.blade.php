@@ -44,7 +44,7 @@
                     <div class="col-lg-8 pl-lg-0" data-aos="fade-up">
                         <form action="" method="post" id="submit-submission">
                             @csrf
-                            <input type="hidden" name="purpose" value="{{ $purpose }}">
+                            <input type="hidden" name="purpose" value="{{ $item->purpose_id }}">
                             <div class="card card-details">
                                 <h1>Pengajuan Surat Izin Masuk Kawasan Konservasi</h1>
                                 <p>KKPD Pulau Randayan</p>
@@ -99,8 +99,25 @@
                                                 <td>
                                                     <img src="{{ Storage::url(auth()->user()->identity_image) }}" height="70">
                                                 </td>
-                                                <input type="hidden" name="price" class="visitor-price" value="{{ $myPrice->price }}"/>
+                                                <input type="hidden" name="price" class="visitor-price" value="{{ $item->total_transaction }}"/>
                                             </tr>
+                                            @foreach ($collection as $item)
+                                                <tr class="row-visitor">
+                                                    <td class="align-middle">{{ auth()->user()->name }}
+                                                    </td>
+                                                    <td class="align-middle">{{ Str::upper(auth()->user()->citizen) }}</td>
+                                                    <td class="align-middle">
+                                                        {{ auth()->user()->phone_number }}
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        {{ auth()->user()->address }}
+                                                    </td>
+                                                    <td>
+                                                        <img src="{{ Storage::url(auth()->user()->identity_image) }}" height="70">
+                                                    </td>
+                                                    <input type="hidden" name="price" class="visitor-price" value="{{ $item->total_transaction }}"/>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -255,19 +272,19 @@
                                 <tr class="mb-2">
                                     <th width="50%">Biaya Pengajuan Izin</th>
                                     <td width="50%" class="text-right" id="total-visitor-price">
-                                        Rp {{ $myPrice->price }}
+                                        Rp {{ $item->permit_application_fee }}
                                     </td>
                                 </tr>
                                 <tr class="mb-2">
                                     <th width="50%">Biaya Bawaan Pengunjung</th>
                                     <td width="50%" class="text-right" id="total-equipment-price">
-                                        Rp 0
+                                        Rp {{ $item->visitor_charges }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="50%">Total Biaya Pengajuan</th>
                                     <td width="50%" class="text-right total-price" id="submission-total">
-                                        Rp {{ $myPrice->price }}
+                                        Rp {{ $item->total_transaction }}
                                     </td>
                                 </tr>
                             </table>

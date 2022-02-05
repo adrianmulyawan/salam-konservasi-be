@@ -183,7 +183,7 @@
                         <canvas id="submissionChart"></canvas>
                     </div>
                 </div>
-                
+
                 <!-- 4. Card Data Baru Ditambahkan -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
@@ -362,5 +362,75 @@
 
 @push('addon-script')
     <script src="{{ url('frontend/libraries/chartJS/dist/chart.min.js') }}"></script>
-    <script src="{{ url('frontend/scripts/submissionChart.js') }}"></script>
+    {{-- <script src="{{ url('frontend/scripts/submissionChart.js') }}"></script> --}}
+
+    <script>
+        const ctx = document.getElementById('submissionChart').getContext('2d');
+
+        const DATA_COUNT = 7;
+        const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+
+        const labels = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' 
+        ];
+
+        const borderColor = [
+            'rgba(255, 99, 132, 1)',
+        ];
+
+        const backgroundColorTourism =  [
+            '#eb3434',
+        ];
+        
+        const backgroundColorResearch = [
+            '#ebb134',
+        ];
+
+        const backgroudColorEducation = [
+            '#dceb34'
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                label: 'Pariwisata',
+                data: [1,1,1,1,1,1,1,1,1],
+                borderColor: borderColor,
+                backgroundColor: backgroundColorTourism,
+                },
+                {
+                label: 'Penelitian',
+                data: [1,1,1,1,1,1,1,1,1],
+                borderColor: borderColor,
+                backgroundColor: backgroundColorResearch,
+                },
+                {
+                label: 'Pendidikan',
+                data: [1,1,1,1,1,1,1,1,1],
+                borderColor:borderColor,
+                backgroundColor: backgroudColorEducation,
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Bagan Pengajuan Izin Masuk Kawasan Konservasi'
+                    }
+                }
+            },
+        };
+
+        const myChart = new Chart(ctx, config);
+    </script>
 @endpush

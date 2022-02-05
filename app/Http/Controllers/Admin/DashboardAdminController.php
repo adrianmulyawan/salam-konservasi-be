@@ -8,7 +8,9 @@ use App\Models\Event;
 use App\Models\News;
 use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardAdminController extends Controller
 {
@@ -31,6 +33,60 @@ class DashboardAdminController extends Controller
         $retributionPending = Transaction::where('payment_status', 'PENDING')->count();
         $retributionPaidOff = Transaction::where('payment_status', 'PAIDOFF')->count();
         $retributionFailed = Transaction::where('payment_status', 'FAILED')->count();
+
+        // Chart Transaksi
+        // $transactionTourist = Transaction::select('id', 'date_of_entry')->where('purpose_id', 1)->get()->groupBy(function($data) {
+        //     return Carbon::parse($data->date_of_entry)->format('M');
+        // });
+        // // dd($transactionTourist);
+        // $monthTourist = [];
+        // $countTourist = [];
+        // foreach ($transactionTourist as $month => $values) {
+        //     $monthTourist[] = $month;
+        //     $countTourist[] = count($values);
+        // }
+        // // dd($countTourist);
+
+        // $transactionResearch = Transaction::select('id', 'date_of_entry')->where('purpose_id', 2)->get()->groupBy(function($data) {
+        //     return Carbon::parse($data->date_of_entry)->format('M');
+        // });
+        // $countResearch = [];
+        // foreach ($transactionResearch as $values) {
+        //     $countResearch[] = count($values);
+        // }
+
+        // $transactionEducation = Transaction::select('id', 'date_of_entry')->where('purpose_id', 3)->get()->groupBy(function($data) {
+        //     return Carbon::parse($data->date_of_entry)->format('M');
+        // });
+        // $countEducation = [];
+        // foreach ($transactionEducation as $values) {
+        //     $countEducation[] = count($values);
+        // }
+
+        $tourism = Transaction::select(DB::raw("COUNT(*) as count"))
+                   ->where('purpose_id', 1)
+                   ->whereYear('date_of_entry', date('Y'))
+                   ->groupBy(DB::raw("Month(date_of_entry)"))
+                   ->pluck('count');
+        $research = Transaction::select(DB::raw("COUNT(*) as count"))
+                    ->where('purpose_id', 2)
+                    ->whereYear('date_of_entry', date('Y'))
+                    ->groupBy(DB::raw("Month(date_of_entry)"))
+                    ->pluck('count');
+        $months = Transaction::select(DB::raw("Month(date_of_entry) as month"))
+                  ->whereYear('date_of_entry', date('Y'))
+                  ->groupBy(DB::raw("Month(date_of_entry)"))
+                  ->pluck('month');
+        // $datasTourism = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        // $datasResearch = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        // foreach ($months as $index => $month) {
+        //     $datasTourism[$month] = $tourism[$index];
+        // }
+
+        // foreach ($months as $index => $month) {
+        //     $datasResearch[$month] = $research[$index];
+        // }
 
         // Data User, Berita, dan Acara yang baru ditambahkan
         $recentUsers = User::orderBy('created_at', 'DESC')->where('role', 'applicant')->limit(5)->get();
@@ -60,7 +116,7 @@ class DashboardAdminController extends Controller
             'recentNews' => $recentNews,
             'recentEvents' => $recentEvents,
             'recentSubmission' => $recentSubmission,
-            'recentTransaction' => $recentTransaction
+            'recentTransaction' => $recentTransaction,
         ]);
     }
 }
