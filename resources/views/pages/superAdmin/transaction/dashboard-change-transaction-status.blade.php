@@ -172,7 +172,7 @@
 
                     <!-- 2.5 Bukti Transfer -->
                     <div class="data-bukti-transfer">
-                        <h5>Surat Pengajuan Untuk Penelitian / Pendidikan</h5>
+                        <h5>Bukti Pembayaran Retribusi</h5>
                     </div>
                     <div class="mt-3">
                         <div class="col-12">
@@ -194,7 +194,7 @@
                         @method('PUT')
                         <!-- 2.6 Approval -->
                         <div class="form-group data-approval mt-3">
-                            <h5>Status Permohonan Pengajuan Izin Masuk Kawasan</h5>
+                            <h5>Status Pembayaran Retribusi Izin Masuk Kawasan</h5>
                             <select class="form-control mt-2" id="inputApproval" name="payment_status">
                               <option selected disabled>Ubah Status Pembayaran</option>
                               <option value="PAIDOFF">TERBAYAR</option>

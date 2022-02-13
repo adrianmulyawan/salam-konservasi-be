@@ -209,7 +209,7 @@
                     </div>
 
                     <div class="row justify-content-end mr-2 mt-4">
-                        <a href="{{ route('LeaderexportSubmission', $data->id) }}" class="btn btn-primary py-2 mr-2">Export PDF</a>
+                        <a href="{{ route('LeaderexportSubmission', $data->id) }}" class="btn btn-primary py-2 mr-2" target="__blank">Export PDF</a>
                         <a href="{{ route('LeaderdashboardLeaderSubmission') }}" class="btn btn-primary py-2 mr-2">Tutup</a>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ class DashboardEditPasswordController extends Controller
         if (Hash::check($request->current_password, auth()->user()->password)) {
             auth()->user()->update(['password' => bcrypt($request->password)]);
             session()->flash('success', 'Password Berhasil Diubah');
-            return redirect()->route('updatePasswordApplicant');
+            return redirect()->route('settingPasswordApplicant');
         }
 
         throw ValidationException::withMessages([

@@ -36,7 +36,7 @@
 </head>
 <body>
 
-<h2>Pengajuan Izin Masuk: Adrian Mulyawan</h2>
+<h2>Pengajuan Izin Masuk: {{ $data->user->name }}</h2>
 
 <table class="customers">
   <tr>
