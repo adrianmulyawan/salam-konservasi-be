@@ -57,14 +57,14 @@
                                             Tanggal Masuk
                                         </label>
                                         <div class="input-group mb-2 mr-sm-2">
-                                            <input type="text" class="form-control datepicker" id="tanggal_masuk" name="date_of_entry" required placeholder="Tanggal Masuk Kawasan" onchange="changeDate()">
+                                            <input type="text" class="form-control datepicker" id="tanggal_masuk" value="{{date('m/d/Y',strtotime($item->date_of_entry))}}" name="date_of_entry" required placeholder="Tanggal Masuk Kawasan" onchange="changeDate()">
                                         </div>
 
                                         <label for="tanggal_keluar" class="sr-only">
                                             Tanggal Keluar
                                         </label>
                                         <div class="input-group mb-2 mr-sm-2">
-                                            <input type="text" class="form-control datepicker1" id="tanggal_keluar" name="out_date" required placeholder="Tanggal Keluar Kawasan" onchange="changeDate()">
+                                            <input type="text" class="form-control datepicker1" id="tanggal_keluar" value="{{date('m/d/Y',strtotime($item->out_date))}}" name="out_date" required placeholder="Tanggal Keluar Kawasan" onchange="changeDate()">
                                         </div>
                                     </div>
                                 </div>
@@ -86,36 +86,26 @@
                                             </tr>
                                         </thead>
                                         <tbody id="list-visitor">
-                                            <tr class="row-visitor">
-                                                <td class="align-middle">{{ auth()->user()->name }}
-                                                </td>
-                                                <td class="align-middle">{{ Str::upper(auth()->user()->citizen) }}</td>
-                                                <td class="align-middle">
-                                                    {{ auth()->user()->phone_number }}
-                                                </td>
-                                                <td class="align-middle">
-                                                    {{ auth()->user()->address }}
-                                                </td>
-                                                <td>
-                                                    <img src="{{ Storage::url(auth()->user()->identity_image) }}" height="70">
-                                                </td>
-                                                <input type="hidden" name="price" class="visitor-price" value="{{ $item->total_transaction }}"/>
-                                            </tr>
-                                            @foreach ($collection as $item)
+                                            @foreach ($item->transaction_details as $row)
                                                 <tr class="row-visitor">
-                                                    <td class="align-middle">{{ auth()->user()->name }}
+                                                    <td class="align-middle">{{ $row->name }}
                                                     </td>
-                                                    <td class="align-middle">{{ Str::upper(auth()->user()->citizen) }}</td>
+                                                    <td class="align-middle">{{ Str::upper($row->citizen) }}</td>
                                                     <td class="align-middle">
-                                                        {{ auth()->user()->phone_number }}
+                                                        {{ $row->phone_number }}
                                                     </td>
                                                     <td class="align-middle">
-                                                        {{ auth()->user()->address }}
+                                                        {{ $row->address }}
                                                     </td>
                                                     <td>
-                                                        <img src="{{ Storage::url(auth()->user()->identity_image) }}" height="70">
+                                                        <img src="{{ Storage::url($row->identity_image) }}" height="70">
                                                     </td>
-                                                    <input type="hidden" name="price" class="visitor-price" value="{{ $item->total_transaction }}"/>
+                                                    <td class="align-middle">
+                                                        <a href="#" onclick="removeVisitor(this)">
+                                                            <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
+                                                        </a>
+                                                    </td>
+                                                    <input type="hidden" name="price" class="visitor-price" value="{{ $row->total_transaction }}"/>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -137,12 +127,12 @@
                                         <label for="inputAddress" class="sr-only">Alamat</label>
                                         <input type="text" class="form-control mb-2 mr-sm-2 input-alamat" id="inputAddress" required placeholder="Alamat">
 
-                                        <label for="inputTelpon" class="sr-only">Alamat</label>
+                                        <label for="inputTelpon" class="sr-only">No Telpon</label>
                                         <input type="text" class="form-control mb-2 mr-sm-2 input-telpon" id="inputPhoneNumber" required placeholder="No Telpon">
 
                                         <div class="custom-file mb-2">
-                                            <label class="custom-file-label" for="inputIdentityImage">KTP/KK/Passport</label>
-                                            <input type="file" class="custom-file-input mb-2 mr-sm-2 input-identity" id="inputIdentity" required>
+                                            <label class="custom-file-label" for="inputIdentityImage" id="labelIdentityImage">KTP/KK/Passport</label>
+                                            <input type="button" class="custom-file-input mb-2 mr-sm-2 input-identity" id="inputIdentity" onclick="addImageVisitor(this)" required>
                                         </div>
 
                                         <button type="button" role="button" class="btn btn-add-member mb-2 px-4" onclick="addVisitor()">
@@ -230,7 +220,7 @@
                                     <h2>Upload Form Pengajuan Untuk Penelitian dan Pendidikan</h2>
                                     <div class="custom-file mb-2">
                                         <label class="custom-file-label" for="inputFormulir">Upload Formulir Kegiatan Penelitian / Pendidikan</label>
-                                        <input type="file" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="inputFormulir" required>
+                                        <input type="file" name="formulir_file" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="inputFormulir" required>
                                     </div>
                                 </div>
                                 <div class="note-research mt-2 mb-0">
@@ -260,13 +250,13 @@
                                 <tr class="mb-2">
                                     <th width="50%">Jumlah Hari</th>
                                     <td width="50%" class="text-right" id="total-hari">
-                                        0 Hari
+                                        {{$diff}} Hari
                                     </td>
                                 </tr>
                                 <tr class="mb-2">
                                     <th width="50%">Jumlah Pengunjung</th>
                                     <td width="50%" class="text-right" id="total-visitor">
-                                        1 Orang
+                                        {{count($item->transaction_details)}} Orang
                                     </td>
                                 </tr>
                                 <tr class="mb-2">
@@ -366,62 +356,99 @@
             }
         }
 
+        function labelButtonImageVisitor(){
+            $('#labelIdentityImage').text('KTP/KK/Passport')
+        }
+
+        function addImageVisitor(e){
+            const numBefore = $('.row-visitor').length;
+            let num = $('.row-visitor').length + 1;
+            let idx = $('.row-visitor').length - 1;
+            labelButtonImageVisitor()
+            if($(`#input-image-${numBefore}`).length > 0 && $(`#input-image-${numBefore}`).val().length == 0){
+                $(`#row-visitor-${numBefore}`).remove().after(function(){
+                    num = $('.row-visitor').length + 1;
+                    idx = $('.row-visitor').length - 1;
+                })
+            }
+
+            $('#list-visitor').append(`
+                <tr class="row-visitor" id="row-visitor-${num}" style="display:none">
+                    <td class="align-middle">
+                        <span id="span-name-${num}"></span>
+                        <input type="hidden" id="input-name-${num}" name="visitor[${idx}][name]"/>
+                    </td>
+                    <td class="align-middle">
+                        <span id="span-citizen-${num}"></span>
+                        <input type="hidden" id="input-citizen-${num}" name="visitor[${idx}][citizen]"/>
+                    </td>
+                    <td class="align-middle">
+                        <span id="span-phoneNumber-${num}"></span>
+                        <input type="hidden" id="input-phoneNumber-${num}" name="visitor[${idx}][phone_number]"/>
+                    </td>
+                    <td class="align-middle">
+                        <span id="span-address-${num}"></span>
+                        <input type="hidden" id="input-address-${num}" name="visitor[${idx}][address]"/>
+                    </td>
+                    <td>
+                        <input type="file" style="display:none" id="input-image-${num}" onchange="changeVisitorImage(${num})" name="visitor[${idx}][image]"/>
+                        <img height="70" id="preview-identity-${num}">
+                    </td>
+                    <td class="align-middle">
+                        <a href="#" onclick="removeVisitor(this)">
+                            <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
+                        </a>
+                    </td>
+                    <input type="hidden" id="input-price-${num}" name="price" class="visitor-price"/>
+                </tr>
+            `).after(function(){
+                $(`#input-image-${num}`).click()
+            });   
+            
+        }
+
+        function changeVisitorImage(num){
+            const nameImage  = $(`#input-image-${num}`).val().replace(/C:\\fakepath\\/i, '')
+            $('#labelIdentityImage').text(nameImage)
+            previewFile(`#input-image-${num}`, `#preview-identity-${num}`)
+        }
+
         function addVisitor()
         {
             const name = $('#inputName').val();
             const citizen = $('#inputCitizen').val();
             const address = $('#inputAddress').val();
             const phoneNumber = $('#inputPhoneNumber').val();
-            const identityImage = $('#inputIdentity').val();
+            const num = $('.row-visitor').length;
 
-            if (validationVisitor()) {
-                const num = $('.row-visitor').length + 1;
-                const idx = $('.row-visitor').length - 1;
+            if (validationVisitor(num)) {
+                $(`#row-visitor-${num}`).show()
                 const price = getVisitorPrice();
-                $('#list-visitor').append(`
-                    <tr class="row-visitor">
-                        <td class="align-middle">
-                            ${name}
-                            <input type="hidden" name="visitor[${idx}][name]" value="${name}"/>
-                        </td>
-                        <td class="align-middle">
-                            ${citizen}
-                            <input type="hidden" name="visitor[${idx}][citizen]" value="${citizen}"/>
-                        </td>
-                        <td class="align-middle">
-                            ${phoneNumber}
-                            <input type="hidden" name="visitor[${idx}][phone_number]" value="${phoneNumber}"/>
-                        </td>
-                        <td class="align-middle">
-                            ${address}
-                            <input type="hidden" name="visitor[${idx}][address]" value="${address}"/>
-                        </td>
-                        <td>
-                            <img height="70" id="preview-identity-${num}">
-                        </td>
-                        <td class="align-middle">
-                            <a href="#" onclick="removeVisitor(this)">
-                                <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
-                            </a>
-                        </td>
-                        <input type="hidden" name="price" class="visitor-price" value="${price}"/>
-                    </tr>
-                `);
-                previewFile('#inputIdentity', `#preview-identity-${num}`)
+                $(`#span-name-${num}`).text(name)
+                $(`#span-citizen-${num}`).text(citizen)
+                $(`#span-phoneNumber-${num}`).text(address)
+                $(`#span-address-${num}`).text(phoneNumber)
+
+                $(`#input-name-${num}`).val(name)
+                $(`#input-citizen-${num}`).val(citizen)
+                $(`#input-phoneNumber-${num}`).val(phoneNumber)
+                $(`#input-address-${num}`).val(address)
+                $(`#input-price-${num}`).val(price)
                 updateTotalVisitor()
                 updateVisitorPrice()
                 resetAddVisitor()
                 submissionTotal()
+                labelButtonImageVisitor()
             }
         }
 
-        function validationVisitor()
+        function validationVisitor(num)
         {
             const name = $('#inputName').val();
             const citizen = $('#inputCitizen').val();
             const address = $('#inputAddress').val();
             const phoneNumber = $('#inputPhoneNumber').val();
-            const identityImage = $('#inputIdentity')[0].files.length
+            const identityImage = $(`#input-image-${num}`)[0].files.length ?? 0
 
             if (name == '' || name == null) {
                 alert('Nama Belum Diisi');
@@ -586,6 +613,7 @@
         function submitSubmission()
         {
             const data = new FormData($('#submit-submission')[0]);
+           
             $.ajax({
                 url: '{{ route('submission-store', $slug) }}',
                 data: data,

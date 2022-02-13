@@ -52,6 +52,7 @@ class SubmissionController extends Controller
                 $transaction->permit_application_fee = 0;
                 $transaction->visitor_charges = 0;
                 $transaction->total_transaction = 0;
+                $transaction->educational_research_activity_form = $request->file('formulir_file')->store('assets/educational_research_activity_form', 'public');
                 $transaction->date_of_entry = date('Y-m-d', strtotime($request->date_of_entry));
                 $transaction->out_date = date('Y-m-d', strtotime($request->out_date));
                 $transaction->save();
@@ -67,13 +68,14 @@ class SubmissionController extends Controller
                 $transactionDetail->phone_number = $user->phone_number;
                 $transactionDetail->address = $user->address;
                 $transactionDetail->price = $myPrice->price;
+                $transactionDetail->identity_image = $user->identity_image;
                 $transactionDetail->save();
                 $allTotal += $myPrice->price;
                 $permitApplicationFee += $myPrice->price;
 
                 if (isset($request->visitor)) {
                     
-                    foreach ($request->visitor as $value) {
+                    foreach ($request->visitor as $key => $value) {
                         $value = (object)$value;
                         $myPrice = collect($price)->where('citizen', strtoupper($value->citizen))->firstOrFail();
                         $transactionDetail = new TransactionDetail();
@@ -84,6 +86,7 @@ class SubmissionController extends Controller
                         $transactionDetail->phone_number = $value->phone_number;
                         $transactionDetail->address = $value->address;
                         $transactionDetail->price = $myPrice->price;
+                        $transactionDetail->identity_image = $request->file("visitor.$key.image")->store('assets/identity_image', 'public');
                         $transactionDetail->save();
                         $allTotal += $myPrice->price;
                         $permitApplicationFee += $myPrice->price;
@@ -171,7 +174,7 @@ class SubmissionController extends Controller
                 DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th->getMessage(), $th->getLine());
+            dd($th->getMessage(), $th->getLine(), $th->getFile());
         }
     }
 
@@ -186,9 +189,12 @@ class SubmissionController extends Controller
         $item = Transaction::findOrFail($id);
         $price = MasterPrice::select('citizen', 'price')->where('purpose_id', $item->purpose_id)->get();
         $equipment = Equipment::select('slug', 'equipment_price')->get();
-        $details = TransactionDetail::where('transaction_id', $id)->get();
-        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+        // $details = TransactionDetail::where('transaction_id', $id)->get();
+        // $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
         $slug = $item->purpose_id;
-        return view('pages.edit-submission', compact('item', 'details', 'equipments', 'price', 'equipment', 'slug'));
+        $dateOfEntry = new Carbon($item->date_of_entry);
+        $outDate = new Carbon($item->out_date);
+        $diff = $dateOfEntry->diff($outDate)->days;
+        return view('pages.edit-submission', compact('item', 'price', 'equipment', 'slug', 'diff'));
     }
 }
