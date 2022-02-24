@@ -13,7 +13,7 @@
                     Kami Sedang Mengkonfirmasi Pengajuan Izin Masuk  <br>
                     Kawasan Konservasi Anda, Tunggu Email Balasan Dari Kami Ya
                 </p>
-                <a href="#" class="btn btn-dashboard mt-3 px-5">Dashboard</a><br>
+                <a href="{{ route('dashboardApplicant') }}" class="btn btn-dashboard mt-3 px-5">Dashboard</a><br>
                 <a href="{{ route('home') }}" class="btn btn-home-page mt-3 px-5">Halaman Utama</a> 
             </div>
         </div>

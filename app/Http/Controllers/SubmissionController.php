@@ -165,15 +165,15 @@ class SubmissionController extends Controller
                 ]);
 
                 // dd($allTotal);
-                // $userAdmins = User::where('role', 'superadmin')->get();
-                // foreach ($userAdmins as $admin) {
-                //     $emailAdmin = $admin->email;
-                //     $dataAdmin = [
-                //         'name' => $admin->name,
-                //         'url'  => 'http://salam-konservasi.test/dashboard/admin/manage-submission'
-                //     ];
-                //     Mail::to($emailAdmin)->send(new ApplicantSubmission($dataAdmin));
-                // }
+                $userAdmins = User::where('role', 'superadmin')->get();
+                foreach ($userAdmins as $admin) {
+                    $emailAdmin = $admin->email;
+                    $dataAdmin = [
+                        'name' => $admin->name,
+                        'url'  => 'http://salam-konservasi.test/dashboard/admin/manage-submission'
+                    ];
+                    Mail::to($emailAdmin)->send(new ApplicantSubmission($dataAdmin));
+                }
 
                 DB::commit();
         } catch (\Throwable $th) {
