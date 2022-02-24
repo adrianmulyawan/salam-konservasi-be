@@ -20,7 +20,25 @@
                 <div class="card card-conservation">
                     <div class="row">
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="form-group">
+                                <label for="dateStart">Tanggal Mulai Rekapan</label>
+                                <input type="date" class="form-control" id="dateStart">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dateEnd">Tanggal Akhir Rekapan</label>
+                                <input type="date" class="form-control" id="dateEnd">
+                            </div>
+
+                            <div class="row justify-content-end mr-0">     
+                                <div class="form-group mt-3">
+                                    <a href="" target="__blank" onclick="this.href='/dashboard/leader/print-submission-summary/' + document.getElementById('dateStart').value + '/' + document.getElementById('dateEnd').value" class="btn btn-primary btn-md">
+                                        Cetak Laporan
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {{-- <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -102,20 +120,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> --}}
                         </div>
-                    </div>
-                    <!-- Pagination -->
-                    <div class="row justify-content-end mr-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -124,10 +130,5 @@
 @endsection
 
 @push('addon-script')
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        $('.success-download').click(function () {    
-            swal("Berhasil!", "Rekapan Izin Masuk Kawasan Berhasil Diunduh", "success");
-        });
-    </script>
+    
 @endpush

@@ -234,6 +234,8 @@ Route::prefix('dashboard/leader')
 
         Route::get('/monthly-submission', [\App\Http\Controllers\Leader\DashboardMonthlySubmissionController::class, 'index'])
             ->name('monthlySubmissionSummary');
+        Route::get('/print-submission-summary/{dateStart}/{dateEnd}', [\App\Http\Controllers\Leader\DashboardMonthlySubmissionController::class, 'printSubmissionSummary'])
+            ->name('printSubmission');
 
         Route::get('/user-aspiration', [\App\Http\Controllers\Leader\DashboardUserAspirationController::class, 'index'])
             ->name('userAspirationLeader');
