@@ -121,11 +121,6 @@
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
-                                Notifikasi
-                            </a>
-                        </li>
                     </ul>
                 @elseif (Auth::user()->role == 'superadmin')
                     {{-- Profile Pictur & Notif: Desktop --}}
@@ -186,11 +181,6 @@
                         <li class="nav-item">
                             <a href="{{ route('AdmindashboardAdmin') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
-                                Notifikasi
                             </a>
                         </li>
                     </ul>
@@ -255,11 +245,6 @@
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
-                                Notifikasi
-                            </a>
-                        </li>
                     </ul>
                 @elseif (Auth::user()->role == 'fieldadmin')
                     {{-- Profile Pictur & Notif: Desktop --}}
@@ -320,11 +305,6 @@
                         <li class="nav-item">
                             <a href="{{ route('dashboardFieldAdmin') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
-                                Notifikasi
                             </a>
                         </li>
                     </ul>
