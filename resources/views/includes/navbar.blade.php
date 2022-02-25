@@ -60,6 +60,7 @@
                 </form>
             @endguest
             @auth
+                {{-- Pemohon --}}
                 @if (Auth::user()->role == 'applicant')
                      {{-- Profile Pictur & Notif: Desktop --}}
                      <ul class="navbar-nav d-none d-lg-flex">
@@ -122,6 +123,7 @@
                             </a>
                         </li>
                     </ul>
+                {{-- Super Admin --}}
                 @elseif (Auth::user()->role == 'superadmin')
                     {{-- Profile Pictur & Notif: Desktop --}}
                     <ul class="navbar-nav d-none d-lg-flex">
@@ -184,6 +186,7 @@
                             </a>
                         </li>
                     </ul>
+                {{-- Pimpinan --}}
                 @elseif (Auth::user()->role == 'leader')
                     {{-- Profile Pictur & Notif: Desktop --}}
                     <ul class="navbar-nav d-none d-lg-flex">
@@ -246,6 +249,7 @@
                             </a>
                         </li>
                     </ul>
+                {{-- Admin Lapangan --}}
                 @elseif (Auth::user()->role == 'fieldadmin')
                     {{-- Profile Pictur & Notif: Desktop --}}
                     <ul class="navbar-nav d-none d-lg-flex">
@@ -264,39 +268,6 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </div>
-                        </li>
-                        <!-- Notif -->
-                        <li class="nav-item dropdown notification-content-home">
-                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
-                                <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                                <div class="notification">4</div>
-                            </a>
-                            <div class="dropdown-menu text-center p-2">
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-danger">
-                                        <i class="fas fa-times my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
-                                    </a>
-                                </div>
                             </div>
                         </li>
                     </ul>
