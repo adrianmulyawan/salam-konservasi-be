@@ -64,6 +64,9 @@ Route::prefix('dashboard/applicant')
         Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])
             ->name('dashboardApplicant');
 
+        Route::get('/applicant-notification', [\App\Http\Controllers\Applicant\ApplicantNotification::class, 'index'])
+            ->name('applicantNotification');
+
         // Pengajuan Izin Masuk Kawasan
         Route::get('/submission', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'index'])
             ->name('dashboardSubmission');
