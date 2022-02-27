@@ -45,7 +45,7 @@
                                 @empty
                                     <div class="card p-2 payment-card">
                                         <a class="d-flex text-primary">
-                                            <p class="my-auto">Belum Ada Pengajuan Yang Ditolak!</p>
+                                            <p class="my-auto">Belum Ada Pembayaran Apapun!</p>
                                         </a>
                                     </div>
                                 @endforelse

@@ -262,6 +262,9 @@ Route::prefix('dashboard/leader')
             ->name('settingPasswordLeader');
         Route::put('/change-password/update', [\App\Http\Controllers\Leader\DashboardEditPasswordController::class, 'update'])
             ->name('updatePasswordLeader');
+
+        Route::get('/leader-notification', [\App\Http\Controllers\Leader\LeaderNotification::class, 'index'])
+            ->name('leaderNotification');
     }
 );
 
