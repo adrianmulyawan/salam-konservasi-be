@@ -95,6 +95,9 @@
                             <a href="{{ route('dashboardApplicant') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
+                            <a href="{{ route('applicantNotification') }}" class="nav-link">
+                                Notifikasi
+                            </a>
                         </li>
                     </ul>
                 {{-- Super Admin --}}
@@ -132,6 +135,9 @@
                             <a href="{{ route('AdmindashboardAdmin') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
+                            <a href="{{ route('AdminadminNotification') }}" class="nav-link">
+                                Notifikasi
+                            </a>
                         </li>
                     </ul>
                 {{-- Pimpinan --}}
@@ -168,6 +174,9 @@
                         <li class="nav-item">
                             <a href="{{ route('LeaderdashboardLeader') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                            </a>
+                            <a href="{{ route('LeaderleaderNotification') }}" class="nav-link">
+                                Notifikasi
                             </a>
                         </li>
                     </ul>
