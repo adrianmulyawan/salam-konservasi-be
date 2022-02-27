@@ -26,6 +26,7 @@ body {
             }
             .submission-approved-card {
                 margin-top: -10px;
+                margin-bottom: 16px;
                 a {
                     text-decoration: none;
                 }
@@ -41,6 +42,7 @@ body {
             }
             .submission-rejected-card {
                 margin-top: -10px;
+                margin-bottom: 16px;
                 a {
                     text-decoration: none;
                 }
@@ -56,6 +58,7 @@ body {
             }
             .submission-failed-card {
                 margin-top: -10px;
+                margin-bottom: 16px;
                 a {
                     text-decoration: none;
                 }
@@ -71,6 +74,7 @@ body {
             }
             .payment-paid-off-card {
                 margin-top: -10px;
+                margin-bottom: 16px;
                 a {
                     text-decoration: none;
                 }
@@ -86,6 +90,7 @@ body {
             }
             .payment-failed-card {
                 margin-top: -10px;
+                margin-bottom: 16px;
                 a {
                     text-decoration: none;
                 }
@@ -101,6 +106,39 @@ body {
             }
             .ticket-card {
                 margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-entry-submission {
+            margin-top: 16px;
+            .entry-submission {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .entry-submission-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-payment {
+            margin-top: 16px;
+            .payment {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .payment-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
                 a {
                     text-decoration: none;
                 }

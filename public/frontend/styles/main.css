@@ -12496,6 +12496,7 @@ body {
 
 .section-notification-content .card .section-notification-submission-approved .submission-approved-card {
   margin-top: -10px;
+  margin-bottom: 16px;
 }
 
 .section-notification-content .card .section-notification-submission-approved .submission-approved-card a {
@@ -12514,6 +12515,7 @@ body {
 
 .section-notification-content .card .section-notification-submission-rejected .submission-rejected-card {
   margin-top: -10px;
+  margin-bottom: 16px;
 }
 
 .section-notification-content .card .section-notification-submission-rejected .submission-rejected-card a {
@@ -12532,6 +12534,7 @@ body {
 
 .section-notification-content .card .section-notification-submission-failed .submission-failed-card {
   margin-top: -10px;
+  margin-bottom: 16px;
 }
 
 .section-notification-content .card .section-notification-submission-failed .submission-failed-card a {
@@ -12550,6 +12553,7 @@ body {
 
 .section-notification-content .card .section-notification-payment-paid-off .payment-paid-off-card {
   margin-top: -10px;
+  margin-bottom: 16px;
 }
 
 .section-notification-content .card .section-notification-payment-paid-off .payment-paid-off-card a {
@@ -12568,6 +12572,7 @@ body {
 
 .section-notification-content .card .section-notification-payment-failed .payment-failed-card {
   margin-top: -10px;
+  margin-bottom: 16px;
 }
 
 .section-notification-content .card .section-notification-payment-failed .payment-failed-card a {
@@ -12586,9 +12591,48 @@ body {
 
 .section-notification-content .card .section-notification-ticket .ticket-card {
   margin-top: -10px;
+  margin-bottom: 16px;
 }
 
 .section-notification-content .card .section-notification-ticket .ticket-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-entry-submission {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-entry-submission .entry-submission {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-entry-submission .entry-submission-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-entry-submission .entry-submission-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-payment {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-payment .payment {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-payment .payment-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-payment .payment-card a {
   text-decoration: none;
 }
 

@@ -197,6 +197,9 @@ Route::prefix('dashboard/admin')
             ->name('settingPasswordAdmin');
         Route::put('/change-password/update', [\App\Http\Controllers\Admin\DashboardEditPasswordController::class, 'update'])
             ->name('updatePasswordAdmin');
+
+        Route::get('/admin-notification', [\App\Http\Controllers\Admin\AdminNotification::class, 'index'])
+            ->name('adminNotification');
     }
 );
 
