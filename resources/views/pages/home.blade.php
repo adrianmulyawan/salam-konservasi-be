@@ -140,7 +140,7 @@
                         <div class="all-events text-center" style="background-image: url('frontend/images/event4.png');">
                             <div class="events-button mt-auto">
                                 <div class="events-all">
-                                    <a href="{{ route('news') }}">
+                                    <a href="{{ route('event') }}">
                                         Lihat Acara Lainnya
                                     </a>
                                 </div>
