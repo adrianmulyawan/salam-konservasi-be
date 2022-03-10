@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputKawasan">Nama Kawasan</label>
-                                        <select class="form-control" id="inputKawasan" name="conservation_area_id">
+                                        <select class="form-control" id="inputKawasan" name="conservation_area_id" required>
                                           <option value="{{ $data->conservation_area_id }}" selected disabled>Jangan Diubah (Bila Tidak Ingin Edit Data)</option>
                                           @foreach ($conservation_areas as $conservation)
                                             <option value="{{ $conservation->id }}">{{ $conservation->name }}</option>
@@ -45,7 +45,7 @@
                                             Foto Kawasan
                                         </label>
                                         <div class="custom-file">
-                                            <input type="file" name="photo" class="custom-file-input" id="inputPeta">
+                                            <input type="file" name="photo" class="custom-file-input" id="inputPeta" required>
                                             <label class="custom-file-label" for="inputPeta">{{ $data->photo }}</label>
                                         </div>
                                     </div>

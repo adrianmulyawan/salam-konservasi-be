@@ -195,7 +195,7 @@
                         <div class="all-news text-center" style="background-image: url('frontend/images/berita4.png');">
                             <div class="events-button mt-auto">
                                 <div class="events-all">
-                                    <a href="{{ route('news') }}ute}}">
+                                    <a href="{{ route('news') }}">
                                         Lihat Berita Lainnya
                                     </a>
                                 </div>
@@ -322,14 +322,4 @@
 
 @push('addon-script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        $('.btn-send-report').click(function () {    
-            swal({
-                title: "Berhasil",
-                text: "Pengaduan Berhasil Disimpan!",
-                icon: "success",
-                button: "Aww yiss!",
-            });
-        });
-    </script>
 @endpush

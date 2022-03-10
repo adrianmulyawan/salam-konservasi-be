@@ -195,7 +195,7 @@
                         <!-- 2.6 Approval -->
                         <div class="form-group data-approval mt-3">
                             <h5>Status Pembayaran Retribusi Izin Masuk Kawasan</h5>
-                            <select class="form-control mt-2" id="inputApproval" name="payment_status">
+                            <select class="form-control mt-2" id="inputApproval" name="payment_status" required>
                               <option selected disabled>Ubah Status Pembayaran</option>
                               <option value="PAIDOFF">TERBAYAR</option>
                               <option value="FAILED">GAGAL</option>
