@@ -15,4 +15,10 @@ class VisitorCheckoutController extends Controller
             'datas'
         ]));
     }
+
+    public function show($id)
+    {  
+        $item = VisitorControl::with(['transaction'])->findOrFail($id);
+        return view('pages.fieldAdmin.dashboard-detail-visitor-checkout', compact('item'));
+    }
 }
