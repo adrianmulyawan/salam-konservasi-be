@@ -35,10 +35,7 @@
                         <a href="#" class="nav-link">SOP</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Penggunaan Sistem</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Unduh</a>
+                        <a href="{{ route('download') }}" class="nav-link">Unduh</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav d-none d-lg-flex">

@@ -3,35 +3,6 @@
 @section('title', 'Notifikasi')
 
 @section('content')
-    {{-- <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <div class="card card-notification p-2 mt-3">
-                    <h3 class="text-center header-notif">Notifikasi</h3>
-
-                    <hr>
-
-                    <p class="submission-approved">Pengajuan Disetujui</p>
-                    @forelse ($notifAlloweds as $allow)
-                        <div class="card p-2 submission-approved-card">
-                            <a href="{{ route('dashboardSubmissionApproved', $allow->id) }}" class="d-flex text-primary">
-                                <i class="fas fa-check my-auto mr-2"></i>
-                                <p class="my-auto">Pengajuan {{ $allow->conservation_area->name }} Telah Disetujui</p>
-                            </a>
-                        </div>
-                    @empty
-                        <div class="card p-2">
-                            <p class="d-flex text-primary">
-                                <p class="my-auto">Belum Ada Pengajuan Yang Disetujui</p>
-                            </p>
-                        </div>
-                    @endforelse
-                    
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    
     <main> 
         <section class="section-notification-content">
             <div class="container">

@@ -42,7 +42,7 @@
                     <a href="#" class="nav-link">SOP</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Unduh</a>
+                    <a href="{{ route('download') }}" class="nav-link {{ request()->is('download*') ? 'active' : '' }}">Unduh</a>
                 </li>
             </ul>
             @guest

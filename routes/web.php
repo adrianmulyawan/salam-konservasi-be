@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardConservationAreaGalleryController;
 use App\Http\Controllers\Admin\DashboardDestinationEntryController;
 use App\Http\Controllers\Admin\DashboardEntranceFeeController;
 use App\Http\Controllers\Admin\DashboardEventController;
+use App\Http\Controllers\Admin\DashboardManageDownloadController;
 use App\Http\Controllers\Admin\DashboardManageUserController;
 use App\Http\Controllers\Admin\DashboardNewsController;
 use App\Http\Controllers\Admin\DashboardVisitorEquipmentController;
@@ -39,6 +40,9 @@ Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])
     ->name('event');
 Route::get('/event/{slug}', [App\Http\Controllers\EventDetailController::class, 'index'])
     ->name('eventDetail');
+
+Route::get('/download', [\App\Http\Controllers\DownloadController::class, 'index'])
+    ->name('download');
 
 Route::post('/store-aspiration', [App\Http\Controllers\HomeController::class, 'storeUserAspiration'])
     ->name('storeUserAspiration');
@@ -129,6 +133,8 @@ Route::prefix('dashboard/admin')
         Route::resource('/visitor-equipment', DashboardVisitorEquipmentController::class);
 
         Route::resource('/manage-user', DashboardManageUserController::class);
+
+        Route::resource('/manage-downloader', DashboardManageDownloadController::class);
 
         // Pengajuan Izin Masuk Kawasan
         Route::get('/manage-submission', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'index'])
