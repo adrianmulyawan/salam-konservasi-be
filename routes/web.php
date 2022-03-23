@@ -53,7 +53,7 @@ Route::post('/submission/{slug}/store', [App\Http\Controllers\SubmissionControll
     ->name('submission-store');
 Route::get('/edit-submission/edit/{id}', [App\Http\Controllers\SubmissionController::class, 'editSubmission'])
     ->name('editSubmission');
-Route::put('/edit-submission/update/{id}', [App\Http\Controllers\SubmissionController::class, 'update'])
+Route::put('/edit-submission/update/{transaction}', [App\Http\Controllers\SubmissionController::class, 'update'])
     ->name('update-submission');
 Route::get('/success-submission', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
     ->name('successSubmission');

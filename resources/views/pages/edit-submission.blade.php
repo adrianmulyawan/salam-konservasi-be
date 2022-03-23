@@ -86,26 +86,36 @@
                                             </tr>
                                         </thead>
                                         <tbody id="list-visitor">
-                                            @foreach ($item->transaction_details as $row)
+                                            @foreach ($item->transaction_details as $key => $row)
                                                 <tr class="row-visitor">
-                                                    <td class="align-middle">{{ $row->name }}
+                                                    <td class="align-middle">
+                                                        {{ $row->name }}
+                                                        <input type="hidden" id="input-name-{{$loop->iteration}}" name="visitor[{{$key}}][name]"/>
                                                     </td>
-                                                    <td class="align-middle">{{ Str::upper($row->citizen) }}</td>
+                                                    <td class="align-middle">
+                                                        {{ Str::upper($row->citizen) }}
+                                                        <input type="hidden" id="input-citizen-{{$loop->iteration}}" name="visitor[{{$key}}][citizen]"/>
+                                                    </td>
                                                     <td class="align-middle">
                                                         {{ $row->phone_number }}
+                                                        <input type="hidden" id="input-phoneNumber-{{$loop->iteration}}" name="visitor[{{$key}}][phone_number]"/>
                                                     </td>
                                                     <td class="align-middle">
                                                         {{ $row->address }}
+                                                        <input type="hidden" id="input-address-{{$loop->iteration}}" name="visitor[{{$key}}][address]"/>
                                                     </td>
                                                     <td>
                                                         <img src="{{ Storage::url($row->identity_image) }}" height="70">
                                                     </td>
                                                     <td class="align-middle">
+                                                        @if($key != 0)
+                                                        <input type="hidden" name="visitor[{{$key}}][transaction_detail_id]" value="{{$row->id}}">
                                                         <a href="#" onclick="removeVisitor(this)">
                                                             <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
                                                         </a>
+                                                        @endif
                                                     </td>
-                                                    <input type="hidden" name="price" class="visitor-price" value="{{ $row->total_transaction }}"/>
+                                                    <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->total_transaction }}" class="visitor-price"/>
                                                 </tr>
                                             @endforeach
                                         </tbody>

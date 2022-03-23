@@ -193,7 +193,7 @@ class SubmissionController extends Controller
         $item = Transaction::findOrFail($id);
         $price = MasterPrice::select('citizen', 'price')->where('purpose_id', $item->purpose_id)->get();
         $equipment = Equipment::select('slug', 'equipment_price')->get();
-        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $details = TransactionDetail::where('transaction_id', $id)->orderBy('created_at','asc')->get();
         $equipments = collect(TransactionEquipmentDetail::where('transaction_id', $id)->get());
         $arrEquipment = array(
             'scuba' => $this->searchEquipmentByTransactionId($equipments,1),
@@ -218,29 +218,24 @@ class SubmissionController extends Controller
         ));
     }
 
-    public function update(Request $request, $slug)
+    public function update(Request $request, Transaction $transaction)
     {
         try {
             DB::beginTransaction();
                 $user= Auth::user();
                 $allTotal = 0;
-                $conservationArea = ConservationArea::where('slug', $slug)->first();
-                $purpose = Purpose::findOrFail($request->purpose);
-                $transaction = new Transaction();
-                $transaction->purpose_id = $request->purpose;
-                $transaction->conservation_area_id = $conservationArea->id;
-                $transaction->user_id = $user->id;
-                $transaction->name_of_purpose = $purpose->purpose_name;
-                $transaction->transaction_code = '1';
-                $transaction->permit_application_fee = 0;
-                $transaction->visitor_charges = 0;
-                $transaction->total_transaction = 0;
-                $transaction->educational_research_activity_form = $request->file('formulir_file')->store('assets/educational_research_activity_form', 'public');
-                $transaction->date_of_entry = date('Y-m-d', strtotime($request->date_of_entry));
-                $transaction->out_date = date('Y-m-d', strtotime($request->out_date));
-                $transaction->save();
+                $payloadTransaction = [
+                    'user_id' => $user->id,
+                    'date_of_entry' => date('Y-m-d', strtotime($request->date_of_entry)),
+                    'out_date' => date('Y-m-d', strtotime($request->out_date)),
+                ];
 
-                $price = MasterPrice::select('id', 'citizen', 'price')->where('purpose_id', $purpose->id)->get();
+                if ($request->hasFile('formulir_file')) {
+                    $payloadTransaction['educational_research_activity_form'] = $request->file('formulir_file')->store('assets/educational_research_activity_form', 'public') ?: null;
+                }
+
+
+                $price = MasterPrice::select('id', 'citizen', 'price')->where('purpose_id', $transaction->purpose_id)->get();
                 $permitApplicationFee = 0;
                 $myPrice = collect($price)->where('citizen', strtoupper($user->citizen))->firstOrFail();
                 $transactionDetail = new TransactionDetail();
@@ -261,18 +256,35 @@ class SubmissionController extends Controller
                     foreach ($request->visitor as $key => $value) {
                         $value = (object)$value;
                         $myPrice = collect($price)->where('citizen', strtoupper($value->citizen))->firstOrFail();
-                        $transactionDetail = new TransactionDetail();
-                        $transactionDetail->transaction_id = $transaction->id;
-                        $transactionDetail->master_price_id = $myPrice->id;
-                        $transactionDetail->name = $value->name;
-                        $transactionDetail->citizen = $value->citizen;
-                        $transactionDetail->phone_number = $value->phone_number;
-                        $transactionDetail->address = $value->address;
-                        $transactionDetail->price = $myPrice->price;
-                        $transactionDetail->identity_image = $request->file("visitor.$key.image")->store('assets/identity_image', 'public');
-                        $transactionDetail->save();
-                        $allTotal += $myPrice->price;
-                        $permitApplicationFee += $myPrice->price;
+                        if(isset($value->transaction_detail_id)):
+                            $payloadTransactionDetail = [
+                                'transaction_id' => $transaction->id,
+                                'master_price_id' => $myPrice->id,
+                                'name' => $value->name,
+                                'citizen' => $value->citizen,
+                                'phone_number' => $value->phone_number,
+                                'address' => $value->address,
+                                'price' => $myPrice->price,
+                            ];
+                            if($request->hasFile("visitor.$key.image")):
+                                $payloadTransactionDetail['identity_image'] =  $request->file("visitor.$key.image")->store('assets/identity_image', 'public');
+                            endif;
+                            $allTotal += $myPrice->price;
+                            $permitApplicationFee += $myPrice->price;
+                        else:
+                            $transactionDetail = new TransactionDetail();
+                            $transactionDetail->transaction_id = $transaction->id;
+                            $transactionDetail->master_price_id = $myPrice->id;
+                            $transactionDetail->name = $value->name;
+                            $transactionDetail->citizen = $value->citizen;
+                            $transactionDetail->phone_number = $value->phone_number;
+                            $transactionDetail->address = $value->address;
+                            $transactionDetail->price = $myPrice->price;
+                            $transactionDetail->identity_image = $request->file("visitor.$key.image")->store('assets/identity_image', 'public');
+                            $transactionDetail->save();
+                            $allTotal += $myPrice->price;
+                            $permitApplicationFee += $myPrice->price;
+                        endif;
                     }
                 }
 
@@ -325,6 +337,8 @@ class SubmissionController extends Controller
                     if ($equip->slug == 'kapal-pesiar') {
                         $total = $request->kapal;
                     }
+
+                    TransactionEquipmentDetail::where('transaction_id', $transaction->id)->delete();
                     $transactionEquipmentDetail = new TransactionEquipmentDetail();
                     $transactionEquipmentDetail->equipment_id = $equip->id;
                     $transactionEquipmentDetail->transaction_id = $transaction->id;
@@ -336,12 +350,12 @@ class SubmissionController extends Controller
                     $visitorCharges += $equip->equipment_price;
                 }
                 // dd($allTotal);
-                $transaction->update([
-                    'total_transaction' => $allTotal,
-                    'transaction_code' => 'SALAM-'.str_pad($transaction->id, 5, '0', STR_PAD_LEFT),
-                    'permit_application_fee' => $permitApplicationFee ?: 0,
-                    'visitor_charges' => $visitorCharges ?: 0,
-                ]);
+
+                $payloadTransaction['total_transaction'] = $allTotal;
+                $payloadTransaction['permit_application_fee'] = $permitApplicationFee ?: 0;
+                $payloadTransaction['visitor_charges'] = $visitorCharges ?: 0;
+
+                $transaction->update($payloadTransaction);
 
                 // dd($allTotal);
                 // $userAdmins = User::where('role', 'superadmin')->get();
