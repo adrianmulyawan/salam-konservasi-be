@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-superAdmin')
 
-@section('title', 'Edit Data Galeri Kawasan Konservasi')
+@section('title', 'Tambah Data Unduhan')
 
 @section('content')
     <!-- Content -->
@@ -8,9 +8,9 @@
         <div class="container-fluid">
             <!-- 1. Heading -->
             <div class="dashboard-heading">
-                <h2 class="dashboard-title">Kelola Galeri Kawasan Konservasi</h2>
+                <h2 class="dashboard-title">Kelola Unduhan</h2>
                 <p class="dashboard-subtitle">
-                    Ubah Data Galeri Kawasan Konservasi
+                    Tambah Data Unduhan
                 </p>
             </div>
             <div class="dashboard-content">
@@ -26,28 +26,29 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('Adminmanage-gallery.update', $data->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('Adminmanage-downloader.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <div class="card card-edit-profile">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="inputKawasan">Nama Kawasan</label>
-                                        <select class="form-control" id="inputKawasan" name="conservation_area_id" required>
-                                          <option value="{{ $data->conservation_area_id }}" selected disabled>Jangan Diubah (Bila Tidak Ingin Edit Data)</option>
-                                          @foreach ($conservation_areas as $conservation)
-                                            <option value="{{ $conservation->id }}">{{ $conservation->name }}</option>
-                                          @endforeach
-                                        </select>
+                                        <label for="inputTitle">
+                                           Judul Unduhan
+                                        </label>
+                                        <input type="text" name="title" value="{{ old('title') }}" class="form-control" id="inputTitle" placeholder="Masukan Nama Judul Unduhan" autofocus required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPeta">
-                                            Foto Kawasan
+                                        <label for="inputDescription">
+                                            Tentang Kawasan
                                         </label>
-                                        <div class="custom-file">
-                                            <input type="file" name="photo" class="custom-file-input" id="inputPeta" required>
-                                            <label class="custom-file-label" for="inputPeta">{{ $data->photo }}</label>
-                                        </div>
+                                        <textarea name="description" class="form-control" id="inputDescription" placeholder="Masukan Deskripsi" required>
+                                            {{ old('description') }}
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputLink">
+                                            Luas Kawasan
+                                        </label>
+                                        <input type="text" name="link" value="{{ old('link') }}" class="form-control" id="inputLink" placeholder="Masukan link" required>
                                     </div>
                                     <button type="submit" class="btn btn-save-data px-5 mt-3">Simpan Data</button>
                                 </div>
@@ -59,3 +60,10 @@
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'description' );
+    </script>
+@endpush

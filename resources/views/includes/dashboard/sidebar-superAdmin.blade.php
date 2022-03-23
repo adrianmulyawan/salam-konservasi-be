@@ -53,6 +53,9 @@
         <a href="{{ route('AdminvisitorControlAdmin') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/admin/visitor-control*') ? 'active' : '' }}">
             Data Keluar Masuk Pengunjung
         </a>
+        <a href="{{ route('Adminmanage-downloader.index') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/admin/manage-downloader*') ? 'active' : '' }}">
+            Kelola Unduhan
+        </a>
         <a href="{{ route('AdminsettingAccountAdmin') }}" class="list-group-item list-group-item-action {{ request()->is('dashboard/admin/profile*') ? 'active' : '' }}">
             Pengaturan Akun
         </a>

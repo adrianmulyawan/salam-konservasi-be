@@ -1,0 +1,49 @@
+.section-download {
+    margin-top: 24px;
+    margin-bottom: 20px;
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 35px;
+        font-weight: bold;
+    }
+    p {
+        font-size: 16px;
+        color: #051334;
+        font-weight: 300;
+    }
+}
+
+.section-download-content {
+   .card-download {
+       margin-bottom: 24px;
+       border-radius: 8px;
+
+       .card-body {
+           .card-title {
+               font-size: 20px;
+               color: #212529;
+               font-weight: 600;
+           }
+
+           p {
+               font-size: 16px;
+               color: #b1b1b1;
+               font-weight: 400;
+           }
+
+           .btn-download {
+               float: right;
+               background-color: #FF9E53;
+               color: #fff;
+               font-weight: 600;
+
+                &:hover {
+                    float: right;
+                    background-color: #28a745;;
+                    color: #fff;
+                    font-weight: 600;
+                }
+           }
+       }
+   }
+}

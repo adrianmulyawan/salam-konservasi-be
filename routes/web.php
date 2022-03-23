@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardConservationAreaGalleryController;
 use App\Http\Controllers\Admin\DashboardDestinationEntryController;
 use App\Http\Controllers\Admin\DashboardEntranceFeeController;
 use App\Http\Controllers\Admin\DashboardEventController;
+use App\Http\Controllers\Admin\DashboardManageDownloadController;
 use App\Http\Controllers\Admin\DashboardManageUserController;
 use App\Http\Controllers\Admin\DashboardNewsController;
 use App\Http\Controllers\Admin\DashboardVisitorEquipmentController;
@@ -40,6 +41,9 @@ Route::get('/event', [App\Http\Controllers\EventController::class, 'index'])
 Route::get('/event/{slug}', [App\Http\Controllers\EventDetailController::class, 'index'])
     ->name('eventDetail');
 
+Route::get('/download', [\App\Http\Controllers\DownloadController::class, 'index'])
+    ->name('download');
+
 Route::post('/store-aspiration', [App\Http\Controllers\HomeController::class, 'storeUserAspiration'])
     ->name('storeUserAspiration');
 
@@ -65,6 +69,9 @@ Route::prefix('dashboard/applicant')
     ->group(function() {
         Route::get('/', [\App\Http\Controllers\Applicant\DashboardController::class, 'index'])
             ->name('dashboardApplicant');
+
+        Route::get('/applicant-notification', [\App\Http\Controllers\Applicant\ApplicantNotification::class, 'index'])
+            ->name('applicantNotification');
 
         // Pengajuan Izin Masuk Kawasan
         Route::get('/submission', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'index'])
@@ -128,6 +135,8 @@ Route::prefix('dashboard/admin')
         Route::resource('/visitor-equipment', DashboardVisitorEquipmentController::class);
 
         Route::resource('/manage-user', DashboardManageUserController::class);
+
+        Route::resource('/manage-downloader', DashboardManageDownloadController::class);
 
         // Pengajuan Izin Masuk Kawasan
         Route::get('/manage-submission', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'index'])
@@ -196,6 +205,9 @@ Route::prefix('dashboard/admin')
             ->name('settingPasswordAdmin');
         Route::put('/change-password/update', [\App\Http\Controllers\Admin\DashboardEditPasswordController::class, 'update'])
             ->name('updatePasswordAdmin');
+
+        Route::get('/admin-notification', [\App\Http\Controllers\Admin\AdminNotification::class, 'index'])
+            ->name('adminNotification');
     }
 );
 
@@ -236,6 +248,8 @@ Route::prefix('dashboard/leader')
 
         Route::get('/monthly-submission', [\App\Http\Controllers\Leader\DashboardMonthlySubmissionController::class, 'index'])
             ->name('monthlySubmissionSummary');
+        Route::get('/print-submission-summary/{dateStart}/{dateEnd}', [\App\Http\Controllers\Leader\DashboardMonthlySubmissionController::class, 'printSubmissionSummary'])
+            ->name('printSubmission');
 
         Route::get('/user-aspiration', [\App\Http\Controllers\Leader\DashboardUserAspirationController::class, 'index'])
             ->name('userAspirationLeader');
@@ -256,6 +270,9 @@ Route::prefix('dashboard/leader')
             ->name('settingPasswordLeader');
         Route::put('/change-password/update', [\App\Http\Controllers\Leader\DashboardEditPasswordController::class, 'update'])
             ->name('updatePasswordLeader');
+
+        Route::get('/leader-notification', [\App\Http\Controllers\Leader\LeaderNotification::class, 'index'])
+            ->name('leaderNotification');
     }
 );
 
@@ -280,6 +297,8 @@ Route::prefix('dashboard/fieldAdmin')
 
         Route::get('/data-visitor-checkout', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'index'])
             ->name('visitorCheckout');
+        Route::get('/data-visitor-checkout/{id}/detail', [\App\Http\Controllers\FieldAdmin\VisitorCheckoutController::class, 'show'])
+            ->name('showVisitorCheckout');
 
         Route::get('/profile', [\App\Http\Controllers\FieldAdmin\SettingFieldAdminController::class, 'edit'])
             ->name('settingAccountFieldAdmin');

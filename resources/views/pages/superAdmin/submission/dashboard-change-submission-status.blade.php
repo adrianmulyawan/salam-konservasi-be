@@ -206,11 +206,11 @@
                         <!-- 2.5 Approval -->
                         <div class="form-group data-approval mt-1">
                             <h5>Status Permohonan Pengajuan Izin Masuk Kawasan</h5>
-                            <select class="form-control mt-3" id="inputApproval" name="submission_status">
-                            <option selected disabled>Ubah Status Permohonan</option>
-                            <option value="ALLOWED">Disetujui</option>
-                            <option value="REJECTED">Ditolak</option>
-                            <option value="FAILED">Gagal</option>
+                            <select class="form-control mt-3" id="inputApproval" name="submission_status" required>
+                                <option selected disabled>Ubah Status Permohonan</option>
+                                <option value="ALLOWED">Disetujui</option>
+                                <option value="REJECTED">Ditolak</option>
+                                <option value="FAILED">Gagal</option>
                             </select>
                         </div>
 

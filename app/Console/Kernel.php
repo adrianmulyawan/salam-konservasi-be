@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Transaction;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +17,15 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->call(function() {
+            Transaction::where('submission_status', 'PENDING')->orWhere('submission_status', 'ALLOWED')
+            ->where('payment_status', 'UNPAID')->orWhere('payment_status', 'UNPAID')
+            ->where('date_of_entry', '<', now())
+            ->update([
+                'submission_status' => 'FAILED',
+                'payment_status'    => 'FAILED'
+            ]);
+        })->everyMinute();
     }
 
     /**

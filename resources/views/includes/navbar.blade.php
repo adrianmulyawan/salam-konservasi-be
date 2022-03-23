@@ -42,7 +42,7 @@
                     <a href="#" class="nav-link">SOP</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Unduh</a>
+                    <a href="{{ route('download') }}" class="nav-link {{ request()->is('download*') ? 'active' : '' }}">Unduh</a>
                 </li>
             </ul>
             @guest
@@ -60,6 +60,7 @@
                 </form>
             @endguest
             @auth
+                {{-- Pemohon --}}
                 @if (Auth::user()->role == 'applicant')
                      {{-- Profile Pictur & Notif: Desktop --}}
                      <ul class="navbar-nav d-none d-lg-flex">
@@ -82,36 +83,10 @@
                         </li>
                         <!-- Notif -->
                         <li class="nav-item dropdown notification-content-home">
-                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
+                            <a href="{{ route('applicantNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                                 <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
                                 <div class="notification">4</div>
                             </a>
-                            <div class="dropdown-menu text-center p-2">
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-danger">
-                                        <i class="fas fa-times my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
-                                    </a>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                     <!-- Profile Picture & Notif: Mobile Menu -->
@@ -120,13 +95,12 @@
                             <a href="{{ route('dashboardApplicant') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
+                            <a href="{{ route('applicantNotification') }}" class="nav-link">
                                 Notifikasi
                             </a>
                         </li>
                     </ul>
+                {{-- Super Admin --}}
                 @elseif (Auth::user()->role == 'superadmin')
                     {{-- Profile Pictur & Notif: Desktop --}}
                     <ul class="navbar-nav d-none d-lg-flex">
@@ -149,36 +123,10 @@
                         </li>
                         <!-- Notif -->
                         <li class="nav-item dropdown notification-content-home">
-                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
+                            <a href="{{ route('AdminadminNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                                 <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
                                 <div class="notification">4</div>
                             </a>
-                            <div class="dropdown-menu text-center p-2">
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-danger">
-                                        <i class="fas fa-times my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
-                                    </a>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                     <!-- Profile Picture & Notif: Mobile Menu -->
@@ -187,13 +135,12 @@
                             <a href="{{ route('AdmindashboardAdmin') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
+                            <a href="{{ route('AdminadminNotification') }}" class="nav-link">
                                 Notifikasi
                             </a>
                         </li>
                     </ul>
+                {{-- Pimpinan --}}
                 @elseif (Auth::user()->role == 'leader')
                     {{-- Profile Pictur & Notif: Desktop --}}
                     <ul class="navbar-nav d-none d-lg-flex">
@@ -216,36 +163,10 @@
                         </li>
                         <!-- Notif -->
                         <li class="nav-item dropdown notification-content-home">
-                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
+                            <a href="{{ route('LeaderleaderNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                                 <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
                                 <div class="notification">4</div>
                             </a>
-                            <div class="dropdown-menu text-center p-2">
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-danger">
-                                        <i class="fas fa-times my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
-                                    </a>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                     <!-- Profile Picture & Notif: Mobile Menu -->
@@ -254,13 +175,12 @@
                             <a href="{{ route('LeaderdashboardLeader') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
+                            <a href="{{ route('LeaderleaderNotification') }}" class="nav-link">
                                 Notifikasi
                             </a>
                         </li>
                     </ul>
+                {{-- Admin Lapangan --}}
                 @elseif (Auth::user()->role == 'fieldadmin')
                     {{-- Profile Pictur & Notif: Desktop --}}
                     <ul class="navbar-nav d-none d-lg-flex">
@@ -281,50 +201,12 @@
                                 </form>
                             </div>
                         </li>
-                        <!-- Notif -->
-                        <li class="nav-item dropdown notification-content-home">
-                            <a href="#" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button" data-toggle="dropdown">
-                                <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                                <div class="notification">4</div>
-                            </a>
-                            <div class="dropdown-menu text-center p-2">
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Telah Disetujui</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-danger">
-                                        <i class="fas fa-times my-auto mr-2"></i>
-                                        <p class="my-auto">Pengajuan Anda Ditolak</p>
-                                    </a>
-                                </div>
-                                <div class="card p-2">
-                                    <a href="#" class="d-flex text-primary">
-                                        <i class="fas fa-check my-auto mr-2"></i>
-                                        <p class="my-auto">Surat Izin Masuk Telah Terbit</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                     <!-- Profile Picture & Notif: Mobile Menu -->
                     <ul class="navbar-nav d-block d-lg-none">
                         <li class="nav-item">
                             <a href="{{ route('dashboardFieldAdmin') }}" class="nav-link">
                                 Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link d-inline-block">
-                                Notifikasi
                             </a>
                         </li>
                     </ul>

@@ -12468,6 +12468,222 @@ body {
   font-size: 20px;
 }
 
+body {
+  font-family: 'Assistant', sans-serif;
+}
+
+.section-notification-content {
+  margin-top: 32px;
+  margin-bottom: 120px;
+}
+
+.section-notification-content .card {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.section-notification-content .card .section-notification-header h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-submission-approved .submission-approved {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-submission-approved .submission-approved-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-submission-approved .submission-approved-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-submission-rejected {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-submission-rejected .submission-rejected {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-submission-rejected .submission-rejected-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-submission-rejected .submission-rejected-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-submission-failed {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-submission-failed .submission-failed {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-submission-failed .submission-failed-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-submission-failed .submission-failed-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-payment-paid-off {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-payment-paid-off .payment-paid-off {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-payment-paid-off .payment-paid-off-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-payment-paid-off .payment-paid-off-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-payment-failed {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-payment-failed .payment-failed {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-payment-failed .payment-failed-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-payment-failed .payment-failed-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-ticket {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-ticket .ticket {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-ticket .ticket-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-ticket .ticket-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-entry-submission {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-entry-submission .entry-submission {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-entry-submission .entry-submission-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-entry-submission .entry-submission-card a {
+  text-decoration: none;
+}
+
+.section-notification-content .card .section-notification-payment {
+  margin-top: 16px;
+}
+
+.section-notification-content .card .section-notification-payment .payment {
+  font-size: 18px;
+  font-weight: 300;
+  color: #041B50;
+}
+
+.section-notification-content .card .section-notification-payment .payment-card {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.section-notification-content .card .section-notification-payment .payment-card a {
+  text-decoration: none;
+}
+
+.section-download {
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+.section-download h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.section-download p {
+  font-size: 16px;
+  color: #051334;
+  font-weight: 300;
+}
+
+.section-download-content .card-download {
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
+.section-download-content .card-download .card-body .card-title {
+  font-size: 20px;
+  color: #212529;
+  font-weight: 600;
+}
+
+.section-download-content .card-download .card-body p {
+  font-size: 16px;
+  color: #b1b1b1;
+  font-weight: 400;
+}
+
+.section-download-content .card-download .card-body .btn-download {
+  float: right;
+  background-color: #FF9E53;
+  color: #fff;
+  font-weight: 600;
+}
+
+.section-download-content .card-download .card-body .btn-download:hover {
+  float: right;
+  background-color: #28a745;
+  color: #fff;
+  font-weight: 600;
+}
+
 .navbar-border {
   border: 1px solid #E4E6EB;
 }

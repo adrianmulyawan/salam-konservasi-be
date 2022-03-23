@@ -96,28 +96,48 @@
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="inputKenegaraan">Status Kenegaraan</label>
-                                    <select class="form-control" name="citizen" id="inputKenegaraan" required>
+                                    <select class="form-control @error('citizen') is-invalid @enderror" name="citizen" id="inputKenegaraan" required>
                                         <option selected disabled>
                                             Pilih Status Kenegaraan (WNI/WNA)
                                         </option>
                                         <option value="wni">WNI</option>
                                         <option value="wna">WNA</option>
+                                        @error('citizen')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </select>
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="inputNoTelpon">Nomor Telpon</label>
-                                    <input type="text" name="phone_number" class="form-control" id="inputNoTelpon" placeholder="Masukan Nomor Telpon Anda" required>
+                                    <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" id="inputNoTelpon" placeholder="Masukan Nomor Telpon Anda" required>
+                                    @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="inputAlamat">Alamat Rumah</label>
-                                    <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                                    <textarea class="form-control @error('address') is-invalid @enderror" name="address" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                                    @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group mt-3">
                                     <label>Unggah Kartu Pelajar/KTP/KK/Passport</label>
                                     <div class="custom-file">
-                                        <input type="file" name="identity_image" class="custom-file-input" id="validatedCustomFile" required>
+                                        <input type="file" name="identity_image" class="custom-file-input @error('identity_image') is-invalid @enderror" id="validatedCustomFile" required>
                                         <label class="custom-file-label" for="validatedCustomFile">Kartu Pelajar/KTP/KK/Passport</label>
                                         <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                        @error('identity_image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block btn-login mt-4">

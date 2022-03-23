@@ -9,6 +9,10 @@ use App\Models\TransactionEquipmentDetail;
 use App\Models\VisitorControl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VisitorsEnter;
+use App\Mail\VisitorsOutbound;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -31,6 +35,7 @@ class DashboardController extends Controller
         $details = TransactionDetail::where('transaction_id', $id)->get();
         $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
         $visitor = VisitorControl::with(['transaction'])->where('transaction_id', $id)->get();
+
         return view('pages.fieldAdmin.dashboard-visit-details', compact([
             'data', 'userCount', 'details', 'equipments', 'visitor'
         ]));
@@ -42,6 +47,7 @@ class DashboardController extends Controller
         $userCount = TransactionDetail::where('transaction_id', $id)->count();
         $details = TransactionDetail::where('transaction_id', $id)->get();
         $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+
         return view('pages.fieldAdmin.dashboard-add-entry-area', compact([
             'data', 'userCount', 'details', 'equipments'
         ]));
@@ -58,6 +64,16 @@ class DashboardController extends Controller
         $data['transaction_code'] = $transaction->transaction_code;
         $data['date_of_entry_area'] = date('Y-m-d', strtotime($request->date_of_entry_area));
         $data->save();
+
+        $userEmail = User::where('role', 'superadmin')->orWhere('role', 'leader')->get();
+        foreach ($userEmail as $email) {
+            $emailUser = $email->email;
+            $nameUser = $email->name;
+            $dataUser = [
+                'name' => $nameUser,
+            ];
+            Mail::to($emailUser)->send(new VisitorsEnter($dataUser));
+        }
 
         if ($data) {
             session()->flash('success', 'Data Masuk Pengunjung Berhasil Ditambahkan');
@@ -86,6 +102,16 @@ class DashboardController extends Controller
             'name'          => Auth::user()->name,
             'out_date_area' => date('Y-m-d', strtotime($request->out_date_area))
         ]);
+
+        $userEmail = User::where('role', 'superadmin')->orWhere('role', 'leader')->get();
+        foreach ($userEmail as $email) {
+            $emailUser = $email->email;
+            $nameUser = $email->name;
+            $dataUser = [
+                'name' => $nameUser,
+            ];
+            Mail::to($emailUser)->send(new VisitorsOutbound($dataUser));
+        }
 
         if ($data) {
             session()->flash('success', 'Data Keluar Pengunjung Berhasil Ditambahkan');

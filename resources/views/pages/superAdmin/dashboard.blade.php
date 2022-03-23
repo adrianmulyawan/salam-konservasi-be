@@ -395,19 +395,19 @@
             datasets: [
                 {
                 label: 'Pariwisata',
-                data: [1,1,1,1,1,1,1,1,1],
+                data: [10,20,15,5,0,0,0,0,0,0,0,0],
                 borderColor: borderColor,
                 backgroundColor: backgroundColorTourism,
                 },
                 {
                 label: 'Penelitian',
-                data: [1,1,1,1,1,1,1,1,1],
+                data: [10,6,4,3,0,0,0,0,0,0,0,0],
                 borderColor: borderColor,
                 backgroundColor: backgroundColorResearch,
                 },
                 {
                 label: 'Pendidikan',
-                data: [1,1,1,1,1,1,1,1,1],
+                data: [10,2,10,5,0,0,0,0,0,0,0,0],
                 borderColor:borderColor,
                 backgroundColor: backgroudColorEducation,
                 }

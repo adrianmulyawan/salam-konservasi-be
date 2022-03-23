@@ -41,6 +41,10 @@ class SubmissionController extends Controller
             DB::beginTransaction();
                 $user= Auth::user();
                 $allTotal = 0;
+                $educational_file = null;
+                if ($request->hasFile('formulir_file')) {
+                    $educational_file = $request->file('formulir_file')->store('assets/educational_research_activity_form', 'public') ?: null;
+                }
                 $conservationArea = ConservationArea::where('slug', $slug)->first();
                 $purpose = Purpose::findOrFail($request->purpose);
                 $transaction = new Transaction();
@@ -52,7 +56,7 @@ class SubmissionController extends Controller
                 $transaction->permit_application_fee = 0;
                 $transaction->visitor_charges = 0;
                 $transaction->total_transaction = 0;
-                $transaction->educational_research_activity_form = $request->file('formulir_file')->store('assets/educational_research_activity_form', 'public');
+                $transaction->educational_research_activity_form = $educational_file;
                 $transaction->date_of_entry = date('Y-m-d', strtotime($request->date_of_entry));
                 $transaction->out_date = date('Y-m-d', strtotime($request->out_date));
                 $transaction->save();
@@ -161,15 +165,15 @@ class SubmissionController extends Controller
                 ]);
 
                 // dd($allTotal);
-                // $userAdmins = User::where('role', 'superadmin')->get();
-                // foreach ($userAdmins as $admin) {
-                //     $emailAdmin = $admin->email;
-                //     $dataAdmin = [
-                //         'name' => $admin->name,
-                //         'url'  => 'http://salam-konservasi.test/dashboard/admin/manage-submission'
-                //     ];
-                //     Mail::to($emailAdmin)->send(new ApplicantSubmission($dataAdmin));
-                // }
+                $userAdmins = User::where('role', 'superadmin')->get();
+                foreach ($userAdmins as $admin) {
+                    $emailAdmin = $admin->email;
+                    $dataAdmin = [
+                        'name' => $admin->name,
+                        'url'  => 'http://salam-konservasi.test/dashboard/admin/manage-submission'
+                    ];
+                    Mail::to($emailAdmin)->send(new ApplicantSubmission($dataAdmin));
+                }
 
                 DB::commit();
         } catch (\Throwable $th) {

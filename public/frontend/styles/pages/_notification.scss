@@ -1,0 +1,148 @@
+body {
+    font-family: 'Assistant', sans-serif;
+}
+
+.section-notification-content {
+    margin-top: 32px;
+    margin-bottom: 120px;
+
+    .card {
+        padding: 20px;
+        border-radius: 10px;
+
+        .section-notification-header {
+            h3 {
+                font-size: 32px;
+                font-weight: 700;
+                color: #041B50;
+            }
+        }
+
+        .section-notification-submission-approved {
+            .submission-approved {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .submission-approved-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-submission-rejected {
+            margin-top: 16px;
+            .submission-rejected {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .submission-rejected-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-submission-failed {
+            margin-top: 16px;
+            .submission-failed {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .submission-failed-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-payment-paid-off {
+            margin-top: 16px;
+            .payment-paid-off {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .payment-paid-off-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-payment-failed {
+            margin-top: 16px;
+            .payment-failed {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .payment-failed-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-ticket {
+            margin-top: 16px;
+            .ticket {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .ticket-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-entry-submission {
+            margin-top: 16px;
+            .entry-submission {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .entry-submission-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .section-notification-payment {
+            margin-top: 16px;
+            .payment {
+                font-size: 18px;
+                font-weight: 300;
+                color: #041B50;
+            }
+            .payment-card {
+                margin-top: -10px;
+                margin-bottom: 16px;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

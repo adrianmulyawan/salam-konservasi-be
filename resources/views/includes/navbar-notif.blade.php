@@ -38,6 +38,33 @@
                         <a href="{{ route('download') }}" class="nav-link">Unduh</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav d-none d-lg-flex">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            <img src="{{ url('frontend/images/ic_profile.png') }}" alt="" class="rounded-circle mr-2 profile-picture">
+                            Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('dashboardApplicant') }}" class="dropdown-item">Dashboard</a>
+                            <a href="{{ route('settingAccountApplicant') }}" class="dropdown-item">Pengaturan Akun</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Profile Picture & Notif: Mobile Menu -->
+                <ul class="navbar-nav d-block d-lg-none">
+                    <li class="nav-item">
+                        <a href="{{ route('dashboardApplicant') }}" class="nav-link">
+                            Hi, {{ \Illuminate\Support\Str::of(Auth::user()->name)->words(1, '') }}
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>

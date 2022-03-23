@@ -92,11 +92,11 @@
     </main>
 @endsection
 
-@push('addon-script')
+{{-- @push('addon-script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         $('.success').click(function () {    
             swal("Pembayaran Berhasil Dilakukan!", "Surat Izin Masuk Kawasan Segera Dikirimkan", "success");
         });
     </script>
-@endpush
+@endpush --}}
