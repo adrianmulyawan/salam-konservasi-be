@@ -49,6 +49,8 @@ Route::post('/submission/{slug}/store', [App\Http\Controllers\SubmissionControll
     ->name('submission-store');
 Route::get('/edit-submission/edit/{id}', [App\Http\Controllers\SubmissionController::class, 'editSubmission'])
     ->name('editSubmission');
+Route::put('/edit-submission/update/{id}', [App\Http\Controllers\SubmissionController::class, 'update'])
+    ->name('update-submission');
 Route::get('/success-submission', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
     ->name('successSubmission');
 
@@ -75,7 +77,7 @@ Route::prefix('dashboard/applicant')
             ->name('dashboardSubmissionRejected');
         Route::get('/submission/status/failed/{id}', [\App\Http\Controllers\Applicant\DashboardSubmissionController::class, 'submissionFailed'])
             ->name('dashboardSubmissionFailed');
-        
+
         // Pembayaran Retribusi
         Route::get('/payment', [\App\Http\Controllers\Applicant\DashboardPaymentController::class, 'index'])
             ->name('dashboardPayment');
@@ -90,7 +92,7 @@ Route::prefix('dashboard/applicant')
 
         Route::get('/area-entry', [\App\Http\Controllers\Applicant\AreaEntryController::class, 'index'])
             ->name('areaEntryPermit');
-        
+
         Route::get('/profile', [\App\Http\Controllers\Applicant\SettingApplicantController::class, 'edit'])
             ->name('settingAccountApplicant');
         Route::put('/profile/update', [\App\Http\Controllers\Applicant\SettingApplicantController::class, 'update'])
@@ -142,7 +144,7 @@ Route::prefix('dashboard/admin')
             ->name('submissionStatusFailed');
         Route::delete('/manage-submission/{id}/delete-submission', [\App\Http\Controllers\Admin\DashboardManageSubmissionController::class, 'deleteSubmission'])
             ->name('deleteSubmission');
-        
+
         // Pembayaran Retribusi
         Route::get('/manage-transaction', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'index'])
             ->name('manageTransaction');
@@ -156,7 +158,7 @@ Route::prefix('dashboard/admin')
             ->name('transactionStatusFailed');
         Route::delete('/manage-transaction/{id}/delete-transaction', [\App\Http\Controllers\Admin\DashboardManageTransactionController::class, 'deleteTransaction'])
             ->name('deleteTransaction');
-        
+
         // Kelola Surat Izin Masuk
         Route::get('/manage-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'index'])
             ->name('manageEntryPermit');
@@ -170,11 +172,11 @@ Route::prefix('dashboard/admin')
             ->name('editEntryPermit');
         Route::put('/manage-entry-permit/{id}/upload-edit-entry-permit', [\App\Http\Controllers\Admin\DashboardManageEntryPermitController::class, 'uploadEditPermit'])
             ->name('uploadEditPermit');
-        
+
         // Surat Izin Masuk
         Route::get('/entry-permit', [\App\Http\Controllers\Admin\DashboardEntryPermitController::class, 'index'])
             ->name('entryPermit');
-        
+
         Route::get('/user-aspiration', [\App\Http\Controllers\Admin\DashboardUserAspirationController::class, 'index'])
             ->name('userAspirationAdmin');
         Route::get('/user-aspiration/{id}/detail', [\App\Http\Controllers\Admin\DashboardUserAspirationController::class, 'detail'])
@@ -239,7 +241,7 @@ Route::prefix('dashboard/leader')
             ->name('userAspirationLeader');
         Route::get('/user-aspiration/{id}/detail', [\App\Http\Controllers\Leader\DashboardUserAspirationController::class, 'detail'])
             ->name('userAspirationLeaderDetail');
-        
+
         Route::get('/leader-visitor-control', [\App\Http\Controllers\Leader\DashboardVisitorControlController::class, 'index'])
             ->name('leaderVisitorControl');
         Route::get('/leader-visitor-control/{id}/detail', [\App\Http\Controllers\Leader\DashboardVisitorControlController::class, 'show'])
@@ -249,7 +251,7 @@ Route::prefix('dashboard/leader')
             ->name('settingAccountLeader');
         Route::put('/profile/update', [\App\Http\Controllers\Leader\DashboardSettingLeaderController::class, 'update'])
             ->name('updateAccountLeader');
-        
+
         Route::get('/change-password', [\App\Http\Controllers\Leader\DashboardEditPasswordController::class, 'edit'])
             ->name('settingPasswordLeader');
         Route::put('/change-password/update', [\App\Http\Controllers\Leader\DashboardEditPasswordController::class, 'update'])

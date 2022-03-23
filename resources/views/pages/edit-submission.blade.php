@@ -9,7 +9,7 @@
 
 @section('content')
     <!-- Konten Utama -->
-    <main> 
+    <main>
         <!-- 1. Header -->
         <section class="section-details-header"></section>
 
@@ -25,7 +25,7 @@
                                     <a href="{{ route('home') }}">Kawasan Konservasi</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Details 
+                                    Details
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Pengajuan Surat Izin Masuk KKPD
@@ -157,23 +157,23 @@
                                         <tbody>
                                             <tr>
                                                 <td class="align-middle" id="value-scuba">
-                                                    0
+                                                    {{$arrEquipment['scuba']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="scuba">
                                                 <td class="align-middle" id="value-peralatan-seluncur">
-                                                    0
+                                                    {{$arrEquipment['peralatan_seluncur']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="peralatan_seluncur">
                                                 <td class="align-middle" id="value-kamera">
-                                                    0
+                                                    {{$arrEquipment['kamera']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="kamera">
                                                 <td class="align-middle" id="value-video">
-                                                    0
+                                                    {{$arrEquipment['video']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="video">
                                                 <td class="align-middle" id="value-kapal">
-                                                    0
+                                                    {{$arrEquipment['kapal']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="kapal">
                                                 <td class="align-middle">
@@ -221,6 +221,9 @@
                                     <div class="custom-file mb-2">
                                         <label class="custom-file-label" for="inputFormulir">Upload Formulir Kegiatan Penelitian / Pendidikan</label>
                                         <input type="file" name="formulir_file" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="inputFormulir" required>
+
+                                        <a target="_blank" href="{{Storage::url($item->educational_research_activity_form)}}">
+                                            <i class="fas fa-file-alt mr-2"></i> File Formulir Pengajuan</a>
                                     </div>
                                 </div>
                                 <div class="note-research mt-2 mb-0">
@@ -403,8 +406,8 @@
                 </tr>
             `).after(function(){
                 $(`#input-image-${num}`).click()
-            });   
-            
+            });
+
         }
 
         function changeVisitorImage(num){
@@ -512,7 +515,7 @@
             });
             $('#total-visitor-price').text(`Rp ${totalVisitorPrice * diff}`)
 
-            submissionTotal() 
+            submissionTotal()
         }
 
         function resetAddVisitor()
@@ -526,14 +529,14 @@
 
         function previewFile(input, preview){
             var file = $(input).get(0).files[0];
-    
+
             if(file){
                 var reader = new FileReader();
-    
+
                 reader.onload = function(){
                     $(preview).attr("src", reader.result);
                 }
-    
+
                 reader.readAsDataURL(file);
             }
         }
@@ -613,9 +616,9 @@
         function submitSubmission()
         {
             const data = new FormData($('#submit-submission')[0]);
-           
+
             $.ajax({
-                url: '{{ route('submission-store', $slug) }}',
+                url: '{{ route('update-submission', $id) }}',
                 data: data,
                 processData: false,
                 contentType: false,
