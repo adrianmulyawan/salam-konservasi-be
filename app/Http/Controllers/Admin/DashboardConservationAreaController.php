@@ -96,10 +96,10 @@ class DashboardConservationAreaController extends Controller
         $item = ConservationArea::findOrFail($id)->update($data);
 
         if ($item) {
-            session()->flash('success', 'Data Kawasan Konservasi Berhasil Diubah');
+            session()->flash('success', 'Data Kawasan Konservasi Berhasil Dirubah');
             return redirect()->route('Adminmanage-conservation-area.index');
         } else {
-            session()->flash('failed', 'Data Kawasan Konservasi Gagal Diubah');
+            session()->flash('failed', 'Data Kawasan Konservasi Gagal Dirubah');
             return redirect()->route('Adminmanage-conservation-area.index');
         }
     }
