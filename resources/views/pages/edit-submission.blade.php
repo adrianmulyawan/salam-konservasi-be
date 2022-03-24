@@ -9,7 +9,7 @@
 
 @section('content')
     <!-- Konten Utama -->
-    <main> 
+    <main>
         <!-- 1. Header -->
         <section class="section-details-header"></section>
 
@@ -25,7 +25,7 @@
                                     <a href="{{ route('home') }}">Kawasan Konservasi</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Details 
+                                    Details
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Pengajuan Surat Izin Masuk KKPD
@@ -86,26 +86,36 @@
                                             </tr>
                                         </thead>
                                         <tbody id="list-visitor">
-                                            @foreach ($item->transaction_details as $row)
+                                            @foreach ($item->transaction_details as $key => $row)
                                                 <tr class="row-visitor">
-                                                    <td class="align-middle">{{ $row->name }}
+                                                    <td class="align-middle">
+                                                        {{ $row->name }}
+                                                        <input type="hidden" id="input-name-{{$loop->iteration}}" name="visitor[{{$key}}][name]"/>
                                                     </td>
-                                                    <td class="align-middle">{{ Str::upper($row->citizen) }}</td>
+                                                    <td class="align-middle">
+                                                        {{ Str::upper($row->citizen) }}
+                                                        <input type="hidden" id="input-citizen-{{$loop->iteration}}" name="visitor[{{$key}}][citizen]"/>
+                                                    </td>
                                                     <td class="align-middle">
                                                         {{ $row->phone_number }}
+                                                        <input type="hidden" id="input-phoneNumber-{{$loop->iteration}}" name="visitor[{{$key}}][phone_number]"/>
                                                     </td>
                                                     <td class="align-middle">
                                                         {{ $row->address }}
+                                                        <input type="hidden" id="input-address-{{$loop->iteration}}" name="visitor[{{$key}}][address]"/>
                                                     </td>
                                                     <td>
                                                         <img src="{{ Storage::url($row->identity_image) }}" height="70">
                                                     </td>
                                                     <td class="align-middle">
+                                                        @if($key != 0)
+                                                        <input type="hidden" name="visitor[{{$key}}][transaction_detail_id]" value="{{$row->id}}">
                                                         <a href="#" onclick="removeVisitor(this)">
                                                             <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
                                                         </a>
+                                                        @endif
                                                     </td>
-                                                    <input type="hidden" name="price" class="visitor-price" value="{{ $row->total_transaction }}"/>
+                                                    <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->total_transaction }}" class="visitor-price"/>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -157,23 +167,23 @@
                                         <tbody>
                                             <tr>
                                                 <td class="align-middle" id="value-scuba">
-                                                    0
+                                                    {{$arrEquipment['scuba']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="scuba">
                                                 <td class="align-middle" id="value-peralatan-seluncur">
-                                                    0
+                                                    {{$arrEquipment['peralatan_seluncur']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="peralatan_seluncur">
                                                 <td class="align-middle" id="value-kamera">
-                                                    0
+                                                    {{$arrEquipment['kamera']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="kamera">
                                                 <td class="align-middle" id="value-video">
-                                                    0
+                                                    {{$arrEquipment['video']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="video">
                                                 <td class="align-middle" id="value-kapal">
-                                                    0
+                                                    {{$arrEquipment['kapal']->equipment_total}}
                                                 </td>
                                                 <input type="hidden" name="kapal">
                                                 <td class="align-middle">
@@ -221,6 +231,9 @@
                                     <div class="custom-file mb-2">
                                         <label class="custom-file-label" for="inputFormulir">Upload Formulir Kegiatan Penelitian / Pendidikan</label>
                                         <input type="file" name="formulir_file" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="inputFormulir" required>
+
+                                        <a target="_blank" href="{{Storage::url($item->educational_research_activity_form)}}">
+                                            <i class="fas fa-file-alt mr-2"></i> File Formulir Pengajuan</a>
                                     </div>
                                 </div>
                                 <div class="note-research mt-2 mb-0">
@@ -403,8 +416,8 @@
                 </tr>
             `).after(function(){
                 $(`#input-image-${num}`).click()
-            });   
-            
+            });
+
         }
 
         function changeVisitorImage(num){
@@ -512,7 +525,7 @@
             });
             $('#total-visitor-price').text(`Rp ${totalVisitorPrice * diff}`)
 
-            submissionTotal() 
+            submissionTotal()
         }
 
         function resetAddVisitor()
@@ -526,14 +539,14 @@
 
         function previewFile(input, preview){
             var file = $(input).get(0).files[0];
-    
+
             if(file){
                 var reader = new FileReader();
-    
+
                 reader.onload = function(){
                     $(preview).attr("src", reader.result);
                 }
-    
+
                 reader.readAsDataURL(file);
             }
         }
@@ -613,9 +626,9 @@
         function submitSubmission()
         {
             const data = new FormData($('#submit-submission')[0]);
-           
+
             $.ajax({
-                url: '{{ route('submission-store', $slug) }}',
+                url: '{{ route('update-submission', $id) }}',
                 data: data,
                 processData: false,
                 contentType: false,
