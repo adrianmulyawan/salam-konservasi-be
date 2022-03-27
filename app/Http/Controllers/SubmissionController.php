@@ -154,8 +154,9 @@ class SubmissionController extends Controller
                     $transactionEquipmentDetail->equipment_price = $equip->equipment_price;
                     $transactionEquipmentDetail->equipment_total = $total ?: 0;
                     $transactionEquipmentDetail->save();
-                    $allTotal += $equip->equipment_price;
-                    $visitorCharges += $equip->equipment_price;
+                    $priceEquipment = $equip->equipment_price * $total;
+                    $allTotal += $priceEquipment;
+                    $visitorCharges += $priceEquipment;
                 }
                 // dd($allTotal);
                 $transaction->update([
@@ -326,10 +327,11 @@ class SubmissionController extends Controller
                     array_push($arrEquipment, 'kapal-pesiar');
                 }
 
-                // dd($arrEquipment);
                 $equipment = Equipment::whereIn('slug', $arrEquipment)->get();
+                // dd($arrEquipment);
 
                 $visitorCharges = 0;
+                $abc =[];
 
                 TransactionEquipmentDetail::where('transaction_id', $transaction->id)->delete();
                 foreach ($equipment as $equip) {
@@ -356,10 +358,10 @@ class SubmissionController extends Controller
                     $transactionEquipmentDetail->equipment_price = $equip->equipment_price;
                     $transactionEquipmentDetail->equipment_total = $total ?: 0;
                     $transactionEquipmentDetail->save();
-                    $allTotal += $equip->equipment_price;
-                    $visitorCharges += $equip->equipment_price;
+                    $priceEquipment = $equip->equipment_price * $total;
+                    $allTotal += $priceEquipment;
+                    $visitorCharges += $priceEquipment;
                 }
-                // dd($allTotal);
 
                 $payloadTransaction['total_transaction'] = $allTotal;
                 $payloadTransaction['permit_application_fee'] = $permitApplicationFee ?? 0;
