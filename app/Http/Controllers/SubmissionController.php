@@ -343,8 +343,8 @@ class SubmissionController extends Controller
                 // dd($allTotal);
 
                 $payloadTransaction['total_transaction'] = $allTotal;
-                $payloadTransaction['permit_application_fee'] = $permitApplicationFee ?: 0;
-                $payloadTransaction['visitor_charges'] = $visitorCharges ?: 0;
+                $payloadTransaction['permit_application_fee'] = $permitApplicationFee ?? 0;
+                $payloadTransaction['visitor_charges'] = $visitorCharges ?? 0;
                 $payloadTransaction['submission_status'] = 'PENDING';
 
                 $transaction->update($payloadTransaction);

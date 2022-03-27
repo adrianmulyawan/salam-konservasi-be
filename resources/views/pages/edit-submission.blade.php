@@ -170,23 +170,23 @@
                                                 <td class="align-middle" id="value-scuba">
                                                     {{$arrEquipment['scuba']->equipment_total}}
                                                 </td>
-                                                <input type="hidden" name="scuba">
+                                                <input type="hidden" value="{{$arrEquipment['scuba']->equipment_total}}" name="scuba">
                                                 <td class="align-middle" id="value-peralatan-seluncur">
                                                     {{$arrEquipment['peralatan_seluncur']->equipment_total}}
                                                 </td>
-                                                <input type="hidden" name="peralatan_seluncur">
+                                                <input type="hidden" value="{{$arrEquipment['peralatan_seluncur']->equipment_total}}" name="peralatan_seluncur">
                                                 <td class="align-middle" id="value-kamera">
                                                     {{$arrEquipment['kamera']->equipment_total}}
                                                 </td>
-                                                <input type="hidden" name="kamera">
+                                                <input type="hidden" value="{{$arrEquipment['kamera']->equipment_total}}" name="kamera">
                                                 <td class="align-middle" id="value-video">
                                                     {{$arrEquipment['video']->equipment_total}}
                                                 </td>
-                                                <input type="hidden" name="video">
+                                                <input type="hidden" value="{{$arrEquipment['video']->equipment_total}}" name="video">
                                                 <td class="align-middle" id="value-kapal">
                                                     {{$arrEquipment['kapal']->equipment_total}}
                                                 </td>
-                                                <input type="hidden" name="kapal">
+                                                <input type="hidden" value="{{$arrEquipment['kapal']->equipment_total}}" name="kapal">
                                                 <td class="align-middle">
                                                     <button type="button" role="button" onclick="resetEquipment()" style="background-color:transparent; border-color: transparent;
                                                     ">
