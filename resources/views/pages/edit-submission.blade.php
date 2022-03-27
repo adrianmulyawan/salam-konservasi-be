@@ -110,7 +110,7 @@
                                                     <td class="align-middle">
                                                         @if($key != 0)
                                                         <input type="hidden" name="visitor[{{$key}}][transaction_detail_id]" value="{{$row->id}}">
-                                                        <a href="#" onclick="removeVisitor(this)">
+                                                        <a href="#" onclick="removeVisitor(this)" data-id="{{$row->id}}">
                                                             <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
                                                         </a>
                                                         @endif
@@ -335,7 +335,8 @@
     {{-- Gijgo Script --}}
     <script src="{{ url('frontend/libraries/gijgo/js/gijgo.js') }}"></script>
     <script src="{{ url('frontend/libraries/momentJs/moment.js') }}"></script>
-    <script>
+    <script type="module">
+        let arrDeleteVisitorId=[]
         $(document).ready(function() {
             // Gijgo
             $('.datepicker').datepicker({
@@ -493,6 +494,9 @@
         {
             const confirms = confirm('Apakah Anda Yakin Menghapus Data Ini?');
             if (confirms) {
+                if($(this).data('id')){
+                    arrDeleteVisitorId.push($(this).data('id'))
+                }
                 $(e).parents('tr').remove();
                 updateTotalVisitor()
                 updateVisitorPrice()
@@ -626,6 +630,9 @@
         function submitSubmission()
         {
             const data = new FormData($('#submit-submission')[0]);
+            arrDeleteVisitorId.forEach(element => {
+                data.append('delete_visitor[]', element);
+            });
 
             $.ajax({
                 url: '{{ route('update-submission', $id) }}',
