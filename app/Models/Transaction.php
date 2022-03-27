@@ -17,7 +17,8 @@ class Transaction extends Model
         'permit_application_fee',
         'visitor_charges',
         'transaction_code',
-        'total_transaction'
+        'total_transaction',
+        'submission_status'
     ];
 
     public function user()

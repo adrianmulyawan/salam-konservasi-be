@@ -234,12 +234,13 @@ class SubmissionController extends Controller
                     $payloadTransaction['educational_research_activity_form'] = $request->file('formulir_file')->store('assets/educational_research_activity_form', 'public') ?: null;
                 }
 
-                TransactionDetail::whereIn('id', $request->delete_visitor)->delete();
+                if(isset($request->delete_visitor)){
+                    TransactionDetail::whereIn('id', $request->delete_visitor)->delete();
+                }
 
                 $price = MasterPrice::select('id', 'citizen', 'price')->where('purpose_id', $transaction->purpose_id)->get();
                 $permitApplicationFee = 0;
                 $myPrice = collect($price)->where('citizen', strtoupper($user->citizen))->firstOrFail();
-
 
                 if (isset($request->visitor)) {
 
@@ -344,6 +345,7 @@ class SubmissionController extends Controller
                 $payloadTransaction['total_transaction'] = $allTotal;
                 $payloadTransaction['permit_application_fee'] = $permitApplicationFee ?: 0;
                 $payloadTransaction['visitor_charges'] = $visitorCharges ?: 0;
+                $payloadTransaction['submission_status'] = 'PENDING';
 
                 $transaction->update($payloadTransaction);
 

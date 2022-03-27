@@ -44,6 +44,7 @@
                     <div class="col-lg-8 pl-lg-0" data-aos="fade-up">
                         <form action="" method="post" id="submit-submission">
                             @csrf
+                            @method('PUT')
                             <input type="hidden" name="purpose" value="{{ $item->purpose_id }}">
                             <div class="card card-details">
                                 <h1>Pengajuan Surat Izin Masuk Kawasan Konservasi</h1>
@@ -90,32 +91,32 @@
                                                 <tr class="row-visitor">
                                                     <td class="align-middle">
                                                         {{ $row->name }}
-                                                        <input type="hidden" id="input-name-{{$loop->iteration}}" name="visitor[{{$key}}][name]"/>
+                                                        <input type="hidden" id="input-name-{{$loop->iteration}}" value="{{$row->name}}" name="visitor[{{$key}}][name]"/>
                                                     </td>
                                                     <td class="align-middle">
                                                         {{ Str::upper($row->citizen) }}
-                                                        <input type="hidden" id="input-citizen-{{$loop->iteration}}" name="visitor[{{$key}}][citizen]"/>
+                                                        <input type="hidden" id="input-citizen-{{$loop->iteration}}" value="{{($row->citizen)}}" name="visitor[{{$key}}][citizen]"/>
                                                     </td>
                                                     <td class="align-middle">
                                                         {{ $row->phone_number }}
-                                                        <input type="hidden" id="input-phoneNumber-{{$loop->iteration}}" name="visitor[{{$key}}][phone_number]"/>
+                                                        <input type="hidden" id="input-phoneNumber-{{$loop->iteration}}" value="{{$row->phone_number}}" name="visitor[{{$key}}][phone_number]"/>
                                                     </td>
                                                     <td class="align-middle">
                                                         {{ $row->address }}
-                                                        <input type="hidden" id="input-address-{{$loop->iteration}}" name="visitor[{{$key}}][address]"/>
+                                                        <input type="hidden" id="input-address-{{$loop->iteration}}" value="{{$row->address}}" name="visitor[{{$key}}][address]"/>
                                                     </td>
                                                     <td>
                                                         <img src="{{ Storage::url($row->identity_image) }}" height="70">
                                                     </td>
                                                     <td class="align-middle">
-                                                        @if($key != 0)
                                                         <input type="hidden" name="visitor[{{$key}}][transaction_detail_id]" value="{{$row->id}}">
+                                                        @if($key != 0)
                                                         <a href="#" onclick="removeVisitor(this)" data-id="{{$row->id}}">
                                                             <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
                                                         </a>
                                                         @endif
                                                     </td>
-                                                    <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->total_transaction }}" class="visitor-price"/>
+                                                    <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->price }}" class="visitor-price"/>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -335,7 +336,7 @@
     {{-- Gijgo Script --}}
     <script src="{{ url('frontend/libraries/gijgo/js/gijgo.js') }}"></script>
     <script src="{{ url('frontend/libraries/momentJs/moment.js') }}"></script>
-    <script type="module">
+    <script>
         let arrDeleteVisitorId=[]
         $(document).ready(function() {
             // Gijgo
@@ -494,8 +495,8 @@
         {
             const confirms = confirm('Apakah Anda Yakin Menghapus Data Ini?');
             if (confirms) {
-                if($(this).data('id')){
-                    arrDeleteVisitorId.push($(this).data('id'))
+                if($(e).data('id')){
+                    arrDeleteVisitorId.push($(e).data('id'))
                 }
                 $(e).parents('tr').remove();
                 updateTotalVisitor()
@@ -622,7 +623,6 @@
             const totalEquipmentPrice = $('#total-equipment-price').text().replace("Rp ", '')
 
             const submissionTotal = (parseFloat(totalVisitorPrice)) + parseFloat(totalEquipmentPrice);
-            // console.log(totalVisitorPrice, diff);
 
             $('#submission-total').text(`Rp ${submissionTotal}`)
         }
@@ -630,8 +630,8 @@
         function submitSubmission()
         {
             const data = new FormData($('#submit-submission')[0]);
-            arrDeleteVisitorId.forEach(element => {
-                data.append('delete_visitor[]', element);
+            arrDeleteVisitorId.forEach((element,idx) => {
+                data.append(`delete_visitor[${idx}]`, element);
             });
 
             $.ajax({
