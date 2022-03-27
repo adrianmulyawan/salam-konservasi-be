@@ -238,6 +238,7 @@ class SubmissionController extends Controller
                 $price = MasterPrice::select('id', 'citizen', 'price')->where('purpose_id', $transaction->purpose_id)->get();
                 $permitApplicationFee = 0;
                 $myPrice = collect($price)->where('citizen', strtoupper($user->citizen))->firstOrFail();
+                // TransactionDetail::where()
                 $transactionDetail = new TransactionDetail();
                 $transactionDetail->transaction_id = $transaction->id;
                 $transactionDetail->master_price_id = $myPrice->id;

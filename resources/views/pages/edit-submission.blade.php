@@ -44,6 +44,7 @@
                     <div class="col-lg-8 pl-lg-0" data-aos="fade-up">
                         <form action="" method="post" id="submit-submission">
                             @csrf
+                            @method('PUT')
                             <input type="hidden" name="purpose" value="{{ $item->purpose_id }}">
                             <div class="card card-details">
                                 <h1>Pengajuan Surat Izin Masuk Kawasan Konservasi</h1>
@@ -115,7 +116,7 @@
                                                         </a>
                                                         @endif
                                                     </td>
-                                                    <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->total_transaction }}" class="visitor-price"/>
+                                                    <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->price }}" class="visitor-price"/>
                                                 </tr>
                                             @endforeach
                                         </tbody>
