@@ -73,6 +73,7 @@ class SubmissionController extends Controller
                 $transactionDetail->address = $user->address;
                 $transactionDetail->price = $myPrice->price;
                 $transactionDetail->identity_image = $user->identity_image;
+                $transactionDetail->flag_pic = 1;
                 $transactionDetail->save();
                 $allTotal += $myPrice->price;
                 $permitApplicationFee += $myPrice->price;
@@ -190,11 +191,13 @@ class SubmissionController extends Controller
     // Proses Pengajuan Ulang
     public function editSubmission($id)
     {
+        $user = Auth::user();
         $item = Transaction::findOrFail($id);
         $price = MasterPrice::select('citizen', 'price')->where('purpose_id', $item->purpose_id)->get();
         $equipment = Equipment::select('slug', 'equipment_price')->get();
         $details = TransactionDetail::where('transaction_id', $id)->orderBy('created_at','asc')->get();
         $equipments = collect(TransactionEquipmentDetail::where('transaction_id', $id)->get());
+        $myPrice = collect($price)->where('citizen', strtoupper($user->citizen))->firstOrFail();
         $arrEquipment = array(
             'scuba' => $this->searchEquipmentByTransactionId($equipments,1),
             'peralatan_seluncur' => $this->searchEquipmentByTransactionId($equipments,2),
@@ -214,7 +217,8 @@ class SubmissionController extends Controller
             'slug',
             'diff',
             'arrEquipment',
-            'details'
+            'details',
+            'myPrice'
         ));
     }
 
@@ -241,6 +245,22 @@ class SubmissionController extends Controller
                 $price = MasterPrice::select('id', 'citizen', 'price')->where('purpose_id', $transaction->purpose_id)->get();
                 $permitApplicationFee = 0;
                 $myPrice = collect($price)->where('citizen', strtoupper($user->citizen))->firstOrFail();
+                TransactionDetail::where([
+                    ['flag_pic',1],
+                    ['transaction_id', $transaction->id]
+                ])->update([
+                    'transaction_id' => $transaction->id,
+                    'master_price_id' => $myPrice->id,
+                    'name' => $user->name,
+                    'citizen' => $user->citizen,
+                    'phone_number' => $user->phone_number,
+                    'address' => $user->address,
+                    'price' => $myPrice->price,
+                    'identity_image' => $user->identity_image,
+                ]);
+
+                $allTotal += $myPrice->price;
+                $permitApplicationFee += $myPrice->price;
 
                 if (isset($request->visitor)) {
 
@@ -311,6 +331,7 @@ class SubmissionController extends Controller
 
                 $visitorCharges = 0;
 
+                TransactionEquipmentDetail::where('transaction_id', $transaction->id)->delete();
                 foreach ($equipment as $equip) {
                     $total = 0;
                     if ($equip->slug == 'scuba-set') {
@@ -328,8 +349,6 @@ class SubmissionController extends Controller
                     if ($equip->slug == 'kapal-pesiar') {
                         $total = $request->kapal;
                     }
-
-                    TransactionEquipmentDetail::where('transaction_id', $transaction->id)->delete();
                     $transactionEquipmentDetail = new TransactionEquipmentDetail();
                     $transactionEquipmentDetail->equipment_id = $equip->id;
                     $transactionEquipmentDetail->transaction_id = $transaction->id;

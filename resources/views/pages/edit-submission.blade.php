@@ -87,37 +87,54 @@
                                             </tr>
                                         </thead>
                                         <tbody id="list-visitor">
+                                            <tr class="row-visitor">
+                                                <td class="align-middle">{{ auth()->user()->name }}
+                                                </td>
+                                                <td class="align-middle">{{ Str::upper(auth()->user()->citizen) }}</td>
+                                                <td class="align-middle">
+                                                    {{ auth()->user()->phone_number }}
+                                                </td>
+                                                <td class="align-middle">
+                                                    {{ auth()->user()->address }}
+                                                </td>
+                                                <td>
+                                                    <img src="{{ Storage::url(auth()->user()->identity_image) }}" height="70">
+                                                </td>
+                                                <input type="hidden" name="price" class="visitor-price" value="{{ $myPrice->price }}"/>
+                                            </tr>
                                             @foreach ($item->transaction_details as $key => $row)
-                                                <tr class="row-visitor">
-                                                    <td class="align-middle">
-                                                        {{ $row->name }}
-                                                        <input type="hidden" id="input-name-{{$loop->iteration}}" value="{{$row->name}}" name="visitor[{{$key}}][name]"/>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        {{ Str::upper($row->citizen) }}
-                                                        <input type="hidden" id="input-citizen-{{$loop->iteration}}" value="{{($row->citizen)}}" name="visitor[{{$key}}][citizen]"/>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        {{ $row->phone_number }}
-                                                        <input type="hidden" id="input-phoneNumber-{{$loop->iteration}}" value="{{$row->phone_number}}" name="visitor[{{$key}}][phone_number]"/>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        {{ $row->address }}
-                                                        <input type="hidden" id="input-address-{{$loop->iteration}}" value="{{$row->address}}" name="visitor[{{$key}}][address]"/>
-                                                    </td>
-                                                    <td>
-                                                        <img src="{{ Storage::url($row->identity_image) }}" height="70">
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        <input type="hidden" name="visitor[{{$key}}][transaction_detail_id]" value="{{$row->id}}">
-                                                        @if($key != 0)
-                                                        <a href="#" onclick="removeVisitor(this)" data-id="{{$row->id}}">
-                                                            <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
-                                                        </a>
-                                                        @endif
-                                                    </td>
-                                                    <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->price }}" class="visitor-price"/>
-                                                </tr>
+                                                @if($row->flag_pic != 1)
+                                                    <tr class="row-visitor">
+                                                        <td class="align-middle">
+                                                            {{ $row->name }}
+                                                            <input type="hidden" id="input-name-{{$loop->iteration}}" value="{{$row->name}}" name="visitor[{{$key-1}}][name]"/>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            {{ Str::upper($row->citizen) }}
+                                                            <input type="hidden" id="input-citizen-{{$loop->iteration}}" value="{{($row->citizen)}}" name="visitor[{{$key-1}}][citizen]"/>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            {{ $row->phone_number }}
+                                                            <input type="hidden" id="input-phoneNumber-{{$loop->iteration}}" value="{{$row->phone_number}}" name="visitor[{{$key-1}}][phone_number]"/>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            {{ $row->address }}
+                                                            <input type="hidden" id="input-address-{{$loop->iteration}}" value="{{$row->address}}" name="visitor[{{$key-1}}][address]"/>
+                                                        </td>
+                                                        <td>
+                                                            <img src="{{ Storage::url($row->identity_image) }}" height="70">
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <input type="hidden" name="visitor[{{$key-1}}][transaction_detail_id]" value="{{$row->id}}">
+
+                                                            <a href="#" onclick="removeVisitor(this)" data-id="{{$row->id}}">
+                                                                <img src="{{ url('frontend/images/cancel_icon.png') }}" width="10">
+                                                            </a>
+                                                        </td>
+                                                        <input type="hidden" id="input-price-{{$loop->iteration}}" name="price" value="{{ $row->price }}" class="visitor-price"/>
+                                                    </tr>
+
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -168,25 +185,25 @@
                                         <tbody>
                                             <tr>
                                                 <td class="align-middle" id="value-scuba">
-                                                    {{$arrEquipment['scuba']->equipment_total}}
+                                                    {{$arrEquipment['scuba']->equipment_total ?? 0}}
                                                 </td>
-                                                <input type="hidden" value="{{$arrEquipment['scuba']->equipment_total}}" name="scuba">
+                                                <input type="hidden" value="{{$arrEquipment['scuba']->equipment_total ?? 0}}" name="scuba">
                                                 <td class="align-middle" id="value-peralatan-seluncur">
-                                                    {{$arrEquipment['peralatan_seluncur']->equipment_total}}
+                                                    {{$arrEquipment['peralatan_seluncur']->equipment_total ?? 0}}
                                                 </td>
-                                                <input type="hidden" value="{{$arrEquipment['peralatan_seluncur']->equipment_total}}" name="peralatan_seluncur">
+                                                <input type="hidden" value="{{$arrEquipment['peralatan_seluncur']->equipment_total ?? 0}}" name="peralatan_seluncur">
                                                 <td class="align-middle" id="value-kamera">
-                                                    {{$arrEquipment['kamera']->equipment_total}}
+                                                    {{$arrEquipment['kamera']->equipment_total ?? 0}}
                                                 </td>
-                                                <input type="hidden" value="{{$arrEquipment['kamera']->equipment_total}}" name="kamera">
+                                                <input type="hidden" value="{{$arrEquipment['kamera']->equipment_total ?? 0}}" name="kamera">
                                                 <td class="align-middle" id="value-video">
-                                                    {{$arrEquipment['video']->equipment_total}}
+                                                    {{$arrEquipment['video']->equipment_total ?? 0}}
                                                 </td>
-                                                <input type="hidden" value="{{$arrEquipment['video']->equipment_total}}" name="video">
+                                                <input type="hidden" value="{{$arrEquipment['video']->equipment_total ?? 0}}" name="video">
                                                 <td class="align-middle" id="value-kapal">
-                                                    {{$arrEquipment['kapal']->equipment_total}}
+                                                    {{$arrEquipment['kapal']->equipment_total ?? 0}}
                                                 </td>
-                                                <input type="hidden" value="{{$arrEquipment['kapal']->equipment_total}}" name="kapal">
+                                                <input type="hidden" value="{{$arrEquipment['kapal']->equipment_total ?? 0}}" name="kapal">
                                                 <td class="align-middle">
                                                     <button type="button" role="button" onclick="resetEquipment()" style="background-color:transparent; border-color: transparent;
                                                     ">
