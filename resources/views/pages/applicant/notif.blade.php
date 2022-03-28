@@ -17,6 +17,24 @@
 
                             <div class="section-notification-submission-approved text-left">
                                 <p class="submission-approved">Pengajuan Disetujui</p>
+                                @forelse ($notifPendings as $pending)
+                                    <div class="card p-2 submission-approved-card">
+                                        <a href="{{ route('dashboardSubmissionPending', $pending->id) }}" class="d-flex text-primary" target="__blank">
+                                            <i class="fas fa-check my-auto mr-2"></i>
+                                            <p class="my-auto">Pengajuan Izin Masuk {{ $pending->conservation_area->name }} Sedang Diproses!</p>
+                                        </a>
+                                    </div>
+                                @empty
+                                    <div class="card p-2 submission-approved-card">
+                                        <a class="d-flex text-primary">
+                                            <p class="my-auto">Anda Belum Melakukan Pengajuan Apapun!</p>
+                                        </a>
+                                    </div>
+                                @endforelse
+                            </div>
+
+                            <div class="section-notification-submission-approved text-left">
+                                <p class="submission-approved">Pengajuan Disetujui</p>
                                 @forelse ($notifAlloweds as $allow)
                                     <div class="card p-2 submission-approved-card">
                                         <a href="{{ route('dashboardSubmissionApproved', $allow->id) }}" class="d-flex text-primary" target="__blank">
