@@ -30,17 +30,17 @@ class HomeController extends Controller
             $recent_news = News::orderBy('created_at', 'DESC')->limit(3)->get();
             $applicantNotif = Transaction::where('user_id', Auth::user()->id)->count();
             $superAdminNotif = Transaction::where('submission_status', 'PENDING')
-                            ->orWhere('payment_status', 'PENDING')
-                            ->count();
+                               ->orWhere('payment_status', 'PENDING')
+                               ->count();
             $leaderNotif = Transaction::where('submission_status', 'PENDING')
-                        ->orWhere('submission_status', 'ALLOWED')
-                        ->orWhere('submission_status', 'REJECTED')
-                        ->orWhere('submission_status', 'FAILED')
-                        ->where('payment_status', 'PENDING')
-                        ->orWhere('payment_status', 'PAIDOFF')
-                        ->orWhere('payment_status', 'FAILED')
-                        ->whereNotNull('entrance_ticket')
-                        ->count();
+                           ->orWhere('submission_status', 'ALLOWED')
+                           ->orWhere('submission_status', 'REJECTED')
+                           ->orWhere('submission_status', 'FAILED')
+                           ->where('payment_status', 'PENDING')
+                           ->orWhere('payment_status', 'PAIDOFF')
+                           ->orWhere('payment_status', 'FAILED')
+                           ->whereNotNull('entrance_ticket')
+                           ->count();
 
             return view('pages.home', compact([
                 'conservation_area', 'items', 'transaction_tourism', 'transaction_research', 'transaction_education', 'recent_event', 'recent_news', 'applicantNotif', 'superAdminNotif', 'leaderNotif'
