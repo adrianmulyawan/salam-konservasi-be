@@ -181,10 +181,8 @@
 
                     <!-- 2.4 Surat Pengajuan Kegiatan Penelitian/Pendidikan -->
                     @if ($data->educational_research_activity_form != null)
-                        <div class="data-surat-penelitian-pendidikan">
+                        <div class="data-surat-penelitian-pendidikan mb-2">
                             <h5>Surat Pengajuan Untuk Penelitian / Pendidikan</h5>
-                        </div>
-                        <div class="row mt-3">
                             <div class="col-12">
                                 <!-- 5.1 Recent 1 -->
                                 <a href="{{ $data->educational_research_activity_form }}" class="card card-list d-block" target="_blank">
