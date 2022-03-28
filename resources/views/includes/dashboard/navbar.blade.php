@@ -31,7 +31,10 @@
                     <li class="nav-item dropdown notification-content">
                         <a href="{{ route('AdminadminNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown" role="button">
                             <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                            <div class="notification">{{ $superAdminNotif > 3 ? '3+' : $superAdminNotif }}</div>
+                            <?php
+                                $superAdminNotif = App\Models\Transaction::where('submission_status', 'PENDING')->orWhere('payment_status', 'PENDING')->count();
+                            ?>
+                            <div class="notification">{{ $superAdminNotif > 5 ? '5+' : $superAdminNotif }}</div>
                         </a>
                     </li>
                 </ul>
@@ -68,7 +71,18 @@
                     <li class="nav-item dropdown notification-content">
                         <a href="{{ route('LeaderleaderNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                             <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                            <div class="notification">{{ $leaderNotif > 3 ? '3+' : $leaderNotif }}</div>
+                            <?php
+                                $leaderNotif = App\Models\Transaction::where('submission_status', 'PENDING')
+                                            ->orWhere('submission_status', 'ALLOWED')
+                                            ->orWhere('submission_status', 'REJECTED')
+                                            ->orWhere('submission_status', 'FAILED')
+                                            ->where('payment_status', 'PENDING')
+                                            ->orWhere('payment_status', 'PAIDOFF')
+                                            ->orWhere('payment_status', 'FAILED')
+                                            ->whereNotNull('entrance_ticket')
+                                            ->count();
+                            ?>
+                            <div class="notification">{{ $leaderNotif > 5 ? '5+' : $leaderNotif }}</div>
                         </a>
                     </li>
                 </ul>
@@ -132,7 +146,10 @@
                     <li class="nav-item dropdown notification-content">
                         <a href="{{ route('applicantNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                             <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                            <div class="notification">{{ $applicantNotif > 3 ? '3+' : $applicantNotif }}</div>
+                            <?php
+                                $applicantNotif = App\Models\Transaction::where('user_id', Auth::user()->id)->count();
+                            ?>
+                            <div class="notification">{{ $applicantNotif > 5 ? '5+' : $applicantNotif }}</div>
                         </a>
                     </li>
                 </ul>

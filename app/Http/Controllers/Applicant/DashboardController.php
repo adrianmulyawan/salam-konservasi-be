@@ -25,12 +25,10 @@ class DashboardController extends Controller
         $recentSubmission = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->limit(3)->latest()->get();
         $recentTransaction = Transaction::where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'UNPAID')->limit(3)->latest()->get();
 
-        $applicantNotif = Transaction::where('user_id', Auth::user()->id)->count();
-
         return view('pages.applicant.dashboard', compact([
             'totalSubmission', 'totalPayment', 'submissionPending', 'submissionApproved', 'submissionRejected', 
             'submissionFailed', 'paymentUnpaid', 'paymentPending', 'paymentPaid', 'paymentFailed',
-            'recentSubmission', 'recentTransaction', 'applicantNotif'
+            'recentSubmission', 'recentTransaction',
         ]));
     }
 }

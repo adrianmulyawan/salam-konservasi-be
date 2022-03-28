@@ -99,9 +99,6 @@ class DashboardAdminController extends Controller
         // Pembayaran Terakhir Dilakukan
         $recentTransaction = Transaction::with(['user', 'conservation_area'])->orderBy('created_at', 'DESC')->where('payment_status', 'PENDING')->limit(3)->get();
 
-        $superAdminNotif = Transaction::where('submission_status', 'PENDING')
-                           ->orWhere('payment_status', 'PENDING')
-                           ->count();
 
         return view('pages.superAdmin.dashboard', [
             'user' => $user,
@@ -121,7 +118,6 @@ class DashboardAdminController extends Controller
             'recentEvents' => $recentEvents,
             'recentSubmission' => $recentSubmission,
             'recentTransaction' => $recentTransaction,
-            'superAdminNotif' => $superAdminNotif,
         ]);
     }
 }
