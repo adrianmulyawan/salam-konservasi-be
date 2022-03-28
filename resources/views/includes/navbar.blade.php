@@ -85,7 +85,7 @@
                         <li class="nav-item dropdown notification-content-home">
                             <a href="{{ route('applicantNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                                 <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                                <div class="notification">{{ $applicantNotif > 10 ? '10+' : $applicantNotif }}</div>
+                                <div class="notification">4</div>
                             </a>
                         </li>
                     </ul>
@@ -125,7 +125,7 @@
                         <li class="nav-item dropdown notification-content-home">
                             <a href="{{ route('AdminadminNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                                 <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                                <div class="notification">{{ $superAdminNotif > 10 ? '10+' : $superAdminNotif }}</div>
+                                <div class="notification">4</div>
                             </a>
                         </li>
                     </ul>
@@ -165,7 +165,7 @@
                         <li class="nav-item dropdown notification-content-home">
                             <a href="{{ route('LeaderleaderNotification') }}" class="nav-link d-inline-block mt-2" id="notificationDropdown">
                                 <img src="{{ url('frontend/images/ic_notif.png') }}" alt="" height="24">
-                                <div class="notification">{{ $leaderNotif > 10 ? '10+' : $leaderNotif }}</div>
+                                <div class="notification">4</div>
                             </a>
                         </li>
                     </ul>

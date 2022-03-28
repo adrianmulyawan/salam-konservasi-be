@@ -27,30 +27,24 @@ class HomeController extends Controller
         $items = ConservationArea::with(['galleries'])->limit(3)->orderBy('created_at', 'DESC')->get();
         $recent_event = Event::with(['conservation_area'])->orderBy('created_at', 'DESC')->limit(3)->get();
         $recent_news = News::orderBy('created_at', 'DESC')->limit(3)->get();
-        $applicantNotif = Transaction::where('user_id', Auth::user()->id)
-                          ->orWhere('submission_status', 'ALLOWED')
-                          ->orWhere('submission_status', 'REJECTED')
-                          ->orWhere('submission_status', 'FAILED')
-                          ->orWhere('payment_status', 'PAIDOFF')
-                          ->orWhere('payment_status', 'FAILED')
-                          ->whereNotNull('entrance_ticket')
-                          ->count();
-        $superAdminNotif = Transaction::where('submission_status', 'PENDING')
-                           ->orWhere('payment_status', 'PENDING')
-                           ->count();
-        $leaderNotif = Transaction::where('submission_status', 'PENDING')
-                       ->orWhere('submission_status', 'ALLOWED')
-                       ->orWhere('submission_status', 'REJECTED')
-                       ->orWhere('submission_status', 'FAILED')
-                       ->orWhere('payment_status', 'PENDING')
-                       ->orWhere('payment_status', 'PAIDOFF')
-                       ->orWhere('payment_status', 'FAILED')
-                       ->whereNotNull('entrance_ticket')
-                       ->count();
-
+        /*
+            $applicantNotif = Transaction::where('user_id', Auth::user()->id)->count();
+            $superAdminNotif = Transaction::where('submission_status', 'PENDING')
+                            ->orWhere('payment_status', 'PENDING')
+                            ->count();
+            $leaderNotif = Transaction::where('submission_status', 'PENDING')
+                        ->orWhere('submission_status', 'ALLOWED')
+                        ->orWhere('submission_status', 'REJECTED')
+                        ->orWhere('submission_status', 'FAILED')
+                        ->where('payment_status', 'PENDING')
+                        ->orWhere('payment_status', 'PAIDOFF')
+                        ->orWhere('payment_status', 'FAILED')
+                        ->whereNotNull('entrance_ticket')
+                        ->count();
+        */
 
         return view('pages.home', compact([
-            'conservation_area', 'items', 'transaction_tourism', 'transaction_research', 'transaction_education', 'recent_event', 'recent_news', 'applicantNotif', 'superAdminNotif', 'leaderNotif'
+            'conservation_area', 'items', 'transaction_tourism', 'transaction_research', 'transaction_education', 'recent_event', 'recent_news',
         ]));
     }
 
