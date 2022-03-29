@@ -139,10 +139,7 @@
                                         <div class="form-group mt-3">
                                             <h2>Tujuan Masuk Kawasan</h2>
                                             <select class="custom-select" name="destination-area" required>
-                                                <option selected disabled>
-                                                    Tujuan Pengajuan Masuk Kawasan
-                                                </option>
-                                                <option value="1">Wisata</option>
+                                                <option value="1">Pariwisata</option>
                                                 <option value="2">Penelitian</option>
                                                 <option value="3">Pendidikan</option>
                                             </select>
