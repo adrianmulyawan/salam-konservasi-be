@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         @else
-                            <p class="text-center text-muted fs-3">Belum Ada Postingan Acara Apapun</p>
+                            <p class="text-center text-muted fs-3">Belum Ada Postingan Apapun!</p>
                         @endif
 
                         <!-- Pagination -->
