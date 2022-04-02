@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputDescription">
-                                            Tentang Kawasan
+                                            Tentang Unduhan
                                         </label>
                                         <textarea name="description" class="form-control" id="inputDescription" placeholder="Masukan Deskripsi" required>
                                             {{ old('description') }}
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputLink">
-                                            Luas Kawasan
+                                            Link
                                         </label>
                                         <input type="text" name="link" value="{{ old('link') }}" class="form-control" id="inputLink" placeholder="Masukan link" required>
                                     </div>

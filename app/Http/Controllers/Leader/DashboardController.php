@@ -28,12 +28,12 @@ class DashboardController extends Controller
 
         // Recent Payment
         $recentTransaction = Transaction::with(['conservation_area', 'user'])->where('submission_status', 'ALLOWED')->where('payment_status', 'PENDING')->latest()->limit(3)->get();
-        
+
         return view('pages.leader.dashboard', compact([
             'submissionTotal', 'submissionPending', 'paymentPending',
             'submissionAllowed', 'submissionRejected', 'submissionFailed',
             'submissionTourism', 'submissionResearch', 'submissionEducation',
-            'recentSubmission', 'recentTransaction'
+            'recentSubmission', 'recentTransaction',
         ]));
     }
 }

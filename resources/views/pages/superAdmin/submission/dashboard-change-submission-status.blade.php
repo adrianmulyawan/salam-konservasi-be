@@ -88,14 +88,6 @@
                                     Rp {{ number_format($data->total_transaction,2,',','.') }}
                                 </div>
                             </div>
-                            {{-- <div class="transaction-total-day mb-2">
-                                <div class="transaction-title">
-                                    Jumlah Hari Masuk Kawasan
-                                </div>
-                                <div class="transaction-subtitle">
-                                    3 Hari
-                                </div>
-                            </div> --}}
                             <div class="transaction-date-out mb-2">
                                 <div class="transaction-title">
                                     Tanggal Keluar Kawasan
@@ -181,17 +173,15 @@
 
                     <!-- 2.4 Surat Pengajuan Kegiatan Penelitian/Pendidikan -->
                     @if ($data->educational_research_activity_form != null)
-                        <div class="data-surat-penelitian-pendidikan">
-                            <h5>Surat Pengajuan Untuk Penelitian / Pendidikan</h5>
-                        </div>
-                        <div class="row mt-3">
+                        <div class="data-surat-penelitian-pendidikan mb-2">
+                            <h5>Surat Kegiatan Penelitian atau Pendidikan</h5>
                             <div class="col-12">
                                 <!-- 5.1 Recent 1 -->
-                                <a href="{{ $data->educational_research_activity_form }}" class="card card-list d-block" target="_blank">
+                                <a href="{{ Storage::url($data->educational_research_activity_form) }}" class="card card-list d-block" target="_blank">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                Permohonan_Masuk_Kawasan_DinasPariwisata.pdf
+                                                Surat Kegiatan Penelitian dan Pendidikan
                                             </div>
                                         </div>
                                     </div>

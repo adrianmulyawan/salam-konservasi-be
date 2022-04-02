@@ -28,7 +28,7 @@ class DashboardController extends Controller
         return view('pages.applicant.dashboard', compact([
             'totalSubmission', 'totalPayment', 'submissionPending', 'submissionApproved', 'submissionRejected', 
             'submissionFailed', 'paymentUnpaid', 'paymentPending', 'paymentPaid', 'paymentFailed',
-            'recentSubmission', 'recentTransaction'
+            'recentSubmission', 'recentTransaction',
         ]));
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-applicant')
 
-@section('title', 'Dashboard Pengajuan')
+@section('title', 'Detail Pengajuan : Ditolak')
 
 @section('content')
     {{-- Content --}}
@@ -186,7 +186,28 @@
                         </div>
                     </div>
 
-                    <!-- 2.4 Alasan Penolakan -->
+                    <!-- 2.4 Surat Kegiatan Penelitian atau Pendidikan -->
+                    @if ($item->educational_research_activity_form != null)
+                        <div class="data-bawaan-pengunjung mb-3">
+                            <h5>Surat Kegiatan Penelitian atau Pendidikan</h5>
+                        </div>
+                        <div class="item-surat-penelitian-pendidikan mb-2">
+                            <div class="col-12">
+                                <!-- 5.1 Recent 1 -->
+                                <a href="{{ Storage::url($item->educational_research_activity_form) }}" class="card card-list d-block" target="_blank">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                Surat Kegiatan Penelitian dan Pendidikan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+
+                    <!-- 2.5 Alasan Penolakan -->
                     <div class="form-group data-approval mt-4">
                         <label for="input Alasan">
                             <h5>Alasan Ditolak (Bila Pengajuan Ditolak)</h5>

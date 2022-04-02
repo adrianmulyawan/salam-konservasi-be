@@ -457,10 +457,10 @@
                 alert('Alamat Belum Diisi');
                 return false;
             } else if (phoneNumber == '' || phoneNumber == null) {
-                alert('Nama Belum Diisi');
+                alert('Nomer Handphone Belum Diisi');
                 return false;
             } else if (identityImage == 0) {
-                alert('Gambar Belum Diisi');
+                alert('Photo Identitas Belum Diisi');
                 return false;
             } else if(!tanggal_keluar && !tanggal_keluar){
                 alert('Masukan data tanggal terlebih dahulu!')

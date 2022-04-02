@@ -189,6 +189,31 @@
                             </table>
                         </div>
                     </div>
+
+                    <!-- 2.4 Rekening -->
+                    <div class="form-group data-pemilik-rekening">
+                        <h5>Nama Rekening Pembayaran</h5>
+                        <input class="form-control mt-2" id="disabledInput" type="text" name="account_owner" value="{{ $item->account_owner }}" disabled>
+                    </div>
+
+                    <!-- 2.5 Bukti Transfer -->
+                    <div class="data-bukti-transfer">
+                        <h5>Bukti Pembayaran Retribusi</h5>
+                    </div>
+                    <div class="mt-3">
+                        <div class="col-12">
+                            <!-- 5.1 Recent 1 -->
+                            <a href="{{ Storage::url($item->evidence_of_transfer) }}" class="card card-list d-block" target="__blank">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            Bukti Pembayaran Retribusi
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                     
                     <div class="row justify-content-end mr-1 mt-3">
                         <a href="{{ route('dashboardPayment') }}" class="btn btn-primary py-2 mr-2 px-3">Tutup</a>
