@@ -481,6 +481,8 @@
             const address = $('#inputAddress').val();
             const phoneNumber = $('#inputPhoneNumber').val();
             const identityImage = $(`#input-image-${num}`)[0].files.length ?? 0
+            const tanggal_masuk = $('#tanggal_masuk').val();
+            const tanggal_keluar = $('#tanggal_keluar').val();
 
             if (name == '' || name == null) {
                 alert('Nama Belum Diisi');
@@ -496,6 +498,9 @@
                 return false;
             } else if (identityImage == 0) {
                 alert('Gambar Belum Diisi');
+                return false;
+            }  else if(!tanggal_keluar && !tanggal_keluar){
+                alert('Masukan data tanggal terlebih dahulu!')
                 return false;
             }
 
