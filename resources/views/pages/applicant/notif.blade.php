@@ -10,13 +10,13 @@
                     <div class="col-lg-6 pl-lg-0" data-aos="fade-up">
                         <div class="card">
                             <div class="section-notification-header text-center">
-                                <h3>Notifikasi</h3>
+                                <h3>Notifikasi Pengguna</h3>
                             </div>
 
                             <hr>
 
                             <div class="section-notification-submission-approved text-left">
-                                <p class="submission-approved">Pengajuan Disetujui</p>
+                                <p class="submission-approved">Pengajuan Diproses</p>
                                 @forelse ($notifPendings as $pending)
                                     <div class="card p-2 submission-approved-card">
                                         <a href="{{ route('dashboardSubmissionPending', $pending->id) }}" class="d-flex text-primary" target="__blank">

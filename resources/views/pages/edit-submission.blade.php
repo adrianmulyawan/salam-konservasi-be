@@ -28,7 +28,7 @@
                                     Details
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Pengajuan Surat Izin Masuk KKPD
+                                    Edit Pengajuan Surat Izin Masuk KKPD
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     KKPD Pulau Randayan
@@ -47,7 +47,7 @@
                             @method('PUT')
                             <input type="hidden" name="purpose" value="{{ $item->purpose_id }}">
                             <div class="card card-details">
-                                <h1>Pengajuan Surat Izin Masuk Kawasan Konservasi</h1>
+                                <h1>Edit Pengajuan Surat Izin Masuk Kawasan Konservasi</h1>
                                 <p>KKPD Pulau Randayan</p>
 
                                 {{-- Tanggal Masuk Kawasan --}}
