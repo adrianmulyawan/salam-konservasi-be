@@ -9,7 +9,7 @@
 
 @section('content')
     <!-- Konten Utama -->
-    <main> 
+    <main>
         <!-- 1. Header -->
         <section class="section-details-header"></section>
 
@@ -25,7 +25,7 @@
                                     <a href="{{ route('home') }}">Kawasan Konservasi</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Details 
+                                    Details
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Pengajuan Surat Izin Masuk KKPD
@@ -396,8 +396,8 @@
                 </tr>
             `).after(function(){
                 $(`#input-image-${num}`).click()
-            });   
-            
+            });
+
         }
 
         function changeVisitorImage(num){
@@ -443,6 +443,10 @@
             const phoneNumber = $('#inputPhoneNumber').val();
             const identityImage = $(`#input-image-${num}`)[0].files.length ?? 0
 
+            const tanggal_masuk = $('#tanggal_masuk').val();
+            const tanggal_keluar = $('#tanggal_keluar').val();
+
+
             if (name == '' || name == null) {
                 alert('Nama Belum Diisi');
                 return false;
@@ -457,6 +461,9 @@
                 return false;
             } else if (identityImage == 0) {
                 alert('Photo Identitas Belum Diisi');
+                return false;
+            } else if(!tanggal_keluar && !tanggal_keluar){
+                alert('Masukan data tanggal terlebih dahulu!')
                 return false;
             }
 
@@ -493,6 +500,7 @@
         {
             const tanggal_masuk = $('#tanggal_masuk').val();
             const tanggal_keluar = $('#tanggal_keluar').val();
+
             // Moment Js
             var start = moment(tanggal_masuk, "MM/DD/YYYY");
             var end = moment(tanggal_keluar, "MM/DD/YYYY");
@@ -505,7 +513,7 @@
             });
             $('#total-visitor-price').text(`Rp ${totalVisitorPrice * diff}`)
 
-            submissionTotal() 
+            submissionTotal()
         }
 
         function resetAddVisitor()
@@ -519,14 +527,14 @@
 
         function previewFile(input, preview){
             var file = $(input).get(0).files[0];
-    
+
             if(file){
                 var reader = new FileReader();
-    
+
                 reader.onload = function(){
                     $(preview).attr("src", reader.result);
                 }
-    
+
                 reader.readAsDataURL(file);
             }
         }
@@ -606,7 +614,7 @@
         function submitSubmission()
         {
             const data = new FormData($('#submit-submission')[0]);
-           
+
             $.ajax({
                 url: '{{ route('submission-store', $slug) }}',
                 data: data,
@@ -620,3 +628,4 @@
         }
     </script>
 @endpush
+
