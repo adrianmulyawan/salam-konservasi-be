@@ -64,13 +64,13 @@
                                     <label>
                                         Masuk Kawasan
                                     </label>
-                                    <input type="text" name="name" class="form-control" value="{{ \Carbon\Carbon::create($item->date_of_entry_area)->format('d F Y') }}" disabled>
+                                    <input type="text" name="name" class="form-control" value="{{ isset($item->date_of_entry_area) ? \Carbon\Carbon::create($item->date_of_entry_area)->format('d F Y') : 'User Belum Masuk Kawasan' }}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>
                                         Keluar Kawasan
                                     </label>
-                                    <input type="text" name="name" class="form-control" value="{{ \Carbon\Carbon::create($item->out_date_area)->format('d F Y') }}" disabled>
+                                    <input type="text" name="name" class="form-control" value="{{ isset($item->out_date_area) ? \Carbon\Carbon::create($item->out_date_area)->format('d F Y') : 'User Belum Keluar Kawasan' }}" disabled>
                                 </div>
                                 <a href="{{ route('AdminvisitorControlAdmin') }}" class="btn btn-save-data px-5 mt-3">Kembali</a>
                             </div>
