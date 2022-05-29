@@ -31,9 +31,8 @@ class ApplicantPayment extends Mailable
      */
     public function build()
     {
-        return $this->from(Auth::user()->email)
+        return $this->subject('Ada Pembayaran Baru!')
                     ->markdown('email/email-notfication-payment-applicant')
-                    ->with('data', [$this->data])
-                    ->subject('Ada Pembayaran Baru!');
+                    ->with('data', [$this->data]);
     }
 }

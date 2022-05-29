@@ -51,7 +51,6 @@ class DashboardManageSubmissionController extends Controller
             $email = $item->user->email;
             $data = [
                 'name' => $item->user->name,
-                'url' => 'http://salam-konservasi.test/dashboard/applicant/submission'
             ];
             Mail::to($email)->send(new SubmissionApproved($data));
             $item->save();
@@ -59,7 +58,6 @@ class DashboardManageSubmissionController extends Controller
             $email = $item->user->email;
             $data = [
                 'name' => $item->user->name,
-                'url' => 'http://salam-konservasi.test/dashboard/applicant/submission'
             ];
             Mail::to($email)->send(new SubmissionRejected($data));
             $item->save();

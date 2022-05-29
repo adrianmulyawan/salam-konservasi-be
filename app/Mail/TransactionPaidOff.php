@@ -30,9 +30,8 @@ class TransactionPaidOff extends Mailable
      */
     public function build()
     {
-        return $this->from('salamkonservasidilautkan@gmail.com')
+        return $this->subject('Pembayaran Retribusi Telah Disetujui!')
                     ->markdown('email/email-transaction-paid-off')
-                    ->with('data', [$this->data])
-                    ->subject('Pembayaran Retribusi Telah Disetujui!');
+                    ->with('data', [$this->data]);
     }
 }

@@ -32,7 +32,8 @@ class SubmissionController extends Controller
         $price = MasterPrice::select('citizen', 'price')->where('purpose_id', $purpose)->get();
         $myPrice = collect($price)->where('citizen', strtoupper($user->citizen))->firstOrFail();
         $equipment = Equipment::select('slug', 'equipment_price')->get();
-        return view('pages.submission', compact('slug', 'price', 'myPrice', 'equipment', 'purpose'));
+        $purposeObj = Purpose::where('id',$purpose)->first();
+        return view('pages.submission', compact('slug', 'price', 'myPrice', 'equipment', 'purpose','purposeObj'));
     }
 
     public function store(Request $request, $slug)
@@ -167,12 +168,11 @@ class SubmissionController extends Controller
                 ]);
 
                 // dd($allTotal);
-                $userAdmins = User::where('role', 'superadmin')->get();
+                $userAdmins = User::where('role', 'superadmin')->orWhere('role', 'leader')->get();
                 foreach ($userAdmins as $admin) {
                     $emailAdmin = $admin->email;
                     $dataAdmin = [
                         'name' => $admin->name,
-                        'url'  => 'http://salam-konservasi.test/dashboard/admin/manage-submission'
                     ];
                     Mail::to($emailAdmin)->send(new ApplicantSubmission($dataAdmin));
                 }
@@ -371,15 +371,14 @@ class SubmissionController extends Controller
                 $transaction->update($payloadTransaction);
 
                 // dd($allTotal);
-                // $userAdmins = User::where('role', 'superadmin')->get();
-                // foreach ($userAdmins as $admin) {
-                //     $emailAdmin = $admin->email;
-                //     $dataAdmin = [
-                //         'name' => $admin->name,
-                //         'url'  => 'http://salam-konservasi.test/dashboard/admin/manage-submission'
-                //     ];
-                //     Mail::to($emailAdmin)->send(new ApplicantSubmission($dataAdmin));
-                // }
+                $userAdmins = User::where('role', 'superadmin')->orWhere('role', 'leader')->get();
+                foreach ($userAdmins as $admin) {
+                    $emailAdmin = $admin->email;
+                    $dataAdmin = [
+                        'name' => $admin->name,
+                    ];
+                    Mail::to($emailAdmin)->send(new ApplicantSubmission($dataAdmin));
+                }
 
                 DB::commit();
         } catch (\Throwable $th) {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ConservationArea;
 use App\Models\Event;
 use App\Models\News;
+use App\Models\Purpose;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
@@ -34,60 +35,6 @@ class DashboardAdminController extends Controller
         $retributionPaidOff = Transaction::where('payment_status', 'PAIDOFF')->count();
         $retributionFailed = Transaction::where('payment_status', 'FAILED')->count();
 
-        // Chart Transaksi
-        // $transactionTourist = Transaction::select('id', 'date_of_entry')->where('purpose_id', 1)->get()->groupBy(function($data) {
-        //     return Carbon::parse($data->date_of_entry)->format('M');
-        // });
-        // // dd($transactionTourist);
-        // $monthTourist = [];
-        // $countTourist = [];
-        // foreach ($transactionTourist as $month => $values) {
-        //     $monthTourist[] = $month;
-        //     $countTourist[] = count($values);
-        // }
-        // // dd($countTourist);
-
-        // $transactionResearch = Transaction::select('id', 'date_of_entry')->where('purpose_id', 2)->get()->groupBy(function($data) {
-        //     return Carbon::parse($data->date_of_entry)->format('M');
-        // });
-        // $countResearch = [];
-        // foreach ($transactionResearch as $values) {
-        //     $countResearch[] = count($values);
-        // }
-
-        // $transactionEducation = Transaction::select('id', 'date_of_entry')->where('purpose_id', 3)->get()->groupBy(function($data) {
-        //     return Carbon::parse($data->date_of_entry)->format('M');
-        // });
-        // $countEducation = [];
-        // foreach ($transactionEducation as $values) {
-        //     $countEducation[] = count($values);
-        // }
-
-        $tourism = Transaction::select(DB::raw("COUNT(*) as count"))
-                   ->where('purpose_id', 1)
-                   ->whereYear('date_of_entry', date('Y'))
-                   ->groupBy(DB::raw("Month(date_of_entry)"))
-                   ->pluck('count');
-        $research = Transaction::select(DB::raw("COUNT(*) as count"))
-                    ->where('purpose_id', 2)
-                    ->whereYear('date_of_entry', date('Y'))
-                    ->groupBy(DB::raw("Month(date_of_entry)"))
-                    ->pluck('count');
-        $months = Transaction::select(DB::raw("Month(date_of_entry) as month"))
-                  ->whereYear('date_of_entry', date('Y'))
-                  ->groupBy(DB::raw("Month(date_of_entry)"))
-                  ->pluck('month');
-        // $datasTourism = array(0,0,0,0,0,0,0,0,0,0,0,0);
-        // $datasResearch = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-        // foreach ($months as $index => $month) {
-        //     $datasTourism[$month] = $tourism[$index];
-        // }
-
-        // foreach ($months as $index => $month) {
-        //     $datasResearch[$month] = $research[$index];
-        // }
-
         // Data User, Berita, dan Acara yang baru ditambahkan
         $recentUsers = User::orderBy('created_at', 'DESC')->where('role', 'applicant')->limit(5)->get();
         $recentNews = News::orderBy('created_at', 'DESC')->limit(5)->get();
@@ -99,8 +46,39 @@ class DashboardAdminController extends Controller
         // Pembayaran Terakhir Dilakukan
         $recentTransaction = Transaction::with(['user', 'conservation_area'])->orderBy('created_at', 'DESC')->where('payment_status', 'PENDING')->limit(3)->get();
 
+        // Chart
+        $chart = [];
+        $purpose = Purpose::all();
+        $transaction = Transaction::where([
+            ['submission_status', 'ALLOWED'],
+            ['payment_status', 'PAIDOFF']
+        ])->get();
+
+        $backgroundColor =  [
+            '#eb3434',
+            '#ebb134',
+            '#dceb34',
+        ];
+        $purposeArr = [];
+
+        foreach ($purpose as $key=> $value) {            
+            $chart[$key]['label'] = $value->purpose_name;
+            $chart[$key]['data'] = [0,0,0,0,0,0,0,0,0,0,0,0];
+            $chart[$key]['borderColor'] = 'rgba(255, 99, 132, 1)';
+            $chart[$key]['backgroundColor'] = $backgroundColor[$key] ?? '#eb3434';
+            $purposeArr[$value->id] = $key;
+        }
+
+        foreach ($transaction as $key => $value) {
+            if(isset($purpose[$value->purpose_id])){
+                $date = date('m', strtotime($value->date_of_entry));
+                $keyPurpose = $purposeArr[$value->purpose_id];
+                $chart[$keyPurpose]['data'][((int)$date)-1] += 1;
+            }
+        }
 
         return view('pages.superAdmin.dashboard', [
+            'chart' => $chart,
             'user' => $user,
             'conservationArea' => $conservationArea,
             'submission' => $submission,

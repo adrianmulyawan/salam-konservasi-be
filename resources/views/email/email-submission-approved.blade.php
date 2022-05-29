@@ -76,7 +76,7 @@ Thanks,<br>
             Segara Buka Dashboard Akun Anda dan Lakukan Proses Pembayaran
         </p>
 
-        @component('mail::button', ['url' => $data['url']])
+        @component('mail::button', ['url' => route('dashboardSubmission')])
         Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 

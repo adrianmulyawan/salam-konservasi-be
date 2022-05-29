@@ -31,9 +31,8 @@ class VisitorsEnter extends Mailable
      */
     public function build()
     {
-        return $this->from('salamkonservasidislautkan@gmail.com')
+        return $this->subject('Ada Pengunjung Yang Masuk Kawasan')
                     ->markdown('email.visitor-entry')
-                    ->with('data', [$this->data])
-                    ->subject('Ada Pengunjung Yang Masuk Kawasan');
+                    ->with('data', [$this->data]);
     }
 }

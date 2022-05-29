@@ -60,10 +60,10 @@
 
         <p class="card-content">
             Hello {{ \Illuminate\Support\Str::of($data['name'])->words(1, '') }}, Ada Pembayaran Yang Baru Dilakukan <br>
-            Segera Cek Halaman Dashboard Untuk Mengubah Statusnya
+            Segera Cek Halaman Dashboard Sekarang
         </p>
 
-        @component('mail::button', ['url' => $data['url']])
+        @component('mail::button', ['url' => route('home')])
         Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 

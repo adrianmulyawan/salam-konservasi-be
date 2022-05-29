@@ -31,9 +31,8 @@ class ApplicantSubmission extends Mailable
      */
     public function build()
     {
-        return $this->from(Auth::user()->email)
+        return $this->subject('Ada Pengajuan Izin Masuk Kawasan!')
                     ->markdown('email/email-notification-submission-applicant')
-                    ->with('data', [$this->data])
-                    ->subject('Ada Pembayaran Baru!');
+                    ->with('data', [$this->data]);
     }
 }

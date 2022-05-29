@@ -237,7 +237,7 @@
                                 <tr class="mb-2">
                                     <th width="50%">Tujuan Pengajuan</th>
                                     <td width="50%" class="text-right">
-                                        Pariwista
+                                        {{ $purposeObj->purpose_name ?? '-' }}
                                     </td>
                                 </tr>
                                 <tr class="mb-2">
@@ -376,12 +376,12 @@
                         <input type="hidden" id="input-citizen-${num}" name="visitor[${idx}][citizen]"/>
                     </td>
                     <td class="align-middle">
-                        <span id="span-phoneNumber-${num}"></span>
-                        <input type="hidden" id="input-phoneNumber-${num}" name="visitor[${idx}][phone_number]"/>
-                    </td>
-                    <td class="align-middle">
                         <span id="span-address-${num}"></span>
                         <input type="hidden" id="input-address-${num}" name="visitor[${idx}][address]"/>
+                    </td>
+                    <td class="align-middle">
+                        <span id="span-phoneNumber-${num}"></span>
+                        <input type="hidden" id="input-phoneNumber-${num}" name="visitor[${idx}][phone_number]"/>
                     </td>
                     <td>
                         <input type="file" style="display:none" id="input-image-${num}" onchange="changeVisitorImage(${num})" name="visitor[${idx}][image]"/>

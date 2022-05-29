@@ -120,7 +120,7 @@ Route::prefix('dashboard/admin')
         Route::get('/', [\App\Http\Controllers\Admin\DashboardAdminController::class, 'index'])
             ->name('dashboardAdmin');
 
-        Route::resource('/manage-conservation-area', DashboardConservationAreaController::class);
+        Route::resource('/manage-conservation-area', DashboardConservsuationAreaController::class);
 
         Route::resource('/manage-gallery', DashboardConservationAreaGalleryController::class);
 

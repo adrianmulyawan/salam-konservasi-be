@@ -43,12 +43,11 @@ class DashboardPaymentController extends Controller
         $item->evidence_of_transfer = $request->file('evidence_of_transfer')->store('assets/evidence_of_transfer', 'public');
         $item->payment_status = "PENDING";
 
-        $users = User::where('role', 'superadmin')->get();
+        $users = User::where('role', 'superadmin')->orWhere('role', 'leader')->get();
         foreach ($users as $user) {
             $email = $user->email;
             $data = [
                 'name' => $user->name,
-                'url' => 'http://salam-konservasi.test/dashboard/admin/manage-transaction'
             ];
             Mail::to($email)->send(new ApplicantPayment($data));
         }

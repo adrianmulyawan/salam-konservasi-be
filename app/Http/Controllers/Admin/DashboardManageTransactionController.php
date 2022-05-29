@@ -45,7 +45,6 @@ class DashboardManageTransactionController extends Controller
             $email = $item->user->email;
             $data = [
                 'name' => $item->user->name,
-                'url' => 'http://salam-konservasi.test/dashboard/applicant/payment'
             ];
             Mail::to($email)->send(new TransactionPaidOff($data));
             $item->save();

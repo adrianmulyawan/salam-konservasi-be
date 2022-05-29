@@ -43,7 +43,6 @@ class DashboardManageEntryPermitController extends Controller
         $email = $item->user->email;
         $data = [
             'name' => $item->user->name,
-            'url' => 'http://salam-konservasi.test/dashboard/applicant/area-entry'
         ];
         Mail::to($email)->send(new EntryPermit($data));
 
@@ -86,6 +85,13 @@ class DashboardManageEntryPermitController extends Controller
 
         $item = Transaction::findOrFail($id);
         $item->entrance_ticket = $request->file('entrance_ticket')->store('assets/entrance_ticket', 'public');
+
+        $email = $item->user->email;
+        $data = [
+            'name' => $item->user->name,
+        ];
+        Mail::to($email)->send(new EntryPermit($data));
+
         $item->save();
 
         if ($item) {

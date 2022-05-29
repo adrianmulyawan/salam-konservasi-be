@@ -30,9 +30,8 @@ class VisitorsOutbound extends Mailable
      */
     public function build()
     {
-        return $this->from('salamkonservasidislautkan@gmail.com')
+        return $this->subject('Ada Pengunjung Yang Keluar Kawasan')
                     ->markdown('email.visitor-exit')
-                    ->with('data', [$this->data])
-                    ->subject('Ada Pengunjung Yang Keluar Kawasan');
+                    ->with('data', [$this->data]);
     }
 }

@@ -63,7 +63,7 @@
             Anda Dapat Membuka Dashboard Akun dan Anda Dapat Melakukan Proses Pengajuan Ulang
         </p>
 
-        @component('mail::button', ['url' => $data['url']])
+        @component('mail::button', ['url' => route('dashboardSubmission')])
         Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 

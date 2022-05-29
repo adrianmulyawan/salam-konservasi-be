@@ -30,9 +30,8 @@ class SubmissionRejected extends Mailable
      */
     public function build()
     {
-        return $this->from('salamkonservasidilautkan@gmail.com')
+        return $this->subject('Pengajuan Izin Masuk Ditolak!')
                     ->markdown('email/email-submission-rejected')
-                    ->with('data', [$this->data])
-                    ->subject('Pengajuan Izin Masuk Ditolak!');
+                    ->with('data', [$this->data]);
     }
 }

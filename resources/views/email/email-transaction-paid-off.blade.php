@@ -61,10 +61,10 @@
         <p class="card-content">
             Selamat, Pembayaran Retribusi Izin Masuk Kawasan Telah Kami Proses <br>
             Surat Izin Masuk Kawasan Konservasi Sedang Kami Proses <br>
-            Silahkan Selalu Update Email Dari Kami
+            Silahkan Tunggu Update Email Dari Kami
         </p>
 
-        @component('mail::button', ['url' => $data['url']])
+        @component('mail::button', ['url' => route('dashboardPayment')])
         Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 

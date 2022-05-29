@@ -63,7 +63,7 @@
             Segara Buka Dashboard Akun Anda dan Lakukan Unduh Surat Untuk Ditunjukan Ketika Masuk Kawasan
         </p>
 
-        @component('mail::button', ['url' => $data['url']])
+        @component('mail::button', ['url' => route('areaEntryPermit')])
         Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 

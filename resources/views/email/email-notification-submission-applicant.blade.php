@@ -63,7 +63,7 @@
             Segera Cek Halaman Dashboard Untuk Mengubah Statusnya
         </p>
 
-        @component('mail::button', ['url' => $data['url']])
+        @component('mail::button', ['url' => route('home')])
         Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 

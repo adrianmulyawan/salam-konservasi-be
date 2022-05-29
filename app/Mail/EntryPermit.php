@@ -30,9 +30,8 @@ class EntryPermit extends Mailable
      */
     public function build()
     {
-        return $this->from('salamkonservasidilautkan@gmail.com')
+        return $this->subject('Surat Izin Masuk Kawasan Konservasi Telah Terbit!')
                     ->markdown('email/email-entry-permit')
-                    ->with('data', [$this->data])
-                    ->subject('Surat Izin Masuk Kawasan Konservasi Telah Terbit!');
+                    ->with('data', [$this->data]);
     }
 }
