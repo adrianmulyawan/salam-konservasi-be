@@ -72,7 +72,7 @@ class DashboardPaymentController extends Controller
         $item = Transaction::with(['conservation_area', 'user', 'purpose'])->where('user_id', Auth::user()->id)->findOrFail($id);
         $details = TransactionDetail::where('transaction_id', $id)->get();
         $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
-        return view('pages.applicant.dashboard-payment-paid', compact([
+        return view('pages.applicant.dashboard-payment-pending', compact([
             'item', 'details', 'equipments'
         ]));
     }
