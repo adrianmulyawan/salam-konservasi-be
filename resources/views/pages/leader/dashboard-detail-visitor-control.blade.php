@@ -44,6 +44,62 @@
                                 </div>
                                 <div class="form-group">
                                     <label>
+                                        Data Pengunjung
+                                    </label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">No</th>
+                                                    <th class="text-center">Nama</th>
+                                                    <th class="text-center">Warga Negara</th>
+                                                    <th class="text-center">Alamat</th>
+                                                    <th class="text-center">No Telpon</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $counter = 0; ?>
+                                                @foreach ($item->transaction->transaction_details as $detail)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $detail->name }}</td>
+                                                        <td class="text-center">{{ $detail->citizen }}</td>
+                                                        <td class="text-center">{{ $detail->address }}</td>
+                                                        <td class="text-center">{{ $detail->phone_number }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        Data Peralatan Bawaan Pengunjung
+                                    </label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">No</th>
+                                                    <th class="text-center">Peralatan Bawaan</th>
+                                                    <th class="text-center">Jumlah</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $counter = 0; ?>
+                                                @foreach ($item->transaction->transaction_equipment_details as $detail)
+                                                    <tr>
+                                                        <td class="text-center">{{ $counter += 1 }}</td>
+                                                        <td class="text-center">{{ $detail->equipment_name }}</td>
+                                                        <td class="text-center">{{ $detail->equipment_total }} Buah</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>
                                         Admin Lapangan
                                     </label>
                                     <input type="text" name="name" class="form-control" value="{{ $item->name }}" disabled>
