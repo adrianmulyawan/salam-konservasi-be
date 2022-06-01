@@ -68,13 +68,13 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($data->submission_status == "PENDING")
-                                        PENDING
+                                        PENGAJUAN SEDANG DIPROSES
                                     @elseif ($data->submission_status == "ALLOWED")
-                                        DISETUJUI
+                                        PENGAJUAN DISETUJUI
                                     @elseif ($data->submission_status == "REJECTED")
-                                        DITOLAK
+                                        PENGAJUAN DITOLAK
                                     @elseif ($data->submission_status == "FAILED")
-                                        GAGAL
+                                        PENGAJUAN GAGAL
                                     @endif
                                 </div>
                             </div>
@@ -109,12 +109,12 @@
                                     Status Pembayaran Retribusi
                                 </div>
                                 <div class="transaction-subtitle">
-                                    @if ($data->payment_status == "PENDING")
-                                        PENDING
-                                    @elseif ($data->payment_status == "PAIDOFF")
-                                        TERBAYAR
-                                    @elseif ($data->payment_status == "FAILED")
-                                        GAGAL
+                                    @if ($data->payment_status == 'PENDING')
+                                        SEDANG DIPROSES ADMIN
+                                    @elseif ($data->payment_status == 'PAIDOFF')
+                                        PEMBAYARAN TELAH DISETUJUI
+                                    @elseif ($data->payment_status == 'FAILED')
+                                        PEMBAYARAN GAGAL
                                     @endif
                                 </div>
                             </div>
@@ -220,7 +220,7 @@
                     <!-- 2.5 Approval -->
                     <div class="form-group data-approval mt-4">
                         <h5>Status Pembayaran Retribusi Izin Masuk Kawasan Konservasi</h5>
-                        <input class="form-control mt-2" id="disabledInput" type="text" name="payment_status" value="{{ $data->payment_status == "PAIDOFF" ? "TERBAYAR" : "" }}" disabled>
+                        <input class="form-control mt-2" id="disabledInput" type="text" name="payment_status" value="{{ $data->payment_status == "PAIDOFF" ? "PEMBAYARAN TELAH DISETUJUI" : "" }}" disabled>
                     </div>
 
                     <div class="row justify-content-end mr-2 mt-4">
