@@ -161,7 +161,10 @@
                                         <div class="col-md-1">
                                             <img src="{{ Storage::url($submission->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
+                                            {{ $submission->transaction_code }}
+                                        </div>
+                                        <div class="col-md-2">
                                             {{ $submission->conservation_area->name }}
                                         </div>
                                         <div class="col-md-2">
@@ -172,7 +175,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             @if ($submission->submission_status == 'PENDING')
-                                                BELUM DIPROSES
+                                                SEDANG DIPROSES
                                             @elseif ($submission->submission_status == 'ALLOWED')
                                                 DISETUJUI
                                             @elseif ($submission->submission_status == 'REJECTED')
@@ -212,7 +215,10 @@
                                         <div class="col-md-1">
                                             <img src="{{ Storage::url($transaction->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
+                                            {{ $transaction->transaction_code }}
+                                        </div>
+                                        <div class="col-md-2">
                                             {{ $transaction->conservation_area->name }}
                                         </div>
                                         <div class="col-md-3">
