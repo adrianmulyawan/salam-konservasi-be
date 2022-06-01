@@ -17,11 +17,15 @@ class DashboardPaymentController extends Controller
     public function index ()
     {
         $paymentUnpaid = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'UNPAID')->latest()->paginate(5);
-        $paymentPaidOff = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->orWhere('payment_status', 'PENDING')->where('payment_status', 'PAIDOFF')->latest()->paginate(5);
+
+        $paymentPending = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'PENDING')->latest()->paginate(5);
+
+        $paymentPaidOff = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('submission_status', 'ALLOWED')->where('payment_status', 'PAIDOFF')->latest()->paginate(5);
+
         $paymentFailed = Transaction::with(['conservation_area', 'purpose'])->where('user_id', Auth::user()->id)->where('payment_status', 'FAILED')->latest()->paginate(5);
 
         return view('pages.applicant.dashboard-payment', compact([
-            'paymentUnpaid', 'paymentPaidOff', 'paymentFailed'
+            'paymentUnpaid', 'paymentPending', 'paymentPaidOff', 'paymentFailed'
         ]));
     }
 
@@ -61,6 +65,16 @@ class DashboardPaymentController extends Controller
             session()->flash('failed', 'Pembayaran Retribusi Gagal Dilakukan');
             return redirect()->route('dashboardPayment');
         }
+    }
+
+    public function paymentPending($id)
+    {
+        $item = Transaction::with(['conservation_area', 'user', 'purpose'])->where('user_id', Auth::user()->id)->findOrFail($id);
+        $details = TransactionDetail::where('transaction_id', $id)->get();
+        $equipments = TransactionEquipmentDetail::where('transaction_id', $id)->get();
+        return view('pages.applicant.dashboard-payment-paid', compact([
+            'item', 'details', 'equipments'
+        ]));
     }
 
     public function paymentPaidOff($id)

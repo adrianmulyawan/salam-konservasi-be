@@ -92,6 +92,8 @@ Route::prefix('dashboard/applicant')
             ->name('paymentProcess');
         Route::put('/payment/payment-process/pay/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentProcessCheckout'])
             ->name('paymentProcessCheckout');
+        Route::get('/payment/status/pending/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentPending'])
+            ->name('paymentPending');
         Route::get('/payment/status/paid/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentPaidOff'])
             ->name('paymentPaidOff');
         Route::get('/payment/status/failed/{id}', [\App\Http\Controllers\Applicant\DashboardPaymentController::class , 'paymentFailed'])

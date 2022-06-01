@@ -32,6 +32,11 @@
                               </a>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="false">
+                                    Sedang Diproses
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
                               <a class="nav-link" id="pills-paid-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
                                   Terbayar
                               </a>
@@ -53,13 +58,16 @@
                                                 <div class="col-md-1">
                                                     <img src="{{ Storage::url($unpaid->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    {{ $unpaid->transaction_code }}
+                                                </div>
+                                                <div class="col-md-3">
                                                     {{ $unpaid->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $unpaid->purpose->purpose_name }}
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     Rp {{ number_format($unpaid->total_transaction,2,',','.') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
@@ -84,6 +92,49 @@
                                 </div>
                             </div>
 
+                            {{-- Sedeng Diproses --}}
+                            <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
+                                @forelse ($paymentPending as $pending)
+                                    <a href="{{ route('paymentPending', $pending->id) }}" class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src="{{ Storage::url($pending->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    {{ $pending->transaction_code }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $pending->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    {{ $pending->purpose->purpose_name }}
+                                                </div>
+                                                <div class="col-md-2">
+                                                    Rp {{ number_format($pending->total_transaction,2,',','.') }}
+                                                </div>
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="{{ url('frontend/images/dashboard/ic_arrow.svg') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center mt-auto">
+                                                <p class="text-muted">Data Kosong!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforelse
+
+                                <!-- Pagination -->
+                                <div class="row justify-content-end mr-1 mt-4">
+                                    {{ $paymentPending->links() }}
+                                </div>
+                            </div>
+
                             <!-- Terbayar -->
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-paid-tab">
                                 @forelse ($paymentPaidOff as $paidOff)
@@ -93,13 +144,16 @@
                                                 <div class="col-md-1">
                                                     <img src="{{ Storage::url($paidOff->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    {{ $paidOff->transaction_code }}
+                                                </div>
+                                                <div class="col-md-3">
                                                     {{ $paidOff->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $paidOff->purpose->purpose_name }}
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     Rp {{ number_format($paidOff->total_transaction,2,',','.') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
@@ -133,13 +187,16 @@
                                                 <div class="col-md-1">
                                                     <img src="{{ Storage::url($failed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    {{ $failed->transaction_code }}
+                                                </div>
+                                                <div class="col-md-3">
                                                     {{ $failed->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $failed->purpose->purpose_name }}
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     Rp {{ number_format($failed->total_transaction,2,',','.') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
