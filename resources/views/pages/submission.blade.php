@@ -124,7 +124,9 @@
                                         <input type="text" class="form-control mb-2 mr-sm-2 input-telpon" id="inputPhoneNumber" required placeholder="No Telpon">
 
                                         <div class="custom-file mb-2">
-                                            <label class="custom-file-label" for="inputIdentityImage" id="labelIdentityImage">KTP/KK/Passport</label>
+                                            <label class="custom-file-label" for="inputIdentityImage" id="labelIdentityImage">
+                                                Kartu Identitas (Max: 1 MB)
+                                            </label>
                                             <input type="button" class="custom-file-input mb-2 mr-sm-2 input-identity" id="inputIdentity" onclick="addImageVisitor(this)" required>
                                         </div>
 
@@ -212,7 +214,9 @@
                                 <div class="upload-research-education">
                                     <h2>Upload Form Pengajuan Untuk Penelitian dan Pendidikan</h2>
                                     <div class="custom-file mb-2">
-                                        <label class="custom-file-label" for="inputFormulir">Upload Formulir Kegiatan Penelitian / Pendidikan</label>
+                                        <label class="custom-file-label" for="inputFormulir">
+                                            Upload Formulir Kegiatan Penelitian / Pendidikan (Max: 1 MB)
+                                        </label>
                                         <input type="file" name="formulir_file" class="custom-file-input mb-2 mr-sm-2 input-formulir" id="inputFormulir" required>
                                     </div>
                                 </div>
