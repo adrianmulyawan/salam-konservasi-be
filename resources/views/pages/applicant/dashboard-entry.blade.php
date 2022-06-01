@@ -26,10 +26,13 @@
                                         <div class="col-md-2">
                                             <img src="{{ Storage::url($entryPermit->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                         </div>
+                                        <div class="col-md-2">
+                                            {{ $entryPermit->transaction_code }}
+                                        </div>
                                         <div class="col-md-4">
                                             {{ $entryPermit->conservation_area->name }}
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
                                             {{ $entryPermit->purpose->purpose_name }}
                                         </div>
                                         <div class="col-md-2 d-none d-md-block">
