@@ -151,7 +151,10 @@
                                         <div class="col-md-1">
                                             <img src="{{ Storage::url($submission->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
+                                            {{ $submission->transaction_code }}
+                                        </div>
+                                        <div class="col-md-2">
                                             {{ $submission->conservation_area->name }}
                                         </div>
                                         <div class="col-md-2">
@@ -160,7 +163,7 @@
                                         <div class="col-md-2">
                                             {{ $submission->purpose->purpose_name }}
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             {{ $submission->user->name }}
                                         </div>
                                         <div class="col-md-1 d-none d-md-block">
@@ -192,13 +195,19 @@
                                     <div class="col-md-1">
                                         <img src="{{ Storage::url($transaction->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
+                                        {{ $transaction->transaction_code }}
+                                    </div>
+                                    <div class="col-md-2">
                                         {{ $transaction->conservation_area->name }}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         {{ $transaction->user->name }}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
+                                        {{ $transaction->purpose->purpose_name }}
+                                    </div>
+                                    <div class="col-md-2">
                                         Rp {{ number_format($transaction->total_transaction,2,',','.') }}
                                     </div>
                                     <div class="col-md-1 d-none d-md-block">
