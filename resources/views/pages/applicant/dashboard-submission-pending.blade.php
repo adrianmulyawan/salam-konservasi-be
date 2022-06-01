@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->submission_status == 'PENDING')
-                                        BELUM DIPROSES
+                                        SEDANG DIPROSES ADMIN
                                     @endif
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->payment_status == 'UNPAID')
-                                        BELUM DIBAYAR
+                                        BELUM MEMBAYAR
                                     @endif
                                 </div>
                             </div>
