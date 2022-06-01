@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->submission_status == 'ALLOWED')
-                                        DISETUJUI
+                                        DISETUJUI OLEH ADMIN
                                     @endif
                                 </div>
                             </div>
@@ -104,9 +104,9 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->payment_status == 'UNPAID')
-                                        BELUM DIBAYAR
+                                        BELUM MEMBAYAR
                                     @elseif ($item->payment_status == 'PENDING')
-                                        PENDING
+                                        SEDANG DIPROSES ADMIN
                                     @elseif ($item->payment_status == 'PAIDOFF')
                                         TERBAYAR
                                     @elseif ($item->payment_status == 'FAILED')
@@ -206,8 +206,10 @@
                         </div>
                     @endif
 
-                    <div class="row justify-content-end mr-2 mt-3">
-                        <a href="{{ route('paymentProcess', $item->id) }}" class="btn btn-primary py-2 mr-2 px-3">Lanjutkan Pembayaran</a>
+                    <div class="row justify-content-end mr-2 mt-1">
+                        @if ($item->transaction_status === "UNPAID")
+                            <a href="{{ route('paymentProcess', $item->id) }}" class="btn btn-primary py-2 mr-2 px-3">Lanjutkan Pembayaran</a>
+                        @endif
                         <a href="{{ route('dashboardSubmission') }}" class="btn btn-primary py-2 mr-2 px-3">Tutup</a>
                     </div>
                 </div>
