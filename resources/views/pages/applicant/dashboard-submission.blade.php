@@ -17,10 +17,10 @@
                 <!-- 2. Pengajuan Izin Masuk Kawasan -->
                 <div class="row mt-3">
                     <div class="col-12 mt-2">
-                        <!-- Tabs: Belum Diproses, Disetujui, Ditolak, Gagal -->
+                        <!-- Tabs: Sedang Diproses, Disetujui, Ditolak, Gagal -->
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <a class="nav-link active" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="true">Belum Diproses</a>
+                              <a class="nav-link active" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="true">Sedang Diproses</a>
                             </li>
                             <li class="nav-item" role="presentation">
                               <a class="nav-link" id="pills-disetujui-tab" data-toggle="pill" href="#pills-allowed" role="tab" aria-controls="pills-allowed" aria-selected="false">Disetujui</a>
@@ -42,13 +42,16 @@
                                                 <div class="col-md-1">
                                                     <img src="{{ Storage::url($pending->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    {{ $pending->transaction_code }}
+                                                </div>
+                                                <div class="col-md-3">
                                                     {{ $pending->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $pending->purpose->purpose_name }}
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     {{ \Carbon\Carbon::create($pending->created_at)->format('d F, Y') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
@@ -82,13 +85,16 @@
                                                 <div class="col-md-1">
                                                     <img src="{{ Storage::url($allowed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    {{ $allowed->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
                                                     {{ $allowed->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $allowed->purpose->purpose_name }}
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     {{ \Carbon\Carbon::create($allowed->created_at)->format('d F, Y') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
@@ -122,13 +128,16 @@
                                                 <div class="col-md-1">
                                                     <img src="{{ Storage::url($reject->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    {{ $reject->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
                                                     {{ $reject->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $reject->purpose->purpose_name }}
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     {{ \Carbon\Carbon::create($reject->created_at)->format('d F, Y') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
@@ -162,13 +171,16 @@
                                                 <div class="col-md-1">
                                                     <img src="{{ Storage::url($failed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    {{ $failed->conservation_area->name }}
+                                                </div>
+                                                <div class="col-md-3">
                                                     {{ $failed->conservation_area->name }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $failed->purpose->purpose_name }}
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     {{ \Carbon\Carbon::create($failed->created_at)->format('d F, Y') }}
                                                 </div>
                                                 <div class="col-md-1 d-none d-md-block">
