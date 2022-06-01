@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->submission_status == 'PENDING')
-                                        SEDANG DIPROSES ADMIN
+                                        PENGAJUAN SEDANG DIPROSES
                                     @endif
                                 </div>
                             </div>

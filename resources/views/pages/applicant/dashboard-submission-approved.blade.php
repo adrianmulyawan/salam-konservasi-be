@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->submission_status == 'ALLOWED')
-                                        DISETUJUI OLEH ADMIN
+                                        PENGAJUAN DISETUJUI
                                     @endif
                                 </div>
                             </div>
@@ -108,9 +108,9 @@
                                     @elseif ($item->payment_status == 'PENDING')
                                         SEDANG DIPROSES ADMIN
                                     @elseif ($item->payment_status == 'PAIDOFF')
-                                        TERBAYAR
+                                        PEMBAYARAN TELAH DISETUJUI
                                     @elseif ($item->payment_status == 'FAILED')
-                                        GAGAL
+                                        PEMBAYARAN GAGAL
                                     @endif
                                 </div>
                             </div>

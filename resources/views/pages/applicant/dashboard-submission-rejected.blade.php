@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->submission_status == 'REJECTED')
-                                        DITOLAK
+                                        PENGAJUAN DITOLAK
                                     @endif
                                 </div>
                             </div>
@@ -105,13 +105,13 @@
                                 </div>
                                 <div class="transaction-subtitle">
                                     @if ($item->payment_status == 'UNPAID')
-                                        BELUM DIBAYAR
+                                        BELUM MEMBAYAR
                                     @elseif ($item->payment_status == 'PENDING')
-                                        PENDING
+                                        SEDANG DIPROSES ADMIN
                                     @elseif ($item->payment_status == 'PAIDOFF')
-                                        TERBAYAR
+                                        PEMBAYARAN TELAH DISETUJUI
                                     @elseif ($item->payment_status == 'FAILED')
-                                        GAGAL
+                                        PEMBAYARAN GAGAL
                                     @endif
                                 </div>
                             </div>
@@ -210,7 +210,7 @@
                     <!-- 2.5 Alasan Penolakan -->
                     <div class="form-group data-approval mt-4">
                         <label for="input Alasan">
-                            <h5>Alasan Ditolak (Bila Pengajuan Ditolak)</h5>
+                            <h5>Alasan Pengajuan Ditolak</h5>
                         </label>
                         <textarea class="form-control mt-3 mb-2" id="inputAlasan" rows="3" name="rejected_reason" disabled>
                             {{ $item->rejected_reason }}
