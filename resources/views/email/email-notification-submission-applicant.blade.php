@@ -60,12 +60,18 @@
 
         <p class="card-content">
             Hello {{ \Illuminate\Support\Str::of($data['name'])->words(1, '') }}, Ada Pengajuan Yang Baru Dilakukan <br>
-            Segera Cek Halaman Dashboard Untuk Mengubah Statusnya
+            Segera Cek Halaman Pengajuan Izin Masuk Kawasan Sekarang
         </p>
 
-        @component('mail::button', ['url' => route('home')])
-        Tekan Disini Untuk Pergi Ke Halaman
-        @endcomponent
+        @if (Auth::user()->role === "superadmin")
+            @component('mail::button', ['url' => route('AdminmanageSubmission')])
+            Tekan Disini Untuk Pergi Ke Halaman
+            @endcomponent
+        @elseif (Auth::user()->role === "leader")
+            @component('mail::button', ['url' => route('LeaderdashboardLeaderSubmission')])
+            Tekan Disini Untuk Pergi Ke Halaman
+            @endcomponent
+        @endif
 
         <hr class="garis-bawah">
 

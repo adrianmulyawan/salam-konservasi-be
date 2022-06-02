@@ -60,12 +60,18 @@
 
         <p class="card-content">
             Hello {{ \Illuminate\Support\Str::of($data['name'])->words(1, '') }}, Ada Pembayaran Yang Baru Dilakukan <br>
-            Segera Cek Halaman Dashboard Sekarang
+            Segera Cek Halaman Dashboard Pembayaran Sekarang
         </p>
 
-        @component('mail::button', ['url' => route('home')])
-        Tekan Disini Untuk Pergi Ke Halaman
-        @endcomponent
+        @if (Auth::user()->role === "superadmin")
+            @component('mail::button', ['url' => route('AdminmanageTransaction')])
+            Tekan Disini Untuk Pergi Ke Halaman
+            @endcomponent
+        @elseif (Auth::user()->role === "leader")
+            @component('mail::button', ['url' => route('LeaderdashboardLeaderPayment')])
+            Tekan Disini Untuk Pergi Ke Halaman
+            @endcomponent
+        @endif
 
         <hr class="garis-bawah">
 
