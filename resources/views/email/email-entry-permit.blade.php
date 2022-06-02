@@ -64,10 +64,15 @@
         </p>
 
         @component('mail::button', ['url' => route('areaEntryPermit')])
-        Tekan Disini Untuk Pergi Ke Halaman
+            Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 
         <h4>Terima Kasih Sudah Menggunakan Layanan Kami</h4>
+
+        <p class="copyright">
+            Mengalami Masalah? Silahkan Tekan Link 
+            <a href="https://wa.me/081258161143?text=Hi, saya ingin bertanya mengenai ...">Berikut</a>
+        </p>
 
         <hr class="garis-bawah">
 

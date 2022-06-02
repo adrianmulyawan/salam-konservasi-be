@@ -70,6 +70,11 @@
 
         <h4>Terima Kasih Sudah Menggunakan Layanan Kami</h4>
 
+        <p class="copyright">
+            Mengalami Masalah? Silahkan Tekan Link 
+            <a href="https://wa.me/081258161143?text=Hi, saya ingin bertanya mengenai ...">Berikut</a>
+        </p>
+
         <hr class="garis-bawah">
 
         <p class="copyright">&copy; Dinas Kelautan dan Perikanan Provinsi Kalimantan Barat</p>

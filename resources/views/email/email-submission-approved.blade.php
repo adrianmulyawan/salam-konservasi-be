@@ -72,15 +72,20 @@ Thanks,<br>
         <hr class="garis">
 
         <p class="card-content">
-            Selamat, Pengajuan Izin Masuk Kawasan Anda Telah Kami Proses dan Telah Disetujui <br>
-            Segara Buka Dashboard Akun Anda dan Lakukan Proses Pembayaran
+            Selamat, Pengajuan Izin Masuk Kawasan Anda Telah Kami Proses <br>
+            Segara Buka Dashboard Akun Anda dan Lakukan Proses Pembayaran Retribusi Izin Masuk Kawasan
         </p>
 
-        @component('mail::button', ['url' => route('dashboardSubmission')])
+        @component('mail::button', ['url' => route('dashboardPayment')])
         Tekan Disini Untuk Pergi Ke Halaman
         @endcomponent
 
         <h4>Terima Kasih Sudah Menggunakan Layanan Kami</h4>
+
+        <p class="copyright">
+            Mengalami Masalah? Silahkan Tekan Link 
+            <a href="https://wa.me/081258161143?text=Hi, saya ingin bertanya mengenai ...">Berikut</a>
+        </p>
 
         <hr class="garis-bawah">
 
