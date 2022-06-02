@@ -63,6 +63,16 @@
             Anda Dapat Melihat Data Pengunjung Masuk Didalam Dashboard Akun Anda!
         </p>
 
+        @if (Auth::user()->role === "superadmin")
+            @component('mail::button', ['url' => route('AdminvisitorControlAdmin')])
+            Tekan Disini Untuk Pergi Ke Halaman
+            @endcomponent
+        @elseif (Auth::user()->role === "leader")
+            @component('mail::button', ['url' => route('LeaderleaderVisitorControl')])
+            Tekan Disini Untuk Pergi Ke Halaman
+            @endcomponent
+        @endif
+
         <hr class="garis-bawah">
 
         <p class="copyright">&copy; Dinas Kelautan dan Perikanan Provinsi Kalimantan Barat</p>
