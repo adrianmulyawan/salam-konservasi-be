@@ -52,6 +52,7 @@
       <th>Kawasan Tujuan</th>
       <th>Tujuan Masuk Kawasan</th>
       <th>Lama Masuk Kawasan</th>
+      <th>Status Pengajuan</th>
     </tr>
     <?php $noUrut = 0; ?>
     @forelse ($datas as $data)
@@ -62,6 +63,17 @@
         <td>{{ $data->conservation_area->name }}</td>
         <td>{{ $data->purpose->purpose_name }}</td>
         <td>{{ \Carbon\Carbon::create($data->date_of_entry)->format('d F Y') }} - {{ \Carbon\Carbon::create($data->out_date)->format('d F Y') }}</td>
+        <td>
+          @if ($data->submission_status === "PENDING")
+              Sedang Diproses
+          @elseif ($data->submission_status === "ALLOWED")
+              Disetujui
+          @elseif ($data->submission_status === "REJECTED")
+              Ditolak
+          @elseif ($data->submission_status === "FAILED")
+              Gagal
+          @endif
+        </td>
       </tr>
     @empty
         <tr>
