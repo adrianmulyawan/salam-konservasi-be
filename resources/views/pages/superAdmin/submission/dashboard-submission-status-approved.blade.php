@@ -205,6 +205,7 @@
                     </div>
 
                     <div class="row justify-content-end mr-2 mt-2">
+                        <a href="{{ route('AdminchangeSubmissionStatus', $item->id) }}" class="btn btn-primary py-2 mr-2">Edit Status Pengajuan</a>
                         <a href="{{ route('AdminmanageSubmission') }}" class="btn btn-primary py-2 mr-2">Tutup</a>
                     </div>
                 </div>

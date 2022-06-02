@@ -197,7 +197,19 @@
                         <div class="form-group data-approval mt-1">
                             <h5>Status Permohonan Pengajuan Izin Masuk Kawasan</h5>
                             <select class="form-control mt-3" id="inputApproval" name="submission_status" required>
-                                <option selected disabled>Ubah Status Pengajuan</option>
+                                <option selected disabled value="{{ $data->submission_status ?: '' }}">
+                                    @if ($data->submission_status === "ALLOWED" || $data->submission_status === "REJECTED" || $data->submission_status === "FAILED")
+                                        @if ($data->submission_status === "ALLOWED")
+                                            Disetujui
+                                        @elseif ($data->submission_status === "REJECTED")
+                                            Ditolak
+                                        @elseif ($data->submission_status === "FAILED")
+                                            Gagal
+                                        @endif
+                                    @else
+                                        Ubah Status Pengajuan
+                                    @endif
+                                </option>
                                 <option value="ALLOWED">Disetujui</option>
                                 <option value="REJECTED">Ditolak</option>
                                 <option value="FAILED">Gagal</option>
@@ -209,7 +221,7 @@
                             <label for="input Alasan">
                                 <h5>Alasan Ditolak (Bila Pengajuan Ditolak)</h5>
                             </label>
-                            <textarea class="form-control mt-3 mb-2" id="inputAlasan" rows="3" name="rejected_reason"></textarea>
+                            <textarea class="form-control mt-3 mb-2" id="inputAlasan" rows="3" name="rejected_reason">{{ $data->rejected_reason ?: '' }}</textarea>
                         </div>
                         
                         <div class="row justify-content-end mr-3">
