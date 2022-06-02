@@ -10,7 +10,7 @@
             <div class="dashboard-heading">
                 <h2 class="dashboard-transaction-title">#{{ $item->transaction_code }}</h2>
                 <!-- Breadcrumb -->
-                <div class="breadcrumb-transaction>
+                <div class="breadcrumb-transaction">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
@@ -211,6 +211,7 @@
                     </div>
                     
                     <div class="row justify-content-end mr-1 mt-4">
+                        <a href="{{ route('AdminchangeTransactionStatus', $item->id) }}" class="btn btn-primary py-2 mr-2">Edit Status Pembayaran</a>
                         <a href="{{ route('AdminmanageTransaction') }}" class="btn btn-primary py-2 mr-3">Tutup</a>
                     </div>
                 </div>

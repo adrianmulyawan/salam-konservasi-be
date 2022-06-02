@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-superAdmin')
 
-@section('title', 'Ubah Status Pengajuan')
+@section('title', 'Ubah Status Pembayaran')
 
 @section('content')
     <!-- Content -->
@@ -10,7 +10,7 @@
             <div class="dashboard-heading">
                 <h2 class="dashboard-transaction-title">#{{ $data->transaction_code }}</h2>
                 <!-- Breadcrumb -->
-                <div class="breadcrumb-transaction>
+                <div class="breadcrumb-transaction">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
@@ -196,9 +196,19 @@
                         <div class="form-group data-approval mt-3">
                             <h5>Status Pembayaran Retribusi Izin Masuk Kawasan</h5>
                             <select class="form-control mt-2" id="inputApproval" name="payment_status" required>
-                              <option selected disabled>Ubah Status Pembayaran</option>
-                              <option value="PAIDOFF">TERBAYAR</option>
-                              <option value="FAILED">GAGAL</option>
+                              <option selected disabled value="{{ $data->payment_status ?: '' }}">
+                                @if ($data->payment_status === "PAIDOFF" || $data->payment_status === "FAILED")
+                                    @if ($data->payment_status === "PAIDOFF")
+                                        Terbayar
+                                    @elseif ($data->payment_status === "FAILED")
+                                        Gagal
+                                    @endif
+                                @else
+                                    Ubah Status Pembayaran
+                                @endif
+                              </option>
+                              <option value="PAIDOFF">Terbayar</option>
+                              <option value="FAILED">Gagal</option>
                             </select>
                         </div>
     

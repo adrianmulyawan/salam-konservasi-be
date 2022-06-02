@@ -10,7 +10,7 @@
             <div class="dashboard-heading">
                 <h2 class="dashboard-transaction-title">#{{ $data->transaction_code }}</h2>
                 <!-- Breadcrumb -->
-                <div class="breadcrumb-transaction>
+                <div class="breadcrumb-transaction">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
