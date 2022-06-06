@@ -111,7 +111,7 @@
                                     <div class="card p-2 payment-paid-off-card">
                                         <a href="{{ route('LeaderdashboardLeaderPaymentPaid', $paidOff->id) }}" class="d-flex text-primary" target="__blank">
                                             <i class="fas fa-check my-auto mr-2"></i>
-                                            <p class="my-auto">Pembayaran Retribusi Izin Masuk {{ \Illuminate\Support\Str::of($payment->user->name)->words(1, '') }} Telah Diproses Admin!</p>
+                                            <p class="my-auto">Pembayaran Retribusi Izin Masuk {{ \Illuminate\Support\Str::of($paidOff->user->name)->words(1, '') }} Telah Diproses Admin!</p>
                                         </a>
                                     </div>
                                 @empty
@@ -129,7 +129,7 @@
                                     <div class="card p-2 payment-failed-card">
                                         <a href="{{ route('LeaderdashboardLeaderPaymentFailed', $failed->id) }}" class="d-flex text-primary" target="__blank">
                                             <i class="fas fa-check my-auto mr-2"></i>
-                                            <p class="my-auto">Pembayaran Retribusi Izin Masuk {{ \Illuminate\Support\Str::of($payment->user->name)->words(1, '') }} Tidak Dibayarkan!</p>
+                                            <p class="my-auto">Pembayaran Retribusi Izin Masuk {{ \Illuminate\Support\Str::of($failed->user->name)->words(1, '') }} Tidak Dibayarkan!</p>
                                         </a>
                                     </div>
                                 @empty
@@ -147,7 +147,7 @@
                                     <div class="card p-2 ticket-card">
                                         <a href="{{ route('LeaderareaEntryLeader') }}" class="d-flex text-primary" target="__blank">
                                             <i class="fas fa-check my-auto mr-2"></i>
-                                            <p class="my-auto">Surat Izin Masuk Kawasan Konservasi {{ \Illuminate\Support\Str::of($payment->user->name)->words(1, '') }} Telah Terbit!</p>
+                                            <p class="my-auto">Surat Izin Masuk Kawasan Konservasi {{ \Illuminate\Support\Str::of($ticket->user->name)->words(1, '') }} Telah Terbit!</p>
                                         </a>
                                     </div>
                                 @empty
