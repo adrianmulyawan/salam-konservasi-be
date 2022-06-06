@@ -207,7 +207,7 @@
                     @endif
 
                     <div class="row justify-content-end mr-2 mt-1">
-                        @if ($item->transaction_status === "UNPAID")
+                        @if ($item->payment_status == "UNPAID")
                             <a href="{{ route('paymentProcess', $item->id) }}" class="btn btn-primary py-2 mr-2 px-3">Lanjutkan Pembayaran</a>
                         @endif
                         <a href="{{ route('dashboardSubmission') }}" class="btn btn-primary py-2 mr-2 px-3">Tutup</a>
