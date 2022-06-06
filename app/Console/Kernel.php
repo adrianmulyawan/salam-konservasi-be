@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->call(function() {
-            Transaction::where('submission_status', 'PENDING')->orWhere('submission_status', 'ALLOWED')
+            Transaction::where('submission_status', 'PENDING')->orWhere('submission_status', 'ALLOWED')->orWhere('submission_status', 'REJECTED')
             ->where('payment_status', 'UNPAID')->orWhere('payment_status', 'UNPAID')
             ->where('date_of_entry', '<', now())
             ->update([
