@@ -213,7 +213,11 @@
                                     </a>
                                 @endguest
                                 @auth
-                                    @if ($item->is_open == 1)
+                                    @if (Auth::user()->role === "leader" || Auth::user()->role() === "superadmin")
+                                        <a class="btn btn-block btn-join-now mt-3 py-2 disabled">
+                                            Anda Bukan Pemohon
+                                        </a>
+                                    @elseif ($item->is_open == 1)
                                         <button type="submit" class="btn btn-block btn-join-now mt-3 py-2">
                                             Lanjutkan Pengajuan Izin
                                         </button>
