@@ -36,7 +36,7 @@
                                             Foto Acara
                                         </label>
                                         <div class="custom-file">
-                                            <input type="file" name="photo" class="custom-file-input" id="inputFoto" value="{{ $data->photo }}">
+                                            <input type="file" name="photo" class="custom-file-input" id="inputFoto" value="{{ $data->photo }}" required>
                                             <label class="custom-file-label" for="inputFoto">{{ $data->photo }}</label>
                                         </div>
                                     </div>
