@@ -86,7 +86,7 @@
                                                     <img src="{{ Storage::url($allowed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    {{ $allowed->conservation_area->name }}
+                                                    {{ $allowed->transaction_code }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $allowed->conservation_area->name }}
@@ -129,7 +129,7 @@
                                                     <img src="{{ Storage::url($reject->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    {{ $reject->conservation_area->name }}
+                                                    {{ $reject->transaction_code }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $reject->conservation_area->name }}
@@ -172,7 +172,7 @@
                                                     <img src="{{ Storage::url($failed->conservation_area->galleries->first()->photo) }}" class="img-card-conservation">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    {{ $failed->conservation_area->name }}
+                                                    {{ $failed->transaction_code }}
                                                 </div>
                                                 <div class="col-md-3">
                                                     {{ $failed->conservation_area->name }}
