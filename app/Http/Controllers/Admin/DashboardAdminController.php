@@ -18,7 +18,7 @@ class DashboardAdminController extends Controller
     public function index()
     {
         // Card Dashboard Admin
-        $user = User::count();
+        $user = User::where('role', 'applicant')->count();
         $conservationArea = ConservationArea::count();
 
         // Pengajuan Izin Masuk Kawasan
