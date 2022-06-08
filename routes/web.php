@@ -48,14 +48,19 @@ Route::post('/store-aspiration', [App\Http\Controllers\HomeController::class, 's
     ->name('storeUserAspiration');
 
 Route::get('/submission/{slug}', [App\Http\Controllers\SubmissionController::class, 'index'])
+    ->middleware(['checkRole:applicant'])
     ->name('submission');
 Route::post('/submission/{slug}/store', [App\Http\Controllers\SubmissionController::class, 'store'])
+    ->middleware(['checkRole:applicant'])
     ->name('submission-store');
 Route::get('/edit-submission/edit/{id}', [App\Http\Controllers\SubmissionController::class, 'editSubmission'])
+    ->middleware(['checkRole:applicant'])
     ->name('editSubmission');
 Route::put('/edit-submission/update/{transaction}', [App\Http\Controllers\SubmissionController::class, 'update'])
+    ->middleware(['checkRole:applicant'])
     ->name('update-submission');
 Route::get('/success-submission', [App\Http\Controllers\SubmissionController::class, 'successSubmission'])
+    ->middleware(['checkRole:applicant'])
     ->name('successSubmission');
 
 Auth::routes(['verify' => true]);
